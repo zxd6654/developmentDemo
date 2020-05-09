@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab</title>
+    <!--<style type="text/css">-->
+    <!--* {-->
+    <!--padding: 0;-->
+    <!--margin: 0;-->
+    <!--}-->
+
+    <!--button {-->
+    <!--background-color: #ccc;-->
+    <!--width: 80px;-->
+    <!--height: 30px;-->
+    <!--}-->
+
+    <!--.btn-active {-->
+    <!--background-color: yellow;-->
+    <!--font-weight: bold;-->
+    <!--font-size: 14px;-->
+    <!--}-->
+
+    <!--div {-->
+    <!--width: 200px;-->
+    <!--height: 200px;-->
+    <!--font-size: 64px;-->
+    <!--background-color: #0c0;-->
+    <!--display: none;-->
+    <!--color: #fff;-->
+    <!--}-->
+
+    <!--.div-active {-->
+    <!--display: block;-->
+    <!--}-->
+    <!--</style>-->
+    <style>
+        span {
+            width: 100px;
+            height: 50px;
+            border: 1px solid red;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<!--<select name="" id="">-->
+<!--<option value="">1</option>-->
+<!--<option value="">2</option>-->
+<!--<option value="">3</option>-->
+<!--<option value="">4</option>-->
+<!--</select>-->
+<button class="btn-active">按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<div class="div-active">1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<!--<script type="text/javascript">-->
+<!--//1.先获取元素-->
+<!--var buttonList = document.getElementsByTagName("button");-->
+<!--var divList = document.getElementsByTagName("div");-->
+<!--//2.添加事件-->
+<!--for (var i = 0; i < buttonList.length; i++) {-->
+<!--buttonList[i].index = i;-->
+<!--buttonList[i].onclick = function () {-->
+<!--for (var j = 0; j < buttonList.length; j++) {-->
+<!--buttonList[j].className = "";-->
+<!--divList[j].className = "";-->
+<!--}-->
+<!--this.className = "btn-active";-->
+<!--divList[this.index].className = "div-active";-->
+<!--}-->
+<!--}-->
+<!--var a = "";-->
+<!--console.log(Number(a));-->
+<!--</script>-->
+<!--<script>-->
+<!--let arr1 = [1, 2, 3];-->
+<!--let arr2 = [];-->
+<!--arr1 && arr2.forEach(function (arr) {-->
+<!--console.log(arr);-->
+<!--})-->
+<!--</script>-->
+
+<!--<div>-->
+<!--<span></span><br>-->
+<!--<span></span><br>-->
+<!--<span></span><br>-->
+<!--<span></span><br>-->
+<!--<span></span><br>-->
+<!--</div>-->
+<script src="拼图游戏/jquery-2.2.4.min.js"></script>
+<!--<script>-->
+<!--var wgnamearr = [-->
+<!--{-->
+<!--"total": 31,-->
+<!--"wgname": 321312,-->
+<!--},-->
+<!--{-->
+<!--"total": 39,-->
+<!--"wgname": 55555,-->
+<!--},-->
+<!--{-->
+<!--"total": 99,-->
+<!--"wgname": 55555,-->
+<!--},-->
+<!--{-->
+<!--"total": 100,-->
+<!--"wgname": 55555,-->
+<!--},-->
+<!--{-->
+<!--"total": 0,-->
+<!--"wgname": 44545643345345,-->
+<!--},-->
+
+<!--];-->
+<!--$.each(wgnamearr, function (index, wg) {-->
+<!--if (wg.total !== 0) {-->
+<!--if(wg.total>=99){-->
+<!--$("span").eq(index).text("99+");-->
+<!--}else{-->
+<!--$("span").eq(index).text(wg.total);-->
+
+<!--}-->
+<!--} else {-->
+<!--$("span").eq(index).hide();-->
+<!--}-->
+<!--})-->
+
+
+<!--</script>-->
+<!--<script>-->
+<!--start.viewports.forEach(function (v) {-->
+<!--v.control.OnOrbitChangeListener.addListener(function (startState, endState) {-->
+<!--CmdInvoker.sendCmd(new OrbitControlCmd(v.control, startState, endState))-->
+<!--});-->
+<!--});-->
+<!--</script>-->
+<!--<script>-->
+<!--var a = [1, 2, 3], b = [4, 5, 6];-->
+<!--var c = a.map(function (i, index) {   // c = [[1, 4], [2, 5], [3, 6]];-->
+<!--return [i, b[index]]-->
+<!--});-->
+<!--for (var i = 0; i < c.length; i++) {-->
+
+<!--for (var j = 0; j < c[i].length; j++) {-->
+<!--c[i][j]-->
+<!--}-->
+<!--}-->
+
+<!--</script>-->
+
+<script>
+    if (!String.prototype.splice) {
+        String.prototype.splice = function (start, delCount, newSubStr) {
+            return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
+        };
+    }
+    //    let arr = ["if X<=300mm", "52mm:1:62mm", "if 300mm<X<=600mm", "52mm:1:1:62mm", "if 600mm<X<=800mm", "52mm:1:1:1:62mm", "DEFAULT", "52mm:1:1:1:1:62mm"];
+    //    let arr = ["if X<=150mm", "1:1","DEFAULT", "1:1:1"];
+    //    let arr = ["if X<=150mm", "1:1"];
+    //    let arr = ["DEFAULT", "1:1:1"];
+    //    let arr = ["if Y<=300mm", "52mm:1:62mm", "if 300mm<Y<=600mm", "52mm:1:1:62mm", "if 600mm<Y<=800mm", "52mm:1:1:1:62mm", "DEFAULT", "52mm:1:1:1:1:62mm"];
+//        let arr = ["if Y<=30cm", "52mm:1:62mm", "if 30cm<Y<=60cm", "52mm:1:1:62mm", "if 60cm<Y<=80cm", "52mm:1:1:1:62mm", "DEFAULT", "52mm:1:1:1:1:62mm"];
+//        let arr = ["if Y<=0.3m", "52mm:1:62mm", "if 0.3m<Y<=0.6m", "52mm:1:1:62mm", "if 0.6m<Y<=0.8m", "52mm:1:1:1:62mm", "DEFAULT", "52mm:1:1:1:1:62mm"];
+        let arr = ["if Y<=0.3m", "52mm:1:62mm", "if 0.3m<Y<=600mm", "52mm:1:1:62mm", "if 0.6m<Y<=0.8m", "52mm:1:1:1:62mm", "DEFAULT", "52mm:1:1:1:1:62mm"];
+
+    let str = "", lineSegment;
+    for (let i = 0; i < arr.length; i++) {
+        let odd,str1, str2, str3;
+        odd=arr[i].replace(/\s/g,'');
+        if (arr[i] === "DEFAULT") {
+            str3 = odd = "";
+        } else {
+            if (odd.indexOf('mm') !== -1) {
+                str1 = odd.replace(/mm/g, "");
+            } else if (odd.indexOf('cm') !== -1) {
+                str1 = odd.replace(/cm/g, "*10");
+            } else if (odd.indexOf('m') !== -1) {
+                str1 = odd.replace(/m/g, "*1000");
+
+            }
+
+            if (i === 0) {
+                str2 = str1.splice(2, 0, '(');
+                str3 = str2.splice(str2.length, 0, ')');
+            } else {
+                str2 = str1.splice(2, 0, '(');
+                let index = str2.lastIndexOf('<');
+                let XYZ = str2.substr(index - 1, 1);
+                str3 = str2.splice(str2.length, 0, ')').splice(index, 0, "&&" + XYZ);
+            }
+
+        }
+        console.log(str3);
+        ++i;
+        let even,str4, str5;
+        even=arr[i].replace(/\s/g,'');
+        if (i === arr.length-1) {
+            str4 = even.splice(0, 0, "{lineSegment='");
+            str5 = str4.splice(str4.length, 0, "'}");
+        } else {
+            str4 = even.splice(0, 0, "{lineSegment='");
+            str5 = str4.splice(str4.length, 0, "'}else ");
+        }
+        console.log(str5);
+        str += str3 + str5;
+    }
+    console.log(str);
+    var Y = 900;
+    eval(str);
+    console.log(lineSegment);
+</script>
+<script>
+    //js 字符串中插入内容的方法是重写原型中的splice()方法：
+    //1、原型定义如下：
+    //    if (!String.prototype.splice) {
+    //        String.prototype.splice = function(start, delCount, newSubStr) {
+    //            return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
+    //        };
+    //    }
+    //    //2、重写后代码如下：
+    //    String.prototype.splice = function(idx, rem, str) {
+    //        return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
+    //    };
+    //3、使用方法：
+    //        var result = "foo baz".splice(0, 0, "bar ");
+    //        document.body.innerHTML = result;
+    //结果：在 "foo bar"中的第4个位置插入字符串bar ，变成："foo bar baz"
+</script>
+
+</body>
+</html>

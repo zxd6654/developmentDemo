@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .company-unit-lists {
+            position: relative;
+            /*height: 78px;*/
+            width: 80%;
+            margin: 60px auto;
+        }
+
+
+        .company-unit-names-lists li {
+            float: left;
+            text-align: center;
+            line-height: 76px;
+            color: #3a4750;
+            border-left: 1px solid #d2d2d2;
+            background-color: #fff;
+            width: 24%;
+            padding: 0 0.5%;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 3px 3px #eee;
+            white-space: pre;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /*  -moz-transition:background-color 2s; !* Firefox 4 *!
+              -webkit-transition:background 2s; !* Safari and Chrome *!
+              -o-transition:background-color 2s; !* Opera *!*/
+        }
+
+        .company-unit-names-lists li:first-child {
+            border-left: none;
+        }
+
+        .company-unit-names-lists li:hover {
+            background-color: #d72323;
+            color: #eee;
+        }
+
+        .company-unit-images-lists {
+            overflow: hidden;
+        }
+
+        .company-unit-images-lists li {
+            float: left;
+            width: 24%;
+            height: 300px;
+            overflow: hidden;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .company-unit-images-lists li:first-child {
+            border-left: none;
+        }
+
+        .company-unit-images-lists li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .company-name {
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            background: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: rgb(26, 26, 26);
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 100;
+        }
+        .background{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            display: none;
+            background: rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+<div class="company-unit-lists">
+    <ul class="company-unit-images-lists" id="company-unit-images-lists">
+        <a href="https://www.baidu.com">
+            <li>
+                <img id="img3" src="img/business.png">
+                <p class="company-name">北京源著智能科技有限公司</p>
+                <div class="background"></div>
+            </li>
+        </a>
+        <a href="https://www.baidu.com">
+            <li>
+                <img id="img2" src="img/commodity.png">
+                <p class="company-name">北京源著商务有限公司</p>
+                <div class="background"></div>
+            </li>
+        </a>
+        <a href="https://www.baidu.com">
+            <li>
+                <img id="img1" src="img/decoration-surface.png">
+                <p class="company-name">北京源著装饰工程有限公司</p>
+                <div class="background"></div>
+            </li>
+        </a>
+        <a href="https://www.baidu.com">
+            <li>
+                <img id="img4" src="img/tianjin.png">
+                <p class="company-name">天津源著新材料科技有限公司</p>
+                <div class="background"></div>
+            </li>
+        </a>
+
+    </ul>
+</div>
+<script src="../拼图游戏/jquery-2.2.4.min.js"></script>
+<script src="jquery.color.js"></script>
+<script>
+    $('#company-unit-images-lists li').mouseenter(function () {
+        $(this).find('.background').fadeIn(400);
+        $(this).find('.company-name').animate({color:'#fff',backgroundColor:"rgba(0,0,0,0.5)"},400)
+    }).mouseleave(function () {
+        $(this).find('.background').fadeOut(400);
+        $(this).find('.company-name').animate({color:'rgb(26, 26, 26)',backgroundColor:"rgba(0,0,0,0.3)"},400)
+    })
+</script>
+</body>
+</html>

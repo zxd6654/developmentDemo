@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            user-select: none;
+            /* 禁止用户选中*/
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .banner {
+            width: 790px;
+            height: 340px;
+            margin: 0 auto;
+            position: relative;
+            margin-top: 100px;
+        }
+
+        .banner img {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .banner .left {
+            width: 35px;
+            height: 55px;
+            background: rgba(0, 0, 0, 0.3);
+            position: absolute;
+            top: 140px;
+            left: 0;
+        }
+
+        .banner .right {
+            width: 35px;
+            height: 55px;
+            background: rgba(0, 0, 0, 0.3);
+            position: absolute;
+            top: 140px;
+            left: 755px;
+        }
+
+        .banner .left,
+        .right {
+            color: white;
+            font-size: 55px;
+            font-family: "黑体";
+            line-height: 55px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        ul {
+            position: absolute;
+            top: 270px;
+            left: 304px;
+        }
+
+        li {
+            list-style: none;
+            float: left;
+            width: 25px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            margin-right: 8px;
+            font-size: 14px;
+            text-align: center;
+            line-height: 25px;
+            cursor: pointer;
+        }
+
+        .active {
+            background: palevioletred;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBanner = document.getElementById("banner");
+            var aImgs = oBanner.getElementsByTagName("img");
+            var aLis = oBanner.getElementsByTagName("li");
+            var oPrev = document.getElementById("prev");
+            var oNext = document.getElementById("next");
+            var now = 0;
+            var timer = null;
+            for (var i = 0; i < aLis.length; i++) {
+                aLis[i].index = i;
+                aLis[i].onmouseover = function () {
+                    for (var i = 0; i < aLis.length; i++) {
+                        aLis[i].className = "";
+                        aImgs[i].style.opacity = "0";
+                        aImgs[i].style.transition = "all 1s";
+                    }
+                    this.className = "active";
+                    aImgs[this.index].style.opacity = "1";
+                    aImgs[this.index].style.transition = "all 1s";
+
+                    now = this.index;
+                }
+            }
+
+
+
+
+            oNext.onclick = auto;
+            timer = setInterval(auto, 2000);
+
+            function auto() {
+                now++;
+                if (now > aLis.length - 1) {
+                    now = 0;
+                }
+                for (var i = 0; i < aLis.length; i++) {
+                    aLis[i].className = "";
+                    aImgs[i].style.opacity = "0";
+                    aImgs[i].style.transition = "all 1s";
+                }
+                aLis[now].className = "active";
+                aImgs[now].style.opacity = "1";
+                aImgs[now].style.transition = "all 1s";
+            }
+
+
+            oPrev.onclick = function () {
+                now--;
+                if (now < 0) {
+                    now = aLis.length - 1;
+                }
+                for (var i = 0; i < aLis.length; i++) {
+                    aLis[i].className = "";
+                    aImgs[i].style.opacity = "0";
+                    aImgs[i].style.transition = "all 1s";
+                }
+                aLis[now].className = "active";
+                aImgs[now].style.opacity = "1";
+                aImgs[now].style.transition = "all 1s";
+            };
+
+
+            oBanner.onmouseover = function () {
+                clearInterval(timer);
+            };
+            oBanner.onmouseout = function () {
+                timer = setInterval(auto, 2000);
+            };
+        }
+    </script>
+</head>
+
+<body>
+    <div class="banner" id="banner">
+        <img src="../images/banner1.jpg" style="opacity: 1;" />
+        <img src="../images/banner2.jpg" />
+        <img src="../images/banner3.jpg" />
+        <img src="../images/banner4.jpg" />
+        <img src="../images/banner5.jpg" />
+        <span id="prev" class="left">
+            <</span> <span id="next" class="right">>
+        </span>
+        <ul>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+</body>
+
+</html>

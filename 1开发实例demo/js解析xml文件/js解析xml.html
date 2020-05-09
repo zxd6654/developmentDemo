@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var xmlDoc;
+
+    function createXmlHttpRequestObject(xmlFile) {
+        if (window.ActiveXObject) {
+            xmlDoc = new ActiveXObject('Microsoft.XMLHttp');
+        } else if (window.XMLHttpRequest) {
+            xmlDoc = new XMLHttpRequest();
+        } else {
+            return console.log('该浏览器不能解析此文件');
+        }
+        return xmlDoc;
+    }
+
+
+    function ReqHtml() {
+        createXmlHttpRequestObject();
+        xmlDoc.onreadystatechange = StatHandler;
+        xmlDoc.open("GET", "info.xml", true);
+        xmlDoc.send(null);
+    }
+
+    function StatHandler() {
+        if (xmlDoc.readyState == 4 && xmlDoc.status == 200) {
+            var xmlDom = xmlDoc.responseXML;
+            var root = xmlDom.documentElement;
+            var data = "";
+            var names = root.getElementsByTagName('name');
+            var ages = root.getElementsByTagName('age');
+            var len = names.length;
+            for (var i = 0; i < len; i++) {
+                data += "姓名:";
+                data += names[i].firstChild.nodeValue;
+                data += " 年龄:";
+                data += ages[i].firstChild.nodeValue;
+                data += " ";
+            }
+            console.log(data);
+        }
+    }
+
+    ReqHtml();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>进度条4</title>
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <style type="text/css">
+      .loading{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        background-color: #fff;
+      }
+      .loading .pic{
+        width: 0%;
+        height: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #f33;
+      }
+    </style>
+     
+  </head>
+  <body>
+    <div class="loading">
+      <div class="pic">
+      </div>
+    </div>
+    <header><img src="http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1307/22/c3/23612952_1374475936638.jpg"></header>
+    <script>
+      $(".loading .pic").animate({width:"10%"},100)
+    </script>
+    <section class="banner"><img src="http://pic1.win4000.com/wallpaper/9/538d2c623b1ec.jpg"></section>
+    <script>
+      $(".loading .pic").animate({width:"30%"},100)
+    </script>
+    <section class="about"><img src="http://pic45.nipic.com/20140811/6204346_165600761002_2.jpg">
+    <img src="http://attach.bbs.miui.com/forum/201308/14/173837ndfd8pfqozqi8dt4.gif">
+    <img src="http://img1.pconline.com.cn/piclib/200906/09/batch/1/34797/12445120029168m4nfbg5f5.jpg"></section>
+    <script>
+      $(".loading .pic").animate({width:"50%"},100)
+    </script>
+    <section class="pro"><img src="http://pic1.win4000.com/wallpaper/2/54811c7f4c396.jpg"></section>
+    <script>
+      $(".loading .pic").animate({width:"70%"},100)
+    </script>
+    <section class="news"><img src="http://pic1.win4000.com/wallpaper/f/546b12c23f5c2.jpg">
+    <img src="http://b.zol-img.com.cn/desk/bizhi/start/3/1375673455453.jpg"></section>
+    <script>
+      $(".loading .pic").animate({width:"90%"},100)
+    </script>
+    <footer><img src="http://a.hiphotos.baidu.com/zhidao/pic/item/3c6d55fbb2fb4316352d920a22a4462309f7d394.jpg"></footer>
+    <script>
+      $(".loading .pic").animate({width:"100%"},100,function(){
+        $(".loading").fadeOut();
+      })
+    </script>
+  </body>
+</html>

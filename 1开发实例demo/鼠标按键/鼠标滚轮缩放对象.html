@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div" style="width: 500px;height: 500px;background-color: blue"></div>
+<script>
+    let obj = document.getElementById("div");
+    let w = 500, h = 500;//声明两个变量大小等于div的初始宽高度
+    function fun() {
+        if (event.wheelDelta > 0) {//判断滚轮是否向上滚动
+            w += 10;
+            h += 10;
+        }
+        else if (event.wheelDelta < -0) {//判断滚轮是否向下滚动
+            w -= 10;
+            h -= 10;
+        }
+        //变化后的宽高度值w、d赋值给width、height
+        obj.style.width = w + "px";
+        obj.style.height = h + "px";
+    }
+
+    //添加鼠标滚轮事件
+    obj.onmousewheel = fun;
+</script>
+</body>
+</html>

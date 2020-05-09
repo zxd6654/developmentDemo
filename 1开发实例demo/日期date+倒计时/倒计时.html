@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            font-size: 30px;
+        }
+    </style>
+    <!--<script>-->
+    <!--window.onload=function(){-->
+    <!--var date=new Date();-->
+    <!--var year=2017-date.getUTCFullYear();-->
+    <!--var month=4-date.getUTCMonth();-->
+    <!--var date1=10-date.getUTCMonth();-->
+    <!--var hours=19-date.getUTCHours();-->
+    <!--var minutes=05-date.getUTCMinutes();-->
+    <!--var seconds=date.getUTCSeconds();-->
+    <!--var time="现在距离2017 5 10 19 05开始还有"+year+"年"+month+"月"+date1+"日"+hours+"小时"+minutes+"分钟"+seconds+"秒";-->
+    <!--document.write(time);-->
+    <!--};-->
+    <!--//</script>-->
+    <!--<script>-->
+    <!--window.onload=function(){-->
+    <!--setInterval(function(){-->
+    <!--var date=new Date();-->
+    <!--var year=2017-date.getUTCFullYear();-->
+    <!--var month=4-date.getUTCMonth();-->
+    <!--var date1=10-date.getUTCMonth();-->
+    <!--var hours=19-date.getUTCHours();-->
+    <!--var minutes=05-date.getUTCMinutes();-->
+    <!--var seconds=date.getUTCSeconds();-->
+    <!--var timer="现在距离2017 5 10 19 05 开始还有"+year+"年"+month+"月"+date1+"日"+hours+"小时"+minutes+"分钟"+seconds+"秒";-->
+    <!--divin.innerHTML=timer;-->
+    <!--},1000);-->
+    <!--};-->
+    <!--</script>-->
+    <script>
+        window.onload = function () {
+            setInterval(function () {
+                var oDateNow = new Date();
+                var oDateStart = new Date(2017, 9, 13, 16, 5, 0);
+                var oDateEnd = new Date(2017, 9, 13, 16, 6, 0);
+                if (oDateNow < oDateStart) {
+                    divin.innerHTML = "等待活动开启";
+                } else if (oDateNow >= oDateStart && oDateNow <= oDateEnd) {
+                    oDateStart = oDateNow;
+                    var ms = oDateEnd - oDateStart;
+                    var s = Math.floor(ms / 1000);
+                    var min = Math.floor(ms / 1000 / 60);
+                    var h = Math.floor(ms / 1000 / 60 / 60);
+                    var day = Math.floor(ms / 1000 / 60 / 60 / 24);
+                    //                    ms -= s * 1000;
+                    s -= min * 60;
+                    min -= h * 60;
+                    h -= day * 24;
+                    timer = "距离2017年11月10日23:59:59" + "还剩" + day + "天" + h + "小时" + min + "分钟" + s + "秒";
+                    divin.innerHTML = timer;
+                } else {
+                    divin.innerHTML = "活动已结束";
+                }
+
+            }, 1000);
+            //    setInterval(function(){
+            //                var oDatenow=new Date();
+            //                var oDate=new Date(2017,11,10,23,59,59);
+            //                var year=2017-oDatenow.ge tFullYear();
+            //                var month=11-oDatenow.getMonth()-1;
+            //                var day=10-oDatenow.getDate();
+            //                var hour=23-oDatenow.getHours();
+            //                var min=59-oDatenow.getMinutes();
+            //                var s=59-oDatenow.getSeconds();
+            //                var timer="距离2017年11月10日下午23:59:59"+"还剩"+year+"年"+month+"月"+day+"天"+hour+"小时"+min+"分钟"+s+"秒";
+            //                divin.innerHTML=timer;
+            //            }
+            //            ,1000);
+        };
+
+        //        setInterval(function(){
+        //            var oDatenow=new Date();
+        //            var oDate=new Date(2017,0,10,19,05,01,10000);
+        //            var ms=oDate-oDatenow;
+        //            var day=Math.floor(ms/1000/60/60/24);
+        //            var h=Math.floor(ms/1000/60/60)-day*24;
+        //            var min=Math.floor(ms/1000/60)-day*24*60-h*60;
+        //            var s=Math.floor(ms/1000)-day*24*60*60-h*60*60-min*60;
+        //            var ms1=oDate-oDatenow-day*24*60*60*1000-h*60*60*1000-min*60*1000-s*1000;
+        //                        document.write(day+"天"+h+"小时"+min+"分钟"+s+"秒"+ms1+"毫秒"+"<br/>");
+        //
+        //        },1000)
+        //}
+    </script>
+</head>
+
+<body>
+    <div id="divin"></div>
+</body>
+
+</html>

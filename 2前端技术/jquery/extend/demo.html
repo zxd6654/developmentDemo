@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../js/jquery-2.2.4.min.js"></script>
+<!--1.合并多个对象-->
+<script>
+    var Css1 = {size: "10px", style: "oblique"};
+    var Css2 = {size: "12px", style: "oblique", weight: "bolder"};
+    $.extend(Css1, Css2);
+    console.log(Css1);
+</script>
+<!--2.深度嵌套对象-->
+<script>
+    jQuery.extend(true,
+        {name: 'John', location: {city: 'Boston'}},
+        {last: 'Resig', location: {state: 'MA'}}
+    );
+</script>
+<!--3.可以给jQuery添加静态方法-->
+<script>
+    $.extend({
+        add:function(a,b){return a+b;},
+        minus:function(a,b){return a-b},
+        multiply:function(a,b){return a*b;},
+        divide:function(a,b){return Math.floor(a/b);}
+    });
+    var sum = $.add(3,5)+$.minus(3,5)+$.multiply(3,5)+$.divide(5,7);
+    console.log(sum);
+</script>
+</body>
+</html>

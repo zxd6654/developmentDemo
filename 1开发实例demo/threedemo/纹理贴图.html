@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+        #container {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+    <script src="three.js"></script>   <!--webgl的threejs框架-->
+    <script src="OrbitControls.js"></script><!--鼠标操作三维场景-->
+    <script src="Stats.js"></script>   <!--性能检测-->
+</head>
+<body>
+<div id="container"></div>
+<script>
+    init();
+    animate();
+
+    var scene;
+
+    function initScene() {
+        scene = new THREE.Scene();  /*设置场景*/
+    }
+
+    var renderer ,container,oWidth,oHeight;
+
+    function initRenderer() {
+        container = document.getElementById('container');
+        oWidth = container.clientWidth;
+        oHeight = container.clientHeight;
+        renderer = new THREE.WebGLRenderer({   /*设置渲染器*/
+            antialias: true                 /*抗锯齿*/
+        });
+        renderer.setClearColor(0xe8e8e8);  /*画布背景色*/
+        renderer.setSize(oWidth, oHeight); /*渲染器大小*/
+        container.appendChild(renderer.domElement);/*动态生成canvas*/
+    }
+
+    var camera;
+
+    function initCamera() {
+        camera = new THREE.PerspectiveCamera(60, oWidth / oHeight, 1, 1000); /*创建相机   透射投影*/
+        camera.position.x = 300;   /*相机的位置坐标*/
+        camera.position.y = 300;
+        camera.position.z = 500;
+    }
+
+    var controls;
+
+    function initControl() {
+        controls = new THREE.OrbitControls(camera, renderer.domElement); /*创建控制器*/
+        controls.addEventListener('change', render);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.25;
+        controls.enableZoom = true;
+    }
+
+    var geometry, material, cube;
+
+    function initWorld() {
+
+         geometry = new THREE.PlaneGeometry(256,256);//矩形平面
+        var texture = THREE.ImageUtils.loadTexture("crate.gif");//加载纹理贴图
+         material=new THREE.MeshLambertMaterial({//贴图通过材质添加给几何体
+            map:texture,//给纹理属性map赋值
+            side:THREE.DoubleSide,//两面可见
+        });//材质对象
+        var mesh = new THREE.Mesh(geometry,material);//纹理贴图网格模型对象
+        scene.add(mesh);//网格模型添加到场景中
+    }
+
+    var light;
+
+    function initLight() {
+        light = new THREE.DirectionalLight(0x000000);  /*设置灯光*/
+        light.position.set(1, 1, 1);
+        scene.add(light);
+        light = new THREE.DirectionalLight(0x00d9b5);
+        light.position.set(-1, -1, -1);
+        scene.add(light);
+        light = new THREE.AmbientLight(0x00d9b5);  /*环境光*/
+        scene.add(light);
+    }
+
+    var helper;
+
+    function initHelper() {
+        helper = new THREE.GridHelper(1000, 50);  /*设置网格系统*/
+        helper.setColors(0x0000ff, 0x808080);  /*网格系统中线条两端的颜色*/
+//        scene.add(helper);
+
+        scene.add(new THREE.AxisHelper(500));   /*显示坐标*/
+    }
+    var stats;
+    function initStats() {
+        stats = new Stats();   /*测试性能，fps和ms*/
+        stats.domElement.style.position = 'absolute';
+        stats.domElement.style.left = '0px';
+        stats.domElement.style.top = '0px';
+        container.appendChild(stats.domElement);
+    }
+    function init() {  /*初始化*/
+        initScene();
+        initRenderer();
+        initCamera();
+        initControl();
+        initWorld();
+        initLight();
+        initHelper();
+        initStats();
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);   /*循环*/
+        controls.update();          /*控制器改变，更新*/
+        stats.update();            /*性能检测 实时更新*/
+        render();
+    }
+
+    function render() {
+        renderer.render(scene, camera);  /*将场景和，相机加载到渲染器中*/
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象轮播</title>
+
+</head>
+<body>
+<div class="popup-list">
+    <label>责任单位</label>
+    <label><input class="responsibility" type="checkbox" name=""  value="工厂">工厂</label>
+    <label><input class="responsibility" type="checkbox" name=""  value="物流">物流</label>
+    <label><input class="responsibility" type="checkbox" name=""  value="商务">商务</label>
+</div>
+<script src="拼图游戏/jquery-2.2.4.min.js"></script>
+<script>
+    $(".responsibility").change(function () {
+        response(this);
+    });
+    var owner=[],ownerData={},j,k;
+    function response(_this) {
+        var is_check=$(_this).prop("checked");
+        console.log(is_check);
+        if(is_check){
+
+            console.log(typeof owner,owner);
+            ownerData=unique(owner);
+//            console.log(ownerData);
+        }else{
+            j=$(_this).val();
+            k=owner.indexOf(j);
+            owner.splice(k);
+            ownerData=unique(owner);
+//            console.log(j,k,owners,ownerData);
+
+        }
+        console.log(ownerData);
+        return ownerData
+    }
+    function unique(array){
+        var n = {},r=[],len = array.length, val;
+        for (var i = 0; i < len; i++) {
+            val = array[i];
+            if (!n[i]) {
+                n[i] =val;
+                r.push(val)
+            } else if (n[i].indexOf(array[i]) < 0) {
+                n[i].push(array[i]);
+                r.push(val)
+            }
+        }
+        return r;
+    }
+</script>
+</body>
+</html>

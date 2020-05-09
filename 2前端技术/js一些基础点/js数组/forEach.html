@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--forEach()：对数组进行遍历循环，对数组中的每一项运行给定函数。这个方法没有返回值。-->
+    <!--参数都是function类型，默认有传参，参数分别为：遍历的数组内容；第对应的数组索引，数组本身。-->
+    <!--不能用return终止循环-->
+
+</head>
+<body>
+<script>
+    var arr = [1, 2, 3, 4, 5];
+    arr.forEach(function(x, index, a){
+        console.log(x + '|' + index + '|' + (a === arr));
+    });
+    // 输出为：
+    // 1|0|true
+    // 2|1|true
+    // 3|2|true
+    // 4|3|true
+    // 5|4|true
+</script>
+</body>
+</html>

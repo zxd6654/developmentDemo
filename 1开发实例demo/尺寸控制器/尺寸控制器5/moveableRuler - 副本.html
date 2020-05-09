@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewPort" content="width=device-width,initial-scale=1,user-scalable=0"/>
+
+    <title>尺寸控制</title>
+    <style type="text/css">
+        body {
+            -moz-user-select: none; /*火狐*/
+            -webkit-user-select: none; /*webkit浏览器*/
+            -ms-user-select: none; /*IE10*/
+            -khtml-user-select: none; /*早期浏览器*/
+            user-select: none;
+        }
+
+        body {
+            font-size: 14px;
+            font-family: "微软雅黑";
+        }
+    </style>
+    <style type="text/css">
+        /*prev 尺寸设置器*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .value-input-shower {
+            float: left;
+            width: 140px;
+            margin-left: 10px;
+            border: 1px solid #ccc;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+        .size-input-container{
+            overflow: hidden;
+        }
+
+        .size-input-container h3 {
+            float: left;
+            width: 30px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 30px;
+            border-bottom: 2px solid #d80d18;
+        }
+
+        .right_input {
+            width: 60px;
+            height: 50px;
+
+            line-height: 50px;
+            float: left;
+            overflow: hidden;
+        }
+
+        .right_input input {
+            width: 60px;
+            height: 48px;
+            line-height: 48px;
+            font-size: 16px;
+            border: none;
+            text-align: center;
+            outline: none;
+        }
+
+        .right_unit {
+            width: 30px;
+            height: 50px;
+            line-height: 50px;
+            float: left;
+
+        }
+
+        .size-controller-container {
+            height: 150px;
+            width:600px;
+            margin: 0 auto;
+        }
+
+        .status_cont {
+            float: left;
+            width: 100%;
+            height: 50px;
+           /*  border: 1px solid #ccc;*/
+            margin-top: 5px;
+            margin-left: 0px;
+            /*可设置*/
+            margin-right: 0px;
+            /*可设置*/
+        }
+
+        .left_mintab {
+            position: absolute;
+            left: 0;
+            top: 25px;
+            height: 50px;
+            width: 60px;
+            float: left;
+            line-height: 50px;
+            text-align: center;
+            font-size: 12px;
+            background: #cccccc;
+        }
+
+        .right_innercont {
+            position: absolute;
+            right: 0;
+            top: 25px;
+            width: 60px;
+            height: 50px;
+        }
+
+        .right_maxtab {
+            height: 50px;
+            width: 60px;
+            line-height: 50px;
+            text-align: center;
+            float: left;
+            font-size: 12px;
+            background: #cccccc;
+        }
+
+        .middle_rule {
+            position: relative;
+            margin-top:20px;
+            height: 100px;
+        }
+
+        .ruler_back {
+            height: 5px;
+            position: relative;
+            top: 47px;
+            background: #000;
+        }
+
+        .movable_pointer {
+            position: absolute;
+            top: 0;
+            width: 30px;
+            height: 100px;
+            /*    border: 1px solid #ccc;*/
+            background:rgba(0,0,0,0.5);
+            cursor: pointer;
+            z-index: 9;
+        }
+
+
+
+        .value-shower {
+            z-index: 9;
+        }
+
+        .levelpointer {
+            width: 1px;
+            height: 20px;
+            background: #000;
+            position: absolute;
+            left: 20px;
+            top: 40px;
+            z-index: 0;
+        }
+
+        .introductorVal {
+            position: absolute;
+            top: 10px;
+            color: #ccc;
+            z-index: 0;
+        }
+        .size-min-value{
+            position: absolute;
+            top:10px;
+        }
+        .size-min-value-title{
+            position: absolute;
+            left:-5px;
+            top:80px;
+        }
+        .size-max-value-title{
+            position: absolute;
+            right:-5px;
+            top:70px;
+        }
+        .size-max-value {
+            position: absolute;
+            top: 10px;
+            right: 0;
+            z-index: 0;
+        }
+
+        .size-min-value-pointer {
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            width: 1px;
+            height: 20px;
+            background: #000;
+        }
+
+        .size-max-value-pointer {
+            position: absolute;
+            right: 15px;
+            top: 40px;
+            width: 1px;
+            height: 20px;
+            background: #000;
+        }
+        #mouseStart{
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+        /*prev 尺寸设置器* /
+    </style>
+</head>
+
+<body>
+<!-----------------------以下操作器部分script------------------------->
+
+
+    <!--宽度设置模块-->
+    <div class="size-controller-container">
+        <div class="size-input-container">
+            <h3>宽</h3>
+            <div class="value-input-shower">
+                <div class="right_input">
+                    <input type="text" id="valueInput"/>
+                </div>
+                <div class="right_unit">mm</div>
+            </div>
+        </div>
+        <div class="status_cont" style="position: relative; height: 100px;">
+
+            <div class="middle_rule" id="middle_rule_cont">
+                <div class="ruler_back"></div>
+                <div id="movable_block" class="movable_pointer"></div>
+                <span class="value-shower"></span>
+
+                <!--最小值指示标签-->
+                <div class="size-min-value-pointer"></div>
+                <span  id="minvalue_shower" class="size-min-value">600</span>
+                <span  class="size-min-value-title">最小值</span>
+                <!--最大值指示标签-->
+                <div class="size-max-value-pointer"></div>
+                <span  id="maxvalue_shower" class="size-max-value">1500</span>
+                <span class="size-max-value-title">最大值</span>
+                <!--  <div class="levelpointer"></div>
+                <span class="introductorVal">1234mm</span>-->
+            </div>
+        </div>
+    </div>
+<p id="mouseStart"></p>
+<!--宽度设置模块-->
+<script type="text/javascript" src="jsEvent.js"></script>
+<script type="text/javascript" src="jquery-1.7.2.js"></script>
+<script type="text/javascript" src="valueStatusBarNew.js"></script>
+<script>
+    widthValueStatusBar = valuestatusBar({
+        datamin: 800,
+        datamax: 1500,
+        datadefault: 1100,
+        introValueArr: [900,950, 1000, 1100, 1300,1450],
+        datastep: 10,
+        containnerid: "middle_rule_cont",
+        moveblockid: "movable_block",
+        minvalueshowerid: "minvalue_shower",
+        maxvalueshowerid: "maxvalue_shower",
+        inputid: "valueInput",
+        slidingFunction: sliding,
+        slideEndFunction: slidEnd, //滑动后处理函数mouseup事件触发
+        inputKeyupFunction: input //输入框keyup处理函数
+    });
+    widthValueStatusBar.on();
+    // widthValueStatusBar.setBlock(1100);
+    function sliding() {
+//        console.log("sliding");
+    }
+    function slidEnd() {
+//        console.log("slidend");
+    }
+    function input(value) {
+        alert(value)
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../ajax/jquery-1.8.3.min.js"></script>
+    <script src="MutationJS.js"></script>
+</head>
+<body>
+<div>
+    <!--MutationObserver是为了替换掉原来Mutation Events的一系列事件, 浏览器会监听指定Element下所有元素的新增,删除,替换等;-->
+    <div style="padding:20px;border:1px solid #f00">
+
+        <input type="button" value="撤销操作" id="prev">;
+
+        <input type="button" value="撤销操作回退" id="next">;
+
+    </div>
+    <input type="button" value="添加节点" id="b0">;
+
+    <input value="text" id="value">
+
+    <div id="div"></div>
+</div>
+<script>
+    window.onload = function () {
+        window.mu = new nono.MutationJs();
+        //取消监听
+        mu.disconnect();
+        // 重新监听
+        mu.reObserve();
+
+        document.getElementById("b0").addEventListener("click", function (ev) {
+
+            let div = document.createElement("div");
+
+            div.innerHTML = document.getElementById("value").value;
+
+            document.getElementById("div").appendChild(div);
+
+        });
+
+        document.getElementById("prev").addEventListener("click", function (ev) {
+            if(mu.undo()=="undefined"){
+                return
+            }
+            mu.undo();
+
+        });
+
+        document.getElementById("next").addEventListener("click", function (ev) {
+
+            mu.redo();
+
+        });
+    };
+</script>
+</body>
+</html>

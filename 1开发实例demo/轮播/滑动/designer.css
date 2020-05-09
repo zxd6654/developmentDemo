@@ -1,0 +1,140 @@
+/*style of designer——wxy 2016.9.26*/
+/*改变主要区域宽度为1000时，只需要将此段代码1200px修改成1000px 并修改底部轮播begin---------------------*/
+.show-imgs .show{
+	width: 1200px;
+}
+/*改变主要区域宽度为1000时，只需要将此段代码1200px修改成1000px end-----------------------*/
+.show-imgs{
+	position: relative;
+	width:1300px;
+	margin: 0 auto;
+	height: 410px;
+	/*background: #f00;*/
+	text-align: left;
+	padding: 0px 50px;
+	box-sizing: border-box;
+}
+.show-imgs .left{
+	cursor: pointer;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 410px;
+	width: 25px;
+	background: url('img/arrow.png') no-repeat;
+	background-position: left 50%;
+}
+.show-imgs .right{
+	cursor: pointer;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	height: 400px;
+	width: 25px;
+	background: url('img/arrow.png') no-repeat;
+	background-position: right 50%;
+}
+.show-imgs .show{
+	float: left;
+	height: 400px;
+	overflow: hidden;
+	position: relative;
+}
+.show-imgs .show .imgs{
+	position: relative;
+	width: 172.414%;
+	height: 400px;
+	overflow: hidden;
+	left: -400px;
+}
+
+.show-imgs .show .img-list{
+	background: #000;
+	float: left;
+	position: relative;
+	box-shadow: 0px 0px 5px #bbb;
+	width: 17.8%;
+	height: 90%;
+	margin-right: 2%;
+	overflow: hidden;
+}
+.show-imgs .show .img-list .commodity-img{
+	width: 100%;
+	height: 100%;
+	background: #fff;
+}
+.show-imgs .show .img-list .img_discount{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	z-index: 1;
+	right: 0px;
+	top: 0px;
+}
+/*了解更多边框+详情——begin*/
+.img-list .line-transparent{
+	text-align: center;
+	margin-left: 5%;
+	top: 5%!important;
+	opacity: 0;
+    width: 90%;
+    height: 90%;   
+}
+.img-list .border-title .border-name{
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 60px;
+}
+.img-list .border-title .border-price{
+    font-size: 20px;
+    line-height: 60px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.img-list .border-title .border-present-price{
+    font-size: 24px;
+    line-height: 60px;
+    color: #e74c3c;
+    letter-spacing: 1px;
+    margin-right: 10px;
+}
+.img-list .border-title .border-origin-price{
+    font-size: 20px;
+    line-height: 60px;
+    color: #fff;
+    letter-spacing: 1px;
+    text-decoration: line-through;
+}
+.img-list .line-top{
+    height: 70%;
+}
+.img-list .line-middle-left{
+	bottom: 20%!important;
+    width: 5px;
+    height: 10%;
+}
+.img-list .line-middle-right{
+	color: #c30b18;
+	bottom: 20%!important;
+    width: 65px;
+    height: 10%;
+}
+.img-list .line-bottom{
+    height: 20%;
+}
+.img-list:hover .line-middle-right{
+	color: #c30b18;
+	opacity: 1;
+}
+/*.img-list:hover .commodity-img{*/
+	/*opacity: 0.5;*/
+/*}*/
+.img-list:hover .img_discount{
+	opacity: 0;
+}
+.img-list:hover .line-transparent{
+	opacity: 1;
+}
+/*了解更多边框+详情——end*/

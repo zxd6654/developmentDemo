@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../拼图游戏/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.treetable.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery.treetable.theme.default.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.treetable.css" />
+</head>
+<body>
+<table id="example-advanced">
+    <tr data-tt-id="0">
+        <td>app</td>
+    </tr>
+    <tr data-tt-id="1" data-tt-parent-id="0">
+        <td>controllers</td>
+    </tr>
+    <tr data-tt-id="1-1" data-tt-parent-id="1">
+        <td>application_controller.rb</td>
+    </tr>
+    <tr data-tt-id="2">
+        <td>helpers</td>
+    </tr>
+    <tr data-tt-id="2-1" data-tt-parent-id="2">
+        <td>models</td>
+    </tr>
+    <tr data-tt-id="2-1" data-tt-parent-id="2">
+        <td>views</td>
+    </tr>
+</table>
+<a href="#" onclick="jQuery('#example-advanced').treetable('expandAll'); return false;">展开所有</a>
+
+
+<a href="#" onclick="jQuery('#example-advanced').treetable('collapseAll'); return false;">关闭所有</a>
+
+<script>
+    $(function(){
+
+//加载treetable
+        $("#example-advanced").treetable({ expandable: true });
+        //选中高亮
+        $("#example-advanced tbody").on("mousedown", "tr", function() {
+            $(".selected").not(this).removeClass("selected");
+            $(this).toggleClass("selected");
+        });
+//双击提示
+        $("#example-advanced tbody").on("dblclick", "tr", function() {
+//console.log($(this).attr('data-tt-id'));
+            alert("你选择的是"+$(this).attr('data-tt-id'));
+        });
+
+    })
+</script>
+<br/>
+</body>
+</html>

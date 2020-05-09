@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            padding: 0;
+            margin: 0;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="divin"></div>
+<!--<button id="btn"></button>-->
+<script>
+   var timer=function () {
+       setInterval(function () {
+           var oDateNow = new Date();
+           var oDateStart = new Date(2017,9,31,14,37,0);
+           var oDateEnd = new Date(2017,9,31,14,38,0);
+           if (oDateNow < oDateStart) {
+               divin.innerHTML = "等待活动开启";
+               alert("等待活动开启");
+           }
+           else if (oDateNow >= oDateStart && oDateNow <= oDateEnd) {
+               oDateStart = oDateNow;
+               var ms = oDateEnd - oDateStart;
+               var s = Math.floor(ms / 1000);
+               var min = Math.floor(ms / 1000 / 60);
+               var h = Math.floor(ms / 1000 / 60 / 60);
+               var day = Math.floor(ms / 1000 / 60 / 60 / 24);
+//                    ms -= s * 1000;
+               s -= min * 60;
+               min -= h * 60;
+               h -= day * 24;
+               timer = "距离活动结束剩余 ：" + day + "天" + h + "小时" + min + "分" + s + "秒";
+               divin.innerHTML = "活动正式开始";
+           }
+           else if(oDateNow > oDateEnd){
+               divin.innerHTML = "活动已结束";
+           }
+
+       }
+       , 1000);
+   }
+//   document.getElementById("btn").onclick=timer;
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>北京卓新思创科技有限公司</title>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/header.css"/>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/move.js"></script>
+    <script>
+       $(function () {
+           $(".nav_piece").hover(function () {
+               $(this).find("ul").stop(true ,true).slideDown(600,"elasticOut")
+           }, function () {
+               $(this).find("ul").stop(true,true).slideUp(300)
+           }).click(function () {
+               $(this).addClass("now").find("ul").hide().parent().siblings().removeClass("now");
+               $(this).addClass("now").siblings().removeClass("now");
+           })
+       })
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <div class="nav_wrap clearFix">
+        <div class="logo"><a href="#"><img src="images/logo.png" alt=""/></a></div>
+        <div class="nav clearFix">
+            <div class="nav_piece  now">
+                <p><a href="javascript:">首页</a></p>
+            </div>
+            <div class="nav_piece has_down_nav">
+                <p><a href="javascript:">小鸟掌学</a><span class="nav_xiajiantou"></span></p>
+                <ul>
+                    <li onclick="window.open('aboutxiaoniao.html#0')"><a href="javascript:">小鸟掌学主页</a></li>
+                    <li onclick="window.open('aboutxiaoniao.html#1')"><a href="javascript:">小鸟掌学概述</a></li>
+                    <li onclick="window.open('aboutxiaoniao.html#2')"><a href="javascript:">对企业的价值</a></li>
+                    <li onclick="window.open('aboutxiaoniao.html#3')"><a href="javascript:">小鸟掌学</a></li>
+                    <li ><a href="javascript:">微课联盟</a></li>
+                    <li onclick="window.open('aboutxiaoniao.html#4')"><a href="javascript:">App下载</a></li>
+                </ul>
+            </div>
+            <div class="nav_piece">
+                <p><a href="javascript:">小鸟动态</a></p>
+            </div>
+            <div class="nav_piece has_down_nav">
+                <p><a href="javascript:">企业文化</a><span class="nav_xiajiantou"></span></p>
+                <ul>
+                    <li><a href="javascript:">公司理念</a></li>
+                    <li><a href="javascript:">公司文化</a></li>
+                    <li><a href="javascript:">公司氛围</a></li>
+                </ul>
+            </div>
+            <div class="nav_piece has_down_nav">
+                <p><a href="javascript:">人力资源</a><span class="nav_xiajiantou"></span></p>
+                <ul>
+                    <li><a href="javascript:">人才理念</a></li>
+                    <li><a href="javascript:">团队介绍</a></li>
+                    <li><a href="javascript:">招聘信息</a></li>
+                </ul>
+            </div>
+            <div class="nav_piece">
+                <p><a href="javascript:">联系我们</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

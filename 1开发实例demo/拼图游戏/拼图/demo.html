@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="selectpanel"></div>
+<div id="orginalimg"></div>
+<div id="mathpanel"></div>
+<script src="demo.js"></script>
+<script>
+    window.onload=function(){
+        //图的原始宽度(原图宽)，图的原始高度(原图高)，自定每块拼图的宽度(能被原图宽整除)，自定每块拼图的高度(能被原图高整除)，图片名(需放在img下)
+        Puzzle(500,500,125,125,"jj2.png");
+    }
+</script>
+</body>
+</html>

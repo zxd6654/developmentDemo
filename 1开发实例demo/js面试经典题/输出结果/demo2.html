@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //输出0-9 闭包问题
+    function createFunction() {
+        var result = [];
+        for (var i = 0; i < 10; i++) {
+            result[i] = (function () {
+                return i
+            }(i))
+        }
+        return result;
+    }
+    var funs=createFunction();
+    console.log(funs);
+
+    for(var i=0;i<funs.length;i++){
+        console.log(funs[i]);
+    }
+</script>
+</body>
+</html>

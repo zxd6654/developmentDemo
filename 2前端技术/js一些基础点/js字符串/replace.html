@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--replace()方法用于在字符串中用一些字符代替另一些字符，或替换一个与正则表达式匹配的子串。
+stringObject.replace(regexp/substr,replacement)
+regexp/substr	必需。规定子字符串或要替换的模式的 RegExp 对象。
+请注意，如果该值是一个字符串，则将它作为要检索的直接量文本模式，而不是首先被转换为 RegExp 对象。
+replacement	必需。一个字符串值。规定了替换文本或生成替换文本的函数。-->
+<script type="text/javascript">
+    var str="Welcome to Microsoft ";
+    str=str+"We are proud to announce that Microsoft has ";
+    str=str + "one of the largest Web Developers sites in the world.";
+    document.write(str.replace(/Microsoft/g,"W3School"));
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.text{
+				width:150px;
+				height:20px;
+				line-height:20px;
+				border:2px solid #DB7093;
+				float:left;
+				overflow: hidden;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var oTxt=document.getElementsByClassName("text")[0];
+				var oStart=document.getElementById("start");
+				var oStop=document.getElementById("stop");
+				var arr=["哈哈哈","呵呵呵","张茜 大茜 "];
+				var index;
+				var timer=null;
+				oStart.onclick=function(){
+					clearInterval(timer);
+					timer=setInterval(function(){
+						index=Math.floor(Math.random()*arr.length);
+						for(var i=0;i<arr.length;i++){
+							oTxt.innerHTML=arr[index]
+						}
+					},300)
+				};
+				
+				oStop.onclick=function(){
+					clearInterval(timer);
+					oTxt.innerHTML=arr[index]+"中奖了";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="text"></div>
+		<input type="button" value="开始" id="start">	
+		<input type="button" value="停止" id="stop">
+	</body>
+</html>

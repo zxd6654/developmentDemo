@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 移动相机的位置-->
+    <meta charset="UTF-8">
+    <title>WebGL中文网</title>
+    <script src="three.js"></script>
+    <script src="Stats.js"></script>
+    <script src="tween.min.js"></script>
+
+    <style type="text/css">
+        div#canvas-frame {
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            height: 600px;
+            background-color: #EEEEEE;
+        }
+
+    </style>
+    <script>
+        /*
+        * 围绕某个 x,y,z轴测试
+        */
+
+
+        var renderer;
+        var stats;
+
+        function initThree() {
+            width = document.getElementById('canvas-frame').clientWidth;
+            height = document.getElementById('canvas-frame').clientHeight;
+            renderer = new THREE.WebGLRenderer({     /*创建渲染器*/
+                antialias : true  /*开启抗锯齿功能，使得线条美观*/
+            });
+            renderer.setSize(width, height);/*设置渲染器的大小*/
+            document.getElementById('canvas-frame').appendChild(renderer.domElement);/*向页面中添加画布*/
+            renderer.setClearColor(0xFFFFFF, 1.0);/*设置canvas画布的背景颜色*/
+
+            stats = new Stats();   /*测试性能，fps和ms*/
+            stats.domElement.style.position = 'absolute';
+            stats.domElement.style.left = '0px';
+            stats.domElement.style.top = '0px';
+            document.getElementById('canvas-frame').appendChild(stats.domElement);
+        }
+
+        var camera;
+        function initCamera() {
+            camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);  //设置透视投影的相机,默认情况下相机的上方向为Y轴，右方向为X轴，沿着Z轴朝里（视野角：fov 纵横比：aspect 相机离视体积最近的距离：near 相机离视体积最远的距离：far）
+            camera.position.x = 300;
+            camera.position.y = 300;
+            camera.position.z = 600;       /*设置相机的位置坐标*/
+            camera.up.x = 0;
+            camera.up.y = 1;
+            camera.up.z = 0;               /*相机的朝向--相机的上方为y轴*/
+            camera.lookAt({
+                x : 0,
+                y : 0,
+                z : 0                      /*设置视野的中心坐标*/
+            });
+        }
+
+        var scene;
+        function initScene() {
+            scene = new THREE.Scene();      /*设置场景*/
+        }
+
+        var light;
+        function initLight() {
+            light = new THREE.AmbientLight(0xFF0000);/*设置环境光*/
+            light = new THREE.DirectionalLight(0xff0000, 1.0, 0);//设置平行光源
+            light.position.set(100, 100, 200);
+            scene.add(light);
+
+        }
+
+        var cube;
+        var mesh;  /*设置物体*/
+        function initObject() {
+
+            var geometry = new THREE.BoxGeometry( 100, 100, 100 ); /*设置一个正方体*/
+
+            for ( var i = 0; i < geometry.faces.length; i += 2 ) {
+
+                var hex = Math.random() * 0xffffff;
+                geometry.faces[ i ].color.setHex( hex );
+                geometry.faces[ i + 1 ].color.setHex( hex );
+
+            }
+
+            var material = new THREE.MeshBasicMaterial( { vertexColors: THREE.FaceColors} );
+            mesh = new THREE.Mesh( geometry,material);
+            mesh.position = new THREE.Vector3(0,0,0);
+            scene.add(mesh);
+
+
+        }
+
+        function initGrid(){  /*辅助网络*/
+            var helper = new THREE.GridHelper( 1000, 50 );
+            helper.setColors( 0x0000ff, 0x808080 );
+            scene.add( helper );
+        }
+
+        function threeStart() {
+            initThree();
+            initCamera();
+            initScene();
+            initLight();
+
+
+            initObject();
+            initGrid();
+
+            animation();
+
+        }
+
+        // 帧循环、游戏循环
+        function animation()
+        {
+//            mesh.rotation.y +=0.01;/*0.01 是弧度*/
+//            mesh.rotateY(0.01);/*0.01 是弧度*/
+            stats.update();
+            renderer.render(scene, camera);
+            requestAnimationFrame(animation);
+
+
+        }
+
+    </script>
+</head>
+
+<body onload="threeStart();">
+<div style="margin-left:150px;">
+    <p>课前准备，绘制一个立方体和一个网格线</p>
+</div>
+<div id="canvas-frame"></div>
+</body>
+</html>
+

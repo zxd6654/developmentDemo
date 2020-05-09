@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>window</title>
+</head>
+<body>
+innerHeight: <div></div>
+innerWidth: <div></div>
+documentElement.clientHeight: <div></div>
+documentElement.clientWidth: <div></div>
+body.clientHeight: <div></div>
+body.clientWidth: <div></div>
+<script>
+    document.getElementsByTagName("div")[0].innerHTML=window.innerHeight;
+    document.getElementsByTagName("div")[1].innerHTML=window.innerWidth;
+    document.getElementsByTagName("div")[2].innerHTML=document.documentElement.clientHeight;
+    document.getElementsByTagName("div")[3].innerHTML=document.documentElement.clientWidth;
+    document.getElementsByTagName("div")[4].innerHTML=document.body.clientHeight;
+    document.getElementsByTagName("div")[5].innerHTML=document.body.clientWidth;
+</script>
+</body>
+</html>

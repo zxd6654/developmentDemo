@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--原型：-->
+<script>
+   /*function Say(xx){
+        this.name=function(){
+            console.log(xx+"is dog");
+        };
+    }
+
+   var ff = new Say("bojian");
+
+    var gg = new Say("jianjian");
+
+   console.log(ff.name);
+   console.log(gg.name);
+
+   console.log(ff.name==gg.name);*/
+
+    function Say(){
+
+    }
+
+    Say.prototype.name=function(xx){
+        console.log(xx+" is dog");
+    };
+
+    var ff =new Say("jianjian");
+    var gg =new Say("bojian");
+
+   console.log(ff.name);
+   console.log(gg.name);
+
+   console.log(gg.name === ff.name);
+   /* 为什么会出现false？*/
+
+   /*
+   原型就是构造函数的prototype属性；
+
+
+
+    Object.prototype.f=7;
+
+
+    var w=0;
+
+    console.log(w.f);
+
+
+    function gg(){}
+
+   console.log(gg.f);
+
+    var kk = new Array();
+   console.log(kk.f);
+
+    var d = new RegExp();
+
+   console.log(d.f);
+
+    var jj = "jdahfroiueqanhf";
+
+   console.log(jj.f);*/
+</script>
+</body>
+</html>

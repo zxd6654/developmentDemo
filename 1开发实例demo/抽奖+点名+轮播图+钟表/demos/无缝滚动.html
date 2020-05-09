@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .roll {
+            width: 994px;
+            height: 165px;
+            background: gainsboro;
+            margin: 0 auto;
+            margin-top: 200px;
+            position: relative;
+            border-top: 1px solid transparent;
+        }
+
+        .left {
+            width: 15px;
+            height: 111px;
+            background: url("../images/alLef.jpg");
+            position: absolute;
+            top: 24px;
+            left: 10px;
+        }
+
+        .right {
+            width: 15px;
+            height: 111px;
+            background: url("../images/alRig.jpg");
+            position: absolute;
+            top: 24px;
+            right: 10px;
+        }
+
+        .wrap {
+            width: 905px;
+            height: 111px;
+            /*background: orchid;*/
+            margin-top: 24px;
+            margin-left: 44px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .wrap ul {
+            position: absolute;
+        }
+
+        .wrap li {
+            list-style: none;
+            float: left;
+            padding-right: 20px;
+        }
+
+        .wrap li img {
+            width: 160px;
+            height: 111px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oRoll = document.getElementById("roll");
+            var oUl = oRoll.getElementsByTagName("ul")[0];
+            var aLis = oUl.getElementsByTagName("li");
+            var oLeft = oRoll.getElementsByTagName("a")[0];
+            var oRight = oRoll.getElementsByTagName("a")[1];
+            var timer = null;
+            var speed = -5;
+
+            //	offsetLeft(相对左偏移)默认的指的元素相对浏览器最左边的距离,如果是相对其它元素来定位,
+            //	就是相对其他元素的左边距
+            //	offsetWidth石元素的实际宽度,包含元素的width padding和border,但是不包含margin
+            //
+            //	同理,offsetTop相对上偏移,offsetHeight元素的实际高度
+
+
+            oUl.innerHTML += oUl.innerHTML;
+            oUl.style.width = aLis[0].offsetWidth * aLis.length + "px";
+
+            function auto() {
+                timer = setInterval(function () {
+                    oUl.style.left = oUl.offsetLeft + speed + "px";
+                    if (oUl.offsetLeft < -oUl.offsetWidth / 2) {
+                        oUl.style.left = 0;
+                    } else if (oUl.offsetLeft > 0) {
+                        oUl.style.left = -oUl.offsetWidth / 2 + "px";
+                    }
+                }, 30);
+            }
+            auto();
+
+            oLeft.onmouseover = function () {
+                speed = -5;
+            };
+            oRight.onmouseover = function () {
+                speed = 5;
+            };
+
+            //        onclick鼠标点击事件包含一次鼠标按下的事件（ onmousedown）和
+            //            一次鼠标抬起的事件（onmouseup）
+            oRight.onmousedown = function () {
+                speed = 25;
+            };
+            oRight.onmouseup = function () {
+                speed = 5;
+            };
+            oUl.onmouseover = function () {
+                clearInterval(timer);
+            };
+            oUl.onmouseout = function () {
+                auto();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="roll" id="roll">
+        <a href="#" class="left"></a>
+        <a href="#" class="right"></a>
+        <div class="wrap">
+            <ul>
+                <li class="li1"><a href="#"><img src="../images/casImg-11491092729.jpg"></a></li>
+                <li class="li1"><a href="#"><img src="../images/北京大湖公馆-10115170712.jpg"></a></li>
+                <li class="li1"><a href="#"><img src="../images/大连滨海公园副本-09313928424.jpg"></a></li>
+                <li class="li1"><a href="#"><img src="../images/蓝色港湾_副本1-13361723229.jpg"></a></li>
+                <li><a href="#"><img src="../images/圣北蓝湾-13484429390.jpg"></a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

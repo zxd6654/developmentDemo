@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .clearfloat:after {
+            display: block;
+            clear: both;
+            content: "";
+            visibility: hidden;
+            height: 0
+        }
+
+        .clearfloat {
+            zoom: 1
+        }
+
+        .wrap {
+            width: 500px;
+            height: auto;
+            margin: auto;
+            background: #969696;
+
+        }
+
+        .arrow {
+            background: url("shang.png") no-repeat center;
+            float: left;
+            width: 17px;
+            height: 20px;
+            margin-top: 15px;
+            margin-left: 5px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .parentWrap {
+
+            position: relative;
+            z-index: 999;
+        }
+
+        .parentControl {
+            position: relative;
+            width: 260px;
+            height: 50px;
+            float: left;
+        }
+
+        .parentControl .parentTitle {
+            position: absolute;
+            left: 1px;
+            top: 14px;
+        }
+
+        .parentControl select {
+            width: 65%;
+            height: 106px;
+            margin: 0px;
+            outline: none;
+            border: 1px solid #999;
+            margin-top: 41px;
+            margin-left: 80px;
+        }
+
+        .parentControl input {
+            width: 167px;
+            top: 9px;
+            outline: none;
+            border: 0pt;
+            position: absolute;
+            line-height: 30px;
+            left: 80px;
+            height: 30px;
+            border: 1px solid #999;
+        }
+
+        .children {
+            display: none;
+        }
+
+        .childWrap {
+            position: relative;
+            z-index: 99;
+        }
+
+        .childControl {
+            position: relative;
+            width: 260px;
+            height: 50px;
+            float: left;
+        }
+
+        .childControl .childTitle {
+            position: absolute;
+            left: 38px;
+            top: 14px;
+        }
+
+        .childControl select {
+            width: 65%;
+            height: 106px;
+            margin: 0px;
+            outline: none;
+            border: 1px solid #999;
+            margin-top: 41px;
+            margin-left: 118px;
+        }
+
+        .childControl input {
+            width: 167px;
+            top: 9px;
+            outline: none;
+            border: 0pt;
+            position: absolute;
+            line-height: 30px;
+            left: 118px;
+            height: 30px;
+            border: 1px solid #999;
+        }
+
+        .unified {
+            float: left;
+            margin-left: 15px;
+            padding-top: 15px;
+        }
+
+        .choose {
+            float: left;
+            margin-left: 15px;
+            padding-top: 12px;
+        }
+
+        .choose button {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="../jquery-2.2.4.min.js"></script>
+
+    <div class="wrap">
+        <div class="parentWrap clearfloat">
+            <div class="arrow" id="arrow" isDropDown="false"></div>
+            <div class="parentControl">
+                <span class="parentTitle">颜色大全</span>
+                <input type="text" name="makeupCo" id="makeupCo" class="makeupCo" onfocus="setfocus(this)"
+                    oninput="setinput(this);" />
+                <select name="makeupCoSe" id="typenum" class="typenum" onchange="changeF(this)" size="10"
+                    style="display:none;">
+                    <option value="">黑色1</option>
+                    <option value="">白色2</option>
+                    <option value="">红色3</option>
+                    <option value="">蓝色4</option>
+                    <option value="">绿色5</option>
+                    <option value="">黄色6</option>
+                    <option value="">橙色7</option>
+                    <option value="">紫色8</option>
+                </select>
+            </div>
+            <div class="unified"><span>统一</span><input type="checkbox" id="unified" checked></div>
+            <div class="choose" id="choose"><button>选择</button></div>
+        </div>
+        <div class="children">
+            <div class="childWrap clearfloat">
+                <div class="childControl">
+                    <span class="childTitle">颜色大全</span>
+                    <input type="text" name="makeupCo" id="makeupCo2" class="makeupCo" onfocus="setfocus(this)"
+                        oninput="setinput(this);" disabled />
+                    <select name="makeupCoSe" id="typenum2" class="typenum" onchange="changeF(this)" size="10"
+                        style="display:none;">
+                        <option value="">黑色1</option>
+                        <option value="">白色2</option>
+                        <option value="">红色3</option>
+                        <option value="">蓝色4</option>
+                        <option value="">绿色5</option>
+                        <option value="">黄色6</option>
+                        <option value="">橙色7</option>
+                        <option value="">紫色8</option>
+                    </select>
+                </div>
+            </div>
+            <div class="childWrap clearfloat">
+                <div class="childControl">
+                    <span class="childTitle">颜色大全</span>
+                    <input type="text" name="makeupCo" id="makeupCo3" class="makeupCo" onfocus="setfocus(this)"
+                        oninput="setinput(this);" disabled />
+                    <select name="makeupCoSe" id="typenum3" class="typenum" onchange="changeF(this)" size="10"
+                        style="display:none;">
+                        <option value="">黑色1</option>
+                        <option value="">白色2</option>
+                        <option value="">红色3</option>
+                        <option value="">蓝色4</option>
+                        <option value="">绿色5</option>
+                        <option value="">黄色6</option>
+                        <option value="">橙色7</option>
+                        <option value="">紫色8</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var segmentation = [];
+        var TempArr = [];//存储option
+        var data = [
+            {
+                segmentUnique: 1,
+                name: '板子与邻边关系',
+                options: [
+                    {
+                        name: '默认',
+                        value: 'default'
+                    },
+                    {
+                        name: '长接',
+                        value: 'long'
+                    },
+                    {
+                        name: '短接',
+                        value: 'short'
+                    },
+                    {
+                        name: '斜切',
+                        value: 'beveling'
+                    }
+                ]
+            }
+        ];
+        //    data.forEach(function (ele) {
+        //        switch(ele.segmentUnique) {
+        //            case 1:
+        //                segmentation.push(ele);
+        //                break;
+        //        }
+        //    });
+        //    /*先将数据存入数组*/
+        //    segmentation.forEach(function (ele) {
+        //       ele.options.forEach(function (ele) {
+        //        TempArr[ele] = $(this).text();
+        //       })
+        //    });
+
+        $("#typenum option").each(function (index, el) {
+            TempArr[index] = $(this).text();
+        });
+        $(document).bind('click', function (e) {
+            var e = e || window.event; //浏览器兼容性
+            var elem = e.target || e.srcElement;
+            while (elem) { //循环判断至跟节点，防止点击的是div子元素
+                if (elem.id && (elem.id.indexOf('typenum') !== -1 || elem.id.indexOf('makeupCo') !== -1)) {
+                    return;
+                }
+                elem = elem.parentNode;
+            }
+            $(this).find("select").css('display', 'none'); //点击的不是div或其子元素
+        });
+
+        function changeF(this_) {
+            var optionVal = $(this_).find("option:selected").text();
+            $(this_).prev("input").val(optionVal);
+            //    在统一选中的情况下，
+            if ($("#unified").attr("checked")) {
+                $(".childWrap").find("input").val(optionVal);
+            }
+            $(this_).css({ "display": "none" });
+        }
+
+        function setfocus(this_) {
+            var select = $(this_).next();
+            select.css({ "display": "" });
+            //        for (let i = 0; i < TempArr.length; i++) {
+            //            var option = $("<option></option>").text(TempArr[i]);
+            //            select.append(option);
+            //        }
+        }
+
+        function setinput(this_) {
+            var select = $(this_).next();
+            select.html("");
+            for (let i = 0; i < TempArr.length; i++) {
+                //若找到以txt的内容开头的，添option
+                if (TempArr[i].indexOf(this_.value) !== -1) {
+                    var option = $("<option></option>").text(TempArr[i]);
+                    select.append(option);
+                }
+            }
+        }
+
+        //    点击统一逻辑
+        $("#unified").click(function () {
+            if ($(this).attr("checked")) {
+                $(".childWrap").find("input").attr("disabled", "disabled");
+                $(".parentWrap").find("input").removeAttr("disabled");
+                $(".childWrap").find("input").val($(".parentWrap").find("input:first").val())
+            } else {
+                $(".childWrap").find("input").removeAttr("disabled");
+                $(".parentWrap").find("input:first").attr("disabled", "disabled");
+            }
+        })
+
+        //    点击箭头
+        $("#arrow").click(function () {
+            if ($(this).attr("isDropDown") == "false") {
+                $(".children").slideDown();
+                $(this).css("background-image", "url(xia.png)");
+                $(this).attr("isDropDown", "true");
+            } else {
+                $(".children").slideUp();
+                $(this).css("background-image", "url(shang.png)");
+                $(this).attr("isDropDown", "false");
+            }
+        })
+    </script>
+</body>
+
+</html>

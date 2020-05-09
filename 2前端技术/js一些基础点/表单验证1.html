@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+</head>
+<body>
+<form action="" onsubmit="validate_form(this)" method="post">
+    Email: <input type="text" name="email" size="30">
+    <input type="submit" value="Submit">
+</form>
+<script>
+    function validate_required(field, alerttxt,alerttxt2) {
+        with (field) {
+            apos=value.indexOf("@");
+            dotpos=value.lastIndexOf(".");
+            if (value == null || value == "") {
+                alert(alerttxt);
+                return false;
+            }else if(apos<1||dotpos-apos<2){
+                alert(alerttxt2);
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+
+    function validate_form(thisform) {
+        with (thisform) {
+            if (validate_required(email, "Email must be filled out!","Not a valid e-mail address!") == false) {
+                email.focus();
+                thisform.setAttribute("action", "");
+                return false;
+            } else {
+                thisform.setAttribute("action", "submitpage.htm");
+                return true;
+            }
+        }
+    }
+</script>
+</body>
+</html>

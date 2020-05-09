@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="myInput" value="123" >
+<script>
+    aaa="100MM:1:2";
+    console.log(aaa.toLowerCase());
+    var patrn = /[`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘’，。、]/im;
+    bbb="1";
+    if(Number(bbb)){
+        console.log(bbb, '为纯数字, 请重新输入');
+
+    }
+    var myInput = document.getElementById('myInput');
+    myInput.onchange=function (event) {
+        event.cancelBubble = true;
+        event.stopPropagation && event.stopPropagation();
+        console.log("点击");
+        myInput.onblur=function () {
+            console.log("触发失去焦点事件")
+        }
+//        if (myInput == document.activeElement) {
+//            alert('获取焦点');
+//        } else {
+//            alert('未获取焦点');
+//        }
+    };
+
+</script>
+</body>
+</html>

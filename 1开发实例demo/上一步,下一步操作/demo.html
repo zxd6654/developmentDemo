@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap 实例 - 带语境色彩的面板</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    #step1 {
+        display: block;
+    }
+
+    #step2,
+    #step3 {
+        display: none;
+    }
+
+    #step1,
+    #step2,
+    #step3 {
+        position: absolute;
+        width: 100%;
+        height: 40%;
+        left: 2%;
+        top: 10%;
+    }
+</style>
+
+<body>
+
+    <!-- 下一步，下一步 -->
+    <div id="step1">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">商铺名称</h3>
+            </div>
+            <div class="panel-body">
+                <input type="text" placeholder="请输入商铺名称" /><br><br>
+                <button type="button" class="btn btn-primary">上一步</button>
+                <button type="button" class="btn btn-success" onclick="getnext('step2')">下一步</button>
+            </div>
+        </div>
+    </div>
+    <div id="step2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">手机号码</h3>
+            </div>
+            <div class="panel-body">
+                <input type="text" placeholder="手机号码" /><br><br>
+                <button type="button" class="btn btn-primary" onclick="getnext('step1')">上一步</button>
+                <button type="button" class="btn btn-success" onclick="getnext('step3')">下一步</button>
+            </div>
+        </div>
+    </div>
+    <div id="step3">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">实体店地址</h3>
+            </div>
+            <div class="panel-body">
+                <input type="text" placeholder="地址" /><br><br>
+                <button type="button" class="btn btn-primary" onclick="getnext('step2')">上一步</button>
+            </div>
+        </div>
+    </div>
+    <!-- 下一步，下一步 -->
+</body>
+<script>
+    function getnext(i) {
+        alert(i);
+        var sz = new Array("step1", "step2", "step3");
+        for (var j = 0; j < sz.length; j++) {
+            if (i == sz[j]) {
+                document.getElementById(i).style.display = "block";
+            } else {
+                document.getElementById(sz[j]).style.display = "none";
+            }
+        }
+    }
+</script>
+
+</html>

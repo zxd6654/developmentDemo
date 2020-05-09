@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>鼠标点击出现菜单</title>
+</head>
+<style>
+    body {
+        box-sizing: border-box;
+    }
+
+    .wrap {
+        padding: 20px;
+        border: 2px solid firebrick;
+    }
+
+    .test {
+        width: 200px;
+        height: 100px;
+        border: 2px dashed steelblue;
+        float: left;
+        margin: 10px;
+    }
+
+    .contextmenu {
+        /*display: none;*/
+        background: #ffffff;
+        position: fixed;
+        width: 150px;
+        border: 1px solid salmon;
+    }
+
+    .contextmenu ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .contextmenu ul li {
+        padding-left: 10px;
+        line-height: 2;
+        border-bottom: 1px solid salmon;
+    }
+
+    .contextmenu ul li:hover {
+        background: darksalmon;
+    }
+
+    .contextmenu ul li:last-child {
+        border-bottom: none;
+    }
+
+    .clear {
+        zoom: 1;
+    }
+
+    .clear::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+</style>
+
+<body>
+    <div class="wrap clear">
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+    </div>
+    <div class="contextmenu">
+        <ul>
+            <li class="menuList">选项一</li>
+            <li class="menuList">选项二</li>
+            <li class="menuList">选项三</li>
+        </ul>
+    </div>
+    <script>
+        // document.body.addEventListener('mousedown', mousedown)
+        var contextmenu = document.getElementsByClassName('contextmenu')[0];
+        var menuList = document.getElementsByClassName('menuList');
+        var listBox = document.getElementsByClassName('test');
+
+        // for (var i = 0; i < menuList.length; i++) {
+        //     menuList[i].addEventListener('mousedown', function () {
+        //         var num = i;
+        //         return function (e) {
+        //             console.log('menuList:', num);
+        //             // menuList[num].addEventListener('contextmenu', prevent(e, menuList[num]))
+        //         }
+        //     }(), false)
+        // }
+        
+        for (var i = 0; i < listBox.length; i++) {
+            listBox[i].index = i;
+            listBox[i].addEventListener('mousedown', function (e) {
+                var oIndex = this.index;
+                if (e.button === 2) {
+                    // console.log('右键');
+                    document.body.addEventListener('contextmenu', prevent)
+                    var position = e.target.getBoundingClientRect();
+                    contextmenu.style.top = position.top + position.height + 5 + 'px';
+                    contextmenu.style.left = position.left + 'px';
+                    contextmenu.style.display = 'block';
+                    for (var n = 0; n < menuList.length; n++) {
+                        menuList[n].index = n;
+                        menuList[n].addEventListener('click', function () {
+                            var num = n;
+                            return function (e) {
+                                console.log('listBox:' + oIndex + ',' + 'menuList:' + num);
+                                contextmenu.style.display = 'none'
+                            }
+                        }(), false)
+                    }
+                } else {
+                    contextmenu.style.display = 'none';
+                    if (e.button === 0) {
+                        // console.log('左键')
+                    } else if (e.button === 1) {
+                        // console.log('中键');
+                    }
+                } 
+            })
+        };
+        // function mousedown(e) {
+        //     if (e.target.className && e.target.className === 'test') {
+        //         if (e.button === 2) {
+        //             // console.dir(e.target.getBoundingClientRect());
+        //             // console.log('右键');
+        //             document.body.addEventListener('contextmenu', prevent);
+        //             var position = e.target.getBoundingClientRect();
+        //             contextmenu.style.top = position.top + position.height + 5 + 'px';
+        //             contextmenu.style.left = position.left + 'px';
+        //             contextmenu.style.display = 'block';
+        //         } else {
+        //             contextmenu.style.display = 'none';
+        //             if (e.button === 0) {
+        //                 // console.log('左键');
+        //             } else if (e.button === 1) {
+        //                 // console.log('中键');
+        //             }
+        //         }
+        //     } else {
+        //         contextmenu.style.display = 'none';
+        //     }
+        // }
+
+        function prevent(e) {
+            // console.log('阻止右键菜单');
+            e.preventDefault();
+            document.body.removeEventListener('contextmenu', prevent)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+选择图片文件
+<!--
+    input[file]标签的accept属性可用于指定上传文件的 MIME类型
+    Chrome和Safari等Webkit浏览器下却出现了响应滞慢的问题
+    是accept=”image/*” 属性的问题
+    将 * 通配符修改为指定的MIME类型，就可以解决Webkit浏览器下的对话框显示滞慢的问题
+-->
+<!--<input type="file" id="imgFile" accept="image/jpeg,image/png,image/gif"/>-->
+<!--<br />-->
+选择文本文件
+<input type="file" id="textFile" accept="text/*"/>
+<br />
+<!--<img src="" alt="图片" id="image"/>-->
+<br />
+<div id="txt"></div>
+
+<script>
+    //获得dom对象
+//    var imgFile = document.getElementById('imgFile');
+    var textFile = document.getElementById('textFile');
+//    var image = document.getElementById('image');
+    var txt = document.getElementById('txt');
+
+    /*
+     * 读取二进制图片数据
+     */
+//    imgFile.onchange = function() {
+//
+//        //获得文件读取对象          异步读取文件的接口 - FileReader
+//        var fr = new FileReader();
+//
+//        //读取文件内容
+//        //readAsDataURL方法用于读取指定Blob或File的内容。
+//        //当读操作完成，readyState变为DONE, loadend被触发，此时result属性包含数据：URL以base64编码的字符串表示文件的数据。
+//        fr.readAsDataURL( this.files[0] );
+//
+//        //异步读取文件内容，读取完毕会触发fr的onload事件
+//        fr.onload = function() {
+//            //fr对象的result属性代表文件的内容（base64数据）
+//            console.log(this.result);
+//            //显示图片
+//            image.src = this.result;
+//        }
+//
+//    }
+
+    /*
+     * 读取纯文本数据
+     */
+    textFile.onchange = function() {
+
+        //获得文件读取对象
+        var fr = new FileReader();
+        //读取文件内容
+        fr.readAsText( this.files[0] );
+
+        fr.onload = function() {
+            console.log(this.result);
+            txt.innerText =  this.result;
+        }
+    }
+</script>
+</body>
+</html>

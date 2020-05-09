@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>超出显示省略号</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="cookie/jquery-2.2.4.min.js"></script>
+    <script>
+        $(function(){
+            var oVal=$('.css2').text();
+            $('.css2').attr('title',oVal)
+        })
+    </script>
+</head>
+<style>
+    .css1 {
+        color: #6699ff;
+        border: 1px #ff8000 dashed;
+        margin-bottom: 20px;
+        /*不允许出现半汉字截断*/
+        width: 20em;
+    }
+
+    .css2 {
+        /*自动隐藏文字*/
+        overflow: hidden;
+        /*文字隐藏后添加省略号*/
+        text-overflow: ellipsis;
+        /*强制不换行*/
+        white-space: nowrap;
+        /*不允许出现半汉字截断*/
+        width: 20em;
+        color: #6699ff;
+        border: 1px #ff8000 dashed;
+        cursor:pointer;
+    }
+
+    /* 鼠标移上去在后面自动补全 */
+    .css2:hover {
+         text-overflow: inherit; 
+         overflow: visible; 
+    }
+    #text-p{
+        /*overflow: hidden;*/
+    }
+</style>
+
+<body>
+<input readonly value="11">
+    <p class="css1">Web前端开发 – 专注于网站前端设计与Web用户体验 Web前端开发 – 专注于网站前端设计与Web用户体验Web前端开发 – 专注于网站前端设计与Web用户体验 Web前端开发 – 专注于网站前端设计与Web用户体验Web前端开发
+        – 专注于网站前端设计与Web用户体验
+    </p>
+    <p class="css2" title="">Web前eb前端开发 – 专注于网站前端设计与Web用户体验 Web前端开发 – 专注于网站前端设计与Web用户体验Web前端开发 – 专注于网站前端设计与Web用户体验 Web前端开发 – 专注于网站前端设计与Web用户体验Web前端开发
+        – 专注于网站前端设计与Web用户体验端开发 – 专注于网站前端设计与Web用户体验</p>
+
+    <p style="width:300px;height:100px;background:red" id="text-p">
+            Web前eb前端开发 – 专注于网站前端设计与Web用户体验 Web前端开发 – 专注于网站前端设计与Web用户体验Web前端开发 – 专注于网站前端设计与Web用户体验 Web前端开发 – 专注于网站前端设计与Web用户体验Web前端开发
+            – 专注于网站前端设计与Web用户体验端开发 – 专注于网站前端设计与Web用户体验
+    </p>   
+    <script>
+        $(function(){
+            $("#text-p").each(function(){
+                var maxwidth = 60;
+                if ($(this).text().length > maxwidth) {
+                    $(this).text($(this).text().substring(0, maxwidth));
+                    $(this).html($(this).html() + '…');
+                }
+            });
+        })
+    </script>
+    <script>
+        var a=[1];
+        if(a){
+            console.log(a);
+        }
+        if(a==true){
+            console.log("ja");
+        }
+    </script>
+</body>
+
+</html>

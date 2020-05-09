@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .clearfloat:after {
+            display: block;
+            clear: both;
+            content: "";
+            visibility: hidden;
+            height: 0
+        }
+
+        .clearfloat {
+            zoom: 1
+        }
+
+        .wrap {
+            width: 500px;
+            height: auto;
+            margin: auto;
+            background: #969696;
+
+        }
+
+        .arrow {
+            background: url("shang.png") no-repeat center;
+            float: left;
+            width: 17px;
+            height: 20px;
+            margin-top: 15px;
+            margin-left: 5px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .parentWrap {
+
+            position: relative;
+            z-index: 10000;
+        }
+
+        .parentControl {
+            position: relative;
+            width: 260px;
+            height: 50px;
+            float: left;
+        }
+
+        .parentControl .parentTitle {
+            position: absolute;
+            left: 1px;
+            top: 14px;
+        }
+
+        .parentControl select {
+            width: 65%;
+            height: 106px;
+            margin: 0px;
+            outline: none;
+            border: 1px solid #999;
+            margin-top: 41px;
+            margin-left: 80px;
+        }
+
+        .parentControl input {
+            width: 167px;
+            top: 9px;
+            outline: none;
+            border: 0pt;
+            position: absolute;
+            line-height: 30px;
+            left: 80px;
+            height: 30px;
+            border: 1px solid #999;
+        }
+
+        .children {
+            display: none;
+        }
+
+        .childWrap {
+            position: relative;
+            z-index: 99;
+        }
+
+        .childControl {
+            position: relative;
+            width: 260px;
+            height: 50px;
+            float: left;
+        }
+
+        .childControl .childTitle {
+            position: absolute;
+            left: 38px;
+            top: 14px;
+        }
+
+        .childControl select {
+            width: 65%;
+            height: 106px;
+            margin: 0px;
+            outline: none;
+            border: 1px solid #999;
+            margin-top: 41px;
+            margin-left: 118px;
+        }
+
+        .childControl input {
+            width: 167px;
+            top: 9px;
+            outline: none;
+            border: 0pt;
+            position: absolute;
+            line-height: 30px;
+            left: 118px;
+            height: 30px;
+            border: 1px solid #999;
+        }
+
+        .unified {
+            float: left;
+            margin-left: 15px;
+            padding-top: 15px;
+        }
+
+        .choose {
+            float: left;
+            margin-left: 15px;
+            padding-top: 12px;
+        }
+
+        .choose input {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="../jquery-2.2.4.min.js"></script>
+    <script src="BoardUIControl.js"></script>
+    <!--容器-->
+    <!--<div class="wrap" id="wrap"></div>-->
+</body>
+<script>
+    var arr = [
+        {
+            relation: "parent",
+            name: '板子与邻边关系',
+            options: [
+                {
+                    name: '默认',
+                    value: 'default',
+                    select: "selected"
+                },
+                {
+                    name: '长接',
+                    value: 'long'
+                },
+                {
+                    name: '短接',
+                    value: 'short'
+                },
+                {
+                    name: '斜切',
+                    value: 'beveling'
+                }
+            ]
+        },
+        {
+            relation: "child",
+            name: '上板',
+            options: [
+                {
+                    name: '默认',
+                    value: 'default',
+                    select: "selected"
+                },
+                {
+                    name: '长接',
+                    value: 'long'
+                },
+                {
+                    name: '短接',
+                    value: 'short'
+                },
+                {
+                    name: '斜切',
+                    value: 'beveling'
+                }
+            ]
+        },
+        {
+            relation: "child",
+            name: '下板',
+            options: [
+                {
+                    name: '默认',
+                    value: 'default',
+                    select: "selected"
+                },
+                {
+                    name: '长接',
+                    value: 'long'
+                },
+                {
+                    name: '短接',
+                    value: 'short'
+                },
+                {
+                    name: '斜切',
+                    value: 'beveling'
+                }
+            ]
+        },
+        {
+            relation: "child",
+            name: '前板',
+            options: [
+                {
+                    name: '默认',
+                    value: 'default',
+                    select: "selected"
+                },
+                {
+                    name: '长接',
+                    value: 'long'
+                },
+                {
+                    name: '短接',
+                    value: 'short'
+                },
+                {
+                    name: '斜切',
+                    value: 'beveling'
+                }
+            ]
+        },
+        {
+            relation: "child",
+            name: '后板',
+            options: [
+                {
+                    name: '默认',
+                    value: 'default',
+                    select: "selected"
+                },
+                {
+                    name: '长接',
+                    value: 'long',
+                },
+                {
+                    name: '短接',
+                    value: 'short'
+                },
+                {
+                    name: '斜切',
+                    value: 'beveling'
+                }
+            ]
+        },
+        {
+            relation: "child",
+            name: '左板',
+            options: [
+                {
+                    name: '默认',
+                    value: 'default',
+                    select: "selected"
+                },
+                {
+                    name: '长接',
+                    value: 'long'
+                },
+                {
+                    name: '短接',
+                    value: 'short'
+                },
+                {
+                    name: '斜切',
+                    value: 'beveling'
+                }
+            ]
+        },
+        {
+            relation: "child",
+            name: '右板',
+            options: [
+                {
+                    name: '默认',
+                    value: 'default',
+                    select: "selected"
+                },
+                {
+                    name: '长接',
+                    value: 'long'
+                },
+                {
+                    name: '短接',
+                    value: 'short'
+                },
+                {
+                    name: '斜切',
+                    value: 'beveling'
+                }
+            ]
+        },
+    ];
+    var parentName = "";
+    var parentOptions = [];
+    var children = [];
+    arr.forEach(function (ele) {
+        switch (ele.relation) {
+            case "parent":
+                parentName = ele.name;
+                parentOptions.push(ele);
+                break;
+            case "child":
+                children.push(ele);
+                break;
+        }
+    });
+    function callBack() {
+        alert(1)
+    }
+    var oDiv = document.createElement("div");
+    oDiv.className = "wrap";
+    oDiv.id = "wrap";
+    $("body").append(oDiv);
+    var boardControl = new BoardControl();
+    boardControl.parentControl(parentName, parentOptions, "wrap", callBack);
+    boardControl.childControl(children, "wrap");
+</script>
+
+</html>

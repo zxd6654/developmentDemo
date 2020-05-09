@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fifteen_puzzle</title>
+    <!--<link rel="stylesheet" type="text/css" href="CSS/puzzle.css">-->
+    <!--<script type="text/javascript" src="JS/puzzle.js"></script>-->
+    <style>
+        /* 大布局定位 */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            /*overflow: hidden;*/
+        }
+
+        /* 元素居中 */
+        body {
+            text-align: center;
+        }
+
+        /* 结果显示 */
+        #result {
+            width: 200px;
+            height: 50px;
+            font-size: 40px;
+            color: red;
+            font-family: Courier, "Andale Mono", Arial, sans-serif;
+        }
+
+        #picture, #restart, #result, #change_image {
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 拼图容器 */
+        #wrap{
+            position: relative;
+            width: 340px;
+            height: 340px;
+            margin: 0 auto;
+        }
+
+        #picture {
+            position: relative;
+            width: 206px;
+            height: 206px;
+            margin-bottom: 30px;
+            border: solid 1px #969696 ;
+        }
+
+        #mask{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        /* 重新开始按钮 */
+        #restart, #change_image {
+            cursor: pointer;
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #4286F5;
+            box-shadow: 3px 4px 15px black;
+            color: white;
+            font-size: 18px;
+            opacity: 0.7;
+        }
+
+        #restart:hover, #change_image:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+       #word{
+           display: none;
+       }
+       #chaining{
+           display: none;
+       }
+        /* 图片分块 */
+        .picture_part0 {
+            background: url("0.jpg") no-repeat;
+        }
+
+        .picture_part1 {
+            background: url("0.jpg") no-repeat;
+        }
+
+
+        .picture_part0, .picture_part1 {
+            transition-duration: 0.2s;
+            position: absolute;
+            border: solid 1px #969696;
+            display: inline-block;
+            width: 66.6px;
+            height: 66.6px;
+            margin-bottom: -4px;
+            opacity: 0.9;
+        }
+
+        .picture_part:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* 类名 position_x 代表了位置 */
+        .position_1, .position_2, .position_3 {
+            top: 0px;
+        }
+
+        .position_4,.position_5, .position_6{
+            top: 69px;
+        }
+
+        .position_7,.position_8, .position_9{
+            top: 137.5px;
+        }
+
+        .position_1, .position_4, .position_7{
+            left: 0px;
+        }
+
+        .position_2, .position_5, .position_8 {
+            left: 69px;
+        }
+
+        .position_3, .position_6, .position_9{
+            left: 137.5px;
+        }
+
+        /* id _position_x 代表每一个分块 */
+        #_position_1 {
+            background-position: 0px 0px;
+        }
+
+        #_position_2 {
+            background-position: -69px 0px;
+        }
+
+        #_position_3 {
+            background-position: -133.5px 0px;
+        }
+
+        #_position_4 {
+            background-position: 0px -69px;
+        }
+
+        #_position_5 {
+            background-position: -69px -69px;
+        }
+
+        #_position_6 {
+            background-position: -133.5px -69px;
+        }
+
+        #_position_7 {
+            background-position: 0px -133.5px;
+        }
+
+        #_position_8 {
+            background-position: -69px -133.5px;
+        }
+
+        /*#_position_9 {*/
+            /*background-position: -169px -168px;*/
+        /*}*/
+
+        #_position_9 {
+            opacity: 0;
+            background-position: -137.5px -137.5px;
+            background-image: none;
+        }
+    </style>
+</head>
+<body>
+<h1> 拼图游戏 </h1>
+<div><img src="0.jpg" alt=""></div>
+<div id="result"></div>
+<div id="wrap">
+    <div id="picture"></div>
+    <div id="mask"></div>
+</div>
+<div id="restart">开始挑战</div>
+<!--<div id="change_image">更换图片</div>-->
+<div id="word">
+</div>
+<div id="chaining">
+    <a href="https://m.goodstyle.cc/">进入体验优主意定制</a>
+    <a href="">找好友一起玩</a>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+<script src="jquery-2.2.4.min.js"></script>
+<script>
+    /*
+    项目：拼图游戏
+*/
+
+    window.onload = function() {
+        create_pic();
+        document.getElementById("restart").addEventListener("click", random_pos);
+//        document.getElementById("reinstate").addEventListener("click", reinstate);
+//        document.getElementById("change_image").addEventListener("click", change_img);
+    };
+    /*定时函数*/
+    var time=0;
+    var set_timer; //设置定时函数
+    var finish_flag=true;//设置游戏是否完成标志，true表示完成
+    function timer(){
+        time+=1;//一秒钟加一，单位是秒
+        var min=parseInt(time/60);//把秒转换为分钟，一分钟60秒，取商就是分钟
+        var sec=time%60;//取余就是秒
+        document.getElementById("result").innerHTML=min+"分"+sec+"秒";//然后把时间更新显示出来
+        if(document.getElementById("result").innerHTML==="2分0秒"){
+            for (var i = 1; i <= 9; i++) {
+                var item = document.getElementById("_position_"+i);
+                if (item.className != "picture_part" + count +" position_"+i &&
+                    item.className != "picture_part0" + " position_" + i + " picture_part1") {
+                    clearInterval(set_timer);
+                    document.getElementById("mask").style.display="block";  /*拼图成功蒙板出现*/
+                    $("#word").text(
+                        "预约时间、上门测量、设计方案、N多次方案修改……\n" +
+                        "不如找优主意，\n" +
+                        "一键，智能定制家具。").show();
+                    setTimeout(function () {
+                        $("#chaining").show();
+                    },3000);
+
+                    return;
+                }
+            }
+        }
+    }
+    /* 检查产生的随机数列是否是合理的，因为有可能出现恢复不到原图的情况 */
+    function check_random_isValid() {
+        var count = 0;
+        for (var i = 0; i < 9; i++) {
+            for (var j = i+1; j < 9; j++) {
+                if (random_arr[j] < random_arr[i]) {
+                    count++;
+                }
+            }
+        }
+        return count%2===0;
+    }
+
+    /* 产生拼图 */
+    function create_pic() {
+        picture = document.getElementById("picture");
+        for (var i = 1; i <= 9; i++) {
+            var part = document.createElement("div");
+            part.addEventListener("click", pic_move);
+            part.className = "picture_part" + count + " position_"+i;
+            picture.appendChild(part);
+            part.id = "_position_"+i;
+        }
+    }
+
+    /* 改变图片 */
+    var count = 0;
+    function change_img(event) {
+        if (count < 1) count++;
+        else return;
+        for (var i = 0; i < 9; i++) {
+            picture.childNodes[i].className += " picture_part" + count;
+        }
+    }
+
+    /* 产生随机数列定义位置 */
+    function random_pos(event) {
+        time=0;
+        clearInterval(set_timer);
+        set_timer=setInterval(timer,1000);//启动定时
+        $("#word").hide();
+        $("#chaining").hide();
+
+        /*点击开始挑战，蒙板消失*/
+        document.getElementById("mask").style.display="none";
+        document.getElementById("result").innerText = "";
+        /* 产生随机数列前先将拼图块对应的位置复位 */
+        for (var k = 1; k <= 9; k++) {
+            document.getElementById("_position_"+k).className="picture_part"+count+" position_"+k;
+        }
+        var part = document.getElementById("picture").childNodes;
+        console.log("part",part);
+        random_arr = [8,1,2,7,4,6,3,5];
+//        for (var j = 0; j < 8; j++) {
+//            random_arr[j] = j+1;
+//        }
+//        /* 利用sort和cmp进行随机打散 */
+//        console.log("打乱之前",random_arr);
+//        function cmp() { return 0.5-Math.random(); }  /*规定排序的顺序*/
+//        while(1) {
+//            random_arr.sort(cmp);
+//            console.log("打乱之后",random_arr);
+//            console.log(check_random_isValid());
+//            if (check_random_isValid()) {
+//                break;
+//            }
+//        }
+        /* 通过更改类名来改变位置 */
+        for (var i = 0; i < 8; i++) {
+            part[i].className = "picture_part" + count + " position_" + random_arr[i];
+        }
+    }
+
+    /* 点击图片触发的事件处理器 */
+    function pic_move(event) {
+        var blank_pic_offset = document.getElementById("_position_9");
+        var blank_pic_offset_top = blank_pic_offset.offsetTop;
+        var blank_pic_offset_left = blank_pic_offset.offsetLeft;
+        var _offset_top = this.offsetTop;
+        var _offset_left = this.offsetLeft;
+        /* 判断点击的图片块是否与空格块相邻 */
+        if ((Math.abs(blank_pic_offset_top-_offset_top) == 69 && blank_pic_offset_left == _offset_left) ||
+            (Math.abs(blank_pic_offset_left-_offset_left) == 69 && blank_pic_offset_top == _offset_top)) {
+            var str = blank_pic_offset.className;
+            blank_pic_offset.className = this.className;
+            this.className = str;
+            check(); // 检查是否还原原图
+        }
+    }
+
+    /* 检查是否还原原图 */
+    function check() {
+        for (var i = 1; i <= 9; i++) {
+            var item = document.getElementById("_position_"+i);
+            if (item.className != "picture_part" + count +" position_"+i &&
+                item.className != "picture_part0" + " position_" + i + " picture_part1") {
+
+                return;
+            }
+        }
+            clearInterval(set_timer);
+            document.getElementById("mask").style.display="block";  /*拼图成功蒙板出现*/
+            $("#word").text(
+                "    您的游戏能力已经超过90%的玩家。\n" +
+                "    但是，\n" +
+                "    我们的家居定制系统，\n" +
+                "    拥有别任何人都快速反应的智能定制方式。\n" +
+                "    优主意，帮您一键智能定制家居。").show();
+            setTimeout(function () {
+                $("#chaining").show();
+            },3000);
+    }
+
+        /*一键恢复*/
+//        function reinstate() {
+//
+//        }
+</script>
+</html>

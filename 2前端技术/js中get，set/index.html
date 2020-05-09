@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+其中get与set的使用方法：
+1、get与set是方法，因为是方法，所以可以进行判断。
+2、get是得到 一般是要返回的   set 是设置 不用返回
+3、如果调用对象内部的属性约定的命名方式是_age
+<script type="text/javascript">
+    var p = {
+        name:"chen",
+        work:function() {
+            console.log("wording...");
+        },
+        _age:18,
+        get age(){
+            return this._age;
+        },
+        set age(val) {
+            if (val<0 || val> 100) {//如果年龄大于100就抛出错误
+                throw new Error("invalid value")
+            }else{
+                this._age = val;
+            }
+        }
+    };
+    console.log(p.name);//输出chen
+</script>
+</body>
+</html>

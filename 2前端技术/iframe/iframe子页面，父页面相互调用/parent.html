@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #layer {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border: 1px solid red;
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        function say() {
+            alert("parent.html");
+        }
+
+        function callChild() {
+            myFrame.window.say();
+            myFrame.window.document.getElementById("button").value = "调用结束";
+        }
+
+        function layer() {
+            document.getElementById('layer').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+<input id="button" type="button" value="调用child.html中的函数say()" onclick="callChild()"/>
+<input id="button2" type="button" value="弹框" onclick="layer()"/>
+<div id="layer">
+    <iframe name="myFrame" src="child.html"></iframe>
+</div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+body {
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+}
+
+body {
+    font-size: 16px;
+    font-family: "微软雅黑";
+
+}
+
+/*prev 尺寸设置器*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.value-input-shower {
+
+    float: left;
+    width: 1.70rem;
+    height: 0.60rem;
+    line-height: 0.60rem;
+    margin-left: 0.2rem;
+    border: 0.01rem solid #ccc;
+    -webkit-border-radius: 0.05rem;
+    -moz-border-radius: 0.05rem;
+    border-radius: 0.05rem;
+    text-align: center;
+    font-size: 0.30rem;
+}
+
+.value-input-shower input {
+    color: #999;
+    border: none;
+    text-align: right;
+    width: 0.70rem;
+    font-size: 0.30rem;
+    outline: none;
+}
+
+.size-input-container {
+    float: left;
+    margin-top: 0.65rem;
+    margin-left: 0.30rem;
+}
+
+.size-input-container h3 {
+    float: left;
+    width: 0.40rem;
+    height: 0.50rem;
+    line-height: 0.50rem;
+    font-size: 0.35rem;
+    border-bottom: 0.02rem solid #d80d18;
+    color:#000;
+}
+
+.right_input {
+    width: 0.60rem;
+    height: 0.60rem;
+    line-height: 0.60rem;
+    float: left;
+    overflow: hidden;
+}
+
+.right_input input {
+    width: 0.60rem;
+    height: 0.60rem;
+    line-height: 0.60rem;
+    font-size: 0.28rem;
+    border: none;
+    text-align: center;
+    outline: none;
+}
+
+.right_unit {
+    width: 0.30rem;
+    height: 0.60rem;
+    line-height: 0.60rem;
+    float: left;
+
+}
+
+.size-controller-container {
+    height: 1.80rem;
+    width: 10.80rem;
+    border-bottom: 0.01rem solid #ccc;
+    color: #999;
+}
+
+.status_cont {
+    float: right;
+    width: 7.00rem;
+    height: 1.80rem;
+    /*  border: 1px solid #ccc;*/
+    margin-top: 0.05rem;
+    margin-left: 0;
+    /*可设置*/
+    margin-right: 0.8rem;
+    /*可设置*/
+}
+
+.left_mintab {
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    height: 0.50rem;
+    width: 0.60rem;
+    float: left;
+    line-height: 0.50rem;
+    text-align: center;
+    font-size: 0.12rem;
+    background: #cccccc;
+}
+
+.right_innercont {
+    position: absolute;
+    right: 0;
+    top: 0.25rem;
+    width: 0.60rem;
+    height: 0.50rem;
+}
+
+.right_maxtab {
+    height: 0.50rem;
+    width: 0.60rem;
+    line-height: 0.50rem;
+    text-align: center;
+    float: left;
+    font-size: 0.12rem;
+    background: #cccccc;
+}
+
+.middle_rule {
+    position: relative;
+    margin-top: 0.2rem;
+    height: 1.40rem;
+}
+
+.ruler_back {
+    height: 0.04rem;
+    position: relative;
+    top: 0.67rem;
+    background: #666;
+}
+
+.movable_pointer {
+    position: absolute;
+    top: 0.45rem;
+    width: 0.50rem;
+    height: 0.50rem;
+    /*    border: 1px solid #ccc;*/
+    /*background: blue;*/
+    cursor: pointer;
+    z-index: 9;
+    background: url(phone-size-btn.png) center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.value-shower {
+    display: none;
+    z-index: 9;
+}
+
+.levelpointer {
+    width: 0.01rem;
+    height: 0.20rem;
+    background: #000;
+    position: absolute;
+    left: 0.20rem;
+    top: 0.40rem;
+    z-index: 0;
+    display: none;
+}
+
+.introductorVal {
+    position: absolute;
+    top: 0.10rem;
+    color: #ccc;
+    z-index: 0;
+    display: none;
+}
+
+.size-min-value {
+    position: absolute;
+    top: 0.05rem;
+    left: -0.00rem;
+    font-size: 0.30rem;
+}
+
+.size-min-value-title {
+    position: absolute;
+    left: -0.0rem;
+    top: 0.90rem;
+    font-size: 0.30rem;
+}
+
+.size-max-value-title {
+    position: absolute;
+    right: -0.0rem;
+    top: 0.90rem;
+    font-size: 0.30rem;
+}
+
+.size-max-value {
+    position: absolute;
+    top: 0.05rem;
+    font-size: 0.30rem;
+    right: -0.00rem;
+}
+
+.size-min-value-pointer {
+    position: absolute;
+    left: 0.25rem;
+    top: 0.50rem;
+    width: 0.01rem;
+    height: 0.40rem;
+    background: #000;
+}
+
+.size-max-value-pointer {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.50rem;
+    width: 0.01rem;
+    height: 0.40rem;
+    background: #000;
+}

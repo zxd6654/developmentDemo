@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    Object.assign(target,source1,source2,...)
+    该方法主要用于对象的合并，将源对象source的所有可枚举属性合并到目标对象target上,此方法只拷贝源对象的自身属性，不拷贝继承的属性。
+</head>
+<body>
+<script>
+    const target = {
+        x : 0,
+        y : 1
+    };
+    const source = {
+        x : 1,
+        z : 2 ,
+        fn : {
+            number : 1
+        }
+    };
+    Object.assign(target, source);
+    // target  {x : 1, y : 1, z : 2, fn : {number : 1}}    // 同名属性会被覆盖
+    // source  {x : 1, z : 2, fn : {number : 1}}
+    target.fn.number = 2;                                  // 拷贝为对象引用
+    // source  {x : 1, z : 2, fn : {number : 2}}
+</script>
+</body>
+</html>

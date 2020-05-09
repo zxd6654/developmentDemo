@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件委托</title>
+</head>
+<body>
+<!--事件委托就是利用冒泡原理，把事件加到父元素或祖先元素上，触发执行效果。-->
+
+<!--在实际的代码中 我们可能用到jQuery的live()、delegate()、bind()、on()等-->
+<input type="button" value="click me" id="btn6">
+
+<script>
+    var btn6=document.getElementById("btn6");
+    document.onclick=function (event) {
+        event=event||window.event;/*在ie下，事件对象是在全局的，也就 window下，做为window的一个属性在其他浏览器，都做为方法的第一个参数传入，所以这样写是为了兼容*/
+        var target=event.target||event.srcElement;/*IE下,event对象有srcElement属性,但是没有target属性;Firefox下,event对象有target属性,但是没有srcElement属性.但他们的作用是相当的*/
+        if(target==btn6){
+            alert(btn6.value);
+        }
+    }
+</script>
+
+<!--事件委托的优点
+1.提高js性能。事件委托可以显著的提高事件的处理速度，减少内存的占用。
+2 动态的添加DOM元素，不需要因为元素的改动而修改事件绑定。
+-->
+<ul id="list">
+    <li id="item1" >item1</li>
+    <li id="item2" >item2</li>
+    <li id="item3" >item3</li>
+</ul>
+
+<script>
+    var list = document.getElementById("list");
+
+    document.addEventListener("click",function(event){
+        var target = event.target||event.srcElement;
+        if(target.nodeName == "LI"){
+            alert(target.innerHTML);
+        }
+    })
+
+    var node=document.createElement("li");
+    var textnode=document.createTextNode("item4");
+    node.appendChild(textnode);
+    list.appendChild(node);
+
+</script>
+</body>
+</html>

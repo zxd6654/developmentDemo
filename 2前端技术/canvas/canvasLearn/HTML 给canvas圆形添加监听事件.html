@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>给canvas圆形添加监听事件</title>
+    <style>
+        canvas{border:1px solid;}
+    </style>
+</head>
+
+<body>
+<canvas id="canvas" width=500 height=500 ></canvas>
+<button onclick="clears();" >清除</button>
+</body>
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var x = 200, y = 200, d = 100;
+    run("black");
+    // 生成圆
+    function run(color){
+        clears();
+        ctx.arc(x,y,d,0,2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+    }
+    // 清除画布
+    function clears(){
+        ctx.beginPath();
+        ctx.clearRect(0, 0, 500, 500);
+        ctx.closePath();
+    }
+    // 监听事件
+    canvas.addEventListener("click" , function(e){
+        console.log(e);
+        var xx = x - e.layerX;
+        var yy = y - e.layerY;
+        var isMove = Math.sqrt(xx * xx + yy * yy);
+        if(isMove < d)
+            run("pink");
+        else
+            run("black");
+    });
+</script>
+</html>

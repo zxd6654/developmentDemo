@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            transition: width 2s, height 2s;
+            -moz-transition: width 2s, height 2s, -moz-transform 2s;
+            /* Firefox 4 */
+            -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+            /* Safari and Chrome */
+            -o-transition: width 2s, height 2s, -o-transform 2s;
+            /* Opera */
+        }
+
+        div:hover {
+            width: 200px;
+            height: 200px;
+            transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            /* Firefox 4 */
+            -webkit-transform: rotate(180deg);
+            /* Safari and Chrome */
+            -o-transform: rotate(180deg);
+            /* Opera */
+        }
+    </style>
+</head>
+
+<body>
+    translate() 平移
+    rotate() 旋转
+    scale() 缩放
+    skew() 翻转
+    matrix()方法把所有 2D 转换方法组合在一起。需要六个参数，包含数学函数，允许您：旋转、缩放、移动以及倾斜元素
+
+    <div>请把鼠标指针放到黄色的 div 元素上，来查看过渡效果。</div>
+
+    <p><b>注释：</b>本例在 Internet Explorer 中无效。</p>
+</body>
+
+</html>

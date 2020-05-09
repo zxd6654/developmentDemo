@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="calendar">
+        <!-- input输入框 -->
+        <!--<div class="chooseDate">-->
+        <!--<input type="text" placeholder="点击选择时间">-->
+        <!--<i class="iconfont icon-rili"></i>-->
+        <!--</div>-->
+
+        <!-- 组件主体 -->
+        <!--<div class="calendar clear">-->
+
+        <!-- 日历主体左侧 -->
+        <!--<div class="c-show">-->
+
+        <!-- 左侧展示日期的部分 -->
+        <!--<a class="year" href="">2017</a>-->
+        <!--<a class="week" href="">星期一</a>-->
+        <!--<a class="day" href="">4月24日</a>-->
+
+        <!-- 点击左侧年份，可展示选择年份的列表和选择月份的按钮 -->
+        <!--<a class="chooseMonth" href="">Choose Month</a>-->
+        <!--<div class="yearList">-->
+        <!--<a class="iconfont" href="">
+                            <i class="iconfont icon-Shang"></i>
+                        </a>-->
+        <!--<a href="" class="year-item">2017</a>-->
+        <!--<a href="" class="year-item">2017</a>-->
+        <!--<a href="" class="year-item">2017</a>-->
+        <!--<a href="" class="year-item">2017</a>-->
+        <!--<a href="" class="year-item">2017</a>-->
+        <!--<a href="" class="year-item">2017</a>-->
+        <!--<a href="" class="year-item">2017</a>-->
+        <!--<a href="" class="year-item">2017</a>-->
+        <!--<a href="" class="year-item">2017</a>-->
+        <!--<a class="iconfont" href="">
+                            <i class="iconfont icon-xia"></i>
+                        </a>-->
+        <!--</div>-->
+
+        <!-- 点击选择月份，可展示月份列表和选择年份按钮 -->
+        <!--<a class="chooseYear" href="">Choose Year</a>-->
+        <!--<div class="monthList">-->
+        <!--<a href="" class="month-item">January</a>-->
+        <!--<a href="" class="month-item">Feberraut</a>-->
+        <!--<a href="" class="month-item">Jan</a>-->
+        <!--<a href="" class="month-item">Jan</a>-->
+        <!--<a href="" class="month-item">Jan</a>-->
+        <!--<a href="" class="month-item">Jan</a>-->
+        <!--<a href="" class="month-item">Jan</a>-->
+        <!--<a href="" class="month-item">Jan</a>-->
+        <!--<a href="" class="month-item">Jan</a>-->
+        <!--<a href="" class="month-item">Jan</a>-->
+        <!--<a href="" class="month-item">Jan</a>-->
+        <!--<a href="" class="month-item">Jan</a>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!-- 日历主体右侧 -->
+        <!--<div class="c-box">-->
+
+        <!-- 日历主体右侧年月title -->
+        <!--<div class="c-year clear">-->
+        <!--<i class="iconfont icon-zuo"></i>-->
+        <!--<a class="years" href="">2017/4</a>-->
+        <!--<i class="iconfont icon-gengduo"></i>-->
+        <!--</div>-->
+
+        <!-- 日历主体右侧，展示一整月的日期 -->
+        <!--<table class="date-box">-->
+        <!--<thead>-->
+        <!--<tr>-->
+        <!--<th>一</th>-->
+        <!--<th>二</th>-->
+        <!--<th>三</th>-->
+        <!--<th>四</th>-->
+        <!--<th>五</th>-->
+        <!--<th>六</th>-->
+        <!--<th>日</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr>-->
+        <!--<td><a class="active">13</a></td>-->
+        <!--<td><a>23</a></td>-->
+        <!--<td><a>3</a></td>-->
+        <!--<td>4</td>-->
+        <!--<td>5</td>-->
+        <!--<td>6</td>-->
+        <!--<td>7</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+        <!--<td>1</td>-->
+        <!--<td>2</td>-->
+        <!--<td>3</td>-->
+        <!--<td>4</td>-->
+        <!--<td>5</td>-->
+        <!--<td>6</td>-->
+        <!--<td>7</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+        <!--<td>1</td>-->
+        <!--<td>2</td>-->
+        <!--<td>3</td>-->
+        <!--<td>4</td>-->
+        <!--<td>5</td>-->
+        <!--<td>6</td>-->
+        <!--<td>7</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+        <!--<td>1</td>-->
+        <!--<td>2</td>-->
+        <!--<td>3</td>-->
+        <!--<td>4</td>-->
+        <!--<td>5</td>-->
+        <!--<td>6</td>-->
+        <!--<td>7</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+        <!--<td>1</td>-->
+        <!--<td>2</td>-->
+        <!--<td>3</td>-->
+        <!--<td>4</td>-->
+        <!--<td>5</td>-->
+        <!--<td>6</td>-->
+        <!--<td>7</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+        <!--</table>-->
+
+        <!-- 日历主体右侧底部按钮 -->
+        <!--<div class="c-button">-->
+        <!--<a class="go-determine" href="">确定</a>-->
+        <!--<a class="go-today" href="">今天</a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div> -->
+    </div>
+    <script src="calender.js"></script>
+    <script>
+        var calendarUnit = document.getElementById('calendar');
+        var myCalendar = new Calendar(calendarUnit);
+
+        myCalendar.start();
+    </script>
+</body>
+
+</html>

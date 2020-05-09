@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    localStorage只支持string类型的存储。
+    对localStorage的读取，其中官方推荐的是getItem\setItem这两种方法对其进行存取，
+</head>
+<body>
+<script>
+//    localStorage的写入有三种方法
+
+//    if(!window.localStorage){
+//        alert("浏览器支持localstorage");
+//    }else{
+//        var storage=window.localStorage;
+//        //写入a字段
+//        storage["a"]=1;
+//        //写入b字段
+//        storage.a=1;
+//        //写入c字段
+//        storage.setItem("c",3);
+//        console.log(typeof storage["a"]);
+//        console.log(typeof storage["b"]);
+//        console.log(typeof storage["c"]);
+//    }
+
+//案例1
+//var storage = window.localStorage;
+//if (!storage.getItem("pageLoadCount")){
+//    storage.setItem("pageLoadCount",888);
+//}
+//storage.pageLoadCount = parseInt(storage.getItem("pageLoadCount")) + Math.ceil(Math.random()*30);
+//console.log( storage.pageLoadCount);
+
+//localstorage的改
+//if(!window.localStorage){
+//    alert("浏览器支持localstorage");
+//}else{
+//    var storage=window.localStorage;
+//    //写入a字段
+//    storage["a"]=1;
+//    //写入b字段
+//    storage.b=1;
+//    //写入c字段
+//    storage.setItem("c",3);
+//    console.log(storage.a);
+//    // console.log(typeof storage["a"]);
+//    // console.log(typeof storage["b"]);
+//    // console.log(typeof storage["c"]);
+//    /*分割线*/
+//    storage.a=4;
+//    console.log(storage.a);
+//}
+
+//localstorage的删
+//var storage=window.localStorage;
+//storage.a=1;
+//storage.setItem("c",3);
+//console.log(storage);
+//storage.clear();
+//console.log(storage);
+//
+//var storage=window.localStorage;
+//storage.a=1;
+//storage.setItem("c",3);
+//console.log(storage);
+//storage.removeItem("a");
+//console.log(storage.a);
+</script>
+</body>
+</html>

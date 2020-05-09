@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            background: #3e4659;
+            font-size: 13px;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        .menu_bar {
+            white-space: nowrap;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            background: #3e4659;
+        }
+
+        .menu_bar .title {
+            float: left;
+            text-align: center;
+        }
+
+        .menu_bar .title img:last-child {
+            display: inline-block;
+            margin-left: 30px;
+        }
+
+        #menu, #menu ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            cursor: pointer;
+        }
+
+        #menu:before, #menu:after {
+            content: "";
+            display: table;
+        }
+
+        #menu:after {
+            clear: both;
+        }
+
+        #menu {
+            zoom: 1;
+        }
+
+        #list {
+            overflow: hidden;
+        }
+
+        #menu li {
+            display: inline-block;
+            position: relative;
+            width: 100px;
+            height: 100%;
+            text-align: center;
+            color: #fff;
+            text-transform: uppercase;
+            text-decoration: none;
+            /*text-shadow: 0 1px 0 #000;*/
+        }
+
+        #menu > li:first-child {
+            margin-left: 50px;
+        }
+
+        #menu li:hover {
+            /*color: #fafafa;*/
+        }
+
+        #menu ul {
+            margin: 0;
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            z-index: 1000;
+            background: #fff;
+            /*background: -moz-linear-gradient(#444, #111);*/
+            /*background-image: -webkit-gradient(linear, left top, left bottom, from(#444), to(#111));*/
+            /*background: -webkit-linear-gradient(#444, #111);*/
+            /*background: -o-linear-gradient(#444, #111);*/
+            /*background: -ms-linear-gradient(#444, #111);*/
+            /*background: linear-gradient(#444, #111);*/
+            /*-moz-box-shadow: 0 -1px rgba(255, 255, 255, .3);*/
+            /*-webkit-box-shadow: 0 -1px 0 rgba(255, 255, 255, .3);*/
+            /*box-shadow: 0 -1px 0 rgba(255, 255, 255, .3);*/
+            -webkit-transition: all .2s ease-in-out;
+            -moz-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+
+        #menu li ul li {
+            color: #000;
+        }
+
+        #menu li:hover > ul {
+            opacity: 1;
+            visibility: visible;
+            margin: 0;
+        }
+
+        #menu ul ul {
+            top: 0;
+            left: 100px;
+            margin: 0 0 0 20px;
+            -moz-box-shadow: -1px 0 0 rgba(255, 255, 255, .3);
+            -webkit-box-shadow: -1px 0 0 rgba(255, 255, 255, .3);
+            box-shadow: -1px 0 0 rgba(255, 255, 255, .3);
+        }
+
+        #menu ul li {
+            float: none;
+            display: block;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #e7e9eb;
+        }
+
+        #menu ul li:last-child {
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        #menu span {
+            display: block;
+            float: none;
+            text-transform: none;
+        }
+
+        #menu ul span:hover {
+            background-color: #dbecfc;
+        }
+
+        #menu ul li:first-child > span:after {
+            content: '';
+            position: absolute;
+            left: 45px;
+            top: -6px;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid #444;
+        }
+
+        #menu ul li:first-child > span:hover:after {
+            border-bottom: 6px solid #e49d1f;
+        }
+
+        #menu ul ul li:first-child > span:after {
+            left: -6px;
+            top: 50%;
+            margin-top: -6px;
+            border-left: 0;
+            border-bottom: 6px solid transparent;
+            border-top: 6px solid transparent;
+            border-right: 6px solid #3b3b3b;
+        }
+
+        #menu ul li:first-child > span:hover:after {
+            border-bottom-color: #e49d1f;
+        }
+
+        #menu ul ul li:first-child > span:hover:after {
+            border-right-color: #e49d1f;
+            border-bottom-color: transparent;
+        }
+
+        #menu .secondaryMenu {
+            position: relative;
+        }
+
+        #menu .secondaryMenu img {
+            position: absolute;
+            right: 6%;
+            top: 50%;
+            margin-top: -6px;
+            width: 12px;
+        }
+
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both
+        }
+
+        @-webkit-keyframes shake {
+            0%, 100% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0)
+            }
+
+            20%, 60% {
+                -webkit-transform: translateX(-5px);
+                transform: translateX(-5px)
+            }
+            40%, 80% {
+                -webkit-transform: translateX(5px);
+                transform: translateX(5px)
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                -webkit-transform: translateX(0);
+                -ms-transform: translateX(0);
+                transform: translateX(0)
+            }
+            20%, 60% {
+                -webkit-transform: translateX(-5px);
+                transform: translateX(-5px)
+            }
+            40%, 80% {
+                -webkit-transform: translateX(5px);
+                transform: translateX(5px)
+            }
+        }
+
+        @-webkit-keyframes shakeModel {
+            0%, 100% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0)
+            }
+
+            20%, 60% {
+                -webkit-transform: translateX(-10px);
+                transform: translateX(-10px)
+            }
+            40%, 80% {
+                -webkit-transform: translateX(10px);
+                transform: translateX(10px)
+            }
+        }
+
+        @keyframes shakeModel {
+            0%, 100% {
+                -webkit-transform: translateX(0);
+                -ms-transform: translateX(0);
+                transform: translateX(0)
+            }
+            20%, 60% {
+                -webkit-transform: translateX(-10px);
+                transform: translateX(-10px)
+            }
+            40%, 80% {
+                -webkit-transform: translateX(10px);
+                transform: translateX(10px)
+            }
+        }
+
+        .shake {
+            -webkit-animation-name: shake;
+            animation-name: shake
+        }
+
+        .shakeModel {
+            -webkit-animation-name: shakeModel;
+            animation-name: shakeModel
+        }
+
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li><span>文件</span>
+        <ul>
+            <li><span class="importModel">导入本地模型</span></li>
+            <li><span class="saveCurrentBoxSpace">保存</span></li>
+            <li><span class="saveAsCurrentBoxSpace">另存为</span></li>
+            <li><span class="loadStorageBoxSpace">加载</span></li>
+            <li><span class="plankInstallation">安装图</span></li>
+            <li><span class="plankInfoExportFXMFile">生成FXM文件</span></li>
+            <li><span class="modelMetalFile">导出料单</span></li>
+        </ul>
+    </li>
+    <li><span>编辑</span>
+        <ul>
+            <li><span class="hideSpaceLine">隐藏空间线框</span></li>
+            <li><span class="showSpaceLine">显示空间线框</span></li>
+            <li><span class="punchAndSlotting">打孔 开槽</span></li>
+            <li><span class="plankInfoExportExcel">板材信息导出</span></li>
+            <li>
+                <span>操作</span>
+                <ul>
+                    <li><span>过滤</span></li>
+                    <li><span>空间</span></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><span>选择</span>
+        <ul>
+            <li><span class="singleViewDisplay">单视图显示</span></li>
+            <li><span class="multiViewsDisplay">多视图显示</span></li>
+        </ul>
+    </li>
+    <li><span>数据库</span>
+        <ul class="newDateBase">
+            <li class="element">
+                <span>元素管理</span>
+            </li>
+            <li class="drawerParts">
+                <span>抽屉管理</span>
+            </li>
+            <li class="variableSystem">
+                <span>全局变量</span>
+            </li>
+            <li class="connectorDevice">
+                <span>连接件装置</span>
+            </li>
+            <li class="connector">
+                <span>连接件</span>
+            </li>
+            <li class="segmentRules">
+                <span>分割规则</span>
+            </li>
+            <li class="designPartameters">
+                <span>设计参数</span>
+            </li>
+            <li class="outlineSprite">
+                <span>轮廓精灵</span>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <span>帮助</span>
+        <ul>
+            <li><span class="version">版本号</span></li>
+            <li>
+                                <span data-toggle="modal" class="btn btn-primary btn-lg"
+                                      data-target="#myModal_liu" onclick="fillWithTheDialogData()">配置
+                                </span>
+            </li>
+
+            <li><span onclick="findNoGlobalIndentPlank()">局部缩进板件</span></li>
+            <li><span onclick="AICheckError()">智能检测错误</span></li>
+            <li><span onclick="window.GSMetal.CalculateHelper.exportData()">导出渲染模型</span></li>
+            <li><span onclick="(function() {
+                                let calc = window.GSMetal.CalculateHelper;
+                                let gsbdHighlight = window.GSBDHighLightUtils;
+                                let mesharray = [];
+                                calc.getCalcCache().allBraceFace.forEach(face=> {
+                                    face.associatePlanks.forEach(plank=> {
+                                        mesharray.push(plank.associateMesh);
+                                    })
+                                });
+                              gsbdHighlight.highlightMeshOnes(mesharray);
+                            })()">高亮所有拉条</span></li>
+
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

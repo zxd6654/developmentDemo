@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>38demo</title>
+    <link rel="stylesheet" href="img/mobile-reset.css" rel="external nofollow"/>
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .title {
+            width: 100%;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+
+        .titleTap {
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .a1 {
+            margin-top: 20px;
+        }
+
+        .title li {
+            width: 33%;
+            float: left;
+            text-align: center;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 20px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+<!--other-->
+<p class="topHeight">
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+</p>
+<!--title-->
+<ul class="title clearfix">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<!--content-->
+<ul class="content a1">
+    <li>11</li>
+    <li>13</li>
+    <li>14</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+</ul>
+<ul class="content a2">
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+</ul>
+<ul class="content a3">
+    <li>31</li>
+    <li>32</li>
+    <li>33</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>31</li>
+    <li>32</li>
+    <li>33</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>31</li>
+    <li>32</li>
+    <li>33</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>31</li>
+    <li>32</li>
+    <li>33</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>31</li>
+    <li>32</li>
+    <li>33</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>31</li>
+    <li>32</li>
+    <li>33</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+</ul>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    function nav() {
+        var height = 0;
+        height = $(".topHeight").height();
+        $(window).scroll(function () {
+            var w = $("body").scrollTop() || $(document).scrollTop(); //获取滚动值
+            if (w > height) {
+                $(".title").addClass("titleTap");
+            } else if (w <= 0) {
+                $(".title").removeClass("titleTap")
+            } else {
+                $(".title").removeClass("titleTap")
+            }
+        });
+    }
+
+    nav();
+    $(function () {
+        $(".title li").click(function () {
+            var index = $(this).index();
+            var offsetH = $(".content").eq(index).offset().top;
+            console.log(index);
+            console.log(offsetH);
+            $("body").animate({
+                scrollTop: offsetH - 20,
+            }, 500);
+        })
+    })
+</script>
+</body>
+</html>

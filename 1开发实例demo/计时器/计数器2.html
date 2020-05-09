@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .banner{
+            background: #b7bfc1;
+            margin:  0 auto;
+            width: 413px;
+            height: 214px;
+            border-radius: 5px;
+            padding-top: 5px;
+            box-sizing: border-box;
+            position: relative;
+            font-weight: bold;
+        }
+        .banner-in{
+            background: #2f2e2c;
+            width: 370px;
+            height: 170px;
+            margin-left: 19px;
+            padding-top: 18px;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+        .banner-in2{
+            width: 286px;
+            height: 114px;
+            margin-left: 40px;
+            background: #c8dae6;
+            padding: 17px 0 0 17px;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+        .banner-in2 div{
+            float: left;
+            width: 50px;
+            height: 80px;
+            background: #89845e;
+            text-align: center;
+            line-height: 80px;
+            font-size: 45px;
+        }
+        .banner-in2 div:last-child{
+            font-size: 25px;
+        }
+        #kaishi{
+            width: 33px;
+            height: 25px;
+            background: #fff1ea;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -100px;
+            margin-top: 75px;
+            border-radius: 25px;
+            font-size: 10px;
+            text-align: center;
+            line-height: 25px;
+        }
+        #zanting{
+            width: 33px;
+            height: 25px;
+            background: #fff1ea;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -28px;
+            margin-top: 75px;
+            border-radius: 25px;
+            font-size: 10px;
+            text-align: center;
+            line-height: 25px;
+        }
+        #qingchu{
+            width: 33px;
+            height: 25px;
+            background: #fff1ea;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: 49px;
+            margin-top: 75px;
+            border-radius: 25px;
+            font-size: 10px;
+            text-align: center;
+            line-height: 25px;
+        }
+        .banner2{
+            width: 200px;
+            height: 20px;
+            background: #848889;
+            margin: 0 auto;
+            /*border-radius: 5px;*/
+        }
+        .banner3{
+            width: 300px;
+            height: 20px;
+            background: #848889;
+            margin:  0 auto;
+            border-radius: 5px;
+
+        }
+    </style>
+    <script>
+//        document.write(Date());
+        window.onload=function(){
+             var oDiv=document.getElementsByClassName("zxd") ;
+            var s= 0,m= 0,h=0;
+//           var date=new Date();
+//            var h=date.getHours();
+//            var m=date.getMinutes();
+//            var s=date.getSeconds();
+            oDiv[0].innerHTML = "00";
+            oDiv[1].innerHTML = "00";
+            oDiv[2].innerHTML = "00";
+            function aaa() {
+                s++;
+                if (s == 60) {
+                    s = 0;
+                    m++;
+                    if (m == 60) {
+                        m = 0;
+                        h++;
+                        if (h == 24) {
+                            h = 0;
+                        }
+//                        oDiv[0].innerHTML = h;
+                    }
+//                    oDiv[1].innerHTML = m;
+                }
+                if(s<10){
+                    oDiv[2].innerHTML="0"+s;
+                }else{
+                    oDiv[2].innerHTML=s;
+                }
+                if(m<10){
+                    oDiv[1].innerHTML="0"+m;
+                }else{
+                    oDiv[1].innerHTML=m;
+                }
+                if(h<10){
+                    oDiv[0].innerHTML="0"+h;
+                }else{
+                    oDiv[0].innerHTML=h;
+                }
+//                oDiv[0].innerHTML = h;
+//                oDiv[1].innerHTML = m;
+//                oDiv[2].innerHTML = s;
+            }
+            var next;
+            next=setInterval(aaa, 1000);
+            kaishi.onclick=function(){
+                clearInterval(next);
+                next=setInterval(aaa,1000);
+            };
+            zanting.onclick=function(){
+                clearInterval(next);
+            };
+           qingchu.onclick=function(){
+               h=0;
+               m=0;
+               s=0;
+               oDiv[0].innerHTML="00";
+               oDiv[1].innerHTML="00";
+               oDiv[2].innerHTML="00";
+               clearInterval(next);
+           }
+        }
+    </script>
+</head>
+<body>
+<div class="banner">
+ <div class="banner-in">
+     <div class="banner-in2">
+         <div class="zxd"></div>
+         <div>:</div>
+         <div class="zxd"></div>
+         <div>:</div>
+         <div class="zxd"></div>
+     </div>
+ </div>
+    <div id="kaishi">开始</div>
+    <div id="zanting">暂停</div>
+    <div id="qingchu">清除</div>
+</div>
+<div class="banner2"></div>
+<div class="banner3"></div>
+</body>
+</html>

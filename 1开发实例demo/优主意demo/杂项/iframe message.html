@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>iframe</title>
+</head>
+<body>
+<iframe id="frame1" src="http://localhost/test/ftw.html"></iframe>
+<script>
+    /*由窗口向本页面内的iframe 传递消息*/
+    window.onclick = function () {
+        var cont = document.getElementById("iframe1").contentWindow;
+        cont.postMessage("123", "*");
+    };
+
+    //位于xml.html页面内的监听代码
+    window.addEventListener('message', function (e) {
+        // alert(e.origin);
+        alert(e.data);
+        // alert(e.source);
+    }, false);
+
+/*
+*  由iframe 向父页面传递消息
+*
+* */
+    // 位于 iframe 的发送消息的代码
+    window.onclick = function () {
+        window.parent.postMessage("123", "*");
+    };
+
+    //位于主页面内的监听代码
+    window.addEventListener('message', function (e) {
+        // alert(e.origin);
+        alert(e.data);
+        // alert(e.source);
+    }, false);
+
+
+</script>
+</body>
+</html>

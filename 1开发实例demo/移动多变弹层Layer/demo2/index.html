@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="../../../../layer-v3.1.1/layer/layer.js"></script>-->
+</head>
+<body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<!--<link rel="stylesheet" href="theme/default/layer.css">-->
+<script src="../../拼图游戏/jquery-2.2.4.min.js"></script>
+<script src="layer.js"></script>
+<!--<script src="../layer.js"></script>-->
+<script src="index.js"></script>
+<div>
+    sadasd
+</div>
+<div id="parentIframe">adas</div>
+<input type="text" id="content">
+<script>
+    let oDiv = document.getElementsByTagName('div')[0];
+    oDiv.onclick = function () {
+        LayerBox({
+            title: '数据库',
+            content: 'http://localhost:63342/developmentDemo/%E7%A7%BB%E5%8A%A8%E5%A4%9A%E5%8F%98%E5%BC%B9%E5%B1%82/demo2/iframe.html?_ijt=v8ur0c21bk63eiv2kkfj28igaa',
+            parameter: {data: true}
+        }, function (callback) {
+            console.log(callback);
+        }, function (callback) {
+            console.log(callback);
+        });
+    };
+</script>
+</body>
+</html>

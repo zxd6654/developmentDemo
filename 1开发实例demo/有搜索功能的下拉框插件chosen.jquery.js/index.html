@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="chosen.min.css">
+</head>
+
+<body>
+    <script src="jquery-1.8.3.js"></script>
+    <script src="chosen.jquery.min.js"></script>
+    <select data-placeholder="选择省份..." class="chosen-select" style="width:350px;" tabindex="2">
+        <option value=""></option>
+        <!--这里的空项，如果有，删除按钮就会起效，如果没有删除按钮就不会起效-->
+        <option value="110000" hassubinfo="true">北京</option>
+        <option value="120000" hassubinfo="true">天津</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+        <option value="130000" hassubinfo="true">河北省</option>
+    </select>
+    <script type="text/javascript">
+        $(function () {
+            $(".chosen-select").chosen({
+                allow_single_deselect: true,/*带有删除按钮*/
+            });
+        })
+    </script>
+</body>
+
+</html>

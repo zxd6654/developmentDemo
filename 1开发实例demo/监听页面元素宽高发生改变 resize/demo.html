@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-2.2.4.min.js"></script>
+    <script src="resizeDom.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script>
+    $('#oDiv').resize(function () {
+        console.log(111111);
+    })
+</script>
+</body>
+</html>

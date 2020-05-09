@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    Object.values()
+    方法返回一个给定对象自己的所有可枚举属性值的数组，值的顺序与使用for...in循环的顺序相同 ( 区别在于 for-in 循环枚举原型链中的属性 )。
+</head>
+<body>
+<script>
+    var an_obj = { 100: 'a', 2: 'b', 7: 'c' };
+    console.log(Object.values(an_obj)); // ['b', 'c', 'a']
+
+    var obj = { 0: 'a', 1: 'b', 2: 'c' };
+    console.log(Object.values(obj)); // ['a', 'b', 'c']
+</script>
+</body>
+</html>

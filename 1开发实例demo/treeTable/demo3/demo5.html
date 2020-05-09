@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/jquery.treetable.theme.default.css">
+    <link rel="stylesheet" href="css/jquery.treetable.css">
+    <script src="../../拼图游戏/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery.treetable.js"></script>
+</head>
+<body>
+<table id="property-table" class="property-table" border="1">
+    <caption style="text-align: left">属性设置</caption>
+    <thead>
+    <tr>
+        <th>名称</th>
+        <th>值</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tr data-tt-id="0">
+        <td>预览图</td>
+        <td>
+            <div class="file-img"><input type="file"></div>
+        </td>
+        <td>
+            <div class="btn select-img">选择</div>
+        </td>
+    </tr>
+    <tr data-tt-id="1">
+        <td>是否允许其他人修改</td>
+        <td><select class="select-style" name="">
+            <option value="">是</option>
+            <option value="">否</option>
+        </select></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="2">
+        <td>连接件设置</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="3" data-tt-parent-id="2">
+        <td>添加连接件</td>
+        <td></td>
+        <td>
+            <div class="btn add">添加</div>
+        </td>
+    </tr>
+</table>
+<script>
+    $('#property-table').treetable({
+        expandable: true,
+        initialState: 'expanded'
+    });
+
+    let createId = 4;
+
+    var data = {
+        connection: function () {
+            return [
+                {
+                    category: 'button',
+                    dId: createId,
+                    pId: 2,
+                    content: {
+                        property: '连接件',
+                        value: '',
+                        name: '',
+                        valueClass: '',
+                        operate: '删除',
+                        className: 'delete',
+                    }
+                },
+                {
+                    category: 'select',
+                    dId: createId + 1,
+                    pId: createId,
+                    content: {
+                        property: '定义类型',
+                        value: '',
+                        options: [
+                            {
+                                title: '连接件类型',
+                                value: 'connectionType'
+                            },
+                            {
+                                title: '创建槽',
+                                value: 'createSlot'
+                            },
+                            {
+                                title: '榫舌和凹槽接点',
+                                value: 'tongueAndGroove'
+                            }
+                        ],
+                        name: '',
+                        valueClass: 'connection',
+                        operate: '',
+                        className: '',
+                    }
+                },
+            ]
+        },
+        connectionType: function (createId) {
+            return [
+//                {
+//                    category: 'button',
+//                    dId: createId,
+//                    pId: 2,
+//                    content: {
+//                        property: '连接件',
+//                        value: '',
+//                        name: '',
+//                        valueClass: '',
+//                        operate: '删除',
+//                        className: 'delete',
+//                    }
+//                },
+//                {
+//                    category: 'select',
+//                    dId: createId + 1,
+//                    pId: createId,
+//                    content: {
+//                        property: '定义类型',
+//                        value: '',
+//                        options: [
+//                            {
+//                                title: '连接件类型',
+//                                value: 'connectionType'
+//                            },
+//                            {
+//                                title: '创建槽',
+//                                value: 'createSlot'
+//                            },
+//                            {
+//                                title: '榫舌和凹槽接点',
+//                                value: 'tongueAndGroove'
+//                            }
+//                        ],
+//                        name: '',
+//                        valueClass: '',
+//                        operate: '',
+//                        className: '',
+//                    }
+//                },
+                {
+                    category: 'select',
+                    dId: createId + 2,
+                    pId: createId,
+                    content: {
+                        property: '连接件类型',
+                        value: '',
+                        options: [
+                            {
+                                title: '',
+                                value: ''
+                            },
+                            {
+                                title: '11',
+                                value: '11'
+                            },
+                            {
+                                title: '22',
+                                value: '22'
+                            }
+                        ],
+                        name: '',
+                        valueClass: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'checkBox',
+                    dId: createId + 3,
+                    pId: createId,
+                    content: {
+                        property: '勾选自动适配连接件类型',
+                        value: '',
+                        name: '',
+                        valueClass: 'checkConnectionType',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'selectAndButton',
+                    dId: createId + 4,
+                    pId: createId,
+                    content: {
+                        property: '连接件规格',
+                        value: '',
+                        options: [
+                            {
+                                title: '',
+                                value: ''
+                            },
+                            {
+                                title: '1',
+                                value: '1'
+                            },
+                            {
+                                title: '2',
+                                value: '2'
+                            }
+                        ],
+                        name: '',
+                        valueClass: '',
+                        operate: '编辑',
+                        className: 'connection-specification',
+                    }
+                },
+                {
+                    category: 'inputAndButton',
+                    dId: createId + 5,
+                    pId: createId,
+                    content: {
+                        property: 'X轴线性分割',
+                        value: '',
+                        name: '',
+                        valueClass: '',
+                        operate: '编辑',
+                        className: 'segment-rules',
+                    }
+                },
+                {
+                    category: 'checkBox',
+                    dId: createId + 6,
+                    pId: createId,
+                    content: {
+                        property: '第二线性分割',
+                        value: '',
+                        name: '',
+                        valueClass: 'secondSegment',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'inputAndButton',
+                    display: 'none',
+                    dId: createId + 7,
+                    pId: createId,
+                    content: {
+                        property: 'Y轴线性分割',
+                        value: '',
+                        name: '',
+                        operate: '编辑',
+                        className: 'segment-rules',
+                    }
+                },
+                {
+                    category: 'select',
+                    display: 'none',
+                    dId: createId + 8,
+                    pId: createId + 7,
+                    content: {
+                        property: '边对齐',
+                        value: '',
+                        options: [
+                            {
+                                title: '否',
+                                value: '0'
+                            },
+                            {
+                                title: '是',
+                                value: '1'
+                            }
+                        ],
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'input',
+                    display: 'none',
+                    dId: createId + 9,
+                    pId: createId + 7,
+                    content: {
+                        property: '旋转角度',
+                        value: '0',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'input',
+                    display: 'none',
+                    dId: createId + 10,
+                    pId: createId + 7,
+                    content: {
+                        property: '截图半径',
+                        value: '0',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'ordinary',
+                    dId: createId + 11,
+                    pId: createId,
+                    content: {
+                        property: '位置',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'checkBox',
+                    dId: createId + 12,
+                    pId: createId + 11,
+                    content: {
+                        property: '排空线上',
+                        value: '',
+                        name: '',
+                        valueClass: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'ordinary',
+                    dId: createId + 13,
+                    pId: createId + 11,
+                    content: {
+                        property: '分界线长度',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'select',
+                    dId: createId + 14,
+                    pId: createId + 13,
+                    content: {
+                        property: '线性分割',
+                        value: '',
+                        options: [
+                            {
+                                title: '最小值',
+                                value: ''
+                            },
+                            {
+                                title: '最大值',
+                                value: ''
+                            },
+                            {
+                                title: '部件0',
+                                value: ''
+                            },
+                            {
+                                title: '部件1',
+                                value: ''
+                            },
+                        ],
+                        name: '',
+                        valueClass: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'select',
+                    display: 'none',
+                    dId: createId + 15,
+                    pId: createId + 13,
+                    content: {
+                        property: 'X线性分割',
+                        value: '',
+                        options: [
+                            {
+                                title: '',
+                                value: ''
+                            },
+                            {
+                                title: '中心的',
+                                value: ''
+                            },
+                            {
+                                title: '第一个插入点',
+                                value: ''
+                            },
+                            {
+                                title: '第二个插入点',
+                                value: ''
+                            },
+                        ],
+                        name: '',
+                        valueClass: '',
+                        operate: '',
+                        className: '',
+                    }
+                }, {
+                    category: 'select',
+                    display: 'none',
+                    dId: createId + 16,
+                    pId: createId + 13,
+                    content: {
+                        property: 'Y线性分割',
+                        value: '',
+                        options: [
+                            {
+                                title: '',
+                                value: ''
+                            },
+                            {
+                                title: '中心的',
+                                value: ''
+                            },
+                            {
+                                title: '第一个插入点',
+                                value: ''
+                            },
+                            {
+                                title: '第二个插入点',
+                                value: ''
+                            },
+                        ],
+                        name: '',
+                        valueClass: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'ordinary',
+                    dId: createId + 17,
+                    pId: createId + 11,
+                    content: {
+                        property: '给部件厚度设置相关性',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'select',
+                    dId: createId + 18,
+                    pId: createId + 17,
+                    content: {
+                        property: '部件0',
+                        value: '',
+                        options: [
+                            {
+                                title: '默认值',
+                                value: ''
+                            },
+                            {
+                                title: '居中',
+                                value: ''
+                            },
+                            {
+                                title: '内侧',
+                                value: ''
+                            },
+                            {
+                                title: '外侧',
+                                value: ''
+                            },
+                            {
+                                title: '底',
+                                value: ''
+                            },
+                            {
+                                title: '顶',
+                                value: ''
+                            },
+                            {
+                                title: '左',
+                                value: ''
+                            },
+                            {
+                                title: '右',
+                                value: ''
+                            },
+                            {
+                                title: '前',
+                                value: ''
+                            },
+                            {
+                                title: '后',
+                                value: ''
+                            },
+                        ],
+                        name: '',
+                        valueClass: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'select',
+                    dId: createId + 19,
+                    pId: createId + 17,
+                    content: {
+                        property: '部件1',
+                        value: '',
+                        options: [
+                            {
+                                title: '默认值',
+                                value: ''
+                            },
+                            {
+                                title: '居中',
+                                value: ''
+                            },
+                            {
+                                title: '内侧',
+                                value: ''
+                            },
+                            {
+                                title: '外侧',
+                                value: ''
+                            },
+                            {
+                                title: '底',
+                                value: ''
+                            },
+                            {
+                                title: '顶',
+                                value: ''
+                            },
+                            {
+                                title: '左',
+                                value: ''
+                            },
+                            {
+                                title: '右',
+                                value: ''
+                            },
+                            {
+                                title: '前',
+                                value: ''
+                            },
+                            {
+                                title: '后',
+                                value: ''
+                            },
+                        ],
+                        name: '',
+                        valueClass: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+            ]
+        },
+        createSlot: function (createId) {
+            return [
+                {
+                    category: 'select',
+                    dId: createId + 2,
+                    pId: createId,
+                    content: {
+                        property: '榫舌和凹槽接点',
+                        value: '',
+                        options: [
+                            {
+                                title: '',
+                                value: ''
+                            },
+                            {
+                                title: '11',
+                                value: '11'
+                            },
+                            {
+                                title: '22',
+                                value: '22'
+                            }
+                        ],
+                        name: '',
+                        valueClass: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+            ]
+        },
+        tongueAndGroove: function (createId) {
+            return [
+                {
+                    category: 'select',
+                    dId: createId + 2,
+                    pId: createId,
+                    content: {
+                        property: '连接件类型',
+                        value: '',
+                        options: [
+                            {
+                                title: '',
+                                value: ''
+                            },
+                            {
+                                title: '11',
+                                value: '11'
+                            },
+                            {
+                                title: '22',
+                                value: '22'
+                            }
+                        ],
+                        name: '',
+                        valueClass: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+            ]
+        }
+    };
+
+    function connectionSuit() {
+        let content = '';
+        for (let item of data.connection(createId)) {
+
+            if (!item.display) {
+                content += createFormItemStrategies[item.category](item);
+            }
+//            createId += data.connection().length;
+        }
+        return content;
+    }
+
+    function deletes() {
+        $('#property-table').find('.delete').each(function (index, ele) {
+            let scope = ele;
+            $(ele).click(function () {
+                $('#property-table').treetable('removeNode', $(scope).parent().parent().attr('data-tt-id'));
+            })
+        });
+    }
+
+
+    $('#property-table').find('.add').click(function () {
+        $('#property-table').treetable('loadBranch', null, connectionSuit());
+        $('#property-table').treetable('loadBranch', null, connectionSuitType());
+//        $('#property-table').treetable('expandAll');
+        connectionSuitTypeChange();
+        checkBox();
+        deletes();
+    });
+
+
+
+    let createFormItemStrategies = {
+
+        button: function (item) {
+            return `<tr data-tt-id=  ${item.dId}  data-tt-parent-id=  ${item.pId} >
+                       <td>${item.content.property}</td>
+                          <td></td>
+                           <td><div class="${item.content.className}">${item.content.operate}</div></td>
+                           </tr>`;
+        },
+        input: function (item) {
+            return `<tr data-tt-id=  ${item.dId}  data-tt-parent-id=  ${item.pId}  >
+                           <td>${item.content.property}</td>
+                           <td><input type="text" value="${item.content.value}"></td>
+                           <td></td>
+                           </tr>`;
+        },
+        inputAndButton: function (item) {
+            return `<tr data-tt-id=  ${item.dId}  data-tt-parent-id=  ${item.pId}  >
+                       <td>${item.content.property}</td>
+                          <td><input type="text" readonly value="${item.content.value}"></td>
+                           <td><div class="${item.content.className}">${item.content.operate}</div></td>
+                           </tr>`;
+        },
+        checkBox: function (item) {
+            return `<tr data-tt-id=  ${item.dId}  data-tt-parent-id=  ${item.pId}>
+                           <td>${item.content.property}</td>
+                           <td><input type="checkbox" class="${item.content.valueClass}"></td>
+                           <td></td>
+                           </tr>`;
+        },
+        select: function (item) {
+            return `<tr data-tt-id=  ${item.dId}  data-tt-parent-id=  ${item.pId}>
+                           <td>${item.content.property}</td>
+                           <td><select name="" class="${item.content.valueClass}">${optionElement(item.content.options)}</select></td>
+                          <td></td>
+                          </tr>`;
+
+            function optionElement(options) {
+                let optionElement = "";
+                if (Array.isArray(options)) {
+                    for (let option of options) {
+                        optionElement += `<option value="${option.value}">${option.title}</option>`
+                    }
+                } else {
+                    console.log("options must be Array")
+                }
+                return optionElement;
+            }
+
+        },
+        selectAndButton: function (item) {
+            return `<tr data-tt-id=  ${item.dId}  data-tt-parent-id=  ${item.pId}  >
+                          <td>${item.content.property}</td>
+                           <td><select name="" id="">${optionElement(item.content.options)}</select></td>
+                           <td><div>${item.content.operate}</div></td>
+                           </tr>`;
+
+            function optionElement(options) {
+                let optionElement = "";
+                if (Array.isArray(options)) {
+                    for (let option of options) {
+                        optionElement += `<option value="${option.value}">${option.title}</option>`
+                    }
+                } else {
+                    console.log("options must be Array")
+                }
+                return optionElement;
+            }
+        },
+        ordinary: function (item) {
+            return `<tr data-tt-id=  ${item.dId}  data-tt-parent-id=  ${item.pId}  >
+                          <td>${item.content.property}</td>
+                           <td></td>
+                           <td></td>
+                           </tr>`;
+        }
+    };
+
+    function connectionSuitType() {
+        let selectOption = $('#property-table').find('.connection option:selected').val();
+        let content = '';
+        if (selectOption) {
+            for (let item of data[selectOption](createId)) {
+                if (!item.display) {
+                    content += createFormItemStrategies[item.category](item);
+                }
+            }
+            createId += data.connection().length + data[selectOption]().length;
+
+        }
+        return content;
+
+    }
+
+    function connectionSuitTypeChange(){
+        $('#property-table').find('.connection').unbind('change').bind('change',function () {
+            $('#property-table').treetable('removeNode', $(scope).parent().parent().attr('data-tt-id'));
+            $('#property-table').treetable('loadBranch', null, connectionSuitType());
+        })
+    }
+
+    function checkBox() {
+        let checkConnectionTypes = $('#property-table').find('.checkConnectionType');
+        let secondSegments = $('#property-table').find('.secondSegment');
+
+        checkConnectionTypes.each(function (index, checkConnectionType) {
+            let nextNode;
+            $(checkConnectionType).unbind('click').bind('click', function () {
+                let currentNode = $('#property-table').treetable('node', $(checkConnectionType).closest('tr').attr('data-tt-id'));
+                if ($(checkConnectionType).is(':checked')) {
+                    nextNode = $('#property-table').treetable('node', $(checkConnectionType).closest('tr').next().attr('data-tt-id'));
+                    $('#property-table').treetable('removeNode', $(checkConnectionType).closest('tr').next().attr('data-tt-id'));
+                } else {
+                    $('#property-table').treetable('loadBranch', currentNode, connectionSpecification(nextNode.id, nextNode.parentId));
+                }
+            })
+        });
+
+        secondSegments.each(function (index, secondSegment) {
+            $(secondSegment).unbind('click').bind('click', function () {
+                let ID = $(secondSegment).closest('tr').attr('data-tt-id');
+                let currentNode = $('#property-table').treetable('node', ID);
+                let segmentNode = $('#property-table').treetable('node', +ID + 7);
+                let segmentXYNode = $('#property-table').treetable('node', +ID + 8);
+                let partsNode = $('#property-table').treetable('node', +ID + 12);
+                console.log(currentNode, segmentXYNode);
+                if ($(secondSegment).is(':checked')) {
+                    $('#property-table').treetable('loadBranch', currentNode, secondSegmentSpecification(currentNode));
+                    $('#property-table').treetable('loadBranch', segmentXYNode, segmentXYSpecification(currentNode));
+                    $('#property-table').treetable('removeNode', +ID + 8);
+                    $('#property-table').treetable('removeNode', +ID + 13);
+                } else {
+                    $('#property-table').treetable('removeNode', +ID + 1);
+                    $('#property-table').treetable('removeNode', +ID + 9);
+                    $('#property-table').treetable('removeNode', +ID + 10);
+                    $('#property-table').treetable('loadBranch', segmentNode, segmentSpecification(currentNode));
+                    $('#property-table').treetable('loadBranch', partsNode, partsSpecification(currentNode));
+                }
+            })
+        });
+    }
+
+    function connectionSpecification(id, parentId) {
+        return `<tr data-tt-id="${id}" data-tt-parent-id="${parentId}">
+        <td>连接件规格</td>
+        <td><select class="select-style" name=""></select></td>
+        <td>
+            <div class="btn connection-specification">编辑</div>
+        </td>
+    </tr>`
+    }
+
+    function secondSegmentSpecification(node) {
+        return `<tr data-tt-id=  ${node.id + 1}  data-tt-parent-id=  ${node.parentId}  >
+                       <td>Y轴线性分割</td>
+                          <td><input type="text" readonly value=""></td>
+                           <td><div class="segment-rules">编辑</div></td>
+                           </tr>
+                  <tr data-tt-id=  ${node.id + 2}  data-tt-parent-id=  ${node.id + 1}>
+                           <td>边对齐</td>
+                           <td><select name="" id="">
+                              <option value="0">否</option>
+                              <option value="1">是</option>
+                             </select></td>
+                          <td></td>
+                          </tr>
+                  <tr data-tt-id=   ${node.id + 3}  data-tt-parent-id=  ${node.id + 1}  >
+                           <td>旋转角度</td>
+                           <td><input type="text" value=""></td>
+                           <td></td>
+                           </tr>
+                  <tr data-tt-id=   ${node.id + 4}  data-tt-parent-id=  ${node.id + 1}  >
+                           <td>截图半径</td>
+                           <td><input type="text" value=""></td>
+                           <td></td>
+                           </tr>
+`
+    }
+
+    function segmentXYSpecification(node) {
+        return `<tr data-tt-id=  ${node.id + 9}  data-tt-parent-id=  ${node.id + 7}>
+                           <td>X线性分割</td>
+                           <td><select name="" id="">
+                              <option value=""></option>
+                              <option value="">中心的</option>
+                              <option value="">第一个插入点</option>
+                              <option value="">第二个插入点</option>
+                             </select></td>
+                          <td></td>
+                          </tr>
+              <tr data-tt-id=  ${node.id + 10}  data-tt-parent-id=  ${node.id + 7}>
+                           <td>Y线性分割</td>
+                           <td><select name="" id="">
+                              <option value=""></option>
+                              <option value="">中心的</option>
+                              <option value="">第一个插入点</option>
+                              <option value="">第二个插入点</option>
+                             </select></td>
+                          <td></td>
+                          </tr>
+                          `
+    }
+
+    function segmentSpecification(node) {
+        return `<tr data-tt-id=  ${node.id + 8}  data-tt-parent-id=  ${node.id + 7}>
+                           <td>线性分割</td>
+                           <td><select name="" id="">
+                              <option value="">最小值</option>
+                              <option value="">最大值</option>
+                              <option value="">部件0</option>
+                              <option value="">部件1</option>
+                             </select></td>
+                          <td></td>
+                          </tr>
+                          `
+    }
+
+    function partsSpecification(node) {
+        return `<tr data-tt-id=  ${node.id + 13}  data-tt-parent-id=  ${node.id + 11}>
+                           <td>部件1</td>
+                           <td><select name="" id="">
+                              <option value="">默认值</option>
+                              <option value="">居中</option>
+                              <option value="">内侧</option>
+                              <option value="">外侧</option>
+                              <option value="">底</option>
+                              <option value="">顶</option>
+                              <option value="">左</option>
+                              <option value="">右</option>
+                              <option value="">前</option>
+                              <option value="">后</option>
+                             </select></td>
+                          <td></td>
+                          </tr>
+                          `
+    }
+
+
+</script>
+</body>
+</html>

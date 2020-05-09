@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 40px;
+        }
+
+        .wrap {
+            position: relative;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        .top {
+            width: 100%;
+            height: 400px;
+            background: aqua;
+            text-align: center;
+            line-height: 400px;
+            color: #ffffff;
+        }
+
+        .method-measure {
+            position: relative;
+            width: 100%;
+            background: #ffffff;
+        }
+
+        .method-top {
+            width: 100%;
+            height: 50px;
+            padding: 5px;
+            cursor: pointer;
+            background: #3399ff;
+        }
+
+        .method-top-wrap {
+            width: 100%;
+            height: 60px;
+        }
+
+        .method-top span {
+            float: left;
+        }
+
+        .method-top div {
+            float: right;
+        }
+
+        img {
+            width: 20px;
+        }
+
+        .inspection {
+            width: 100%;
+        }
+
+        .inspection-top {
+            width: 100%;
+            height: 50%;
+            background: #999999;
+            overflow: hidden;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .inspection-top .inspection-title-img {
+            float: left;
+        }
+
+        .inspection-top span {
+            float: left;
+        }
+
+        .inspection-middle {
+            width: 100%;
+            height: 700px;
+            text-align: center;
+            line-height: 700px;
+        }
+
+        .method-bottom {
+            width: 100%;
+            height: 70px;
+            text-align: center;
+            line-height: 70px;
+            background: rgb(242, 242, 242);
+            display: none;
+        }
+
+        .title-img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .bottom {
+            width: 100%;
+            height: 400px;
+            background: yellowgreen;
+            text-align: center;
+            line-height: 400px;
+        }
+
+        .slide-look {
+            width: 300px;
+            height: 70px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            position: absolute;
+            top: -36px;
+            left: 50%;
+            margin-left: -150px;
+            font-size: 25px;
+            text-align: center;
+            line-height: 70px;
+            display: none;
+        }
+
+        .hello {
+            width: 100%;
+            height: 400px;
+            background: wheat;
+            text-align: center;
+            line-height: 400px;
+            color: #ffffff;
+        }
+
+        .world {
+            width: 100%;
+            height: 400px;
+            background: violet;
+            text-align: center;
+            line-height: 400px;
+            color: #ffffff;
+        }
+
+        .floor {
+            width: 100%;
+            height: 400px;
+            background: violet;
+            text-align: center;
+            line-height: 400px;
+            color: #ffffff;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .fix {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap" style="height: 3000px;">
+    <div class="hello">hello</div>
+    <div class="world">world</div>
+    <a name="controller">
+        <div class="top">尺寸控制器</div>
+    </a>
+    <div class="method-measure">
+        <div class="slide-look">向下滑动查看产品详情</div>
+        <div class="method-top-wrap">
+            <div id="method-top" class="method-top" isDropDown="false">
+                <span>测量方法</span>
+                <div class="title-img"><img src="img/harrow.png"></div>
+            </div>
+        </div>
+        <ul class="inspection-content">
+            <li class="inspection">
+                <div class="inspection-top inspection-top-one">
+                    <div class="inspection-title-img"><img src="img/varrow.png"></div>
+                    <span>现场检查</span>
+                </div>
+                <div class="inspection-middle">
+                    现场检查内容
+                </div>
+            </li>
+            <li class="inspection">
+                <div class="inspection-top inspection-top-two">
+                    <div class="inspection-title-img"><img src="img/varrow.png"></div>
+                    <span>多点测量方法</span>
+                </div>
+                <div class="inspection-middle">
+                    多点测量方法内容
+                </div>
+            </li>
+            <a href="#controller">
+                <div class="method-bottom">
+                    我知道了，开始定制
+                </div>
+            </a>
+        </ul>
+    </div>
+    <div class="bottom" id="bottom">
+        产品详情
+    </div>
+    <div class="floor">floor</div>
+    <div class="floor">floor</div>
+    <div class="floor">floor</div>
+    <div class="floor">floor</div>
+    <div class="floor">floor</div>
+</div>
+<script src="../单选框/jquery-2.2.4.min.js"></script>
+<script>
+    var MethodRemind = {};
+    //    尺寸测量方法提醒
+    MethodRemind.SizeRemind = function () {
+        $(".method-top").click(function () {
+            if ($(this).attr("isDropDown") == "false") {
+                $(this).find("img").attr("src", "img/varrow.png");
+                $(this).parent().next().slideDown();
+                $(this).attr("isDropDown", "true");
+                MethodRemind.SuckTop();
+            } else {
+                $(this).find("img").attr("src", "img/harrow.png");
+                $(this).parent().next().slideUp();
+                $(this).attr("isDropDown", "false");
+            }
+        });
+        $(".inspection-top").click(function () {
+            if ($(this).attr("isDropDown") == "false") {
+                $(this).find("img").attr("src", "img/varrow.png");
+                $(this).next().slideDown();
+                $(this).attr("isDropDown", "true");
+            } else {
+                $(this).find("img").attr("src", "img/harrow.png");
+                $(this).next().slideUp();
+                $(this).attr("isDropDown", "false");
+            }
+        });
+    };
+    //  首次进入 开始定制按钮
+    MethodRemind.FirstCustom = function () {
+        $(".method-bottom").click(function () {
+            if ($(".method-top").attr("isDropDown") == "false") {
+                $(".method-top").find("img").attr("src", "img/varrow.png");
+                $(".inspection-content").slideDown();
+                $(".method-top").attr("isDropDown", "true");
+            } else {
+                $(".method-top").find("img").attr("src", "img/harrow.png");
+                $(".inspection-content").slideUp();
+                $(".method-top").attr("isDropDown", "false");
+            }
+            $(".slide-look").show().delay(3000).fadeOut();
+            MethodRemind.SizeRemind();
+            /*当点击 开始定制时，测量方法可以使用*/
+            $(".method-bottom").hide();
+            /*测量方法可以使用后 再次点击测量方法的时候，开始定制按钮消失*/
+        });
+    };
+    //    判断是否为首次登录
+    MethodRemind.FirstVisit = function () {
+        var isCookie = document.cookie.indexOf("firstVisit=");
+        if (isCookie == -1) {
+            var exDate = new Date();
+            exDate.setDate(exDate.getDate() + 1);
+            document.cookie = 'firstVisit=1;expires=' + exDate.toGMTString();
+            $(".inspection-content").show(0);
+            /*首次进入测量方法的内容展现*/
+            $(".method-top").find("img").attr("src", "img/varrow.png");
+            $(".method-top").attr("isDropDown", "true");
+            $(".method-top").click(function () {  /*首次进入测量方法不能直接点击*/
+            });
+            $(".method-bottom").show();
+            /*首次进入 开始定制按钮 出现*/
+            MethodRemind.FirstCustom();
+            /*首次进入 开始定制按钮 功能*/
+        } else {
+            $(".inspection-content").hide(0);
+            /*如果非首次进入 测量内容 隐藏*/
+            MethodRemind.SizeRemind();
+            /*非首次进入测量方法能直接点击*/
+        }
+    };
+    MethodRemind.FirstVisit();
+    //    尺寸测量吸顶操作
+    MethodRemind.SuckTop = function () {
+        var tit = document.getElementById("method-top");
+        var productIntroduction = document.getElementById("bottom");
+        //获取距离页面顶端的距离
+        var methodMeasure = document.getElementsByClassName("method-measure")[0];
+        var titleTop = methodMeasure.offsetTop;
+//        var productTop = productIntroduction.offsetTop;
+        console.log(titleTop);
+//        console.log(productTop);
+        //滚动事件
+        document.onscroll = function () {
+            var productTop = productIntroduction.offsetTop;
+            console.log(productTop);
+            //获取当前滚动的距离
+            var btop = document.body.scrollTop || document.documentElement.scrollTop;
+//            console.log(btop);
+            //如果滚动距离大于导航条据顶部的距离
+            if (btop > titleTop && btop < productTop) {
+                //为导航条设置fix
+                tit.className = "method-top fix";
+                $(".method-top").find("img").attr("src", "img/harrow.png");
+            } else {
+                //移除fixed
+                tit.className = "method-top";
+//                $(".method-top").find("img").attr("src", "img/varrow.png");
+            }
+        }
+    };
+</script>
+</body>
+</html>

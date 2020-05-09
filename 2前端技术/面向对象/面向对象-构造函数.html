@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+	</head>
+
+	<body>
+		<!--面向对象的设计模式-->
+		<!--构造函数模式-->
+		<!--构造函数：
+        1.首字母大写；
+        2.必须使用new 关键字创建对象 -->
+
+		<!--用了关键字 this  -->
+
+		<script>
+			//		
+			//			function Obj(json) {
+			//				this.name = json.name;
+			//				this.sex = json.sex;
+			//				this.age = json.age;
+			//				this.say = function() {
+			//					console.log(this.name + "会说汪汪汪");
+			//				}
+			//			};
+			//			var ff = new Obj({
+			//				name: "博贱",
+			//				sex: "不男不女",
+			//				age: "38"
+			//			});
+			//			var gg = new Obj({
+			//				name: "博贱",
+			//				sex: "不男不女",
+			//				age: "38"
+			//			});
+
+			/*console.log(ff==gg);*/
+			//			ff.say();
+			//          console.log(gg.sex)
+			/*
+			 * 构造函数的模式；
+			 *
+			 * */
+
+			/*原型模式*/
+
+			/*function Obj1(){
+			 }*/
+
+			/* 原型是什么：构造函数的prototype属性；*/
+
+		/*	Obj1.prototype.ff = function(json) {
+				name = json.name;
+				sex = json.sex;
+				age = json.age;
+				say = function() {
+					console.log(this.name + "会说汪汪汪");
+				}
+			}
+
+			var h = new Obj1();
+			var k = new Obj1();
+
+			h.ff({
+				name: "小马",
+				sex: "男",
+				age: "32"
+			});
+			k.ff({
+				name: "小林",
+				sex: "男",
+				age: "32"
+			});
+
+			console.log(h.ff === k.ff);*/
+
+			/*  用的时候,组合在一起；*/
+
+			/*构造函数创建属性*/
+			/*用原型创建方法*/
+
+			/*function Obj (json){
+			 this.name=json.name;
+			 this.sex=json.sex;
+			 this.age=json.age;
+			 }
+			 Obj.prototype={
+			 say:function (){
+			 console.log(this.name+"汪汪汪");
+			 },
+			 eat:function(){
+			 console.log(this.name+"吃翔");
+			 }
+			 }
+			 var ff = new Obj({name:"博贱",sex:"未知",age:"38"});
+
+			 ff.eat();
+			 var w = new Obj({name:"贱贱",sex:"未知",age:"38"});
+			 w.eat();*/
+
+			/*工厂模式*/
+			//			function gg(name) {
+			//				var k = new Object();
+			//				k.name = name;
+			//				k.say = function() {
+			//					console.log(k.name + "去上班");
+			//				}
+			//				return k;
+			//			};
+
+			/*大量的创建相同的对象或者方法*/
+			/*1.创建  2.添加属性或者方法  3.return*/
+
+			//			var h = gg("啸天");
+			//
+			//			h.say();
+
+			/*js产生对象的3种基本方式;*/
+			/*工厂模式*/
+			/*构造函数模式*/
+			/*原型模式*/
+		</script>
+
+	</body>
+
+</html>

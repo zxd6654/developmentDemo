@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+window.name 在一个窗口（标签）的生命周期之内是共享的，利用这点就可以传输一些数据。
+<script type="text/javascript">
+    var state = 0,
+        iframe = document.createElement('iframe'),
+        loadfn = function() {
+            if (state === 1) {
+                var data = iframe.contentWindow.name;    // 读取数据
+                alert(data);    //弹出'I was there!'
+            } else if (state === 0) {
+                state = 1;
+                iframe.contentWindow.location = "http://localhost:63342/developmentDemo/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AFJavaScript%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/window.name/proxy.html?_ijt=3aummr8b5lgvagk4hn8tstlqah";    // 设置的代理文件
+            }
+        };
+    iframe.src = 'http://localhost:63342/developmentDemo/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AFJavaScript%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/window.name/b.html?_ijt=3aummr8b5lgvagk4hn8tstlqah';
+    if (iframe.attachEvent) {
+        iframe.attachEvent('onload', loadfn);
+    } else {
+        iframe.onload  = loadfn;
+    }
+    document.body.appendChild(iframe);
+</script>
+</body>
+</html>

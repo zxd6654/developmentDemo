@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="jquery-2.2.4.min.js"></script>
+    <script src="jquery-ui.js"></script>
+</head>
+<body>
+<input type="text" class="date" id="date_start"> ~
+<input type="text" class="date" id="date_end">
+<script>
+    $(".date").datepicker({
+        dateFormat: "yy-mm-dd",
+        monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+        dayNamesMin: ["一", "二", "三", "四", "五", "六", "日"],
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call</title>
+    <!--call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向;-->
+    <!--二者的作用完全一样，只是接受参数的方式不太一样;-->
+    <!--func1.call(this, arg1, arg2); 或者 func1.apply(this, [arg1, arg2]);-->
+    <!--其中 this 是你想指定的上下文，他可以任何一个 JavaScript 对象(JavaScript 中一切皆对象)，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。-->
+
+    <!--记忆口诀：-->
+    <!--猫吃鱼，狗吃肉，奥特曼打小怪兽。-->
+
+    <!--有天狗想吃鱼了-->
+
+    <!--猫.吃鱼.call(狗，鱼)-->
+
+    <!--狗就吃到鱼了-->
+
+    <!--猫成精了，想打怪兽-->
+
+    <!--奥特曼.打小怪兽.call(猫，小怪兽)-->
+
+    <!--就这样记住了。-->
+
+    <!--函数调用的三种方式:-->
+    <!--obj.myFunc();-->
+    <!--myFunc.call(obj,arg);-->
+    <!--myFunc.apply(obj,[arg1,arg2..]);-->
+</head>
+<body>
+<script src="jquery-1.8.3.js"></script>
+<div id="id1">1</div>
+<div id="id2">2</div>
+<div id="id3">3</div>
+<div id="id4">4</div>
+<script>
+    var ele = document.createElement('div');
+    ele.className = 'plusBtn';
+    $("div[id*='id']").append(ele);
+</script>
+<script>
+    function add(j, k) {
+        return j + k;
+    }
+
+    function sub(j, k) {
+        return j - k;
+    }
+
+    //    能实现对象的继承
+    var Parent = function () {
+        this.name = "yjc";
+        this.age = 22;
+    }
+
+    var child = {};
+
+    console.log(child);//Object {} ,空对象
+
+    Parent.call(child);
+
+    console.log(child); //Object {name: "yjc", age: 22}
+</script>
+
+
+<script>
+    Function.prototype.call = function (ctx) {
+        var ctx = ctx || window;//判断是否有参数 如果没有 赋予全局作用域
+
+        ctx.fn = this; //this是Function 的实例对象即是调用者本身
+        var array = [];//储存参数
+        for (i = 1; i < arguments.length; i++) {
+            array.push('arguments[' + i + ']')
+        }
+        //此处运用es6的语法
+        var result = ctx.fn(...array);
+
+//es3的方法  var reslut = eval('ctx.fn(' + array + ')')  严格模式下不允许使用eval方法。
+        delete ctx.fn;
+
+        return result
+    };
+
+
+    function fn(a, b) {
+        console.log(this);
+        console.log(a);
+        console.log(a + b);
+    }
+
+    fn.call(1);
+    fn.call.call(fn);
+    fn.call.call.call(fn, 1, 2);
+    fn.call.call.call.call(fn, 1, 2, 3);
+</script>
+</body>
+</html>

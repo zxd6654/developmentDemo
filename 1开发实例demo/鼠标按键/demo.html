@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="div" id="div"></div>
+<script>
+    var obj=document.getElementById('div');
+    function fun() {
+        if(event.button==0){  /*鼠标左键*/
+            obj.style.background="red"
+        }
+        if(event.button==1){ /*鼠标中键*/
+            obj.style.background="green"
+        }
+        if(event.button==2){/*鼠标右键*/
+            obj.style.background="blue"
+        }
+    }
+    obj.onmousedown=fun;
+</script>
+</body>
+</html>

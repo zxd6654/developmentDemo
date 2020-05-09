@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       .txt{
+           width: 300px;
+           height: 25px;
+       }
+    </style>
+    <script>
+        window.onload=function(){
+            var oStart=document.getElementById("start");
+            var oStop=document.getElementById("stop");
+            var oTxt=document.getElementById("txt");
+            var arr=["一一一","二二二","三三三"];
+            var index;
+            var timer=null;
+
+
+            oStart.onclick=function(){
+                clearInterval(timer);
+                timer=setInterval(function(){
+                    index=Math.floor(Math.random()*arr.length);
+
+                      oTxt.value=arr[index];
+
+                },300)
+            };
+
+            oStop.onclick=function(){
+                clearInterval(timer);
+                oTxt.value=arr[index]+"中奖了";
+            }
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="txt" class="txt" />
+<input type="button" value="开始" id="start" />
+<input type="button" value="停止" id="stop" />
+</body>
+</html>

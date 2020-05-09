@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>content</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <style type="text/css">
+        .canvas1 {
+            float: left;
+        }
+
+        .tab-conts {
+            float: left;
+            width: 700px;
+            height: 400px;
+            border: 1px solid #ccc;
+            overflow: auto;
+        }
+
+        .tab-items-cont {
+            width: 100%;
+            height: 40px;
+            float: left;
+        }
+
+        .tab-item {
+            padding: 5px 10px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-left: none;
+            float: left;
+            cursor: pointer;
+        }
+
+        .list-item {
+            float: left;
+            width: 200px;
+            text-align: center;
+
+        }
+
+        .list-item img {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .get-image-btn {
+            float: left;
+            border: 1px solid #ccc;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .image-container {
+            float: left;
+            width: 100%;
+        }
+
+        .image-container > img {
+            height: 200px;
+            margin:10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<canvas id="drawing" class="canvas1" width="400" height="400" style="border:1px solid #ccc;"></canvas>
+<div class="tab-conts">
+    <div class="tab-items-cont" id="tab-items-cont">
+    </div>
+    <div id="listCont"></div>
+</div>
+<div class="get-image-btn" onclick="predictDraw.getImage();">获取图像</div>
+<div id="image-container" class="image-container">
+
+</div>
+<script type="text/selfdefine" id="inner-block-cont">
+    <div class="list-item" style="">
+      <img src="#src#"/>
+      <div>#name#</div>
+  </div>
+
+
+
+
+</script>
+<script>
+    var data = {
+        listTabs: [
+            {name: "组件1", id: 0},
+            {name: "组件2", id: 1},
+            {name: "组件3", id: 2},
+            {name: "组件4", id: 3}],
+        lists: [
+            {
+                for: 0,
+                conts: [
+                    {src: "1/c1.png", name: "颜色1"},
+                    {src: "1/c2.png", name: "颜色2"},
+                    {src: "1/c3.png", name: "颜色3"},
+                    {src: "1/c4.png", name: "颜色4"},
+                    {src: "1/c5.png", name: "颜色5"}
+                ]
+            },
+            {
+                for: 1,
+                conts: [
+                    {src: "2/c1.png", name: "颜色1"},
+                    {src: "2/c2.png", name: "颜色2"},
+                    {src: "2/c3.png", name: "颜色3"},
+                    {src: "2/c4.png", name: "颜色4"},
+                    {src: "2/c5.png", name: "颜色5"}
+                ]
+            },
+            {
+                for: 2,
+                conts: [
+                    {src: "3/c1.png", name: "颜色1"},
+                    {src: "3/c2.png", name: "颜色2"},
+                    {src: "3/c3.png", name: "颜色3"},
+                    {src: "3/c4.png", name: "颜色4"},
+                    {src: "3/c5.png", name: "颜色5"}
+                ]
+            },
+            {
+                for: 3,
+                conts: [
+                    {src: "4/c1.png", name: "颜色1"},
+                    {src: "4/c2.png", name: "颜色2"},
+                    {src: "4/c3.png", name: "颜色3"},
+                    {src: "4/c4.png", name: "颜色4"},
+                    {src: "4/c5.png", name: "颜色5"}
+                ]
+            }
+        ]
+    };
+
+    //生成tab列表函数
+    var TabCont = {
+        smallBlockContainerId: null,
+        listContainerId: null,
+        tabsContainerId: null,
+        listData: null,
+        tabsArr: [],
+        //生成tab列表
+        setItems: function () {
+            for (var i = 0, len = this.tabsArr.length; i < len; i++) {
+                var div = document.createElement("div");
+                div.className = "tab-item";
+                div.innerHTML = this.tabsArr[i].name;
+                div.setAttribute("itemid", this.tabsArr[i].id);
+                document.getElementById(this.tabsContainerId).appendChild(div);
+            }
+        },
+        //get list data
+        getListData: function (listData, itemId) {
+            var dataObjArr = [];
+            for (var i = 0, len = listData.length; i < len; i++) {
+                if (listData[i].for == itemId) {
+                    dataObjArr = listData[i];
+                }
+            }
+            console.log(JSON.stringify(dataObjArr));
+            return dataObjArr;
+
+        },
+        producePage: function (containerId, smallBlockContainerId, dataObj, replaceSetter, listStart, listCount, isAppend) {
+
+            var pageContainer = document.getElementById(containerId);
+            var blockStr = document.getElementById(smallBlockContainerId).innerHTML;
+            var listItem = null;
+            var readData = "";
+            var replaceReg = null;
+            var allListString = ""; //一次性添加到页面（避免页面多次刷新）
+
+            if (!isAppend) { //不是在原有内容上追加
+                pageContainer.innerHTML = "";
+            }
+
+            //控制输入参数生成的值，对输入值验证
+            listStart = Math.max(0, Math.min(listStart, dataObj.length - 1));
+            var repeatCount = listStart + listCount;
+            repeatCount = Math.max(0, Math.min(repeatCount, dataObj.length));
+
+            for (var i = listStart; i < (repeatCount); i++) {
+                listItem = dataObj[i];
+                var smallBlockStr = blockStr; //复制一份列表字符串
+                for (var prop in replaceSetter) {
+                    readData = listItem[prop];//读取需要的数据
+                    replaceReg = new RegExp(replaceSetter[prop], "g");//需要替换的内容
+                    smallBlockStr = smallBlockStr.replace(replaceReg, readData);
+                }
+                allListString += smallBlockStr;
+            }
+            pageContainer.innerHTML += allListString
+        },
+        setList: function (itemId) {
+            var listObjArr = this.getListData(this.listData, itemId).conts;
+            this.producePage(this.listContainerId, this.smallBlockContainerId, listObjArr, {
+                src: "#src#",
+                name: "#name#"
+            }, 0, 8, false);
+        },
+        init: function (obj) {
+            this.tabsContainerId = obj.tabsContainerId;
+            this.listContainerId = obj.listContainerId;
+            this.smallBlockContainerId = obj.smallBlockContainerId;
+            this.listData = obj.listData;
+            this.tabsArr = obj.tabsArr;
+        }
+    };
+
+    //canvas处理
+    var predictDraw = {
+        canvas: null,
+        imgArr: [],
+        getImage: function () {
+            var img = this.canvas.toDataURL("image/png");
+            var image = document.createElement("img");
+            image.src = img;
+            document.getElementById("image-container").appendChild(image);
+        },
+        //预加载图片
+        preLoadImg: function () {
+            var i = 0;
+            var _self = this;
+            var img = new Image();
+            img.onload = function () {
+                i++;
+                if (_self.imgArr[i]) {
+                    img.src = _self.imgArr[i];
+                }
+                console.log("load+1");
+            };
+            img.src = this.imgArr[i];
+        },
+        //图片数组绘制到canvas
+        drawImg: function () {
+            var dw = this.canvas;
+            if (dw.getContext) {
+                var context = dw.getContext("2d");
+            } else {
+                alert("不支持2d绘图！");
+            }
+            context.clearRect(0, 0, 400, 400); //首先清空画布 (x,y,width,height)
+            for (var i = 0, len = this.imgArr.length; i < len; i++) {
+                var img = new Image();
+                img.src = this.imgArr[i];
+                // context.drawImage();
+                context.drawImage(img, 0, 0, 400, 400);
+            }
+        },
+        //设置绘制用imgArr数组内 某一个图片的透明度
+        hoverDrawImg: function (index, op) {
+            var dw = this.canvas;
+            if (dw.getContext) {
+                var context = dw.getContext("2d");
+            } else {
+                alert("不支持2d绘图！");
+            }
+            context.clearRect(0, 0, 400, 400); //首先清空画布 (x,y,width,height)
+            for (var i = 0, len = this.imgArr.length; i < len; i++) {
+                var img = new Image();
+                img.src = this.imgArr[i];
+                if (i == index) {
+                    context.globalAlpha = op;
+                } else {
+                    context.globalAlpha = 1;
+                }
+                // context.drawImage();
+                context.drawImage(img, 0, 0, 400, 400);
+            }
+        },
+        setImgItem: function (index, src) {
+            this.imgArr[index] = src;
+        },
+        init: function (obj) {
+            this.imgArr = obj.imgArr;
+            this.canvas = document.getElementById(obj.canvasId);
+            this.preLoadImg();
+        }
+    };
+
+
+    //初始化tab对象
+    TabCont.init({
+        tabsContainerId: "tab-items-cont",
+        listContainerId: "listCont",
+        smallBlockContainerId: "inner-block-cont",
+        listData: data.lists,
+        tabsArr: data.listTabs
+    });
+    //生成tabs标签
+    TabCont.setItems();
+
+    //绑定tab标签点击事件
+    var curUnitIndex = 0;
+    document.getElementById("tab-items-cont").addEventListener("click", function (e) {
+        var target = e.target;
+        var indexId = target.getAttribute("itemid");
+        TabCont.setList(indexId);
+        curUnitIndex = parseInt(indexId);
+    }, false);
+
+    //hover时的显示
+    var tim = 0;
+    document.getElementById("tab-items-cont").addEventListener("mouseover", function (e) {
+        var target = e.target;
+        var indexId = parseInt(target.getAttribute("itemid"));
+        //显示动画
+        var i = 0;
+
+        function animate() {
+            tim = setTimeout(function () {
+                if (++i < 6) {
+                    if (i % 2) {
+                        predictDraw.hoverDrawImg(indexId + 1, 0.3);
+                    } else {
+                        predictDraw.hoverDrawImg(null, 0.3);
+                    }
+                    animate();
+                } else {
+                    predictDraw.hoverDrawImg(null, 0.3);
+                }
+
+            }, 200);
+        }
+
+        animate();
+
+    }, false);
+    //hover出来时取消透明度
+    document.getElementById("tab-items-cont").addEventListener("mouseout", function (e) {
+        clearTimeout(tim);
+        //alert(indexId );
+        predictDraw.hoverDrawImg(null, 0.3);
+    }, false);
+    //初始化canvas绘图器
+    predictDraw.init({
+        canvasId: "drawing",
+        imgArr: ["product.png", "1/c1.png", "2/c1.png", "3/c1.png", "4/c1.png"]
+    });
+
+    //列表内项目的点击事件
+    document.getElementById("listCont").onclick = function (e) {
+        var target = e.target;
+        /// alert(curUnitIndex + 1);
+        predictDraw.setImgItem(curUnitIndex + 1, target.src);
+        //alert(JSON.stringify(predictDraw.imgArr));
+        predictDraw.drawImg();
+    };
+
+    /* window.onclick = function () {
+     predictDraw.drawImg();
+     /!* t++;
+     if (t % 2 == 1) {
+     predictDraw.drawImg();
+     } else {
+     predictDraw.drawImg(["1.png", "2.png", "3-1.png"]);
+     }*!/
+
+     }*/
+</script>
+</body>
+</html>

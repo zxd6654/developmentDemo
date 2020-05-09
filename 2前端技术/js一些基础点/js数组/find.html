@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    es6 对数组扩展了两个查找用的方法
+    1.find()
+    find()方法用于找出第一个符合条件的数组成员，他的参数是一个回调函数，所有数组成员一次执行这个回调函数，
+    直到找出第一个返回值为true的成员，然后返回该成员，如果没有符合条件的成员，就返回undefined
+
+</head>
+<body>
+例：找出数组中小于0的成员
+<script>
+    [1,5,15,20,25].find((value,index,arr) => {
+        return value > 20;
+    })    // 25
+</script>
+</body>
+</html>

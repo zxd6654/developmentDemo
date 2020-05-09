@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<link rel="stylesheet" href="css/jquery.treetable.theme.default.css">
+<link rel="stylesheet" href="css/jquery.treetable.css">
+<script src="../../拼图游戏/jquery-2.2.4.min.js"></script>
+<script src="js/jquery.treetable.js"></script>
+<script>
+    $(function () {
+        $('#example-advanced').treetable({expandable: true,        initialState:'expanded'
+        });
+        //选中高亮
+        $("#example-advanced tbody").on("mousedown", "tr", function () {
+            $(".selected").not(this).removeClass("selected");
+            $(this).toggleClass("selected");
+        });
+
+
+//        $("#example-advanced .folder").each(function() {
+//            $(this).parents("#example-advanced tr").droppable({
+//                accept: ".file, .folder",
+//                drop: function(e, ui) {
+//                    var droppedEl = ui.draggable.parents("tr");
+//                    $("#example-advanced").treetable("move", droppedEl.data("ttId"), $(this).data("ttId"));
+//                },
+//                hoverClass: "accept",
+//                over: function(e, ui) {
+//                    var droppedEl = ui.draggable.parents("tr");
+//                    if(this != droppedEl[0] && !$(this).is(".expanded")) {
+//                        $("#example-advanced").treetable("expandNode", $(this).data("ttId"));
+//                    }
+//                }
+//            });
+//        });
+    })
+</script>
+<table id="example-advanced">
+    <caption style="text-align: left">属性设置</caption>
+    <thead>
+    <tr>
+        <th>属性</th>
+        <th>值</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tr data-tt-id="0">
+        <td>添加</td>
+        <td><select name="" id="">
+            <option value="">開槽</option>
+            <option value="">连接杆</option>
+        </select></td>
+        <td><button>添加</button></td>
+    </tr>
+    <tr data-tt-id="1" data-tt-parent-id="0">
+        <td>controllers</td>
+        <td>controllers</td>
+        <td>controllers</td>
+    </tr>
+    <tr data-tt-id="1-1" data-tt-parent-id="1">
+        <td>application_controller.rb</td>
+        <td>application_controller.rb</td>
+        <td>application_controller.rb</td>
+    </tr>
+    <tr data-tt-id="2">
+        <td>helpers</td>
+        <td>helpers</td>
+        <td>helpers</td>
+    </tr>
+    <tr data-tt-id="2-1" data-tt-parent-id="2">
+        <td>models</td>
+        <td>models</td>
+        <td>models</td>
+    </tr>
+    <tr data-tt-id="2-1" data-tt-parent-id="2">
+        <td>views</td>
+        <td>views</td>
+        <td>views</td>
+    </tr>
+</table>
+</body>
+</html>

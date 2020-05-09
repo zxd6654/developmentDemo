@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="../agentMonitor.js"></script>-->
+    <!--<style>-->
+    <!--*{-->
+    <!--margin: 0;-->
+    <!--padding: 0;-->
+    <!--}-->
+    <!--.aa{-->
+    <!--/*position: absolute;*/-->
+    <!--width: 100px;-->
+    <!--height: 100px;-->
+    <!--background: yellow;-->
+    <!--border: 5px solid red;-->
+    <!--display: none;-->
+    <!--}-->
+    <!--body{-->
+    <!--height: 5000px;-->
+    <!--}-->
+    <!--</style>-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        select {
+            outline: none;
+            width: 100px;
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            background-color: #fff;
+            /*设置箭头*/
+            background: url("close.png") no-repeat scroll right center transparent;
+        }
+    </style>
+</head>
+<body>
+<!--&lt;!&ndash;<div class="aa"></div>&ndash;&gt;-->
+<!--<div class="aa">-->
+<!--<span onclick="heihei()">aa</span>-->
+<!--</div>-->
+<!--<span onclick="haha(this)" isShow="false" class="sss">11</span>-->
+<!--&lt;!&ndash;<script>&ndash;&gt;-->
+<!--&lt;!&ndash;document.getElementsByClassName("aa")[0].onload=function () {&ndash;&gt;-->
+<!--&lt;!&ndash;alert(1)&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+<!--<a href="" alt="aaa" title="bbb">11111</a>-->
+<!--<img src="" alt="asdasdasdasd">-->
+<!--<script>-->
+<!--var a = 1;-->
+
+<!--function fn(){-->
+<!--console.log(a)-->
+<!--var a = 5;-->
+<!--console.log(a);-->
+<!--a++;-->
+<!--var a;-->
+<!--fn3();-->
+<!--fn2();-->
+<!--console.log(a);-->
+<!--function fn2(){console.log(a);a=20;}-->
+<!--}-->
+<!--function fn3(){-->
+<!--console.log(a);-->
+<!--a =200;-->
+<!--}-->
+<!--fn();-->
+<!--console.log(a);-->
+<!--</script>-->
+<script src="拼图游戏/jquery-2.2.4.min.js"></script>
+<!--<li class="drawerBoxSelection">-->
+<!--<div class="selection">-->
+<!--<span>抽屉:s5</span>-->
+<!--<select class="s5">-->
+<!--<option value=""></option>-->
+<!--<option value="d1">d1</option>-->
+<!--<option value="d2" selected="selected">d2</option>-->
+<!--<option value="d3">d3</option>-->
+<!--</select>-->
+<!--</div>-->
+<!--<div class="selection">-->
+<!--<span>抽屉:s7</span>-->
+<!--<select class="s7">-->
+<!--<option value=""></option>-->
+<!--<option value="d1">d1</option>-->
+<!--<option value="d2" selected="selected">d2</option>-->
+<!--<option value="d3">d3</option>-->
+<!--</select>-->
+<!--</div>-->
+<!--<div class="selection">-->
+<!--<span>抽屉:s9</span>-->
+<!--<select class="s9">-->
+<!--<option value=""></option>-->
+<!--<option value="d1">d1</option>-->
+<!--<option value="d2">d2</option>-->
+<!--<option value="d3" selected="selected">d3</option>-->
+<!--</select>-->
+<!--</div>-->
+<!--</li>-->
+<!--<script>-->
+<!--$('.drawerBoxSelection').find('select').change(function () {-->
+<!--console.log($('.drawerBoxSelection select').index(this));-->
+
+<!--})-->
+<!--</script>-->
+<!--<div class="btn">按钮</div>-->
+<!--<script>-->
+<!--$(".btn").unbind('click.alert').bind('click.alert',function () {-->
+<!--alert(1)-->
+<!--}).then(function () {-->
+<!--alert(2)-->
+<!--})-->
+<!--</script>-->
+<!--<script>-->
+<!--var time=new Date(1524729537113);-->
+<!--console.log(time);-->
+<!--var times=time.toLocaleString();-->
+<!--console.log(times);-->
+<!--</script>-->
+<!--<script>-->
+<!--for(let i=0; i<10; i++) {-->
+<!--(function(j) {-->
+<!--setTimeout(function(){-->
+<!--console.log(j);-->
+<!--}, j*1000)-->
+<!--})(i);-->
+<!--}-->
+<!--</script>-->
+
+<!--<script>-->
+
+<!--let rightArray = [[2, 1], [2, 2], [3, 4], [6, 5]];-->
+
+<!--for (let i = 0; i < rightArray.length; i++) {-->
+<!--let every=Array.from(new Set(rightArray[i])).sort(function (x, y) {-->
+<!--return x-y;-->
+<!--});-->
+<!--rightArray[i]=every;-->
+<!--}-->
+
+<!--console.log(rightArray);-->
+<!--</script>-->
+<!--<script>-->
+<!--var str='uploads/108889/2018_06_14/jdjf_095709.txt';-->
+<!--//1-->
+<!--//    var array1=str.split('/');-->
+<!--//    var last=array1.pop();-->
+<!--//    var array2=last.split('.');-->
+<!--//    var target=array2.shift();-->
+<!--//    console.log(target);-->
+
+<!--//2-->
+<!--var target=str.substring(str.lastIndexOf('/')+1,str.lastIndexOf('.'));-->
+<!--console.log(target);-->
+<!--</script>-->
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<!--<script>-->
+<!--var li = $('li');-->
+<!--for (var i = 0; i < li.length; i++) {-->
+<!--//        li[i].onclick=function () {-->
+<!--//            alert(1)-->
+<!--//        }-->
+<!--li.eq(i).on('click', function () {-->
+<!--alert(i)-->
+<!--})-->
+<!--}-->
+<!--</script>-->
+<!--<input type="file" value="1111" id="in">-->
+<!--<button>aaaa</button>-->
+<!--<script>-->
+<!--$('button').click(function () {-->
+<!--$('#in').val('')-->
+<!--})-->
+<!--</script>-->
+<!--<script>-->
+<!--//var str="if X<=200mm20mm:1:30mm\r\nif 200mm<X<=500mm\r\n20mm:1:1:30mm\r\nif 500mm<X<=700mm\r\n20mm:1:64mm:1:30mm\r\nif 700mm<X<=1000mm\r\n20mm:1-32mm:1-32mm:1:30mm\r\nDEFAULT\r\n20mm:1-32mm:1-32mm:1-32mm:1:30mm"-->
+<!--var str="aaa↵bbb";-->
+<!--//↵-->
+<!--var arr=str.split(/↵/g);-->
+<!--console.log(arr);-->
+<!--</script>-->
+<!--<script>-->
+<!--var str='';-->
+<!--str+="1";-->
+<!--str+="2";-->
+<!--console.log(str);-->
+
+<!--</script>-->
+<!--<input type="text" value="aaa">-->
+
+<!--<script>-->
+<!--//  $(document).ready(function () {-->
+<!--//      $('input').focus().select();-->
+<!--////      $('input').select();-->
+<!--//  })-->
+<!--$(function () {-->
+<!--$('input').focus().select();-->
+<!--})-->
+<!--</script>-->
+
+<select name="aa" id="">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+</select>
+<input type="text" class="a fff">
+<script>
+    console.log($("select[name='aa'] option:selected").val());
+    //    $('select').change(function () {
+    //        console.log($(this).find('option:selected').val());
+    //        $(this).css(
+    //            'background',"url('close.png') no-repeat scroll right center transparent"
+    //        )
+    //    });
+    $('select').unbind('keydown').bind('keydown', function () {
+        $(this).css(
+            'background', "url('open.png') no-repeat scroll right center transparent"
+        );
+
+        $(this).blur(function () {
+            $(this).css(
+                'background', "url('close.png') no-repeat scroll right center transparent"
+            )
+        });
+
+        $(this).change(function () {
+            console.log($(this).find('option:selected').val());
+            $(this).css(
+                'background', "url('close.png') no-repeat scroll right center transparent"
+            )
+        });
+    });
+
+
+</script>
+
+<script>
+    let arr1 = [
+        {
+            stateImage: "./images/softphone/phone_busy.gif",
+            lineState: "Dialing",
+            phoneNumber: "5",
+            callType: 3,
+            callId: "4fc293f8-c38b-11e8-b485-d90019925fcb"
+        },
+        {
+            stateImage: "3",
+            lineState: "t",
+            phoneNumber: "t",
+            callType: -1,
+            callId: "t",
+        }
+    ];
+
+    let flag1 = true, flag2 = true;
+
+
+    for (let i  in arr1[0]) {
+        if (arr1[0][i] == '' || arr1[0][i] == undefined) {
+            flag1 = false;
+        }
+    }
+    for (let i  in arr1[1]) {
+        if (arr1[1][i]== '' || arr1[1][i] == undefined) {
+            flag2 = false;
+        }
+    }
+
+
+    if (flag1&&flag2) {
+        alert(2)
+    } else if(flag1||flag2) {
+        alert(1)
+    }else{
+        console.log('都为空');
+    }
+
+</script>
+</body>
+</html>

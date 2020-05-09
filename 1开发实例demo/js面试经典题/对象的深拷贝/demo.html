@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let object = {
+        a: "hello",
+        b: {
+            a: "world",
+            b: 21,
+            c:[{
+                a:"good"
+            }]
+        },
+        c: ["Bob", "Tom", "Jenny"],
+        d: function() {
+            alert("hello world");
+        }
+    };
+
+    function Copy(p,c){
+        let obj=c||{};
+        if(p){
+            for (let key in p){
+                if(key===a){
+                    obj[key]=p[key];
+                }
+            }
+        }
+    }
+
+    function deepCopy ( p, c ) {
+        //还需要判断c是否为空对象或空数组，其他类型抛出错误
+        let obj = c||{};
+        if (p) {
+            for (let i in p) {
+                if (typeof(p[i]) === 'object') {
+                    obj[i] = (p[i].constructor === Array ? [] : {});
+                    deepCopy( p[i], obj[i] );
+                } else {
+                    obj[i] = p[i];
+                }
+            }
+            return obj;
+        }
+        return '';
+    }
+</script>
+</body>
+</html>

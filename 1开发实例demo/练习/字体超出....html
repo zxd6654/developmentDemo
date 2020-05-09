@@ -1,0 +1,60 @@
+<!DOCTYPE>
+<html >
+<head>
+    <meta charset=utf-8"/>
+    <title>超过的文字用省略号代替的js写法</title>
+</head>
+
+<body>
+<script>
+
+    //    function cutString(str, len) {
+    //        //length属性读出来的汉字长度为1
+    //        if(str.length*2 <= len) {
+    //            return str;
+    //        }
+    //        var strlen = 0;
+    //        var s = "";
+    //        for(var i = 0;i<str.length; i++) {
+    //            s = s + str.charAt(i);
+    /*charAt() 方法可返回指定位置的字符。*/
+    //            if (str.charCodeAt(i) > 128) {
+    /*charCodeAt() 方法可返回指定位置的字符的 Unicode 编码。这个返回值是 0 - 65535 之间的整数。
+    方法 charCodeAt() 与 charAt() 方法执行的操作相似，只不过前者返回的是位于指定位置的字符的编码，而后者返回的是字符子串。*/
+    //                strlen = strlen + 2;
+    //                if(strlen >= len){
+    //                    return s.substring(0,s.length-1) + "..."; /*substring() 方法用于提取字符串中介于两个指定下标之间的字符。*/
+    //                }
+    //            } else {
+    //
+    //                strlen = strlen + 1;
+    //                if(strlen >= len){
+    //                    return s.substring(0,s.length) + "...";
+    //                }
+    //
+    //        }
+    //        return s;
+    //    }
+    //
+    //    window.onload=function(){
+    //        var str = document.getElementById('cut_str').innerHTML;
+    //        var s=cutString(str,13);
+    //        document.getElementById('cut_str').innerHTML=s;
+    //    }
+</script>
+
+<div class="js_cut_str">
+    <p id="cut_str" style="width: 200px;">hahahahahahhahahaahhahaah</p>
+</div>
+<script>
+    var str_content = document.getElementById('cut_str').innerHTML;
+    var s = '';
+    var ss='';
+    if (str_content.length >= 13) {
+        s = s + str_content.substring(0, 13);
+        ss=s+'...'
+    }
+    document.getElementById('cut_str').innerHTML=ss;
+</script>
+</body>
+</html>

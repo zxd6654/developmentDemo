@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .checkboxFour label {
+            display: block;
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+            z-index: 1;
+            background: #333;
+            background: url("锁定-(1).png") no-repeat 0 0;
+        }
+        .disable label{
+            background: #cccccc;
+            background: url("锁定-(1).png") no-repeat -56px 0;
+        }
+        .checkboxFour input[type=checkbox]:checked + label {
+            background: #26ca28;
+            background: url("锁定-(1).png") no-repeat -28px 0;
+        }
+        input[type=checkbox] {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="checkboxFour">
+        <input type="checkbox" value="1" id="checkboxFourInput" name=""/>
+        <label for="checkboxFourInput"></label>
+    </div>
+    <div class="checkboxFour disable">
+        <input type="checkbox" value="1" id="checkboxFourInputd" name="" disabled/>
+        <label for="checkboxFourInputd"></label>
+    </div>
+</body>
+<script>
+    var checkBoxInput = document.getElementById('checkboxFourInput');
+     checkBoxInput.addEventListener('change',function(){alert(1)})
+</script>
+</html>

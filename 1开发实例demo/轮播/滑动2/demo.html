@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">-->
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="../swiper-4.2.6/dist/css/swiper.min.css">
+
+    <!-- Demo styles -->
+    <style>
+        html, body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 80%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .swiper-container {
+            width: 80%;
+            margin: 0 auto;
+            height: 300px;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiper-button-next {
+
+        }
+
+        .swiper-button-prev {
+
+        }
+        p{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1 <p>1</p></div>
+            <div class="swiper-slide">Slide 2 <p>1</p></div>
+            <div class="swiper-slide">Slide 3 <p>1</p></div>
+            <div class="swiper-slide">Slide 4 <p>1</p></div>
+            <div class="swiper-slide">Slide 5 <p>1</p></div>
+            <div class="swiper-slide">Slide 6 <p>1</p></div>
+            <div class="swiper-slide">Slide 7 <p>1</p></div>
+            <div class="swiper-slide">Slide 8 <p>1</p></div>
+            <div class="swiper-slide">Slide 9 <p>1</p></div>
+            <div class="swiper-slide">Slide 10 <p>1</p></div>
+        </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+<!-- Swiper JS -->
+<script src="../../拼图游戏/jquery-2.2.4.min.js"></script>
+<script src="../swiper-4.2.6/dist/js/swiper.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        // slidesPerView: 1,
+        // spaceBetween: 30,
+        // slidesPerGroup: 2,
+        loop: true,
+        // loopFillGroupWithBlank: false,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        // autoplay: false
+    });
+
+    // //鼠标覆盖停止自动切换
+    // swiper.el.onmouseenter = function () {
+    //     swiper.autoplay.stop();
+    // };
+    // //鼠标覆盖停止自动切换
+    // swiper.el.onmouseleave = function () {
+    //     swiper.autoplay.start();
+    // };
+    //
+    // $('.swiper-button-next').mouseover(function () {
+    //     swiper.autoplay.stop();
+    // }).end().mouseout(function () {
+    //     swiper.autoplay.start();
+    // });
+    // $('.swiper-button-prev').mouseover(function () {
+    //     swiper.autoplay.stop();
+    // }).end().mouseout(function () {
+    //     swiper.autoplay.start();
+    // })
+
+</script>
+</body>
+</html>

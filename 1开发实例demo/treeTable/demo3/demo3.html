@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/jquery.treetable.theme.default.css">
+    <link rel="stylesheet" href="css/jquery.treetable.css">
+    <script src="../../拼图游戏/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery.treetable.js"></script>
+</head>
+<body>
+<table id="property-table" class="property-table" border="1">
+    <caption style="text-align: left">属性设置</caption>
+    <thead>
+    <tr>
+        <th>名称</th>
+        <th>值</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tr data-tt-id="0">
+        <td>预览图</td>
+        <td>
+            <div class="file-img"><input type="file"></div>
+        </td>
+        <td>
+            <div class="btn select-img">选择</div>
+        </td>
+    </tr>
+    <tr data-tt-id="1">
+        <td>连接件设置</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="2" data-tt-parent-id="1">
+        <td>添加连接件</td>
+        <td></td>
+        <td>
+            <div class="btn one-connection-add">添加</div>
+        </td>
+    </tr>
+    <tr data-tt-id="3" data-tt-parent-id="1">
+        <td>连接件</td>
+        <td></td>
+        <td>
+            <div class="btn one-connection-add">删除</div>
+        </td>
+    </tr>
+    <tr data-tt-id="4" data-tt-parent-id="3">
+        <td>定义类型</td>
+        <td><select class="select-style" name=""></select></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="5" data-tt-parent-id="3">
+        <td>连接件类型</td>
+        <td><select class="select-style" name=""></select></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="6" data-tt-parent-id="3">
+        <td>勾选自动适配连接件类型</td>
+        <td><input type="checkbox" class="checkConnectionType"></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="7" data-tt-parent-id="3">
+        <td>连接件规格</td>
+        <td><select class="select-style" name=""></select></td>
+        <td>
+            <div class="btn connection-specification">编辑</div>
+        </td>
+    </tr>
+    <tr data-tt-id="8" data-tt-parent-id="3">
+        <td>X轴线性分割</td>
+        <td></td>
+        <td>
+            <div class="btn segment-rules">编辑</div>
+        </td>
+    </tr>
+    <tr data-tt-id="9" data-tt-parent-id="3">
+        <td>第二线性分割</td>
+        <td><input type="checkbox" class="secondSegment"></td>
+        <td></td>
+    </tr>
+    <!--<tr data-tt-id="10" data-tt-parent-id="3">-->
+        <!--<td>Y轴线性分割</td>-->
+        <!--<td></td>-->
+        <!--<td>-->
+            <!--<div class="btn segment-rules">编辑</div>-->
+        <!--</td>-->
+    <!--</tr>-->
+    <!--<tr data-tt-id="11" data-tt-parent-id="10">-->
+        <!--<td>边对齐</td>-->
+        <!--<td><select class="select-style" name=""></select></td>-->
+        <!--<td></td>-->
+    <!--</tr>-->
+    <!--<tr data-tt-id="12" data-tt-parent-id="10">-->
+        <!--<td>旋转角度</td>-->
+        <!--<td><input type="text"></td>-->
+        <!--<td></td>-->
+    <!--</tr>-->
+    <!--<tr data-tt-id="13" data-tt-parent-id="10">-->
+        <!--<td>截图半径</td>-->
+        <!--<td><input type="text"></td>-->
+        <!--<td></td>-->
+    <!--</tr>-->
+    <tr data-tt-id="14" data-tt-parent-id="3">
+        <td>位置</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="15" data-tt-parent-id="14">
+        <td>排空线上</td>
+        <td><input type="checkbox"></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="16" data-tt-parent-id="14">
+        <td>分界线长度</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="17" data-tt-parent-id="16">
+        <td>线性分割</td>
+        <td><select class="select-style" name=""></select></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="18" data-tt-parent-id="14">
+        <td>给部件厚度设置相关性</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="19" data-tt-parent-id="18">
+        <td>部件0</td>
+        <td><select class="select-style" name=""></select></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="20" data-tt-parent-id="18">
+        <td>部件1</td>
+        <td><select class="select-style" name=""></select></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="21" data-tt-parent-id="3">
+        <td>特点</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="22" data-tt-parent-id="21">
+        <td>障碍类型</td>
+        <td><select class="select-style" name=""></select></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="23" data-tt-parent-id="21">
+        <td>装铰链的侧板</td>
+        <td><select class="select-style" name=""></select></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="24" data-tt-parent-id="21">
+        <td>附着件</td>
+        <td><input type="text"></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="25" data-tt-parent-id="3">
+        <td>是否允许其他人修改</td>
+        <td><select class="select-style" name="">
+            <option value="">是</option>
+            <option value="">否</option>
+        </select></td>
+        <td></td>
+    </tr>
+</table>
+<script>
+    $('#property-table').treetable({
+        expandable: true,
+        initialState: 'expanded'
+    });
+
+
+    let checkConnectionType = $('#property-table').find('.checkConnectionType');
+    let secondSegment = $('#property-table').find('.secondSegment');
+
+    checkConnectionType.click(function () {
+        let that = this;
+        let currentNode=$('#property-table').treetable('node',$(that).closest('tr').attr('data-tt-id'))
+
+        if ($(that).is(':checked')) {
+            $('#property-table').treetable('removeNode', $(that).closest('tr').next().attr('data-tt-id'));
+        } else {
+           $('#property-table').treetable('loadBranch',currentNode,connectionSpecification());
+        }
+    });
+    secondSegment.click(function () {
+        let that = this;
+        let currentNode=$('#property-table').treetable('node',$(that).closest('tr').attr('data-tt-id'))
+
+        if ($(that).is(':checked')) {
+            $('#property-table').treetable('loadBranch',currentNode,secondSegmentRules());
+        } else {
+            $('#property-table').treetable('removeNode', $(that).closest('tr').next().attr('data-tt-id'));
+        }
+    });
+
+    function connectionSpecification(){
+        return `<tr data-tt-id="7" data-tt-parent-id="3">
+        <td>连接件规格</td>
+        <td><select class="select-style" name=""></select></td>
+        <td>
+            <div class="btn connection-specification">编辑</div>
+        </td>
+    </tr>`
+    }
+    function secondSegmentRules(){
+        return `<tr data-tt-id="10" data-tt-parent-id="3">
+        <td>Y轴线性分割</td>
+        <td></td>
+        <td>
+            <div class="btn segment-rules">编辑</div>
+        </td>
+    </tr>
+    <tr data-tt-id="11" data-tt-parent-id="10">
+        <td>边对齐</td>
+        <td><select class="select-style" name=""></select></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="12" data-tt-parent-id="10">
+        <td>旋转角度</td>
+        <td><input type="text"></td>
+        <td></td>
+    </tr>
+    <tr data-tt-id="13" data-tt-parent-id="10">
+        <td>截图半径</td>
+        <td><input type="text"></td>
+        <td></td>
+    </tr>`
+    }
+
+
+</script>
+</body>
+</html>

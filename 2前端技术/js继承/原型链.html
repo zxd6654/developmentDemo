@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--prototype-->
+prototype是每一个构造函数都有的属性，当你调用第34行定义的对象时，
+比如let x = extend1.nation;这时候程序首先会在extend1的对象里面查找自己的属性，
+查看huo构造函数的代码可以知道，没有nation属性，
+这时候程序 会通过prototype指针跳转到定义的基类Base里面查找属性nation，
+查找到后，把属性值赋值给x变量。
+
+
+基类
+
+前面的课程讲解过类和实例的概念，本节课引入基类的概念，
+类是对实际变成规律的抽象，多个类也可以继续抽象出一个新的类。
+父对象有子对象，对象嵌套对象，对于类也一样。 以上面“对象冒充的代码为例”，
+霍去病和岳飞共同的特征是民族汉人、国籍中国、职业军人，这可以抽象为一个类，
+就是第10到第14行定义的代码，这两位人物也都有自己的特征，又分别创建了两个构造函数
+第17行的huo(),第25行的yue(),这两个构造函数里面都利用语句this.fun = Base;把他们的共同特征引入。
+huo()和yue()两个构造函数成为类，那么么构造函数Base就是基类或者称为父类，
+实际的工程中，可能涉及到 多层类，一个类相比一个类是父类，相比另一个类可能就是子类。
+引入关键字prototype作为构造函数的特殊属性，正式为了完成子类对基类属性和方法的继承，
+使用prototype的好处就是，基类可以作为占用一块内存， 然后被实例化的对象，无限制引用，
+如果不通过关键字prototype实现继承，那么每创建一个实例，就要把基类中的内容复制一遍，浪费内存。
+每一层类都有一个prototype属性，这个属性相当于一个指针，所有类的prototype 属性会构成一条链，
+称为原型链，顺着隐藏的原型链，实例可以顺利指向基类对象。
+
+<!--基类 霍去病和岳飞的共同属性-->
+<script>
+    function Base() {
+        Base.prototype.nation="汉";
+        Base.prototype.country = "中国";
+        Base.prototype.job = "军人";
+    }
+    //huo构造函数
+     function huo() {
+        this.name = "霍去病";
+        this.dynasty = "汉";
+    }
+      huo.prototype = new Base();//引入基类包含的属性
+      //yue构造函数
+      function yue() {
+        this.name = "岳飞";
+        this.dynasty = "宋";
+    }
+      yue.prototype = new Base();//引入基类包含的属性
+      //new操作构造函数，创建两个对象
+      let extend1 = new huo();
+      let extend2 = new yue();
+      //页面显示对象extend1的dynasty属性值
+      document.write(extend1.dynasty);
+      document.write("<br>");
+      //页面显示对象extend2的country属性值
+      document.write(extend2.country);
+    console.log(extend2);
+    document.write("<br>");
+</script>
+</body>
+</html>

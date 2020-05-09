@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--在网页布局没有进入css的时代，排版几乎是通过table元素实现的，-->
+    <!--之后css标准为我们提供了3种布局方式：标准文档流，浮动布局，定位布局-->
+    <!--我们需要的是通过 1 个属性就能优雅的实现子元素居中或均匀分布，甚至可以随着窗口缩放自动适应-->
+    <!--在这样的需求下，CSS 的第 4 种布局方式诞生了， flex 布局。-->
+
+    <!--flex的核心概念就是容器和轴。容器包括外层的 父容器 和内层的 子容器，轴包括 主轴 和 交叉轴-->
+    <!--flex 布局涉及到 12 个 CSS 属性（不含 display: flex），其中父容器、子容器各 6 个。不过常用的属性只有 4 个，父容器、子容器各 2 个-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #dad {
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            background: rgb(60, 57, 58);
+            display: flex;/*父容器 display: flex*/
+            justify-content: center;/*水平居中*/
+            align-items: center;/*垂直居中*/
+        }
+
+        #son {
+            width: 80px;
+            height: 80px;
+            background: rgb(92, 186, 66);
+        }
+    </style>
+</head>
+<body>
+<div id="dad">
+    <div id="son"></div>
+</div>
+</body>
+</html>

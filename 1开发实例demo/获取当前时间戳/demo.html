@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var timestamp1 = Date.parse(new Date());/*方法一  将毫秒的最后三位变为000*/
+    var timestamp2 = (new Date()).valueOf();/*方法二*/
+    var timestamp3=new Date().getTime();/*方法三*/
+    document.write(timestamp1+"<br>");
+    document.write(timestamp2+"<br>");
+    document.write(timestamp3+"<br>");
+</script>
+</body>
+</html>

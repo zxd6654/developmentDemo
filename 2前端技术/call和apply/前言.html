@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    call和apply都是为了改变某个函数运行时的context即上下文而存在的，话句话说，就是为了改变函数体内部this的指向。
+    call和apply二者的作用完全一样，知识接受参数的方式不太一样。
+
+    方法定义：
+    apply
+    Function.apply(obj,args)
+    obj：这个对象将代替Function类里this对象
+    args：这个是数组或类数组，apply方法把这个集合中的元素作为参数传递给被调用的函数。
+
+    call
+    call方法与apply方法的第一个参数是一样的，只不过第二个参数是一个参数列表
+</head>
+<body>
+<!--用法-->
+<!--"劫持"别人的方法-->
+<script>
+    var foo = {
+        name: 'mingming',
+        logName: function () {
+            console.log(this.name);
+        }
+    };
+    foo.logName();
+    var bar = {
+        name: "qiangqiang"
+    };
+    foo.logName.call(bar)
+</script>
+
+<!--实现继承-->
+<script>
+    function Animal(name) {
+        this.name = name;
+        this.showName = function () {
+            console.log(this.name);
+        }
+    }
+
+    function Cat(name) {
+        Animal.call(this, name)
+    }
+
+    var cat = new Cat("Black Cat");
+    cat.showName(); //Black Cat
+</script>
+
+在实际开发中，经常会遇到this指向被不经意改变的场景。
+有一个局部的fun方法，fun被作为普通函数调用时，fun内部的this指向了window，但我们往往是想让它指向该#test节点
+<div id="text">text</div>
+<script>
+    window.id = 'window';
+    document.getElementById('text').onclick = function () {
+        console.log(this.id);
+//      方法一：  var _that=this;
+        var fun = function () {
+//            console.log(_that.id);
+            console.log(this.id);
+        };
+        fun();
+//      方法二：  call  fun.call(this);
+    }
+</script>
+</body>
+</html>

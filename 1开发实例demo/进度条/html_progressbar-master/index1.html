@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>进度条1</title>
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script>
+      $(function(){
+        var loading = '<div class="loading"><div class="pic"></div></div>';
+        $('body').append(loading);
+        setInterval(function(){
+          $(".loading").fadeOut();
+        },3000)
+      })
+    </script>
+    <style type="text/css">
+      .loading{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        background-color: #fff;
+      }
+      .loading .pic{
+        width: 64px;
+        height: 64px;
+        background: url(img/45.gif);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+
+      }
+    </style>
+     
+  </head>
+  <body>
+    <img src="http://a.hiphotos.baidu.com/zhidao/pic/item/3c6d55fbb2fb4316352d920a22a4462309f7d394.jpg">
+    <img src="http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1307/22/c3/23612952_1374475936638.jpg">
+  </body>
+</html>

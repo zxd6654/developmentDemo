@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,
+        body,
+        div,
+        span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        pre,
+        a,
+        code,
+        em,
+        img,
+        small,
+        strong,
+        sub,
+        sup,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label {
+            margin: auto;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent
+        }
+
+        h2 {
+            text-align: center;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        a {
+            color: #007bc4
+                /*#424242*/
+            ;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        ol,
+        ul {
+            list-style: none
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        body {
+            height: 100%;
+            font-size: 12px;
+            font-family: sans-serif;
+            color: #51555C;
+            /*background: #2C2C2C*/
+        }
+
+        img {
+            border: none
+        }
+
+        .logo {
+            width: 910px;
+        }
+
+        #main_demo {
+            width: 910px;
+            min-height: 600px;
+            margin: 30px auto 0 auto;
+            background: #fff;
+            -moz-border-radius: 12px;
+            -khtml-border-radius: 12px;
+            -webkit-border-radius: 12px;
+            border-radius: 12px;
+        }
+
+        .ad {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .fs-wrap {
+            position: relative;
+            display: inline-block;
+            width: 200px;
+            font-size: 12px;
+            line-height: 1;
+        }
+
+        .fs-label-wrap {
+            position: relative;
+            border: 1px solid #ccc;
+            cursor: default;
+        }
+
+        .fs-label-wrap,
+        .fs-dropdown {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .fs-label-wrap .fs-label {
+            padding: 4px 22px 4px 8px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .fs-arrow {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #000;
+            position: absolute;
+            top: 0;
+            right: 5px;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .fs-dropdown {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .fs-dropdown .fs-options {
+            max-height: 200px;
+            overflow: auto;
+        }
+
+        .fs-search input {
+            width: 100%;
+            padding: 2px 4px;
+            border: 0;
+        }
+
+
+        .fs-search input::-webkit-search-cancel-button {
+            display: none;
+        }
+
+
+        .fs-option,
+        .fs-search,
+        .fs-optgroup-label {
+            padding: 6px 8px;
+            border-bottom: 1px solid #eee;
+            cursor: default;
+        }
+
+        .fs-option {
+            cursor: pointer;
+        }
+
+        .fs-option.hl {
+            background-color: #f5f5f5;
+        }
+
+        .fs-wrap.multiple .fs-option {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .fs-wrap.multiple .fs-checkbox {
+            position: absolute;
+            display: block;
+            width: 30px;
+            top: 0;
+            left: 0;
+            bottom: 0;
+        }
+
+        .fs-wrap.multiple .fs-option .fs-checkbox i {
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 14px;
+            height: 14px;
+            border: 1px solid #aeaeae;
+            border-radius: 2px;
+            background-color: #fff;
+        }
+
+        .fs-wrap.multiple .fs-option.selected .fs-checkbox i {
+            background-color: rgb(17, 169, 17);
+            border-color: transparent;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAABMSURBVAiZfc0xDkAAFIPhd2Kr1WRjcAExuIgzGUTIZ/AkImjSofnbNBAfHvzAHjOKNzhiQ42IDFXCDivaaxAJd0xYshT3QqBxqnxeHvhunpu23xnmAAAAAElFTkSuQmCC');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .fs-wrap .fs-option:hover {
+            background-color: #f5f5f5;
+        }
+
+        .fs-optgroup-label {
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script src="../拼图游戏/jquery-2.2.4.min.js"></script>
+    <script src="demo.js"></script>
+</head>
+
+<body>
+    <select class="demo" multiple="multiple">
+        <!--<optgroup label="Languages">-->
+        <option value="cp">C++</option>
+        <option value="cs">C#</option>
+        <option value="oc">Object C</option>
+        <option value="c">C</option>
+        <!--</optgroup>-->
+        <!--<optgroup label="Scripts">-->
+        <option value="js">JavaScript</option>
+        <option value="php">PHP</option>
+        <option value="asp">ASP</option>
+        <option value="jsp">JSP</option>
+        <!--</optgroup>-->
+    </select>
+    <script>
+        $(function () {
+            $('.demo').fSelect();
+        });
+        // 取值
+        $('.fs-label').text()
+    </script>
+</body>
+
+</html>

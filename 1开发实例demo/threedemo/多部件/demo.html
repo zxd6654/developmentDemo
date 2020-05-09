@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #container {
+            width: 50%;
+            height: 500px;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+    </style>
+    <script src="../three.js"></script>   <!--webgl的threejs框架-->
+    <script src="../OrbitControls.js"></script><!--鼠标操作三维场景   轨道相机控件-->
+</head>
+<body>
+<div id="container"></div>
+<button id="button">arr</button>
+<button id="button1">arr1</button>
+<button id="button2">arr2</button>
+<button id="button3">removearr</button>
+<button id="button4">changearr</button>
+<br>
+<button id="s1">1</button>
+<button id="s2">2</button>
+<button id="s3">3</button>
+<button id="s4">4</button>
+<script>
+    var camera, scene, renderer, controls;
+    var mesh;
+
+
+    let container = document.getElementById('container');
+
+    let arr;
+
+    button.onclick = function () {
+        arr = [[0, 0], [0, 500], [700, 0], [700, 500]];
+        for (let p of arr) {
+            circle(p[0], p[1], 'arr');
+        }
+    };
+
+    button1.onclick = function () {
+        arr = [[50, 50], [0, 500], [350, 350], [600, 300]];
+        for (let p of arr) {
+            circle(p[0], p[1], 'arr1');
+        }
+    };
+
+    button2.onclick = function () {
+        arr = [[0, 0], [0, 500], [700, 0], [700, 250]];
+        for (let p of arr) {
+            circle(p[0], p[1], 'arr2');
+        }
+    };
+
+    button3.onclick = function () {
+        for (var i = 0; i < scene.children.length; i++) {
+            if (scene.children[i].name === 'arr') {
+                scene.remove(scene.children[i]);
+                i--;
+            }
+
+        }
+    };
+    button4.onclick = function () {
+        for (var i = 0; i < scene.children.length; i++) {
+            if (scene.children[i].name === 'arr') {
+                scene.remove(scene.children[i]);
+                i--;
+            }
+
+        }
+    };
+
+    init();
+    animate();
+
+    let raycaster = new THREE.Raycaster();//透视相机中用射线进行拾取
+    container.addEventListener('click', function (e) {
+        let mousePosition = new THREE.Vector2();
+        mousePosition.set(e.clientX / container.clientWidth * 2 - 1, -(e.clientY / container.clientHeight) * 2 + 1);
+        raycaster.setFromCamera(mousePosition, camera);
+
+        let circleArr = [];
+        scene.children.forEach(function (item) {
+            if (item.type !== 'LineSegments') {
+                circleArr.push(item);
+            }
+        });
+        let intersects = raycaster.intersectObjects(circleArr);
+
+        console.log(intersects);
+        if (intersects.length > 0) {
+            console.log(intersects[0].object.position);
+        }
+    });
+
+    function init() {
+
+        camera = new THREE.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.1, 5000);
+        camera.position.z = 500;
+
+        scene = new THREE.Scene();
+
+        var geometry = new THREE.PlaneGeometry(700, 500);
+        let cubeEdges = new THREE.EdgesGeometry(geometry, 1);
+        let edgesMtl = new THREE.LineBasicMaterial({color: 0x000000});
+        let cubeLine = new THREE.LineSegments(cubeEdges, edgesMtl);
+
+
+        scene.add(cubeLine);
+
+        renderer = new THREE.WebGLRenderer({antialias: true});
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setClearColor(0xffffff, 1.0);
+        container.appendChild(renderer.domElement);
+
+        controls = new THREE.OrbitControls(camera, renderer.domElement); /*创建控制器*/
+        controls.minDistance = 0;         /*放大上限*/
+        controls.maxDistance = 5000;        /*缩小下限*/
+        controls.lookSpeed = 0.1;//视角变化速度
+        controls.movementSpeed = 100;//前后左右平移速度
+        controls.enableRotate = false;
+
+        window.addEventListener('resize', onWindowResize, false);
+
+        // for (let p of arr) {
+        //     circle(p[0], p[1]);
+        // }
+    }
+
+    function circle(x, y, name) {
+        var radius = 10,
+            segments = 64,
+            material = new THREE.MeshBasicMaterial({color: 0xFF0000}),
+            geometry = new THREE.CircleGeometry(radius, segments);
+
+        let circle = new THREE.Mesh(geometry, material);
+        circle.name = name;
+        circle.position.set(x - 350, y - 250, 0);
+        scene.add(circle);
+    }
+
+    function onWindowResize() {
+
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(container.clientWidth, container.clientHeight);
+
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        render();
+    }
+
+    function render() {
+        renderer.render(scene, camera);
+    }
+</script>
+</body>
+</html>

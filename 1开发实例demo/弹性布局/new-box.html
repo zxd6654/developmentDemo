@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--
+        弹性盒子是 CSS3 的一种新的布局模式。
+       CSS3 弹性盒（ Flexible Box 或 flexbox），是一种当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。
+       引入弹性盒布局模型的目的是提供一种更加有效的方式来对一个容器中的子元素进行排列、对齐和分配空白空间。
+        1.通过display:flex 来指定父元素为伸缩盒
+              父元素的属性：
+                        flex-direction :row（横向从左到右排列（左对齐），默认的排列方式。）
+                                        row-reverse（反转横向排列（右对齐，从后往前排，最后一项排在最前面。）
+                                        column（纵向排列。）
+                                        column-reverse;（反转纵向排列，从后往前排，最后一项排在最上面）
+                                        (指定轴的开始方向和开始位置)
+                        flex-wrap: nowrap(默认   弹性容器为单行。该情况下弹性子项可能会溢出容器。)
+                                   wrap （弹性容器为多行。该情况下弹性子项溢出的部分会被放置到新行，子项内部会发生断行）
+                                   wrap-reverse （反转 wrap 排列）
+                                  （flex-wrap 属性用于指定弹性盒子的子元素换行方式。）
+                        flex-flow: flex-direction flex-wrap;
+                        align-items: 指定交叉轴（纵轴）上的排列规则 stretch（默认）flex-start | flex-end | center | baseline;
+                        align-content:（align-content 属性用于修改 flex-wrap 属性的行为。类似于 align-items, 但它不是设置弹性子元素的对齐，而是设置各个行的对齐。）
+
+                        (有多条主轴时才能生效)flex-start | flex-end | center | space-between | space-around
+                        justify-content:(主轴上的排列方式)flex-start | flex-end | center | space-between | space-around
+              子元素的属性：（order:）
+
+                flex-grow:指定元素扩展  默认值为0；
+                flex-shrink: 指定元素减小 默认值为1
+                flex-basis:   指定基础的数值
+                flex：（flex 属性用于指定弹性子元素如何分配空间）
+                         flex-grow（必须）  flex-shrink flex-basis；
+                         flex:2 1 ;
+                         width: 400px;(避免这种方式)
+                order:指定子元素的顺序，数值小的排在前面。可以为负值;
+                align-self: 指定子元素在交叉轴上的排列方式 默认值auto(继承父元素)  flex-start | flex-end | center | baseline | stretch
+    -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .d0 {
+            height: 500px;
+            width: 1000px;
+            margin: 0 auto;
+            border: 1px solid red;
+            display: flex;
+            /*flex-direction:row;*/
+            /*flex-direction:row-reverse;*/
+            /*flex-direction:column;*/
+            /*flex-direction:column-reverse;*/
+            /*flex-wrap: nowrap;*/
+            /*flex-wrap: wrap;*/
+            /*flex-wrap: wrap-reverse;*/
+            /*flex-flow: column-reverse wrap-reverse;*/
+            /*align-items: stretch;*/
+            /*align-items: flex-start;*/
+            /*align-items: flex-end;*/
+            /*align-items: center;*/
+            /*align-items: baseline;*/
+            /*align-content: stretch;*/
+            /*align-content: flex-start;*/
+            /*align-content: flex-end;*/
+            /*align-content: center;*/
+            /*align-content: space-between;*/
+            /*align-content: space-around;*/
+            /*justify-content: flex-start;*/
+            /*justify-content: flex-end;*/
+            /*justify-content: center;*/
+            /*justify-content: space-around;*/
+            /*justify-content: space-between;*/
+        }
+        .d0>div{
+            width: 200px;
+            height: 200px;
+            /*margin: auto;*/
+        }
+
+        .d1 {
+            background-color: blue;
+            /*flex-grow: 2;*/
+            /*flex-shrink: 2;*/
+            /*flex-basis: 400px;*/
+            /*flex:2 1 ;*/
+            /*width: 400px;*/
+            /*order: 2;*/
+            /*height: 100px;*/
+            /*line-height: 100px;*/
+            /*align-self: stretch;*/
+            /*align-self: flex-start;*/
+            /*align-self: flex-end;*/
+            /*align-self: center;*/
+            /*align-self: baseline;*/
+            /*vertical-align: ;*/
+        }
+
+        .d2 {
+            background-color: aqua;
+
+            /*flex-grow: 1;*/
+            /*flex-shrink: 1;*/
+            /*width: 400px;*/
+            /*order: 1;*/
+            /*flex: 1 1;*/
+            /*align-self: flex-start;*/
+        }
+
+        .d3 {
+            background-color: purple;
+
+            /*flex-grow: 1;*/
+            /*flex-shrink: 1;*/
+            /*width: 400px;*/
+            /*order: 1;*/
+            /*flex: 1 1;*/
+        }
+    </style>
+</head>
+<body>
+<div class="d0">
+    <div class="d1">1</div>
+    <div class="d2">2</div>
+    <div class="d3">3</div>
+</div>
+</body>
+</html>

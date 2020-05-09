@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+一.定义和用法
+定义一个客户端图像映射。图像映射（image-map）指带有可点击区域的一幅图像
+<!--定义一个图像 他的边框为0(border) usemap(指定该图像被用作图像地图) "#mymap"(所使用的图像热点映射名称)-->
+<!-- <img src="logo.gif" border=0 usemap="#mymap"> -->
+<!--定义热点映射--->
+<!-- <map name=mymap> -->
+<!---定义第一个热点区域---->
+<!--shape(定义热点区域形状) "rect"(矩形) coords(设定坐标) "0,0,(矩形左上角位置坐标)50,50,"(右下角位置坐标) href(设定超链接指向) "a.html"(超链接指向值)-->
+<!-- <area shape="rect" coords="0,0,50,50" href="a.html"> -->
+<!--定义第二个热点区域-->
+<!-- <area shape="rect" coords="50,0,100,50" href="b.html"> -->
+<!---定义第三个热点区域-->
+<!-- <area shape="rect" coords="100,0,150,50" href="c.html"> -->
+<!-- </map> -->
+
+<body>
+
+    <img src="partners.png" usemap="#partner-listMap" id="partner-list" border='0'>
+    <map name="partner-listMap" id="partner-listMap">
+        <area shape="rect" coords="3,3,237,118" href=" https://www.siemens.com/cn/zh/home.html/" target="_blank">
+        <area shape="rect" coords="239,1,476,119" href="http://www.shmingjiang.com/" target="_blank">
+        <area shape="rect" coords="480,3,720,118" href="http://www.hhichina.com/" target="_blank">
+        <area shape="rect" coords="723,4,956,118" href="http://www.hbfuller.com/asia-pacific/zh" target="_blank">
+        <area shape="rect" coords="960,4,1205,116" href="http://www.nanxing.com.cn/" target="_blank">
+        <area shape="rect" coords="5,120,237,236" href="http://www.sootoo.com/" target="_blank">
+        <area shape="rect" coords="239,120,478,237" href="http://www.walterfogale.it/wordpress/" target="_blank">
+        <area shape="rect" coords="481,120,719,236" href="http://www.darepanel.com/" target="_blank">
+        <area shape="rect" coords="723,121,957,236" href=" https://www.hoau.net/how/bse/index.action" target="_blank">
+        <area shape="rect" coords="961,120,1200,236" href=" http://www.salice.com.cn/" target="_blank">
+        <area shape="rect" coords="5,239,237,351" href="http://tv.cctv.com/" target="_blank">
+        <area shape="rect" coords="241,238,479,352" href=" http://www.cscec.com.cn/" target="_blank">
+        <area shape="rect" coords="481,238,718,352" href="http://www.kingsford-sy.com/" target="_blank">
+        <area shape="rect" coords="723,239,959,351" href="http://www.cnqc.com/" target="_blank">
+        <area shape="rect" coords="961,239,1196,352" href="http://www.mcc.com.cn/" target="_blank">
+        <area shape="rect" coords="3,356,237,467" href="http://www.homag.com/cn/" target="_blank">
+        <area shape="rect" coords="241,355,479,470" href="http://www.carpoly.com.cn/" target="_blank">
+        <area shape="rect" coords="483,355,719,469" href=" https://www.hafele.com.cn/zh/info/-/360/" target="_blank">
+        <area shape="rect" coords="723,355,958,470" href=" http://www.dtcdtc.com/" target="_blank">
+        <area shape="rect" coords="962,356,1195,470" href="http://www.iwgcn.com/" target="_blank">
+    </map>
+</body>
+
+</html>

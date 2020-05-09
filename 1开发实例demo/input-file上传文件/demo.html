@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+    <meta charset="utf-8">
+    <title>文件读取</title>
+    <style>
+        div {
+            margin-top: 30px;
+            border: solid 1px black;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        function processFiles(files) {
+            var file = files[0];
+
+            var message = document.getElementById("message");
+            message.innerHTML = "文件名：" + file.name + "<br>";
+            message.innerHTML += "文件大小：" + file.size + "字节<br>";
+            message.innerHTML += "文件类型：" + file.type + "<br>";
+
+
+            var type = getFileName(file.name);
+            console.log(type);
+            var reader = new FileReader();
+
+            /*
+               第一种：读取文本文件，显示
+            */
+            if(type == "txt" || type == "md" || type == "pdf" || type == "ppt" || type == "html" || type == "doc"
+                || type == "docx" || type == "wps"){
+                reader.onload = function (e) {
+                    // 这个事件发生，意为着数据准备好了
+                    // 把它复制到页面的<div>元素中
+                    var output = document.getElementById("fileOutput");
+                    output.textContent = e.target.result;
+                };
+                reader.readAsText(file,"utf-8");   //处理文本内容
+            }
+            /*
+                第二种：读取图像文件，显示
+            */
+            if (type == "png" || type == "jpg" || type == "bmp" || type == "gif" || type == "jpeg" || type == "tiff" ) {
+                reader.onload = function(e) {
+                    var output = document.getElementById("fileOutput");
+                    output.innerHTML = '<img style="padding: 0 10px;" width="400px" src="'+ this.result +'" alt="'+ file.name +'" />';
+                };
+                //读取文件内容
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function getFileName(fileName){//通过第一种方式获取文件名
+            var pos=fileName.lastIndexOf(".");//查找最后一个\的位置
+            return fileName.substring(pos+1); //截取最后一个\位置到字符长度，也就是截取文件名
+        }
+    </script>
+</head>
+<body>
+<input id="fileInput" type="file" size="50" onchange="processFiles(this.files)">
+<div id="message"></div>
+<div id="fileOutput"></div>
+</body>
+</html>

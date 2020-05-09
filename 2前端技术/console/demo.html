@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1
+    console.log('a'); //用于输出普通信息
+    //2
+    console.info('a'); //用于输出提示性信息
+    //3
+    console.error('a');//用于输出错误信息
+    //4
+    console.warn('a');//用于输出警示信息
+    //5
+    console.group('b');//输出一组信息
+    console.warn('b.b');
+    console.groupEnd();//结束一组输出信息
+    //7
+    let isDebug = false;
+    console.assert(isDebug, '为false时，输出信息');//对输入的表达式进行断言，只有表达式为false时，才输出相应的信息到控制台。
+    //8
+    console.count();//（这个方法非常实用哦）当你想统计代码被执行的次数。
+    //9
+    let myObject = {
+        a: '1',
+        b: 2,
+        c: true,
+        myFunc: function () {
+            console.log('Hello');
+        }
+    };
+
+    console.dir(myObject);//(这个方法是我经常使用的 可不知道比for in方便了多少) 直接将该DOM结点以DOM树的结构进行输出，可以详细查对象的方法发展等等。
+    //10
+    //统计实例化1000000个对象所需的时间
+    //    console.time('Array initialize'); //计时开始。
+    //
+    //    let array = new Array(1);
+    //    for (let i = array.length - 1; i >= 0; i++) {
+    //        array[i] = new Object();
+    //    }
+    //    console.timeEnd('Array initialize');// 计时结束
+
+    //11 keys和values 前者返回传入对象所有属性名组成的数据，后者返回所有属性值组成的数组。
+    let myObj={name:'zhuxiaodong',sex:'man',hobby:'programs'};
+//    keys(myObj);
+//    values(myObj);
+
+    //12
+    console.table(myObj)
+</script>
+
+</body>
+</html>

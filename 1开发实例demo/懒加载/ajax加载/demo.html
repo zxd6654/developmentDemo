@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            width: 1200px;
+            margin: 0 auto;
+            height: 360px;
+        }
+
+        .main-main {
+            float: left;
+            width: 400px;
+            height: 360px;
+        }
+
+        .main-main img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .more {
+            width: 100px;
+            height: 50px;
+            background: red;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 50px;
+            margin: 0 auto;
+            color: #ffffff;
+            font-weight: bold;
+            margin-top: 30px;
+            cursor: pointer;
+
+        }
+        .banner{
+            overflow: hidden;
+        }
+    </style>
+    <script src="jquery-2.2.4.min.js"></script>
+    <script>
+        $(function () {
+            k=0;
+            $(".more").click(function () {
+                k++;
+                ajaj();
+            });
+            ajaj();
+            var hezi;
+            function ajaj() {
+                if(window.XMLHttpRequest){
+                    hezi=new XMLHttpRequest();
+                }else{
+                    hezi=new ActiveXObject("Microsoft.XMLHTTP")
+                }
+                hezi.open("post","package.json","true");
+                hezi.setRequestHeader('Content-type',"application/x-www-form-urlencoded");
+                hezi.send();
+                hezi.onreadystatechange=function () {
+                    if(hezi.readyState==4&&hezi.status==200){
+                        var shu=hezi.responseText;
+                        var shuu=JSON.parse(shu);
+                        var box=shuu.jiazai[k].img;
+                        if(k==0){
+                            $(".main").html("")
+                        }
+                        for(var i=0;i<box.length;i++){
+                            var moban=$(".moban").html().replace("$img$",box[i].image);
+                            $(".main").append(moban);
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</head>
+<body>
+<div class="banner">
+    <div class="main">
+        <div class="main-main">
+            <img src="img/25.jpg" alt="">
+        </div>
+        <div class="main-main">
+            <img src="img/26.jpg" alt="">
+        </div>
+        <div class="main-main">
+            <img src="img/27.jpg" alt="">
+        </div>
+    </div>
+    <div class="moban" style="display: none">
+        <div class="main-main">
+            <img src="$img$" alt="">
+        </div>
+    </div>
+</div>
+<div class="more">
+    更多
+</div>
+</body>
+</html>

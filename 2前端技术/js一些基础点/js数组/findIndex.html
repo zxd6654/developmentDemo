@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    findIndex()的方法与find()类似，返回第一个符合条件的数组成员的位置，如果所有的成员都不符合条件，就返回-1
+</head>
+<body>
+<script>
+    [5,10,15,20].findIndex((value,index,arr) => {
+        return value > 10
+    })  // 2
+</script>
+</body>
+</html>

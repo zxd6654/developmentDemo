@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> </title>
+    <style>
+        #warp div{
+            display: none;
+            width: 500px;
+            height: 300px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="warp">
+    <button>按钮1</button>
+    <button>按钮1</button>
+    <button>按钮1</button>
+    <input type="button" value="上一张" class="prev">
+    <input type="button" value="下一张" class="next">
+    <div style="background: yellow;display: block"></div>
+    <div style="background: green"></div>
+    <div style="background: black"></div>
+</div>
+<script>
+    function Banner(waripid,btnSelector,pageSelector,prevSelector,nextSelector) {
+
+        this.index=0;
+        this.warp=document.getElementById(waripid);
+        this.arrBtn=  this.warp.querySelectorAll(btnSelector);
+        this.arrpage=  this.warp.querySelectorAll(pageSelector);
+        this.prevBtn=  this.warp.querySelector(prevSelector);
+        this.nextBtn=  this.warp.querySelector(nextSelector);
+
+    }
+    Banner.prototype.tab=function (index) {
+        this.index=index;
+        for(var i=0;i<this.arrpage.length;i++){
+            this.arrpage[i].style.display="none"
+        }
+        this.arrpage[index].style.display="block"
+
+    };
+    Banner.prototype.next=function () {
+        this.index++;
+        if(this.index>=this.arrBtn.length){
+            this.index=0
+        }
+        this.tab(this.index);
+        
+    };
+    Banner.prototype.prev=function () {
+        this.index--;
+        if(this.index<0){
+            this.index=this.arrBtn.length-1
+        }
+        this.tab(this.index)
+
+    };
+    Banner.prototype.init=function () {
+        var _this=this;
+        for (var i=0;i<this.arrBtn.length;i++){
+            this.arrBtn[i].index=i;
+            this.arrBtn[i].onclick=function () {
+                var index=this.index;
+                _this.tab(index);
+
+            }
+        }
+        this.nextBtn.onclick=function () {
+            _this.next()
+
+        };
+        this.prevBtn.onclick=function () {
+            _this.prev();
+
+        }
+    };
+    obt=new Banner("warp","button","div",".prev",".next");
+
+    obt.init()
+</script>
+
+</body>
+</html>

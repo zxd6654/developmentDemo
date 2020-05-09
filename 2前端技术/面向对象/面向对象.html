@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--把多个函数变为某个对象函数的属性或方法-->
+	</head>
+
+	<body>
+		<div class="box"></div>
+		<script type="text/javascript">
+			!(function(w) {
+				var cl = function(aa) {
+						return document.getElementsByClassName(aa)[0];
+					};
+			    var st = function(target, json) {
+						for(var x in json) {
+							target.style[x] = json[x];
+						}
+					};
+				var fff = {
+					sty:st,
+					cla:cl
+				};
+				w.$1=fff
+
+			   console.log(fff)			
+			})(window);
+			
+			/*console.log($.cla("box"))*/
+			var kk = $1.cla("box");
+			var yy = $1.sty(kk, {
+				width: "100px",
+				height: "200px",
+				background: "red"
+			})
+		</script>
+
+	</body>
+
+</html>

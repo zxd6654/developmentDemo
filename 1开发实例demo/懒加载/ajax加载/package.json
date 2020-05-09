@@ -1,0 +1,45 @@
+{
+  "name": "ajax加载",
+  "version": "0.0.1",
+  "jiazai":[
+    {
+      "img":[
+        {
+          "image":"img/25.jpg"
+        },
+        {
+          "image":"img/26.jpg"
+        },
+        {
+          "image":"img/27.jpg"
+        }
+      ]
+    } ,
+    {
+      "img":[
+        {
+          "image":"img/28.jpg"
+        },
+        {
+          "image":"img/29.jpg"
+        },
+        {
+          "image":"img/30.jpg"
+        }
+      ]
+    },
+    {
+      "img":[
+        {
+          "image":"img/31.jpg"
+        },
+        {
+          "image":"img/32.jpg"
+        },
+        {
+          "image":"img/33.jpg"
+        }
+      ]
+    }
+  ]
+}

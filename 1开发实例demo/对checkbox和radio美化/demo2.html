@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>checkbox</title>
+    <style>
+        input[type="checkbox"] {
+            -webkit-appearance: none; /*清除复选框默认样式*/
+            background: #666666 url(no.png) no-repeat; /*复选框的背景图，就是上图*/
+            height: 16px;
+            width: 16px;
+            outline: none;
+            border: none;
+        }
+
+        input[type="checkbox"]:checked {
+            background: #666666 url(yes.png) no-repeat; /*复选框的背景图，就是上图*/
+        }
+    </style>
+</head>
+<body>
+<input type="checkbox" id="checkbox">
+</body>
+</html>

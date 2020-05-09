@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Three框架</title>
+    <script src="three.js"></script>
+    <style type="text/css">
+        div#canvas-frame {
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            height: 600px;
+            background-color: #EEEEEE;
+        }
+    </style>
+    <script>
+        var renderer;
+
+        function initThree() {
+            width = document.getElementById('canvas-frame').clientWidth;
+            height = document.getElementById('canvas-frame').clientHeight;
+            renderer = new THREE.WebGLRenderer({
+                antialias: true
+            });
+            renderer.setSize(width, height);
+            document.getElementById('canvas-frame').appendChild(renderer.domElement);
+            renderer.setClearColor(0xFFFFFF, 1.0);
+        }
+
+        var camera;
+
+        function initCamera() {
+            camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+            camera.position.x = 0;
+            camera.position.y = 1000;
+            camera.position.z = 0;
+            camera.up.x = 0;
+            camera.up.y = 0;
+            camera.up.z = 1;
+            camera.lookAt({
+                x: 0,
+                y: 0,
+                z: 0
+            });
+        }
+
+        var scene;
+
+        function initScene() {
+            scene = new THREE.Scene();
+        }
+
+        var light;
+
+        function initLight() {
+            light = new THREE.DirectionalLight(0xFF0000, 1.0, 0);
+            light.position.set(100, 100, 200);
+            scene.add(light);
+        }
+
+        var cube;
+
+        function initObject() {
+            var radius = 40,
+                segments = 64,
+                material = new THREE.LineBasicMaterial({color: 0x0000ff}),
+                geometry = new THREE.CircleGeometry(radius, segments);
+            geometry.vertices.shift();
+
+            var curve = new THREE.Line(geometry, material);
+            curve.rotateX( 0.5 * Math.PI);
+
+            scene.add(curve);
+
+
+            // let points = [],
+            //     length = 100,
+            //     circle = 40;
+            // for (let i = 0; i <= length; i++) {
+            //     points.push(new THREE.Vector2(circle * Math.cos(Math.PI * 2 * i / length), circle * Math.sin(Math.PI * 2 * i / length)))
+            // }
+            // let shape = new THREE.Shape(points);
+            // let arcGeometry = shape.makeGeometry();
+            // let arcMaterial = new THREE.LineBasicMaterial({color: 0x38d3f5});
+            // let arc = new THREE.Line(arcGeometry, arcMaterial);
+            // arc.rotateX(0.5 * Math.PI);
+            // scene.add(arc);
+        }
+
+        function render() {
+            renderer.clear();
+            renderer.render(scene, camera);
+            requestAnimationFrame(render);
+        }
+
+        function threeStart() {
+            initThree();
+            initCamera();
+            initScene();
+            initLight();
+            initObject();
+            render();
+        }
+    </script>
+</head>
+
+<body onload="threeStart();">
+<div id="canvas-frame"></div>
+</body>
+
+</html>

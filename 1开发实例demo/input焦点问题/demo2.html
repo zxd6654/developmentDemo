@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<select name="" id="">
+    <option value="">1</option>
+    <option value="">3</option>
+    <option value="">4</option>
+</select>
+<div><span>aaa</span><input type="text" id="myInput" value=""><span class="btn">bbb</span></div>
+<div><span>aaa</span><input type="text" id="myInput1" value=""></div>
+<div><span>aaa</span><input type="text" id="myInput2" value=""></div>
+<div><span>aaa</span><input type="text" id="myInput3" value=""></div>
+<div><span>aaa</span><input type="text" id="myInput4" value=""></div>
+<script src="../call和apply/jquery-1.8.3.js"></script>
+<!--<script>-->
+    <!--let initValue="";-->
+    <!--let changedValue="";-->
+    <!--$("div").click(function (event) {-->
+        <!--if(event.target.nodeName==="INPUT"){-->
+            <!--initValue=$(this).find("input").val();-->
+        <!--}else if(event.target.className==="btn"){-->
+            <!--changedValue=$(this).find("input").val();-->
+        <!--}-->
+        <!--if (initValue != changedValue) {-->
+            <!--alert(1)-->
+        <!--}-->
+    <!--});-->
+<!--</script>-->
+<script>
+    var currentThis;
+    // 点击页面失焦执行函数
+    $('div input').click(function (event) {
+        console.log(event);
+//        event.cancelBubble = true;
+//        event.stopPropagation && event.stopPropagation();
+        var isFocus=$(this).is(":focus");
+        if(true==isFocus){
+            console.log("focus");
+        }else{
+            console.log("blur");
+        }
+        $('div input').blur(function () {
+           $("select").css({width:"100px"});
+        });
+         this.blur()
+    });
+    // 按回车键失焦去执行函数
+    $('div input').focus(function () {
+        currentThis = this;
+        $(document).keypress(function (e) {
+            if (e.keyCode == 13) {
+                currentThis.blur();
+                console.log(" 回车失去焦点");
+
+            }
+        });
+    });
+</script>
+<script>
+    $('select').focus(function () {
+        console.log(2);
+        $(this).change(function () {
+            console.log(1);
+        })
+    })
+</script>
+</body>
+</html>

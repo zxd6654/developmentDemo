@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--Object.create(prototype[,propertiesObject])-->
+    <!--使用指定的原型对象及其属性去创建一个新的对象-->
+</head>
+<body>
+<script>
+    var parent = {
+        x : 1,
+        y : 1
+    }
+    var child = Object.create(parent,{
+        z : {                           // z会成为创建对象的属性
+            writable:true,
+            configurable:true,
+            value: "newAdd"
+        }
+    });
+    console.log(child)
+</script>
+</body>
+</html>

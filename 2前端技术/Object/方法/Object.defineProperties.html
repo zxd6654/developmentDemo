@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    Object.defineProperties(obj,props)
+    直接在一个对象上定义新的属性或修改现有属性，并返回该对象。
+</head>
+<body>
+<script>
+    var obj = {};
+    Object.defineProperties(obj, {
+        'property1': {
+            value: true,
+            writable: true
+        },
+        'property2': {
+            value: 'Hello',
+            writable: false
+        }
+        // etc. etc.
+    });
+    console.log(obj)   // {property1: true, property2: "Hello"}
+
+</script>
+</body>
+</html>

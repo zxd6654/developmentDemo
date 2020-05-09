@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>测试tabletree</title>
+    <link rel="stylesheet" href="css/jquery.treetable.theme.default.css">
+    <link rel="stylesheet" href="css/jquery.treetable.css">
+    <script src="../../拼图游戏/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery.treetable.js"></script>
+</head>
+<body>
+<table id="property-table" class="property-table" border="1">
+    <caption style="text-align: left">属性设置</caption>
+    <thead>
+    <tr>
+        <th>属性</th>
+        <th>值</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tr data-tt-id="0">
+        <td>添加</td>
+        <td>
+            <select class="select-style" name="">
+                <option value="">开槽</option>
+                <option value="">钻孔</option>
+            </select>
+        </td>
+        <td>
+            <div class="btn">添加</div>
+        </td>
+    </tr>
+
+
+       <tr data-tt-id="1">
+           <td>类型</td>
+           <td></td>
+           <td>
+               <div class="btn">删除</div>
+           </td>
+       </tr>
+       <tr data-tt-id="2" data-tt-parent-id="1">
+           <td>起点</td>
+           <td></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="3" data-tt-parent-id="2">
+           <td>X</td>
+           <td><input type="text"></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="4" data-tt-parent-id="2">
+           <td>Y</td>
+           <td><input type="text"></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="5" data-tt-parent-id="2">
+           <td>Z</td>
+           <td><input type="text"></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="6" data-tt-parent-id="1">
+           <td>终点</td>
+           <td></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="7" data-tt-parent-id="6">
+           <td>X</td>
+           <td><input type="text"></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="8" data-tt-parent-id="6">
+           <td>Y</td>
+           <td>
+               <input type="text">
+           </td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="9" data-tt-parent-id="6">
+           <td>Z</td>
+           <td><input type="text"></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="10" data-tt-parent-id="1">
+           <td>方位</td>
+           <td></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="11" data-tt-parent-id="10">
+           <td>X</td>
+           <td><input type="text"></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="12" data-tt-parent-id="10">
+           <td>Y</td>
+           <td><input type="text"></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="13" data-tt-parent-id="10">
+           <td>Z</td>
+           <td><input type="text"></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="14" data-tt-parent-id="1">
+           <td>槽宽</td>
+           <td><input type="text"></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="15" data-tt-parent-id="1">
+           <td>深度</td>
+           <td><input type="text"></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="16" data-tt-parent-id="1">
+           <td>外形</td>
+           <td><input type="text"></td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="17" data-tt-parent-id="1">
+           <td>槽叫角类型</td>
+           <td>
+               <select class="select-style" name="">
+                   <option value=""></option>
+                   <option value="">1</option>
+                   <option value="">2</option>
+               </select>
+           </td>
+           <td></td>
+       </tr>
+       <tr data-tt-id="18" data-tt-parent-id="1">
+           <td>轮廓</td>
+           <td>
+               <select class="select-style" name="">
+                   <option value=""></option>
+                   <option value="">1</option>
+                   <option value="">2</option>
+               </select>
+           </td>
+           <td>
+               <div class="btn" id="edgeTypeMaterial">编辑</div>
+           </td>
+       </tr>
+       <tr data-tt-id="19" data-tt-parent-id="1">
+           <td>定义加工</td>
+           <td>
+               <select class="select-style" name="">
+                   <option value=""></option>
+                   <option value="">1</option>
+                   <option value="">2</option>
+               </select>
+           </td>
+           <td></td>
+       </tr>
+
+</table>
+<script>
+    $(function () {
+        $('#property-table').treetable({
+            expandable: true,
+            initialState: 'expanded'
+
+        })
+
+    });
+</script>
+</body>
+</html>

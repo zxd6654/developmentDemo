@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .company-unit-lists {
+            position: relative;
+            margin-top: 60px;
+            height: 78px;
+        }
+        .company-unit-images-lists li:last-child {
+            margin-right: 0px;
+        }
+        .company-unit-images-lists li {
+            position: relative;
+            float: left;
+            width: 290px;
+            height: 380px;
+            overflow: hidden;
+            margin-right: 13.3px;
+            background: #fff;
+        }
+
+        .company-unit-images-lists li img {
+            opacity: 0.9;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index:1;
+        }
+        .company-unit-images-lists li .title{
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 50px;
+            z-index: 2;
+        }
+        .company-unit-images-lists li .word{
+            z-index: 2;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #333;
+        }
+        .company-unit-images-lists-english li .word{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            letter-spacing: normal;
+        }
+
+        .company-unit-images-lists li .title .back{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: block;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: #000;
+            opacity: 0.3;
+        }
+        .company-unit-images-lists li:hover{
+            background: #000;
+            cursor: pointer;
+            transition: all 500ms linear;
+        }
+        .company-unit-images-lists li:hover img{
+          opacity: 0.5;
+        }
+        .company-unit-images-lists li:hover .title .word{
+            color: #fff;
+        }
+        .company-unit-images-lists li:hover .title .back{
+            opacity: 0.6;
+            transition: all 500ms linear;
+        }
+    </style>
+</head>
+<body>
+<div class="company-unit-lists">
+    <ul class="company-unit-images-lists" id="company-unit-images-lists">
+        <li>
+            <a href="">
+                <p class="title">
+                    <span class="word">北京源著新材料有限公司</span>
+                    <span class="back"></span>
+                </p>
+                <img id="img4" src="img/tianjin.png">
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <p class="title">
+                    <span class="word">北京源著装饰工程有限公司</span>
+                    <span class="back"></span>
+                </p>
+                <img id="img1" src="img/decoration-surface.png">
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <p class="title">
+                    <span class="word">北京源著商务有限公司</span>
+                    <span class="back"></span>
+                </p>
+                <img id="img2" src="img/commodity.png">
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <p class="title">
+                    <span class="word">北京源著智能科技有限公司</span>
+                    <span class="back"></span>
+                </p>
+                <img id="img3" src="img/business.png">
+            </a>
+        </li>
+    </ul>
+</div>
+<script src="../拼图游戏/jquery-2.2.4.min.js"></script>
+<script>
+//    $("#company-unit-images-lists li").hover(function () {
+//       $(this).css({backgroundColor:'#000'})
+//    })
+</script>
+</body>
+</html>

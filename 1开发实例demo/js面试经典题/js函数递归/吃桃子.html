@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //桃子总数为x,每天吃掉一半后，再吃一个。10天后，还剩一个，问：桃子的总数X为多少？
+    //
+    function peach(day, remain) {
+        let sum = 0, sum2 = 0;
+        for (let i = 1; i <= day; i++) {
+            sum2 += Math.pow(2, i)
+        }
+        return sum = Math.pow(2, day) * remain + sum2;
+    }
+
+    console.log(peach(3, 1));
+
+    function getTotal(surplus, day) {
+        for (let i = day; i > 0; i--) {
+            surplus = (surplus + 1) * 2;
+        }
+        console.log(surplus);
+    }
+
+    getTotal(1, 10);
+
+</script>
+</body>
+</html>

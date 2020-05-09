@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sessionstorage</title>
+</head>
+<body style="height: 5000px;">
+21432423
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<a href="http://www.baidu.cn">百度</a>
+<script src="jquery-1.8.3.js"></script>
+<script>
+    window.onload = function()
+    {
+        var _offset = sessionStorage.getItem("offsetTop");
+        $(document).scrollTop(_offset);
+        console.log(_offset);
+    };
+    //滚动时保存滚动位置
+    $(window).scroll(function(){
+        if($(document).scrollTop()!=0){
+            sessionStorage.setItem("offsetTop", $(window).scrollTop());//保存滚动位置
+        }
+    });
+</script>
+</body>
+</html>

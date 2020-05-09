@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript">
+    window.onload = function () {
+        var ck = new Cookie("HasLoaded");  //每个页面的new Cookie名HasLoaded不能相同
+        if (ck.Read() == null) {//未加载过，Cookie内容为空
+            alert("首次打开页面");
+            var dd = new Date();
+            dd = new Date(dd.getYear() + 1900, dd.getMonth(), dd.getDate());
+            dd.setDate(dd.getDate() + 365);
+            ck.setExpiresTime(dd);
+            ck.Write("true");  //设置Cookie。只要IE不关闭，Cookie就一直存在
+        }
+        else {
+            alert("页面刷新");
+        }
+    }
+</script>
+</body>
+</html>

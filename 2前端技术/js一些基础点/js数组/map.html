@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--map()：指“映射”，对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。-->
+</head>
+<body>
+<script>
+    var arr = [1, 2, 3, 4, 5];
+    var arr2 = arr.map(function(item){
+        return item*item;
+    });
+    console.log(arr2); //[1, 4, 9, 16, 25]
+</script>
+<script>
+    var dataStr="1,2,3,4,5";//原始字符串
+    var dataStrArr=dataStr.split(",");//分割成字符串数组
+    var dataIntArr=[];//保存转换后的整型字符串
+
+    //方法一
+    dataStrArr.forEach(function(data,index,arr){
+        dataIntArr.push(+data);
+    });
+    console.log(dataIntArr);
+
+    //方法二
+    dataIntArr=dataStrArr.map(function(data){
+        return +data;
+    });
+    console.log(dataIntArr);
+</script>
+<script>
+    let arr3=[[1,2],[3,4]].map(([a,b])=>a+b);
+    console.log(arr3);
+</script>
+</body>
+</html>

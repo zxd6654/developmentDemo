@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+在使用 typeof 运算符时采用引用类型存储值会出现一个问题，无论引用的是什么类型的对象，
+它都返回 "object"。ECMAScript 引入了另一个 Java 运算符 instanceof 来解决这个问题。
+instanceof 运算符与 typeof 运算符相似，用于识别正在处理的对象的类型。
+与 typeof 方法不同的是，instanceof 方法要求开发者明确地确认对象为某特定类型
+
+<script>
+    //    清单 1. instanceof 示例
+    var oStringObject = new String("hello world");
+    console.log(oStringObject instanceof String);
+    /*true*/
+
+
+    //   清单 2. instanceof 常规用法
+    function Foo() {
+    }
+
+    var foo = new Foo();
+    console.log(foo instanceof Foo);//true
+
+    //清单 3. instanceof 在继承中关系中的用法
+
+    // 判断 foo 是否是 Foo 类的实例 , 并且是否是其父类型的实例
+    function Aoo() {
+    }
+
+    function Foo() {
+    }
+
+    Foo.prototype = new Aoo();//JavaScript 原型继承
+
+    var foo = new Foo();
+    console.log(foo instanceof Foo);//true
+    console.log(foo instanceof Aoo);//true
+
+</script>
+</body>
+</html>

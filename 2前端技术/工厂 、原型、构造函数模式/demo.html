@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    <!-- 前面简单将结果对象的创建,本节课主要从代码重用,节约内存的角度来讲解对比几种创建对象的方式 -->
+    //    方式一
+    //           创建两个对象extend1、extend2，并分别添加了属性
+    //    let extend1 = {};
+    //    extend1.nation = "汉";
+    //    extend1.country = "中国";
+    //    extend1.job = "军人";
+    //    extend1.name = "霍去病";
+    //    extend1.dynasty = "汉";
+    //
+    //    let extend2 = {};
+    //    extend2.nation = "汉";
+    //    extend2.country = "中国";
+    //    extend2.job = "军人";
+    //    extend2.name = "岳飞";
+    //    extend2.dynasty = "宋";
+
+    //    方式二（工厂模式）
+
+    //   通过一个函数fun来进行来描述对象的创建，两次调用即可，
+    // 至少从形式上，没必要在把添加属性的操作写两遍。观察上面两个对象，
+    // 可以发现他们的属性名全部一样，前三个的属性值又一样，
+    // 那就给方式二这种创建方式提供了机会，属性值不同可以采用函数参数传输的方式解决。
+    // 这种方式也称之为工厂模式，就是通过函数批量创建对象，可以批量创建任意多个对象，
+    // 这里只是简单创建了 两个对象extend1、extend2作为演示。
+
+    //    function fun(name,dynasty) {
+    //        let Base={};
+    //        Base.nation="汉";
+    //        Base.country = "中国";
+    //        Base.job = "军人";
+    //        Base.name = name;
+    //        Base.dynasty = dynasty;
+    //        return Base;/* return 语句会终止函数的执行并返回函数的值。*/
+    //    }
+    //    let extend1=fun("霍去病","汉");
+    //    let extend2=fun("岳飞","宋");
+    //    console.log(extend1);
+
+
+    //    方式三（构造函数模式）
+
+    //    这种模式，通过关键字new完成创建，这种情况下，代码初始化后，
+    // 会形成三个内存块，一个是函数fun，fun名字就是函数数据的索引，两个new执行后会分别
+    // 开辟两个内存区域，把构造函数的数据复制过来，
+    // 不过属性name、dynasty会通过各自调用函数时传入的参数重新赋值。
+
+    //    function Fun(name, dynasty) {
+    //        this.nation="汉";
+    //        this.country="中国";
+    //        this.job="军人";
+    //        this.name=name;
+    //        this.dynasty=dynasty;
+    //    }
+    //    let extend1=new Fun("霍去病","汉");
+    //    let extend2=new Fun("岳飞","宋");
+
+    //    方式四（原型模式）
+
+    //从对象的属性来来看，extend1、extend2两个对象有三个属性属性值是一样的，
+    // 这时候如果把这三个数据单独存储，然后把数据的索引地址，传递给每个对象，
+    // 这样的话，在使用new开辟内存时，就不需要那么大，
+    // 只需要存储各自不同的属性或属性名相同属性值不同的属性
+    function Fun(name, dynasty) {
+        this.name = name;
+        this.dynasty = dynasty;
+    }
+
+    Fun.prototype = {
+        nation: "汉",
+        country: "中国",
+        job: "军人"
+    };
+    let extend1 = new Fun("霍去病", "汉");
+    let extend2 = new Fun("岳飞", "宋");
+    console.log(extend1);
+</script>
+</body>
+</html>

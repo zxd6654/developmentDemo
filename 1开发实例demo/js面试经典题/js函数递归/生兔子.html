@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //：如果一对小兔每月能生一对新兔，每一对新兔在出生后的第三个月开始又生一对新兔，假定不发生死亡的情况下，一对兔子在一年内能繁殖成多少对？
+    // 产量分析：1， 1， 2， 3， 5， 8， 13， 21 。。。
+    // 第n个月的兔子总数  =  第n-1个月的兔子总数 + 第n-2个月的兔子总数
+    // 问题： 求任意月兔子的总数
+
+    function func(n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        return func(n - 1) + func(n - 2);
+    }
+
+    var a = func(22);
+    console.log(a);
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" manifest="mani.appcache">
+<head>
+    <meta charset="UTF-8">
+    <title>离线缓存测试</title>
+</head>
+<body >
+<iframe src="print_test.html"></iframe>
+<script type="application/javascript" src="loginPop.js"></script>
+<script>
+    window.applicationCache.oncached=function(){
+        alert("已经缓存！");
+    };
+    alert(applicationCache.status)
+</script>
+</body>
+</html>

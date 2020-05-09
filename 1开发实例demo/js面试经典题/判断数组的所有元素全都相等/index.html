@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="checkbox">
+<script>
+    function isAllEqual(array){
+        if(array.length>0){
+            return !array.some(function(value,index){
+                return value !== array[0];
+            });
+        }else{
+            return true;
+        }
+    }
+    var arr=[1,1,1,1]
+    var arr2=[1,2,1,1]
+    var arr3=[]
+    console.log(isAllEqual(arr));
+    console.log(isAllEqual(arr2));
+    console.log(isAllEqual(arr3));
+    document.getElementsByTagName("input")[0]
+</script>
+</body>
+</html>

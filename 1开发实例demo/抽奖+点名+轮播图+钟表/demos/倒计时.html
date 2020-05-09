@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+         div{
+             color: deepskyblue;
+             font-size: 30px;
+             font-weight: bolder;
+         }
+    </style>
+    <script>
+        function toDub(num){
+            if(num<10){
+                return '0'+num;
+            }else{
+                return ''+num;
+            }
+        }
+        window.onload=function(){
+            var oDiv=document.getElementsByTagName('div')[0];
+
+            //设置未来的时间
+            var oDate=new Date(2017,7,7);
+            var t1=oDate.getTime();
+
+            function  clock(){
+
+                //现在时间
+                var oNowDate=new Date();
+
+                //现在距离1970年1月1日的总毫秒数
+                var t2=oNowDate.getTime();
+
+                //获取总时间   总秒数
+                var total=parseInt((t1-t2)/1000);
+
+                //变成天  时分秒
+                var day=parseInt(total/86400);
+                total=total%86400;
+                var h=parseInt(total/3600);
+                total=total%3600;
+                var m=parseInt(total/60);
+                var s=total%60;
+
+                //赋值
+                oDiv.innerHTML='距离情人节剩余'+day+'天'+toDub(h)+':'+toDub(m)+':'+toDub(s);
+            }
+            clock();
+            setInterval(clock,1000);
+        }
+    </script>
+</head>
+
+<body>
+<div></div>
+</body>
+</html>

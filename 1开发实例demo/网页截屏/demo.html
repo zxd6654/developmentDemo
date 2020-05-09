@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 600px;
+            height: 300px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='box'></div>
+    <input type="button" value="button">
+    生成界面如下：
+
+</body>
+<script src="./html2canvas.js"></script>
+<script type="text/javascript">
+    document.querySelector('input').addEventListener("click", function (event) {
+        event.preventDefault();
+        html2canvas(document.body).then(function (canvas) {
+            var dataUrl = canvas.toDataURL();
+            var newImg = document.createElement("img");
+            newImg.src = dataUrl;
+            document.body.appendChild(newImg);
+        });
+    });
+</script>
+
+</html>

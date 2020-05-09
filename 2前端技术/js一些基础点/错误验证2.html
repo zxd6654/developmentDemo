@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function myFunction() {
+        try{
+            var x=document.getElementById("demo").value;
+            if(x=="")  throw "值为空";
+            if(isNaN(x))  throw "不是数字";
+            if(x<5)  throw "数字太小";
+            if(x>10)  throw "数字太大";
+            else alert("输入正确")
+        }
+        catch (err){
+            var y=document.getElementById("mess");
+            y.innerHTML="错误：" + err + "。";
+        }
+    }
+</script>
+<p>请输入 5 到 10 之间的数字：</p>
+<input id="demo" type="text">
+<button type="button" onclick="myFunction()">测试输入值</button>
+<p id="mess"></p>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--some()：判断数组中是否存在满足条件的项，只要有一项满足条件，就会返回true。-->
+</head>
+<body>
+<script>
+    var arr = [1, 2, 3, 4, 5];
+    var arr2 = arr.some(function (x) {
+        return x < 3
+    });
+    console.log(arr2); //true
+    //es6写法,如果加{} 就必须有return
+    //如果不加{} 就不加return
+    var arr3 = arr.some(x => {
+        return x < 6
+    });
+    console.log(arr3); // false
+
+</script>
+</body>
+</html>

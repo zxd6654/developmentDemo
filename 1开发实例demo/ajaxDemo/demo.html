@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var param = JSON.stringify({
+        name: "fdfdf",
+        user_id: 1,
+        plank_config_tree_id: 1,
+        thickness: 20,
+        price: 20,
+        woodCore: "aaa",
+        woodType: 1,
+        materialDirection: 90,
+        edgeName: "12121212",
+        faceName: "dfdsfsdfsd",
+        indent: "sdfdsfsdf",
+        selfDefineType: "df",
+        woodNeighbor: "sdfsdf",
+        other_user_edit: true
+    });
+
+    var url = "/plank_config";
+
+
+    //定义XMLHttpRequest对象
+    function CreateXMLHttpRequest() {
+        var xmlObject;
+        if (window.ActiveXObject)
+//如果当前浏览器支持Active Xobject，则创建ActiveXObject对象
+        {
+            //xmlObject = new ActiveXObject("Microsoft.XMLHTTP");
+            try {
+                xmlObject = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                try {
+                    xmlObject = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (E) {
+                    xmlObject = false;
+                }
+            }
+        }
+        else if (window.XMLHttpRequest)
+//如果当前浏览器支持XMLHttp Request，则创建XMLHttpRequest对象
+        {
+            xmlObject = new XMLHttpRequest();
+        }
+
+        return xmlObject;
+    }
+
+    function SubmitArticle() //主程序函数
+    {
+
+
+        var xmlObject = CreateXMLHttpRequest();
+        xmlObject.open("POST", url, true); //调用weather.php
+
+        var token = "{{csrf_token()}}";
+        xmlObject.setRequestHeader('X-CSRF-TOKEN', token);
+
+        xmlObject.setRequestHeader("accept", "application/json") //指定发送的编码
+        xmlObject.setRequestHeader("Content-Type", "application/json");  //设置请求头信息
+        xmlObject.onreadystatechange = function (aa) {
+            console.log(aa)
+            if (xmlObject.readyState == 4) {
+                if (xmlObject.status == 200) {
+                    var data = JSON.parse(xmlObject.responseText);
+                    console.log(data);
+                }
+            }
+        };  //判断URL调用的状态值并处理
+        xmlObject.send(param); //设置为发送给服务器数据
+    }
+
+
+    SubmitArticle();
+
+
+</script>
+</body>
+</html>

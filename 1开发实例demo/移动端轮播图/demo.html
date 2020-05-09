@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no'>
+    <title>Title</title>
+    <link rel="stylesheet" href="buy.css">
+</head>
+<body>
+<div class="popularity_explosion_product">
+    <p class="activity_title">人气爆品&nbsp;惠利升级</p>
+    <p class="activity_line"></p>
+    <p class="activity_word">最畅销的国际设计，双十一钜惠让利，新鲜升级</p>
+    <div class="activity_pop" id="banner_page">
+        <div class="activity_pop_banner" id="clearfix_page">
+            <div class="activity_pop_in" style="background: green">
+                <div class="activity_pop_img">
+                    <a href="{{url('/commodity/detail/7')}}"></a>
+                </div>
+                <div class="activity_pop_word">
+                    <p>222222222222222222222</p>
+                    <p>1:1.5的不对称撞色设计，充斥浓郁个性色彩的黑科技家居品</p>
+                    <p><span>￥2800</span>（价值 ￥3699）</p>
+                </div>
+            </div>
+            <div class="activity_pop_in" style="background: red">
+                <div class="activity_pop_img">
+                    <a href="{{url('/commodity/detail/7')}}"></a>
+                </div>
+                <div class="activity_pop_word">
+                    <p>111111111111111111111111111</p>
+                    <p>旋转风车灵感，间龄童趣之作，每个独立组件都尽显高端</p>
+                    <p><span>￥2289</span>（价值 ￥3699）</p>
+                </div>
+            </div>
+            <div class="activity_pop_in" style="background: green">
+                <div class="activity_pop_img">
+                    <a href="{{url('/commodity/detail/7')}}"></a>
+                </div>
+                <div class="activity_pop_word">
+                    <p>2222222222222222222222222222222</p>
+                    <p>1:1.5的不对称撞色设计，充斥浓郁个性色彩的黑科技家居品</p>
+                    <p><span>￥2800</span>（价值 ￥3699）</p>
+                </div>
+            </div>
+            <div class="activity_pop_in" style="background: red">
+                <div class="activity_pop_img">
+                    <a href="{{url('/commodity/detail/7')}}"></a>
+                </div>
+                <div class="activity_pop_word">
+                    <p>11111111111111111111111111111</p>
+                    <p>旋转风车灵感，间龄童趣之作，每个独立组件都尽显高端</p>
+                    <p><span>￥2289</span>（价值 ￥3699）</p>
+                </div>
+            </div>
+        </div>
+        <ul class="dash" id="dash_page">
+            <li></li>
+            <li></li>
+        </ul>
+
+    </div>
+</div>
+<script src="jquery-2.2.4.min.js"></script>
+<script>
+    var banner = document.getElementById("banner_page");
+    var width = banner.offsetWidth;
+    var imageBox = document.getElementById("clearfix_page");
+    var pointBox = document.getElementById("dash_page");
+    var points = pointBox.getElementsByTagName('li');
+</script>
+<!--<script src="activity_banner.js"></script>-->
+<script src="banner.js"></script>
+</body>
+</html>

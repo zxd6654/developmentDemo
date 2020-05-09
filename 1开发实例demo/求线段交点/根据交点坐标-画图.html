@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            width: 426px;
+            height: 593px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap"></div>
+<script>
+
+    let arr = [{x: 0, y: 0}, {x: 0, y: 500}, {x: 233.33, y: 0}, {x: 233.33, y: 500}];
+
+    let wrap = document.getElementById('wrap');
+    let canvasDom = document.createElement('canvas');
+    canvasDom.id = 'canvasId';
+    canvasDom.width = wrap.clientWidth;
+    canvasDom.height = wrap.clientHeight;
+    wrap.appendChild(canvasDom);
+
+    let canvas = document.getElementById('canvasId');
+    let context = canvas.getContext('2d');
+
+    let rectWidth = 700 / 2;
+    let rectHeight = 500 / 2;
+    let rectX = Math.abs(canvas.width / 2 - rectWidth / 2);
+    let rectY = Math.abs(canvas.height / 2 - rectHeight / 2);
+    context.strokeStyle = 'rgb(255,0,0)';
+    context.strokeRect(rectX, rectY, rectWidth, rectHeight);
+
+    context.fillStyle = '#999999';
+
+    arr.length && arr.forEach(function (a) {
+        context.beginPath();
+        context.arc(a.x / 2 + rectX, a.y / 2 + rectY, 10, 0, Math.PI * 2, false);
+        context.closePath();
+        context.fill();
+    });
+
+
+    canvas.onmousedown = function (e) {
+        e = e || event;
+        console.log(e);
+
+    }
+</script>
+</body>
+</html>

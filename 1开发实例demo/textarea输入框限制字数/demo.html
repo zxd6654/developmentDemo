@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .textareaBox {
+            position: relative;
+        }
+
+        .wordsNum {
+            position: absolute;
+            bottom: 0.83rem;
+            right: 0.83rem;
+            color: #B3B3B3;
+            font-size: 1rem;
+        }
+    </style>
+    <script src="../jquery-2.2.4.min.js"></script>
+</head>
+<body>
+<div>
+    <div class="textareaBox">
+        <textarea class="wishContent" placeholder="请输入不超过15个字" maxlength="15"></textarea>
+        <span class="wordsNum">0/15</span>
+    </div>
+</div>
+</body>
+<script>
+    //封装一个限制字数方法
+    var checkStrLengths = function (str, maxLength) {
+        var maxLength = maxLength;
+        var result = 0;
+        if (str && str.length > maxLength) {
+            result = maxLength;
+        } else {
+            result = str.length;
+        }
+        return result;
+    }
+
+    //监听输入
+    $(".wishContent").on('input propertychange', function () {
+
+        //获取输入内容
+        var userDesc = $(this).val();
+
+        //判断字数
+        var len;
+        if (userDesc) {
+            len = checkStrLengths(userDesc, 15);
+        } else {
+            len = 0
+        }
+
+        //显示字数
+        $(".wordsNum").html(len + '/15');
+    });
+</script>
+</html>

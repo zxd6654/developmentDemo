@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="name" type="text">
+<div id="transmit">cancel</div>
+<div id="closeIframe">关闭iframe</div>
+<div id="yes">yes</div>
+<script src="../../拼图游戏/jquery-2.2.4.min.js"></script>
+<script>
+    parent.layer.callback='取消'
+    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+    $('#transmit').on('click',function () {
+        parent.layer.callback='取消'
+        parent.layer.cancel();
+    });
+
+    $('#closeIframe').click(function(){
+        var val = $('#name').val();
+        if(val === ''){
+            parent.layer.msg('请填写标记');
+            return;
+        }
+        parent.layer.msg('您将标记 [ ' +val + ' ] 成功传送给了父窗口');
+        parent.layer.close(index);
+    });
+
+
+    $('#yes').click(function () {
+        parent.layer.callback='应用'
+        parent.layer.apply();
+    })
+
+</script>
+</body>
+</html>

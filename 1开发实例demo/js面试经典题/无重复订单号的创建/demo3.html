@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     *length    订单号数组的长度
+     *multiply  相乘的数
+     *digits    获取的位数，后几位
+     **/
+    function orderNumber(length, multiply, digits) {
+        //订单号数组
+        let arrId = new Array(length);
+        for (let i = 0; i < arrId.length; i++) {
+            arrId[i] = i + 1;
+        }
+        console.log(arrId);
+
+        //乘数
+        let multiplier = multiply;
+
+        //积数
+        let product = [];
+        for (let i = 0; i < arrId.length; i++) {
+            product[i] = arrId[i] * multiplier;
+        }
+        console.log(product);
+
+        //取积数的后六位
+        let interception = [];
+        for (let i = 0; i < product.length; i++) {
+            let strPro = PreFixInterge(product[i], digits);
+            interception[i] = strPro;
+        }
+        console.log(interception);
+        console.log(interception instanceof Array);
+
+        if (interception.length === [...new Set(interception)].length) {
+            console.log("没有重复的订单号");
+        } else {
+            console.log("有重复的订单号");
+        }
+
+        function PreFixInterge(num, n) {   //num代表传入的数字，n代表要保留的字符的长度
+
+            return (Array(n).join(0) + num).slice(-n);
+        }
+
+    }
+
+    orderNumber(1000000, 500, 6);
+</script>
+</body>
+</html>

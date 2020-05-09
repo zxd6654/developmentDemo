@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+postMessage 是 HTML5 新方法,它可以实现跨域窗口之间通讯。到目前为止,
+只有 IE8+, Firefox 3, Opera 9, Chrome 3和 Safari 4 支持,而本篇文章主要讲述 postMessage 方法与 message 事件跨浏览器实现。
+
+postMessage 方法 JSONP 技术不一样,前者是前端擅长跨域文档数据即时通讯,后者擅长针对跨域服务端数据通讯
+
+<script>
+    window.addEventListener('message', function (e) {
+        // alert(e.origin); //传递消息的源
+        console.log(JSON.stringify(e.data));
+        // alert(e.source); //来源窗口
+    }, false);
+</script>
+</body>
+</html>

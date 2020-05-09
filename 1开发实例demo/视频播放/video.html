@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        video {
+            width: 500px;
+            margin: 0 auto;
+            object-fit: fill;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay controls muted>
+        <source src="./0428天津工厂 00_00_26-00_01_26.mkv">
+        <source src='./0428天津工厂 00_00_26-00_01_26.mp4'>
+        您的浏览器不支持此视频。
+    </video>
+</body>
+<script src="../拼图游戏/jquery-2.2.4.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+<script>
+    $('video').play();
+
+    document.addEventListener('WeixinJSBridgeReady', function () {
+        $('video').play();
+
+    }, false);
+</script>
+</html>

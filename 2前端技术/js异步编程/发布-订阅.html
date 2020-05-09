@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../拼图游戏/jquery-2.2.4.min.js"></script>
+<input type="text" value="11">
+<select name="" id="">
+    <option value="">1</option>
+    <option value="">2</option>
+    <option value="">3</option>
+    <option value="">4</option>
+</select>
+<script>
+    function ListenerExecute() {
+        this._listenerArray = [];
+    }
+
+    ListenerExecute.prototype = Object.assign({
+        constructor: ListenerExecute,
+        addListener: function addListener(listener, alias) {
+
+            if (typeof listener != 'function') {
+                throw new Error('listener must be a function');
+            }
+
+            var listeners = this._listenerArray;
+
+            if (typeof alias != 'undefined') {
+                listeners.alias = alias;
+            }
+
+            if (this._listenerArray.indexOf(listener)===-1) {
+                listeners.push(listener);
+            } else {
+                console.warn("the listener already exist");
+            }
+            return this;
+        },
+        forEach: function forEach(fun) {
+            return this._listenerArray.forEach(fun);
+        },
+        isListenerExecute: true
+    });
+
+    var selectListener=new ListenerExecute();
+
+    selectListener.addListener(selectChange,'selectChange');
+
+    function selectChange(e){
+        alert(e)
+    }
+
+    $('select').unbind('change').bind('change',function () {
+        selectListener.forEach(function (l) {
+            l.call(this,'hello world');
+        })
+    })
+</script>
+</body>
+</html>

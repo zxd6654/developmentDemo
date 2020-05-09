@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+</head>
+<body>
+<!--在js中，有三种常用的绑定事件的方法
+1.在DOM元素中直接绑定；
+2.在js代码中绑定；
+3.绑定事件监听函数。
+-->
+
+<!--1.在DOM元素中直接绑定；-->
+<input type="button" value="click me" onclick="hello()">
+<script>
+    function hello(){
+        alert("hello world!");
+    }
+</script>
+
+<!--2.在js代码中绑定；-->
+<input type="button" value="click me" id="btn">
+<script>
+    document.getElementById("btn").onclick = function(){
+        alert("hello world!");
+    }
+</script>
+
+<!--3.绑定事件监听函数。
+关于事件监听，W3C规范中定义了3个事件阶段，依次是捕获阶段、目标阶段、冒泡阶段
+
+element.addEventListener(event, function, useCapture)
+event : （必需）事件名，支持所有 DOM事件 。
+function：（必需）指定要事件触发时执行的函数。
+useCapture：（可选）指定事件是否在捕获或冒泡阶段执行。true，捕获。false，冒泡。默认false。
+
+element.attachEvent(event, function)
+event：（必需）事件类型。需加“on“，例如：onclick。
+function：（必需）指定要事件触发时执行的函数。
+
+
+-->
+<input type="button" value="click me" id="btn1">
+<script>
+    document.getElementById("btn1").addEventListener("click",hello);
+    function hello(){
+        alert("hello world!");
+    }
+</script>
+
+<!--<input type="button" value="click me" id="btn2">-->
+<!--<script>-->
+    <!--document.getElementById("btn2").attachEvent("onclick",hello);-->
+    <!--function hello(){-->
+        <!--alert("hello world!");-->
+    <!--}-->
+<!--</script>-->
+
+<!--事件监听的优点
+ 1.可以绑定多个事件
+ 2.可以解除相应的绑定
+-->
+<input type="button" value="click me" id="btn5">
+
+<script>
+    var btn5 = document.getElementById("btn5");
+    btn5.addEventListener("click",hello1);//执行了
+    btn5.addEventListener("click",hello2);//不执行
+    btn5.removeEventListener("click",hello2);
+
+    function hello1(){
+        alert("hello 1");
+    }
+    function hello2(){
+        alert("hello 2");
+    }
+</script>
+
+<!--封装事件监听-->
+
+<!--<input type="button" value="click me" id="btn6">-->
+<!--<script>-->
+    <!--//绑定监听事件-->
+    <!--function addEventHandler(target,type,fn){-->
+        <!--if(target.addEventListener){-->
+            <!--target.addEventListener(type,fn);-->
+        <!--}else{-->
+            <!--target.attachEvent("on"+type,fn);-->
+        <!--}-->
+    <!--}-->
+
+    <!--//移除监听事件-->
+    <!--function removeEventHandler(target,type,fn){-->
+        <!--if(target.removeEventListener){-->
+            <!--target.removeEventListener(type,fn);-->
+        <!--}else{-->
+            <!--target.detachEvent("on"+type,fn);-->
+        <!--}-->
+    <!--}-->
+
+    <!--//测试-->
+    <!--var btn6 = document.getElementById("btn6");-->
+    <!--addEventHandler(btn6,"click",hello1);//添加事件hello1-->
+    <!--addEventHandler(btn6,"click",hello2);//添加事件hello2-->
+    <!--removeEventHandler(btn6,"click",hello1);//移除事件hello1-->
+<!--</script>-->
+</body>
+</html>

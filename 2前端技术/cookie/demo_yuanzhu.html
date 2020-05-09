@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #first_div {
+            width: 200px;
+            height: 50px;
+            margin: 0 auto;
+            border: 1px solid red;
+            position: relative;
+            z-index: 10;
+            margin-top: 1000px;
+        }
+
+        #second_div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin-top: 50px;
+            width: 100%;
+            height: 2000px;
+            border: 1px solid aqua;
+            display: none;
+        }
+        p{
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            border: 1px solid black;
+            position: absolute;
+            bottom: 0;
+        }
+        #first_span{
+            width: 100%;
+            display: inline-block;
+            height: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="first_div">
+    <span id="first_span">AAAA</span>
+    <div id="second_div">
+        <span>bbbb</span>
+        <p id="exit">我知道了，开始定制</p>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var btn=document.getElementById('first_span');
+    var content=document.getElementById('second_div');
+    var exit=document.getElementById('exit');
+    var isCookie = document.cookie.indexOf("firstVisit=");
+    if (isCookie == -1) {
+        var exDate = new Date();
+        exDate.setDate(exDate.getDate() + 1);
+        document.cookie = 'firstVisit=1;expires=' + exDate.toGMTString();
+        document.getElementById('second_div').style.display = 'block';
+        btn.onclick = function () {
+            content.style.display='block';
+        };
+    } else {
+        document.getElementById('second_div').style.display = 'none';
+        btn.onclick = function () {
+            content.style.display=='block'? content.style.display='none': content.style.display='block';
+        };
+    }
+    exit.onclick=function () {
+        content.style.display = 'none';
+    };
+</script>
+</body>
+</html>

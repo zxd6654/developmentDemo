@@ -1,0 +1,61 @@
+/**
+ * Description: 
+ * Created by wxy on 2018/3/21 15:32
+ */
+.message-box{
+    position: relative;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding:0px 40px 20px 40px;
+    width: 420px;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2001;
+    background: #fff;
+    text-align: center;
+    color: #808080;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.message-box .btn{
+    padding: 0px 20px;
+    height: 26px;
+    background: #fff;
+    color: #808080;
+    border: 1px solid #ccc;
+    margin: 20px 5px 0px 5px;
+    cursor: pointer;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.message-box .btn-highlight{
+    background: #f9bb13;
+    color: #fff;
+    border: none;
+}
+.message-box .title{
+    font-weight: normal;
+    height:40px ;
+    color: #444;
+    font-size: 16px;
+    line-height: 40px;
+}
+.message-box .close-btn{
+    width: 16px;
+    height: 16px;
+    background: url("/img/close1.png") no-repeat right top;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+.message-box .close-btn:hover{
+    background-position-x: left;
+}

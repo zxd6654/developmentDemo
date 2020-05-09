@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewPort" content="width=device-width,initial-scale=1,user-scalable=0"/>
+    <script type="text/javascript" src="phone_size.js"></script><!--phone-resize-size-->
+    <title>手机端尺寸控制</title>
+   <link rel="stylesheet" type="text/css" href="size_block.css"/>
+</head>
+
+<body>
+<!-----------------------以下操作器部分script------------------------->
+
+
+<!--宽度设置模块-->
+<div class="size-controller-container">
+    <div class="size-input-container">
+        <h3>宽</h3>
+        <div class="value-input-shower">
+            <!--<div class="right_input">-->
+                <input type="text" id="valueInput"/>
+           <!-- </div>-->
+            <!--<div class="right_unit">-->mm<!--</div>-->
+        </div>
+    </div>
+    <div class="status_cont" style="">
+
+        <div class="middle_rule" id="middle_rule_cont">
+            <div class="ruler_back"></div>
+            <div id="movable_block" class="movable_pointer"></div>
+            <span class="value-shower"></span>
+
+            <!--最小值指示标签-->
+            <div class="size-min-value-pointer"></div>
+            <span id="minvalue_shower" class="size-min-value">600</span>
+            <span class="size-min-value-title">最小值</span>
+            <!--最大值指示标签-->
+            <div class="size-max-value-pointer"></div>
+            <span id="maxvalue_shower" class="size-max-value">1500</span>
+            <span class="size-max-value-title">最大值</span>
+            <!--  <div class="levelpointer"></div>
+            <span class="introductorVal">1234mm</span>-->
+        </div>
+    </div>
+</div>
+<!--宽度设置模块-->
+<script type="text/javascript" src="jsEvent.js"></script>
+<script type="text/javascript" src="jquery-1.7.2.js"></script>
+<script type="text/javascript" src="valueStatusBarNew.js"></script>
+<script>
+    deviceReady(function () {
+
+
+        widthValueStatusBar = valuestatusBar({
+            datamin: 800,
+            datamax: 1400,
+            datadefault: 1000,
+            introValueArr: [900, 1000, 1100, 1300],
+            datastep: 10,
+            containnerid: "middle_rule_cont",
+            moveblockid: "movable_block",
+            minvalueshowerid: "minvalue_shower",
+            maxvalueshowerid: "maxvalue_shower",
+            inputid: "valueInput",
+            slidingFunction: sliding,
+            slideEndFunction: slidEnd, //滑动后处理函数mouseup事件触发
+            inputKeyupFunction: input //输入框keyup处理函数
+        });
+        widthValueStatusBar.on();
+    });
+    // widthValueStatusBar.setBlock(1100);
+    function sliding() {
+        console.log("sliding");
+    }
+    function slidEnd() {
+        console.log("slidend");
+    }
+    function input(value) {
+        alert(value)
+    }
+    /*  heightValueStatusBar = valuestatusBar({
+     datamin: 800,
+     datamax: 1500,
+     datadefault: 900,
+     introValueArr:[900,1000,1100,1200],
+     datastep: 50,
+     containnerid: "middle_rule_cont_height",
+     moveblockid: "movable_block_height",
+     minvalueshowerid: "minvalue_shower_height",
+     maxvalueshowerid: "maxvalue_shower_height",
+     inputid: "valueInput_height",
+     slidingFunction: widthDealSlide,
+     slideEndFunction: null, //滑动后处理函数mouseup事件触发
+     inputKeyupFunction: WidthDealKeyUp  //输入框keyup处理函数
+     });
+     heightValueStatusBar.on();
+
+     depthValueStatusBar = valuestatusBar({
+     datamin: 800,
+     datamax: 1500,
+     datadefault: 900,
+     introValueArr:[900,1000,1100,1200],
+     datastep: 20,
+     containnerid: "middle_rule_cont_depth",
+     moveblockid: "movable_block_depth",
+     minvalueshowerid: "minvalue_shower_depth",
+     maxvalueshowerid: "maxvalue_shower_depth",
+     inputid: "valueInput_depth",
+     slidingFunction: widthDealSlide,
+     slideEndFunction: null, //滑动后处理函数mouseup事件触发
+     inputKeyupFunction: WidthDealKeyUp  //输入框keyup处理函数
+     });
+
+     depthValueStatusBar.on();
+     //需要6-9个函数 用于连接3d接口
+
+     //宽度函数
+     function widthDealSlide(frameWidth) {  //滑动中
+
+     }
+
+
+     function WidthDealKeyUp(frameWidth) { //手动输入处理  // 调用 globalParams.widthValueStatusBar.setBlock(1400) 输入处理
+     //读取本地数据
+
+     }*/
+</script>
+</body>
+</html>

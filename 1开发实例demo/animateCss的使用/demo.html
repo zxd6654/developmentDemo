@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!--<link rel="stylesheet" href="animate.min.css">-->
+    <style>
+        .box {
+            height: 100px;
+            width: 100px;
+            background-color: lightblue
+        }
+
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both
+        }
+
+        @-webkit-keyframes shake {
+            0%, 100% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0)
+            }
+            10%, 30%, 50%, 70%, 90% {
+                -webkit-transform: translateX(-10px);
+                transform: translateX(-10px)
+            }
+            20%, 40%, 60%, 80% {
+                -webkit-transform: translateX(10px);
+                transform: translateX(10px)
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                -webkit-transform: translateX(0);
+                -ms-transform: translateX(0);
+                transform: translateX(0)
+            }
+            10%, 30%, 50%, 70%, 90% {
+                -webkit-transform: translateX(-5px);
+                -ms-transform: translateX(-5px);
+                transform: translateX(-5px)
+            }
+            20%, 40%, 60%, 80% {
+                -webkit-transform: translateX(5px);
+                -ms-transform: translateX(5px);
+                transform: translateX(5px)
+            }
+        }
+
+        .shake {
+            -webkit-animation-name: shake;
+            animation-name: shake
+        }
+    </style>
+</head>
+<body>
+<!--　　在一般的使用中，直接在元素上添加animated和对应的类名即可-->
+<div class="box">
+    <img src="next_jiantou.png" alt="" class="animated shake">
+</div>
+</body>
+</html>

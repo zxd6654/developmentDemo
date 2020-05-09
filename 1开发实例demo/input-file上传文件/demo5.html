@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr">
+<head>
+
+</head>
+<body>
+<input type="file" id="file" > <!-- 只能上传单个文件 -->
+<input type="file" id="files" multiple> <!-- 可以上传多个文件 -->
+<script>
+    window.onload=function(){
+        var f = document.getElementById("file");
+        var fs = document.getElementById("files");
+
+        //this.files即获取input中上传的file对象 是个数组
+        f.onchange = function(){
+            //获取文件对象
+            var file = this.files[0];
+            //使用fileReader对文件对象进行操作
+            var reader = new FileReader();
+            //将文件读取为arrayBuffer
+            //reader.readAsArrayBuffer(file);
+            //reader.onload = function(){
+            //  console.log(reader.result);
+            //}
+
+
+            /*reader.readAsBinaryString(file);
+            reader.onload = function(){
+                console.log(reader.result);
+            }
+            */
+            //用于图片显示不需要传入后台，reader.result的结果是base64编码数据，直接放入img的src中即可
+            reader.readAsDataURL(file);
+            reader.onload = function(){
+                console.log(reader.result);
+            }
+        }
+
+
+        fs.onchange = function(){
+
+        }
+    }
+</script>
+</body>
+</html>

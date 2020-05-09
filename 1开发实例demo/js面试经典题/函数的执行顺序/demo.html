@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var foo = {n: 1};
+    (function (foo) {        //此时形参和实参指向相同的内存空间，且空间的值n为1
+        var foo;             //变量的提升，一个变量的声明优先级低于形参，so这行相当于无效
+        console.log(foo.n);  //这里应当输出1
+        foo.n = 3;             //形参和实参的指向的内存空间发生了改变，值现在变为3
+        var foo = {n: 2};       //这行很关键，开辟了新的内存空间，n的值为2
+        console.log(foo.n);  //由于js中的代码是自上而下执行，所以此时输出2
+    })(foo);
+    console.log(foo.n);    //之前的内存空间值为3，所以输出3
+    //结果输出  1  2  3
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function searchKeys() {
+        var arr = ['11', '11', '111', '4', '5', '6', '6', '7', '8', '7', '1', '1', '1'];
+        var str = [];
+        var strary = [];
+        for (var i = 0; i < arr.length; i++) {
+            var hasRead = false;
+            for (var k = 0; k < strary.length; k++) {
+                if (strary[k] == arr[i]) {
+                    hasRead = true;
+                }
+            }
+            if (!hasRead) {
+                var _index = i, haveSame = false;
+                for (var j = i + 1; j < arr.length; j++) {
+                    if (j == i) {
+                        _index++;
+                    }
+                    if (arr[i] == arr[j]) {
+                        _index += "," + j;
+                        haveSame = true;
+                    }
+                }
+                if (haveSame) {
+                    strary.push(arr[i]);
+                    str.push(_index);
+                }
+            }
+        }
+        console.log(strary);
+        console.log(str);
+    }
+
+    searchKeys()
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+JavaScript 并没有其他基于类的语言所定义的“方法”。在 JavaScript 里，任何函数都可以添加到对象上作为对象的属性。
+函数的继承与其他的属性继承没有差别，包括上面的“属性遮蔽”（这种情况相当于其他语言的方法重写）。
+
+当继承的函数被调用时，this 指向的是当前继承的对象，而不是继承的函数所在的原型对象
+
+<script>
+    var o={
+        a:2,
+        m:function () {
+            return this.a+1;
+        }
+    };
+    console.log(o.a);
+    console.log(o.m());
+    console.log(o.a);
+    // 当调用 o.m 时,'this'指向了o.
+
+    var p=Object.create(o);
+    // 用 Object.create实现类式继承,Object.create() 方法会使用指定的原型对象及其属性去创建一个新的对象。
+    // p是一个继承自 o 的对象
+
+     p.a=4; // 创建 p 的自身属性 a
+    console.log(p);
+    console.log(p.a);
+    console.log(p.m());
+    // 调用 p.m 时, 'this'指向 p.
+    // 又因为 p 继承 o 的 m 函数
+    // 此时的'this.a' 即 p.a，即 p 的自身属性 'a'
+</script>
+</body>
+</html>

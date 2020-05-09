@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+object.defineProperty
+<script>
+    var a = {};
+    Object.defineProperty(a, "b", {
+        value: 123,
+        writable: false,   //如果设置为false，就变成只读了
+        enumerable: false, //定义了对象的属性是否可以在 for...in 循环和 Object.keys() 中被枚举
+        configurable: false  //configurable总开关，第一次设置 false 之后，，第二次什么设置也不行了
+    });
+    console.log(a.b);//123
+
+//在 descriptor 中不能 同时设置访问器 (get 和 set) 和 wriable 或 value，否则会错，就是说想用(get 和 set)，就不能用（wriable 或 value中的任何一个）
+</script>
+<div id="test">这是一个测试</div>
+<script>
+    var view = document.getElementById("test");
+    var data = {};
+    var i=0;
+    Object.defineProperty(data, "b", {
+        set: function(newValue) {
+            //当data.b的值改变的时候更新＃test的视图
+            view.textContent=newValue;
+        },
+        get: function() {
+        }
+    });
+    setInterval(function(){
+        i++;
+        data["b"] = "data.b的值更新了，我要更新视图"+i;
+    },1000);
+</script>
+</body>
+</html>

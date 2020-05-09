@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    其实Javascript并没有重载函数的功能，但是Arguments对象能够模拟重载。
+    Javascrip中每个函数都会有一个Arguments对象实例arguments，它引用着函数的实参，可以用数组下标的方式"[]"引用arguments的元素。
+    arguments.length为函数实参个数，arguments.callee引用函数自身。
+</head>
+<body>
+<script>
+//    在js中 不需要明确指出参数名，就能访问它们，例如：
+
+function test() {
+    var s = "";
+    for (var i = 0; i < arguments.length; i++) {
+        alert(arguments[i]);
+        s += arguments[i] + ",";
+    }
+    return s;
+}
+    test("name", "age");
+
+//    输出结果：
+
+//name,age
+</script>
+</body>
+</html>

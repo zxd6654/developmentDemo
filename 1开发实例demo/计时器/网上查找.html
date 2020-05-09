@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <script type="text/javascript">
+        var c=0;
+        var t;
+
+        function timedCount()
+        {
+
+            document.getElementById('txt').value=c;
+            c=c+1;
+            t=setTimeout("timedCount()",1000)
+        }
+
+        function stopCount()
+        {
+
+            clearTimeout(t)
+
+        }
+        function cs()
+        {
+
+            c=0;
+            document.getElementById('txt').value= 0
+
+        }
+
+    </script>
+</head>
+
+<body>
+<form>
+    <input type="button" value="开始!" id="start" onClick="timedCount()">
+    <input type="text" id="txt">
+    <input type="button" value="停止!" id="end" onClick="stopCount()">
+    <input type="button" value="清零！" id="ss" onClick="cs()">
+</form>
+</body>
+
+</html> 

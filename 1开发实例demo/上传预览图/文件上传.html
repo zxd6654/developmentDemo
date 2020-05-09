@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="file">
+<script>
+    document.getElementsByTagName('input')[0].onchange=function () {
+        if (window.FileReader) {
+            let reader = new FileReader();
+            let file = this.files[0];
+            reader.readAsText(file);
+//        reader.readAsDataURL(file); //img的src
+            reader.onload=function () {
+                console.log(this.result);
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>aaaaaa</div>
+<script type='text/javascript'>
+var iscookie=document.cookie.indexOf('firstVisit='); //得到分割的cookie名值
+if(iscookie==-1){ //判断cookie是否存在
+var exdate=new Date();
+//exdate.setDate(exdate.getDate()+1); //设置过期时间为30天
+document.cookie='firstVisit=1;'
+//    'expires='+exdate.toGMTString();
+window.location.href='welcome.html'; //跳转网页
+}
+</script>
+</body>
+</html>

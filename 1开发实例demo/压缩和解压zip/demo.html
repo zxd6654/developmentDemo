@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<input type="file" id="importFile"
+       accept="application/zip">
+<input type="button" value="zip" id="zipF">
+<script src="jszip.min.js"></script>
+<!--<script src="jszip-utils.js"></script>-->
+<script>
+
+    importFile.onchange = function () {
+        readFile(this.files[0]);
+    };
+
+    zipF.onclick=function(){
+        zipFile();
+    };
+
+    function readFile(f) {
+        JSZip.loadAsync(f)
+            .then(function (zip) {
+                Object.values(zip.files)[0].async("string").then(function (con) {
+                    console.log(con);
+
+                })
+            }, function (e) {
+                console.log('Error reading ');
+            });
+    }
+
+    function zipFile() {
+        let zip = new JSZip();
+        let moduleData='zxd perfect';
+        zip.file('name' + '.txt', moduleData);
+        zip.generateAsync({type: "blob"}).then(function (content) {
+            saveAs(content, 'name' + ".zip");
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js实现Select下拉框具有输入功能的方法</title>
+</head>
+<body>
+
+<!--方式一-->
+<div style="position:relative;">
+   <span style="margin-left:100px;width:18px;overflow:hidden;">
+     <select style="width:118px;margin-left:-100px" onchange="this.parentNode.nextSibling.value=this.value">
+         <option value="德国">德国</option>
+         <option value="挪威">挪威</option>
+         <option value="瑞士"> 瑞士</option>
+     </select>
+   </span>
+    <input name="box" style="width:100px;position:absolute;left:0px;">
+</div>
+</body>
+</html>

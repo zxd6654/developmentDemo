@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>测试tabletree</title>
+    <link rel="stylesheet" href="css/jquery.treetable.theme.default.css">
+    <link rel="stylesheet" href="css/jquery.treetable.css">
+    <script src="../../拼图游戏/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery.treetable.js"></script>
+</head>
+<body>
+<table id="table">
+    <tr data-tt-id="1">
+        <td>Parent</td>
+    </tr>
+</table>
+<script>
+    var data = [
+        {
+            "dId": "2",
+            "pId": "1",
+            "content": "这是第一行的内容"
+        },
+        {
+            "dId": "3",
+            "pId": "2",
+            "content": "这是第二行的内容"
+
+        },
+        {
+            "dId": "4",
+            "pId": "3",
+            "content": "这是第三行的内容"
+        },
+        {
+            "dId": "5",
+            "pId": "1",
+            "content": "这是第二行的内容"
+
+        }
+    ]
+
+    var dataLength = 0;
+    $(function () {
+        var html;
+        dataLength = data.length;
+        for (var i = 0; i < data.length; i++) {
+            var a = data[i].dId;
+            var b = data[i].pId;
+            var content = data[i].content;
+
+            html += '<tr data-tt-id=' + a + ' data-tt-parent-id=' + b + '><td>' + content + '</td></tr>';
+        }
+        $('#table').append(html);
+        $('#table').treetable({
+            expandable: true, //实现下拉
+            initialState:'expanded',//初始化展开
+            clickableNodeNames:true,//点击节点也可以展开关闭
+//            column:10            //显示树的列数
+//            indent:19          //每行缩进
+        });
+
+    });
+
+</script>
+</body>
+</html>

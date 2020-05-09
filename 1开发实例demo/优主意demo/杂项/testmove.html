@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>testMove</title>
+</head>
+<body>
+<div id="c1"></div>
+<div id="c4"></div>
+<script type="text/javascript">
+    window.addEventListener("devicemotion", function (e) {
+
+        if (Math.abs(e.acceleration.x) > 0.5) {
+            document.getElementById("c1").innerHTML = "左右移动";
+        } else {
+            document.getElementById("c1").innerHTML = "移动结束";
+        }
+        // document.getElementById("c2").innerHTML = e.acceleration.y;
+        // document.getElementById("c3").innerHTML = e.acceleration.z;
+    });
+
+    if(window.deviceorientation){
+        window.addEventListener("deviceorientation", function (e) {
+
+         document.getElementById("c4").innerHTML = "Alpha=" + e.alpha + "beta=" + e.beta + "Gama=" + e.gamma;
+         });
+    }else{
+
+        alert("不支持角度事件！");
+    }
+
+</script>
+</body>
+</html>

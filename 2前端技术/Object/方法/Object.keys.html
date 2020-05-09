@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Object.keys() 方法会返回一个由一个给定对象的自身可枚举属性组成的数组，
+数组中属性名的排列顺序和使用 for...in 循环遍历该对象时返回的顺序一致 （两者的主要区别是 一个 for-in 循环还会枚举其原型链上的属性）。
+<select name="" id="">
+    <option value=""></option>
+    <option value="">1</option>
+    <option value="">2</option>
+</select>
+<script>
+    // simple array
+    var arr = ['a', 'b', 'c'];
+    console.log(Object.keys(arr)); // console: ['0', '1', '2']
+
+    // array like object
+    var obj = { 0: 'a', 1: 'b', 2: 'c' };
+    console.log(Object.keys(obj)); // console: ['0', '1', '2']
+
+    // array like object with random key ordering
+    var anObj = { 100: 'a', 2: 'b', 7: 'c' };
+    console.log(Object.keys(anObj)); // console: ['2', '7', '100']
+</script>
+
+</body>
+</html>

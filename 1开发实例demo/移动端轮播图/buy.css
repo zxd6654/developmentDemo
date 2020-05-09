@@ -1,0 +1,126 @@
+/*活动专题页-- zxd -- 2017.10.26*/
+.now_page{
+    transition: all .5s;
+    background: #333333 !important;
+}
+.popularity_explosion_product {
+    width: 100%;
+    height: auto;
+    /*background: url("/img/mobile/activity/pop_product.png") no-repeat;*/
+    background-size: 100%;
+    padding-bottom: 0.7rem;
+}
+
+.activity_title {
+    font-size: 0.6rem;
+    color: #CF0000;
+    margin-bottom: 0.6rem;
+    text-align: center;
+}
+
+.activity_line {
+    width: 2rem;
+    height: 0.05rem;
+    background: #000000;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.activity_word {
+    text-align: center;
+    padding-bottom: 0.6rem;
+    font-size: 0.4rem;
+    color: #333333;
+}
+
+.activity_pop {
+    width: 90%;
+    height: 7.7rem;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.activity_pop_banner {
+    width: 1000%;
+    -webkit-transform: translateX(-10%);
+    transform: translateX(-10%);
+    /*width: 200%;*/
+    /*overflow: hidden;*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*transition: all 1s;*/
+
+}
+
+.activity_pop_in {
+    width: 10%;
+    float: left;
+    /*width: 48%;*/
+    /*box-shadow: -1px -1px 1px 1px #efefef inset;*/
+    /*padding-bottom: 28px;*/
+    /*float: left;*/
+    /*background: #ffffff;*/
+    /*border: 1px solid red;*/
+}
+
+
+
+.activity_pop_img img {
+    width: 100%;
+}
+
+.activity_pop_word {
+    height: 2.5rem;
+    position: relative;
+}
+
+.activity_pop_word p {
+    text-align: left;
+    padding-left: 0.2rem;
+}
+
+.activity_pop_word p:first-child {
+    font-size: 0.5rem;
+    color: #CF0000;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+.activity_pop_word p:nth-child(2) {
+    font-size: 0.3rem;
+    color: #333333;
+    padding-bottom: 0.2rem;
+}
+
+.activity_pop_word p:nth-child(3) {
+    font-size: 0.25rem;
+    color: #333333;
+}
+
+.activity_pop_word p:nth-child(3) span {
+    font-size: 0.3rem;
+    color: #CF0000;
+}
+.dash {
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -0.3rem;
+}
+
+.dash li {
+    width: 0.1rem;
+    height: 0.1rem;
+    border: 1px solid #a0a0a0;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    float: left;
+}
+
+.dash li:first-child {
+    margin-right: 11px;
+}

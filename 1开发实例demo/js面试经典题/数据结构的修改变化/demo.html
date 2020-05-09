@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+将data转换为newData
+<script>
+    let data = [
+        {
+            one: {
+                three: {
+                    attr: '3333333'
+                },
+                attr: '1111111111'
+            },
+            two: {
+                attr: '222222222'
+            }
+        }
+    ];
+
+    let newData = [
+        {
+            one: {
+                attr: '1111111111'
+            },
+            two: {
+                attr: '222222222'
+            },
+            three: {
+                attr: '3333333'
+            },
+        }
+    ];
+
+
+    let newDataArr = [];
+
+    data.forEach((item) => {
+        let obj = {};
+        handlerObj(item);
+        newDataArr.push(obj);
+
+        function handlerObj(item) {
+            for (let [key, value] of Object.entries(item)) {
+                if (Object.keys(value).length >= 2) {
+                    for (let [key2, value2] of Object.entries(value)) {
+                        if (value2 instanceof Object) {
+                            obj[key2] = value2;
+                        } else {
+                            obj[key] = {};
+                            obj[key][key2] = value2;
+                        }
+                    }
+                } else {
+                    if (value instanceof Object) {
+                        obj[key] = value;
+                    }
+                }
+            }
+        }
+    });
+    console.log(newDataArr);
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .active {
+            width: 200px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background: aqua;
+            margin: 0 auto;
+            position: relative;
+            /*display: none;*/
+        }
+
+        span {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            text-align: center;
+            line-height: 10px;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="active" id="active">双十一活动 <span>x</span></div>
+<script type="text/javascript">
+    <!--首页活动提示-->
+    var homePageActivity = {};
+
+    //    获取页面元素
+    var oDiv = document.getElementById("active");
+    var oSpan = document.getElementsByTagName("span");
+    //   设置cookie在当天指定时间点过期
+    homePageActivity.setCookie = function (name, value, Deadline) {
+//        获取当前日期对象
+        var curDate = new Date();
+//        获取当前日期对应的时间戳
+        var curTime = curDate.getTime();
+        // 获取指定时间的时间戳
+        var endTime = homePageActivity.converTime(curDate, Deadline);
+// 计算出指定时间与当前时间的时间差
+        var disTime = endTime - curTime;
+        curDate.setTime(curTime+disTime);
+// 设置cookie过期时间
+//        判断是否为首次登录
+        var isCookie=document.cookie.indexOf(name);
+        if (isCookie === -1) {
+            document.cookie = name + '=' + value + ';expires=' +curDate.toGMTString();
+            oDiv.style.display = "block";
+        } else {
+            oDiv.style.display = "none";
+        }
+    };
+    // 获取指定时间的时间戳
+    homePageActivity.converTime = function (nowDate, Deadline) {
+        // 分割参数Deadline
+        var _dateArr = Deadline.split(':');
+//        console.log(_dateArr);
+// 分别获取参数中对应的时、分、秒
+        var hours = parseInt(_dateArr[0]);
+        var minutes = parseInt(_dateArr[1]);
+        var seconds = parseInt(_dateArr[2]);
+// 设置对应时分秒
+        nowDate.setHours(hours);
+        nowDate.setMinutes(minutes);
+        nowDate.setSeconds(seconds);
+// 获取当前天中指定时分秒对应的毫秒数
+        var result = Date.parse(nowDate);
+        return result;
+    };
+    //  设置cookie具体数值
+    homePageActivity.setCookie('activityFirst', 'value', '23:59:59');
+    //    清除cookie
+    homePageActivity.clearCookie = function (name) {
+        homePageActivity.setCookie(name, "", -1);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+/**
+ * Description: 天津公司 饰面展示
+ * Created by wxy on 2018/3/27 10:26
+ */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 100px;
+    -webkit-text-size-adjust: 100%;  /* 禁用iPhone中Safari的字号自动调整 */
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    opacity: 0;
+    background-color: #f2f2f2;
+    font-family: "Microsoft YaHei", "微软雅黑", Arial;
+    font-size: 0.3rem;
+    color: #333;
+    padding: 0rem 0.3rem;
+}
+
+/*系列标题*/
+.title-container{
+    position: relative;
+
+    text-align: center;
+    border-bottom: 1px solid #4caf50;
+    font-weight: normal;
+    height: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+.title-container .title{
+    font-size: 0.3rem;
+    display: inline-block;
+    height: 1.7rem;
+    line-height: 1.9rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom:-0.07rem ;
+    padding: 0 0.3rem;
+    border-bottom: 0.14rem solid #4caf50;
+    white-space: nowrap;
+    font-size:0.6rem
+}
+
+
+/*列表*/
+.lists-container{
+    width: 100%;
+    position: relative;
+}
+.lists-container .pic-title{
+    position: relative;
+    height: 1rem;
+    margin-top: 0.5rem;
+}
+.lists-container .pic-title .line{
+    width: 100%;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 0;
+    height: 0;
+    border-bottom: 1px solid #ccc;
+}
+.lists-container .pic-title .name{
+    font-size: 0.45rem;
+    text-align: center;
+    display: block;
+    background: #4caf50;
+    color: #fff;
+    width: 4.5rem;
+    height: 1rem;
+    line-height: 1rem;
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 0;
+    margin-left: -2.25rem;
+}
+
+.lists-container .pic{
+    width: 10.2rem;
+    height: 10.2rem;
+}

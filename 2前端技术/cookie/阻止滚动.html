@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 50px;
+            background: red;
+            position: absolute;
+        }
+        #a{
+            top: 500px;
+        }
+        #b{
+            top: 1000px;
+        }
+    </style>
+</head>
+<body style="height: 2000px;">
+<div id="a"></div>
+<div id="b"></div>
+<script src="../单选框/jquery-2.2.4.min.js"></script>
+<script>
+
+    window.scrollTo(0,document.body.clientHeight);
+    ScrollBarlen=document.body.clientHeight-document.body.scrollTop;
+    console.log(ScrollBarlen);
+</script>
+</body>
+</html>

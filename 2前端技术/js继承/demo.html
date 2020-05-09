@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    <!--基类-->
+    function Base() {
+        this.nation = "汉";
+        this.country = "中国";
+        this.job = "军人";
+    }
+
+    //    huo构造函数
+    function Huo() {
+        this.fun = Base;//通过基类构造函数的函数名Base把构造函数传递给fun属性
+        this.fun();//执行函数fun，new操作时，所得基类所有属性
+        this.name = "霍去病";
+        this.dynasty = "汉";
+    }
+
+    //    yue构造函数
+    function Yue() {
+        this.fun = Base;
+        this.fun();
+        this.name = "岳飞";
+        this.dynasty = "宋";
+    }
+
+    let extend1 = new Huo();
+    let extend2 = new Yue();
+    //页面显示对象extend1的dynasty属性值
+    document.write(extend1.dynasty);
+    document.write("<br>");
+    //页面显示对象extend2的country属性值
+    document.write(extend2.country);
+    document.write("<br>");
+</script>
+</body>
+</html>

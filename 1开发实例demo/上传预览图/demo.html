@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <style type="text/css">
+        #preview,
+        .img,
+        img {
+            width: 200px;
+            height: 200px;
+        }
+
+        #preview {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+<div id="preview"><img src="" alt="" id="img1"></div>
+<input type="file" onchange='preview(this,"img1")'/>
+<script type="text/javascript">
+    function preview(imgFile, imgId) {
+        var filextension = imgFile.value.substring(imgFile.value.lastIndexOf("."), imgFile.value.length);
+        filextension = filextension.toLowerCase();
+        if ((filextension !== '.jpg') && (filextension !== '.gif') && (filextension !== '.jpeg') && (filextension !== '.png') && (filextension !== '.bmp')) {
+            alert("对不起，系统仅支持标准格式的照片，请您调整格式后重新上传，谢谢 !");
+            imgFile.focus();
+        } else if (imgFile.files && imgFile.files[0]) {
+//            var prevDiv = document.getElementById(imageContent);
+            var reader = new FileReader();
+            reader.onload = function (evt) {
+                document.getElementById(imgId).src = evt.target.result;
+
+            };
+            reader.readAsDataURL(imgFile.files[0]);
+        }
+    }
+</script>
+</body>
+</html>

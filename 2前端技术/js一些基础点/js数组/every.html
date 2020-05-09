@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--every()：判断数组中每一项都是否满足条件，只有所有项都满足条件，才会返回true。-->
+</head>
+<body>
+<script>
+    var arr = [1, 2, 3, 4, 5];
+    var arr2 = arr.every(x=> x<10);
+    console.log(arr2); //true
+    var arr3 = arr.every(function (x) {
+        return x < 3;
+    });
+    console.log(arr3); // false
+</script>
+</body>
+</html>

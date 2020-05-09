@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSONP</title>
+</head>
+<body>
+JSONP的全称是"JSON With Padding"，词面意思上理解就是‘填充式的JSON’。
+他不是一个新鲜的东西，隶属于JSON的一种使用方法
+或者说是一种使用模式，可以解决一些常见的浏览器端网页跨域问题。
+
+正如他的名称一样，它是指被包含在调用函数中的JSON，比如这样:
+callback({"Name": "小明", "Id" : 1823, "Rank": 7})
+
+由于浏览器的同源策略，使得在网页端，出现出现了这个‘跨域问题’，然而我们发现，所有的src属性 并没有受到相关的限制，比如img/script
+JSONP 的原理就要从 script 说起。script 可以执行其他域的js 函数
+
+a.html
+
+...
+src="http://server2.example.com/RetrieveUser?UserId=1823&callback=parseResponse">
+...
+
+JSONP的这种实现方式不受同源策略的影响，兼容性也很好；但是它只支持 GET 方式的请求，只支持 HTTP 请求这种特殊的情况，对于两个不同域之间两个页面的互相调用也是无能为力。
+</body>
+</html>

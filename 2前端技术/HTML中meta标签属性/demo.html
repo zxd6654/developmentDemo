@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	meta元素可提供有关页面的元信息,比如针对搜索引擎和更新度的描述和关键词
+	元素出去charset属性外，都是http-equiv属性或name属性结合content来使用
+
+	1指定名/值对定义元数据
+	<meta name="keywords" content="HTML CSS"><!-- 定义文档关键词,用于搜索引擎 -->
+	<meta name="description" content="Free Wed"><!-- 定义web页面描述 -->
+	<meta name="author" content="zxd"><!-- 定义页面作者 -->
+	<meta name="copyright" content=""><!-- 版权信息 -->
+	<meta name="renderer" content="webkit|ie-comp|ie-stand"><!-- renderer是为双核浏览器准备的，用于指定双核浏览器默认以何种方式渲染页面 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- 用于移动端 -->
+	
+	2声明字符编码
+	<meta charset="utf-8"> <!-- 定义文档的字符编码 -->
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+
+	3模拟http标头字段
+	<meta http-equiv="refresh" content="30;URL=http://www.baidu.com"><!-- 每隔30秒刷新页面 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- 指定IE和Chrome使用最新版本渲染当前页面-->
+	<meta http-equiv="expires" content="Sunday 22 July 2016 16:30 GMT"><!-- expires 用于设定网页的到期时间，过期后网页必须到服务器上重新传输 -->
+    <meta http-equiv="cache-=control" content="no-cache"><!-- catch-control 用于指定所有缓存机制在整个请求/响应链中必须服从的指令 -->
+</head>
+
+<body>
+</body>
+	

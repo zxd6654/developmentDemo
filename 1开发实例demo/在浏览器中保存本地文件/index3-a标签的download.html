@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="open.png">普通链接</a>
+<a href="open.png" download="img">保存到本地</a>
+<script>
+    //模拟点击a标签，下载文件
+    var a = document.getElementsByTagName('a')[1];
+    var event = document.createEvent('MouseEvents');
+    event.initEvent('click', true, true);
+    a.dispatchEvent(event);
+</script>
+</body>
+</html>

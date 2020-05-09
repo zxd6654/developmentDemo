@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+已不推荐使用 document.load()。要升级您的代码，请改用 DOM XMLHttpRequest 对象。可访问
+https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest 详细了解
+
+新版的谷歌,ie都不支持load方法
+火狐浏览器可以支持load
+<script>
+    function createXMLDom() {
+        var xmldoc;
+        if (window.ActiveXObject)
+            xmldoc = new ActiveXObject("Microsoft.XMLDOM");
+        else if (document.implementation && document.implementation.createDocument)
+            xmldoc = document.implementation.createDocument("", "doc", null);
+        xmldoc.async = false;
+        //为了和FireFox一至，这里不能改为False;
+        xmldoc.preserveWhiteSpace = true;
+        return xmldoc;
+    }
+
+    //加载XML文件。
+    var xmlDom=createXMLDom();
+    xmlDom.load("info.xml");
+    //获得根节点
+    var root=xmlDom.documentElement;
+    var data="";
+    var names=root.getElementsByTagName("name");
+    var ages=root.getElementsByTagName("age");
+    var len=names.length;
+    for(var i=0;i<len;i++) {
+        data+="姓名:";
+        data+=names[i].firstChild.nodeValue;
+        data+=" 年龄:";
+        data+=ages[i].firstChild.nodeValue;
+        data+=" ";
+    }
+    console.log(data);
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+语法结构创建的对象
+<script>
+    //   对象，数组，函数
+    var o = {a: 1};
+    //    o这个对象继承了Object.prototype上面的所有属性
+    //    o 自身没有名为 hasOwnProperty 的属性，Javascript中Object对象原型上的hasOwnProperty()用来判断一个属性是定义在对象本身而不是继承自原型链。
+    // Object.prototype 的原型为 null
+    // 原型链如下:
+    // o ---> Object.prototype ---> null
+    var a = ["yo", "whadup", "?"];
+
+    // 数组都继承于 Array.prototype
+    // (Array.prototype 中包含 indexOf, forEach等方法)
+    // 原型链如下:
+    // a ---> Array.prototype ---> Object.prototype ---> null
+
+    function f() {
+        return 2;
+    }
+
+    // 函数都继承于Function.prototype
+    // (Function.prototype 中包含 call, bind等方法)
+    // 原型链如下:
+    //
+</script>
+</body>
+</html>

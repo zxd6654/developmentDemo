@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+    <script src="three.js"></script>   <!--webgl的threejs框架-->
+    <script src="OrbitControls.js"></script><!--鼠标操作三维场景   轨道相机控件-->
+    <script src="Stats.js"></script>   <!--性能检测-->
+    <script src="DeviceOrientationControls.js"></script>   <!--陀螺仪-->
+</head>
+<body>
+<div id="container"></div>
+<div>
+    <br>
+    width: <input id="holder_width" type="range" min="0" max="500" step="2" value="200" onchange='changeSize()'>&nbsp;&nbsp;<span id="width_val"></span><br>
+    height:<input id="holder_height" type="range" min="0" max="500" step="2" value="200" onchange='changeSize()'>&nbsp;&nbsp;<span id="height_val"></span><br>
+    depth: <input id="holder_depth" type="range" min="0" max="500" step="2" value="200" onchange='changeSize()'>&nbsp;&nbsp;<span id="depth_val"></span>
+</div>
+<script>
+    var holderWidth = document.getElementById("holder_width");
+    var holderHeight = document.getElementById("holder_height");
+    var holderDepth = document.getElementById("holder_depth");
+
+    var widthVal = document.getElementById("width_val");
+    var heightVal = document.getElementById("height_val");
+    var depthVal = document.getElementById("depth_val");
+    function funwidthVal() {
+        widthVal.innerHTML=holderWidth.value;
+    }
+    function funHeightVal() {
+        heightVal.innerHTML=holderHeight.value;
+    }
+    function funDepthVal() {
+        depthVal.innerHTML=holderDepth.value;
+    }
+    function changeSize() {
+        initScene();
+//        initRenderer();  /*去掉之后，就可以在原来的基础之上，改变模型的w，h，d*/
+        initCamera();
+        initControl();
+        initWorld();
+        initLight();
+        initHelper();
+        initClock();
+        funwidthVal();
+        funHeightVal();
+        funDepthVal();
+    }
+
+    init();
+    animate();
+
+    var scene;
+
+    function initScene() {
+        scene = new THREE.Scene();  /*设置场景*/
+    }
+
+    var renderer ,container,oWidth,oHeight;
+
+    function initRenderer() {
+        container = document.getElementById('container');
+        oWidth = container.clientWidth;
+        oHeight = container.clientHeight;
+        renderer = new THREE.WebGLRenderer({   /*设置渲染器*/
+            antialias: true                 /*抗锯齿*/
+        });
+        renderer.setClearColor(0xe8e8e8);  /*画布背景色*/
+        renderer.setSize(oWidth, oHeight); /*渲染器大小*/
+        container.appendChild(renderer.domElement);/*动态生成canvas*/
+    }
+
+    var camera;
+
+    function initCamera() {
+        camera = new THREE.PerspectiveCamera(60, oWidth / oHeight, 1, 10000); /*创建相机   透射投影  如果远裁剪面比较小的话，缩放的时候，几何体就会消失 */
+        camera.position.x = 300;   /*相机的位置坐标*/
+        camera.position.y = 300;
+        camera.position.z = 500;
+    }
+
+    var  deviceControls = new THREE.DeviceOrientationControls(camera);
+
+    var controls;
+
+    function initControl() {
+        controls = new THREE.OrbitControls(camera, renderer.domElement); /*创建控制器*/
+        controls.addEventListener('change', render);
+        controls.minDistance = 300;         /*放大上限*/
+        controls.maxDistance = 3000;        /*缩小下限*/
+        controls.lookSpeed = 0.1;//视角变化速度
+        controls.movementSpeed = 100;//前后左右平移速度
+    }
+
+    var geometry, material, cube,texture;
+
+    function initWorld() {
+        geometry = new THREE.CubeGeometry(holderWidth.value, holderHeight.value, holderDepth.value);/*创建几何体*/
+        texture=new THREE.TextureLoader().load('crate.gif');/*添加纹理贴图*/
+        material = new THREE.MeshLambertMaterial({    /*材质  此处是兰伯特材质 这种材质对光照有反应，用于创建暗淡的不发光的物体  漫反射*/
+////                             MeshPhongMaterial：这种材质对光照也有反应，用于创建金属类明亮的物体    镜面反射
+//        material = new THREE.MeshBasicMaterial({    /*材质  对光照无感，给几何体一种简单的颜色或显示线框*/
+            map:texture,   /*将纹理图片加入到材质中*/
+            color: 0x00d9b5,
+//            transparent:true,
+//            opacity:0.8,
+//            wireframe:true,          /*修改几何体的边框*/
+        });
+        cube = new THREE.Mesh(geometry, material);  /*网络模型对象*/
+        scene.add(cube);  /*将网络模型添加到场景中去*/
+
+//        几何体没有对角线的效果
+//        var sphere=new THREE.SphereGeometry(holderWidth.value, holderHeight.value, holderDepth.value);  /*球体构造函数*/
+//        var object=new THREE.Mesh(sphere,new THREE.MeshBasicMaterial(0xff0000));
+//        var box =new THREE.BoxHelper(object);
+//        scene.add(box);
+
+//        平面 添加纹理贴图
+
+//        var plane = new THREE.PlaneGeometry(holderWidth.value,holderHeight.value);//矩形平面
+//        var texture = THREE.ImageUtils.loadTexture("crate.gif");//加载纹理贴图
+//        var planeMaterial=new THREE.MeshLambertMaterial({//贴图通过材质添加给几何体
+//            map:texture//给纹理属性map赋值
+//        });//材质对象
+//        var planeMesh = new THREE.Mesh(plane,planeMaterial);//纹理贴图网格模型
+//        planeMesh.translateZ(100.1);//平移纹理贴图网格模型,多加0.1不会出现纹理闪动
+//        scene.add(planeMesh);//纹理贴图网格模型添加到场景中
+
+    }
+
+    var light;
+
+    function initLight() {
+        light = new THREE.DirectionalLight(0x000000);  /*设置灯光  平行光*/
+        light.position.set(1, 1, 1);
+        scene.add(light);
+        light = new THREE.DirectionalLight(0x00d9b5);
+        light.position.set(-1, -1, -1);
+        scene.add(light);
+        light = new THREE.AmbientLight(0x00d9b5);  /*环境光*/
+        scene.add(light);
+    }
+
+    var helper;
+
+    function initHelper() {
+//        helper = new THREE.GridHelper(1000, 50);  /*设置网格系统     已被弃用*/
+//        helper.setColors(0x0000ff, 0x808080);  /*网格系统中线条两端的颜色*/
+//        scene.add(helper);
+
+        scene.add(new THREE.AxisHelper(500));   /*显示坐标*/
+    }
+   var stats;
+    function initStats() {
+        stats = new Stats();   /*测试性能，fps和ms*/
+        stats.domElement.style.position = 'absolute';
+        stats.domElement.style.left = '0px';
+        stats.domElement.style.top = '0px';
+        container.appendChild(stats.domElement);
+    }
+    var clock;
+    function initClock() {
+        clock=new THREE.Clock();   /*封装的Date 对象*/
+    }
+    function init() {  /*初始化*/
+        initScene();
+        initRenderer();
+        initCamera();
+        initControl();
+        initWorld();
+        initLight();
+        initHelper();
+        initStats();
+        initClock();
+        funwidthVal();
+        funHeightVal();
+        funDepthVal();
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);   /*循环*/
+//        cube.rotation.x+=0.005;           /*动画效果 旋转 缩放 平移*/
+//        cube.rotation.y+=0.01;
+        var T=clock.getDelta();       /*根据时间差改变*/
+//        deviceControls.update();
+        controls.update(T);          /*控制器改变，更新*/
+        stats.update();            /*性能检测 实时更新*/
+        render();
+    }
+
+    function render() {
+        renderer.render(scene, camera);  /*将场景和，相机加载到渲染器中*/
+    }
+</script>
+</body>
+</html>

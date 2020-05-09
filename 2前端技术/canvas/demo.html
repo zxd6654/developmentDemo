@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<canvas id="slotting" width="250" height="127"></canvas>
+
+<script>
+    let ctx,cty;
+    init();
+
+    function init() {
+        let canvas = document.querySelector('#slotting');
+        if (!canvas.getContext('2d')) return console.log('亲,浏览器不支持canvas哦!');
+        ctx = canvas.getContext('2d');
+        draw();
+    }
+
+    function draw() {
+        rectY();
+        rectX();
+    }
+
+
+    function rectX() {
+        ctx.save();
+        ctx.translate(-20,0);
+        ctx.beginPath();
+        ctx.moveTo(140, 30);
+        ctx.lineTo(190, 30);
+        ctx.lineTo(190, 95);
+        ctx.lineTo(140, 95);
+        ctx.fillStyle = "rgba(60, 50, 100, 0.5)";
+        ctx.fill();
+        ctx.restore();
+    }
+
+    function rectY() {
+        ctx.save();
+        ctx.translate(0,0);
+        ctx.beginPath();
+        ctx.moveTo(40, 10);
+        ctx.lineTo(140, 10);
+        ctx.lineTo(140, 115);
+        ctx.lineTo(40, 115);
+        ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+        ctx.fill();
+        ctx.restore();
+    }
+
+</script>
+</body>
+</html>

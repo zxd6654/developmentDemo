@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var arr1 = ['a','b'];
+    var arr2 = ['a','c','d'];
+    var arr3 = [1,'d',undefined,true,null];
+
+    var concat = function(arr1,arr2,arr3){
+        if(arguments.length <= 1){
+            return false;
+        }
+        var concat_ = function(arr1,arr2){
+            var arr = arr1.concat();
+            for(var i=0;i<arr2.length;i++){
+                arr.indexOf(arr2[i]) === -1 ? arr.push(arr2[i]) : 0;
+            }
+            return arr;
+        }
+        var result = concat_(arr1,arr2);
+        for(var i=2;i<arguments.length;i++){
+            result = concat_(result,arguments[i]);
+        }
+        console.log(result);
+        return result;
+    }
+
+    concat(arr1,arr2,arr3)
+
+
+    var examplearr=[8,94,15,88,55,76,21,39];
+    function sortarr(arr){
+        for(i=0;i<arr.length;i++){
+            for(j=0;j<arr.length-i;j++){
+                if(arr[j]>arr[j+1]){
+                    var temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                }
+            }
+        }
+        return arr;
+    }
+    sortarr(examplearr);
+    console.log(examplearr);
+</script>
+</body>
+</html>

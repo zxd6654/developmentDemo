@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>测试tabletree</title>
+    <link rel="stylesheet" href="css/jquery.treetable.theme.default.css">
+    <link rel="stylesheet" href="css/jquery.treetable.css">
+    <script src="../../拼图游戏/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery.treetable.js"></script>
+</head>
+<body>
+<table id="property-table" class="property-table" border="1">
+    <caption style="text-align: left">属性设置</caption>
+    <thead>
+    <tr>
+        <th>属性</th>
+        <th>值</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tr data-tt-id="0">
+        <td>添加</td>
+        <td>
+            <select class="select-style punchOrSlot" name="">
+                <!--<option value=""></option>-->
+                <option value="slot">开槽</option>
+                <option value="punch">钻孔</option>
+            </select>
+        </td>
+        <td>
+            <div class="btn add">添加</div>
+        </td>
+    </tr>
+
+</table>
+<script>
+
+    let createId = 1;
+
+    var data = {
+        slot: function (createId,val) {
+            return [
+                {
+                    category: 'inputAndButton',
+                    dId: createId,
+                    pId: "",
+                    content: {
+                        property: '类型',
+                        value: val,
+                        name: '',
+                        operate: '删除',
+                        className: 'delete',
+                    }
+                },
+                {
+                    category: 'ordinary',
+                    dId: createId+1,
+                    pId: createId,
+                    content: {
+                        property: '起点',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+
+                },
+                {
+                    category: 'input',
+                    dId: createId+2,
+                    pId: createId+1,
+                    content: {
+                        property: 'X',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'input',
+                    dId: createId+3,
+                    pId: createId+1,
+                    content: {
+                        property: 'Y',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'input',
+                    dId: createId+4,
+                    pId: createId+1,
+                    content: {
+                        property: 'Z',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'ordinary',
+                    dId: createId+5,
+                    pId: createId,
+                    content: {
+                        property: '终点',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'input',
+                    dId: createId+6,
+                    pId: createId+5,
+                    content: {
+                        property: 'X',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'input',
+                    dId: createId+7,
+                    pId: createId+5,
+                    content: {
+                        property: 'Y',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'input',
+                    dId: createId+8,
+                    pId: createId+5,
+                    content: {
+                        property: 'Z',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'input',
+                    dId: createId+9,
+                    pId: createId,
+                    content: {
+                        property: '槽宽',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'selectAndButton',
+                    dId: createId+10,
+                    pId: createId,
+                    content: {
+                        property: '轮廓',
+                        value: '',
+                        options: [
+                            {
+                                title: '1',
+                                value: '1'
+                            },
+                            {
+                                title: '2',
+                                value: '2'
+                            }
+                        ],
+                        name: '',
+                        operate: '编辑',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'select',
+                    dId: createId+11,
+                    pId: createId,
+                    content: {
+                        property: '定义加工',
+                        value: '',
+                        options: [
+                            {
+                                title: '11',
+                                value: '11'
+                            },
+                            {
+                                title: '22',
+                                value: '22'
+                            }
+                        ],
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+            ]
+        },
+        punch: function (createId,val) {
+            return [
+                {
+                    category: 'inputAndButton',
+                    dId: createId,
+                    pId: "",
+                    content: {
+                        property: '类型',
+                        value: val,
+                        name: '',
+                        operate: '删除',
+                        className: 'delete',
+                    }
+                },
+                {
+                    category: 'ordinary',
+                    dId: createId+1,
+                    pId:  createId,
+                    content: {
+                        property: '起点',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+
+                },
+                {
+                    category: 'input',
+                    dId: createId+2,
+                    pId:  createId+1,
+                    content: {
+                        property: 'X',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'input',
+                    dId: createId+3,
+                    pId:  createId+1,
+                    content: {
+                        property: 'Y',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'input',
+                    dId: createId+4,
+                    pId: createId+1,
+                    content: {
+                        property: 'Z',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'ordinary',
+                    dId: createId+5,
+                    pId:  createId,
+                    content: {
+                        property: '终点',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'input',
+                    dId: createId+6,
+                    pId:  createId+5,
+                    content: {
+                        property: 'X',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'input',
+                    dId: createId+7,
+                    pId:  createId+5,
+                    content: {
+                        property: 'Y',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+                {
+                    category: 'input',
+                    dId:  createId+8,
+                    pId:  createId+5,
+                    content: {
+                        property: 'Z',
+                        value: '',
+                        name: '',
+                        operate: '',
+                        className: '',
+                    }
+                },
+            ]
+        }
+    };
+
+
+    function work() {
+        let content = '',
+            selectOption = $('#property-table').find('.punchOrSlot option:selected').val();
+
+        if (selectOption) {
+            let val;
+            if(selectOption==='punch'){
+                val='钻孔';
+            }else {
+                val='开槽';
+            }
+            for (let item of data[selectOption](createId,val)) {
+                content += createFormItemStrategies[item.category](item);
+            }
+            createId += data[selectOption]().length;
+        } else {
+            console.log('请选择');
+        }
+        return content;
+    }
+
+    let createFormItemStrategies = {
+        inputAndButton: function (item) {
+            return `<tr data-tt-id=  ${item.dId}  data-tt-parent-id=  ${item.pId} >
+                       <td>${item.content.property}</td>
+                          <td><input type="text" readonly value="${item.content.value}"></td>
+                           <td><div class="${item.content.className}">${item.content.operate}</div></td>
+                           </tr>`;
+        },
+        input: function (item) {
+            return `<tr data-tt-id=  ${item.dId}  data-tt-parent-id=  ${item.pId} >
+                           <td>${item.content.property}</td>
+                           <td><input type="text"></td>
+                           <td></td>
+                           </tr>`;
+        },
+        selectAndButton: function (item) {
+            return `<tr data-tt-id=  ${item.dId}  data-tt-parent-id=  ${item.pId} >
+                          <td>${item.content.property}</td>
+                           <td><select name="" id=""></select></td>
+                           <td><div>${item.content.operate}</div></td>
+                           </tr>`;
+        },
+        select: function (item) {
+            return `<tr data-tt-id=  ${item.dId}  data-tt-parent-id=  ${item.pId} >
+                           <td>${item.content.property}</td>
+                           <td><select name="" id=""></select></td>
+                          <td></td>
+                          </tr>`;
+        },
+        ordinary: function (item) {
+            return `<tr data-tt-id=  ${item.dId}  data-tt-parent-id=  ${item.pId} >
+                          <td>${item.content.property}</td>
+                           <td></td>
+                           <td></td>
+                           </tr>`;
+        }
+    };
+
+//    $('#property-table').append(work());
+
+    $('#property-table').treetable({
+        expandable: true
+    });
+//    deletes();
+
+    function deletes() {
+        $('#property-table').find('.delete').each(function (index,ele) {
+            let scope = ele;
+            $(ele).click(function () {
+                $('#property-table').treetable('removeNode', $(scope).parent().parent().attr('data-tt-id'));
+            })
+        });
+    }
+
+    $('#property-table').find('.add').click(function () {
+        $('#property-table').treetable('loadBranch', null, work());
+        $('#property-table').treetable('expandAll');
+        deletes();
+    })
+
+</script>
+</body>
+</html>

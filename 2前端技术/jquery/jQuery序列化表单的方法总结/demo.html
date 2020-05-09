@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-2.2.4.min.js"></script>
+
+</head>
+<body>
+<form method="post" action="#" id="test_form">
+    用户名：
+    <input type="text" name="username"/><br>
+
+    密 &nbsp; 码：
+    <input type="password" name="password"><br>
+
+    爱 &nbsp; 好：
+    吃饭<input type="checkbox" name="hobby" value="eat" checked/>
+    睡觉<input type="checkbox" name="hobby" value="sleep"/><br/>
+
+    性 &nbsp; 别：
+    男 <input type="radio" value="man" name="sex" checked/>
+    女 <input type="radio" value="woman" name="sex"/><br/>
+
+    学 &nbsp; 校：
+    <select name="school">
+        <option value="yangguang">阳光小学</option>
+        <option value="xiwang">希望小学</option>
+        <option value="tiantian">天天小学</option>
+    </select>
+
+    <br><br><br>
+    <input type="submit" value="提交"/> &nbsp;&nbsp;
+    <input type="reset" value="重置"/>
+    <br> <br> <br>
+
+    <input type="button" value="点我序列化为url" id="serializeUrl"/>&nbsp;&nbsp;
+    <input type="button" value="点我序列化为json" id="serializeJson"/>&nbsp;&nbsp;
+    <input type="button" value="点我FormData" id="serializeFormData"/>
+</form>
+<script>
+    /**
+     * serialize()
+     *   作用：序列表单内容为字符串。
+     *  参数： 无
+     *  返回值：表单内容的字符串格式
+     *  1.我们看到输出的结果为表单项中的各表单元素的name和value值
+     2.格式是以url参数的形式，第一个参数前面没有&符号
+     */
+    $(function () {
+        $("#serializeUrl").click(function () {
+            testJquerySerializeUrl();
+        });
+
+        function testJquerySerializeUrl() {
+            var serializeUrl = $("#test_form").serialize();
+            alert("序列化为url格式为：" + serializeUrl);
+        }
+    })
+</script>
+<script>
+    $(function () {
+        $("#serializeUrl").click({"name": "zxy"}, function () {
+            testJquerySerializeUrl();
+// alert();
+        });
+
+        $("#serializeJson").click({}, function () {
+            testJquerySerializeJson();
+        });
+
+    });
+
+    function testJquerySerializeUrl() {
+        var serializeUrl = $("#test_form").serialize();
+        alert("序列化为url格式为：" + serializeUrl);
+    }
+
+
+    function testJquerySerializeJson() {
+        var serializeJson = $("#test_form").serializeArray();
+        alert("序列化为json格式为：" + JSON.stringify(serializeJson)); //JSON.stringify(json对象) 将json对象转化为json字符串
+
+    }
+</script>
+<script>
+    $(function () {
+
+        $("#serializeFormData").click(function () {
+            testJqueryFormData();
+        });
+
+        function testJqueryFormData() {
+            var formObj = $("#test_form");
+            var formData = new FormData(formObj);
+            console.log(formData);
+        }
+    })
+</script>
+</body>
+</html>

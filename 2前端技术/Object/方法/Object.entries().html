@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    Object.entries()
+    返回一个给定对象自身可枚举属性的键值对数组，其排列与使用 for...in 循环遍历该对象时返回的顺序一致（区别在于 for-in 循环也枚举原型链中的属性）。
+</head>
+<body>
+<script>
+    const obj = { foo: 'bar', baz: 42 };
+    console.log(Object.entries(obj)); // [ ['foo', 'bar'], ['baz', 42] ]
+
+    const simuArray = { 0: 'a', 1: 'b', 2: 'c' };
+    console.log(Object.entries(simuArray)); // [ ['0', 'a'], ['1', 'b'], ['2', 'c'] ]
+</script>
+</body>
+</html>

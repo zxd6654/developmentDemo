@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       /*div{*/
+           /*width: 100px;*/
+           /*overflow: hidden;*/
+       /*}*/
+        /*input{*/
+            /*position: relative;*/
+            /*right: 70%;*/
+        /*}*/
+    </style>
+</head>
+<body>
+
+<input type="radio" data-id="1" name="1_1">
+<input type="radio" data-id="2" name="1_1" checked='${1 == "0" ? true:false}'>
+<input type="radio" data-id="3" name="1_1"><br>
+<input type="radio" data-id="1" name="1_2">
+<input type="radio" data-id="2" name="1_2">
+<input type="radio" data-id="3" name="1_2" checked>
+
+<select name="" id="" value="111"></select>
+
+<script src="拼图游戏/jquery-2.2.4.min.js"></script>
+<script>
+//    $('input[type=radio]').each(function (index, ele) {
+//        if($(ele).is(':checked')){
+//            console.log($(ele).attr('data-id'));
+//        }
+//    });
+console.log($('input[type=radio]:checked').eq(0).attr('data-id'));
+console.log($('input[type=radio]:checked').eq(1).attr('data-id'));
+</script>
+
+
+
+
+
+<!--<div><input type="file" accept="image/png,,image/gif,image/jpg"></div>-->
+<!--<p></p>-->
+<!--<span>选择</span>-->
+
+<!--<script>-->
+    <!--$('span').click(function () {-->
+        <!--$('input').trigger('click').end().trigger('change');-->
+    <!--});-->
+
+    <!--$('input').change(function () {-->
+        <!--let that=this;-->
+        <!--if (window.FileReader) {//验证当前的浏览器是否支持图片预览-->
+            <!--let reader = new FileReader();-->
+            <!--let file = that.files[0];-->
+            <!--let regexImage = /^image\//;//js正则表达式，匹配是否拥有image-->
+            <!--if (regexImage.test(file.type)) {-->
+                <!--//设置读取结束的回调函数-->
+                <!--reader.onload = function (data) {-->
+                    <!--// console.log(data.target.result);-->
+                    <!--let imgElement = `<img src="${data.target.result}">`;-->
+                    <!--$('p').empty().append(imgElement);-->
+                <!--};-->
+                <!--//开始读取上传的文件内容-->
+                <!--reader.readAsDataURL(file);-->
+            <!--}  else {-->
+                <!--return false;-->
+            <!--}-->
+        <!--} else {-->
+            <!--console.log("亲，浏览器该升级了,不支持图片预览~");-->
+            <!--return false;-->
+        <!--}-->
+    <!--})-->
+
+<!--</script>-->
+</body>
+</html>

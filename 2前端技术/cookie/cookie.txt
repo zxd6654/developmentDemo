@@ -1,0 +1,24 @@
+<!--cookie是一个具有特定格式文本字符串-->
+
+<!--cookiename=cookievalue；expires=expirationdateGTM，pash=URLpath;domain=siteDomain 作用于那个站点-->
+
+<!--这个字符串的第一部分分给cookie命名并给他赋值。这是cookie中唯一必须有的部分，字符串的其余部分都是可选的。-->
+
+<!--接下来是cookie的过期日期（expiration date）,当到了这个日期，浏览器会自动删除这个cookie过期日期后面是一个URL-->
+
+<!--路径，这允许在cookie中存储一个URL。最后，可以在cookie中存储一个域值；-->
+<script>
+    document.cookie="qqq=123;expires=Mon,18 Dec 2017 21:00:00 GMT;path=/;domain=siteDomian";
+
+//    GMT是格林尼治时间=北京时间-8小时；
+
+    var oDate=new Date();
+
+    oDate.setDate(oDate.getDate()+2);
+
+    console.log(oDate);
+
+    console.log(oDate.toGMTString()); /*格林尼治时间与北京时间的相互转化*/
+
+    document.cookie="name=cookie;expires="+oDate.toUTCString();/*格林尼治时间与北京时间的相互转化*/
+
