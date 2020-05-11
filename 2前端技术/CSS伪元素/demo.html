@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<title></title>
 	<meta charset="utf-8">
@@ -15,69 +14,38 @@
 	最好使用双冒号，防止与伪类混淆
 
 	:first-letter 伪元素用于像文本的首字母设置特殊样式
-	:first-line 伪元素用于向文本的首行设置特殊样式
-	:before 伪元素可以在元素的内容前面插入新内容
-	:after 伪元素可以在元素的内容之后车如新内容
-
-	在CSS2.1之前，:first-letter可以只附加到块级元素。
-	CSS2.1扩展其范围，包括块，列表项，表调用，表标题和内联块元素。
-	可以应用到首字母的属性是有限的。
+	:first-line   伪元素用于向文本的首行设置特殊样式
+	:before       伪元素可以在元素的内容前面插入新内容
+	:after        伪元素可以在元素的内容之后车如新内容
 	<style type="text/css">
-		* {
+		*{
 			margin: 0;
-			padding: 0;
+			padding: 0;   
 		}
 
 
-		p {
+		p{
 			border: 1px solid red;
-		}
+		} 
 
-		p::before {
-			content: "hey";
+		p::before{
+			content:"hey";
 			position: relative;
 			left: -5px;
-			color: green;
+			color:green;
 
-		}
+		}     
 
-		p::after {
-			content: "you are handsome";
+		p::after{
+			content:"you are handsome";
 			position: relative;
 			left: 20px;
-			color: blue;
-		}
-
-		div {
-			width: 180px;
-		}
-
-		div::first-line {
-			font-size: 20px;
-			color: red;
-			font-weight: bold;
-		}
-
-		ul::first-letter {
-			color: #ff0000;
-			font-size: xx-large
+			color:blue;
 		}
 	</style>
 </head>
-
 <body>
 	<p>Hello World</p>
-	<div>
-		这是一个标签
-		这是一个标签
-		这是一个标签
-		这是一个标签
-		这是一个标签
-	</div>
-
-	<ul>
-		You can use the :first-letter pseudo-element to add a special effect to the first letter of a text!
-	</ul>
+	
 </body>
-
 </html>

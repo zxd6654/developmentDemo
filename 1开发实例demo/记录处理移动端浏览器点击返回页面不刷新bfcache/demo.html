@@ -3,51 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-部分浏览器在后退时不会触发onload事件,这是html5世代浏览器新增的特性之一
-Back-Forward Cache(bfcache)
-即'往返缓存',可以在用户使用浏览器的'后退'和'前进'按钮时加快页面的转换速度.
-这个缓存不仅保存页面数据,还保存dom和js状态,实际上是将整个页面都保存在内存里,
-如果页面位于bfcache中,那么再次打开个页面就不会触发onload事件
-
-<script>
-    function appendFunc(msg) {
-        var d = new Date();
-        var li = document.createElement("li");
-        li.innerHTML = d.toISOString().substr(14, 9) + " " + msg;
-        document.querySelector("ul").appendChild(li);
-    }
-    window.addEventListener('load', function () {
-        appendFunc('Load Event');
-        document.querySelector("#changeColor").onclick = function () {
-            document.querySelector("a").style.color = "red";
-        }
-    })
-    window.addEventListener('pagehide', function (e) {
-        var $body = $(document.body);
-        $body.children().remove();
-
-        setTimeout(function () {
-            $body.append("<script type='text/javascript'> window.location.reload(); < \/script>");
-        });
-
-        appendFunc("Pagehide Event");
-        appendFunc("pagehide persisted is :" + e.persisted);
-    })
-    window.addEventListener('pageshow', function (e) {
-        if (e.persisted) {
-            window.location.reload()
-        }
-
-        appendFunc("Pageshow Event");
-        appendFunc("pageshow persisted is :" + e.persisted);
-    })
-</script>
+    部分浏览器在后退时不会触发onload事件,这是html5世代浏览器新增的特性之一
+    Back-Forward Cache(bfcache)即'往返缓存',可以在用户使用浏览器的'后退'和'前进'按钮时加快页面的转换速度.
+    这个缓存不仅保存页面数据,还保存dom和js状态,实际上是将整个页面都保存在内存里,
+    如果页面位于bfcache中,那么再次打开个页面就不会触发onload事件,理论上会触发onpageshow方法,
+    qq浏览器,uc浏览器都可以,但是手机自带的一些浏览器却不可以
 </head>
 
 <body>
-<a href="http://www.sina.com.cn/">前往新浪</a>
-<input type="button" id="changeColor" value="变红" />
-<ul></ul>
+    <a
+    href="https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-0VR710003E298460M&useraction=commit">前往百度</a>
+    <input type="button" id="btnSetColor" value="变色" />
+    <ul id="list"></ul>
+    <input type="text" id='odiv'>
+    <script>
+        function abc() {
+            clearTimeout(a);
+            var a = setTimeout(abc, 100);
+            document.getElementById('odiv').value = window.location.href + new Date().getTime();
+            console.log(window.location.href + new Date().getTime());
+        }
 
+        setTimeout(function () {
+            abc();
+        }, 0);
+
+
+        function dispLog(msg) {
+            var d = new Date();
+            $(" <li / > ").text(d.toISOString().substr(14, 9) + " " + msg).appendTo("# list ");
+        }
+        //PageTransitionEvent 的persisted属性检测是不是从缓存中拿的页面true是，false不是
+        window.addEventListener('load', function (event) {
+            dispLog("Load Event ");
+        })
+        $(window).ready(function () {
+            dispLog("Ready Event");
+        });
+        $("#btnSetColor").click(function () {
+            $("#btnSetColor").css("background", "red");
+        })
+        window.addEventListener('pageshow', function (event) {
+            dispLog("PageShow Event " + event.persisted);
+            console.log(event)
+        })
+        window.addEventListener('pagehide', function (event) {
+            dispLog("Pagehide Event " + event.persisted);
+        })
+    </script>
 </body>
 </html>
