@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+1 利用window.open方法打开窗口的时候,如果name属性的名称相同,那么就只能打开第一个窗口
+2 利用a标签打开窗口的时候,如果target属性的名称相同,那么就只能打开第一个窗口
+<body>
+	<input type="button" name="" value='百度一下'>
+	<a href="https://cn.vuejs.org/" target="newWindow">vue官网</a>
+	<script type="text/javascript">
+		let inputDom = document.getElementsByTagName("input")[0];
+		inputDom.onclick = function() {
+			window.open('http://wwww.baidu.cn', 'newWindow');
+		}
+	</script>
+</body>
+
+</html>
