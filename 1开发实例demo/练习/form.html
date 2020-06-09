@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-2.2.4.min.js"></script>
+    <style>
+        .selectFile{
+            margin-right: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<a href="1.png">png</a>
+<a href="1.png" download="true">png</a>
+
+<span class="selectFile">选择文件</span><span class="fileName">未选择任何文件</span>
+<input type="file" style="display: none">
+<script>
+    $('.selectFile').click(function () {
+        $('input').trigger('click');
+    });
+
+    $('input').change(function () {
+       $('.fileName').text(this.files[0].name)
+    });
+</script>
+</body>
+</html>

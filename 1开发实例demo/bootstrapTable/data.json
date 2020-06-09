@@ -1,0 +1,106 @@
+[
+  {
+    "INSERT_DATE": "05-JUN-20",
+    "ORGAN_NAME": "柜面_安徽",
+    "NBUW_OLD_NUM": "1118",
+    "NBUW_SHOULD_DO": "1118",
+    "NBUW_SHOULD_DO2": "1118",
+    "NBUW_SHOULD_DO3": "1118"
+  },
+  {
+    "INSERT_DATE": "05-JUN-20",
+    "ORGAN_NAME": "柜面_安徽",
+    "NBUW_OLD_NUM": "1118",
+    "NBUW_SHOULD_DO": "1118",
+    "NBUW_SHOULD_DO2": "1118",
+    "NBUW_SHOULD_DO3": "1118"
+  },
+  {
+    "INSERT_DATE": "05-JUN-20",
+    "ORGAN_NAME": "柜面_福建",
+    "NBUW_OLD_NUM": "936",
+    "NBUW_SHOULD_DO": "936",
+    "NBUW_SHOULD_DO2": "936",
+    "NBUW_SHOULD_DO3": "936"
+  },
+  {
+    "INSERT_DATE": "05-JUN-20",
+    "ORGAN_NAME": "柜面_厦门",
+    "NBUW_OLD_NUM": "307",
+    "NBUW_SHOULD_DO": "307",
+    "NBUW_SHOULD_DO2": "307",
+    "NBUW_SHOULD_DO3": "307"
+  },
+  {
+    "INSERT_DATE": "05-JUN-20",
+    "ORGAN_NAME": "柜面_云南",
+    "NBUW_OLD_NUM": "1403",
+    "NBUW_SHOULD_DO": "1403",
+    "NBUW_SHOULD_DO2": "1403",
+    "NBUW_SHOULD_DO3": "1403"
+  },
+  {
+    "INSERT_DATE": "05-JUN-20",
+    "ORGAN_NAME": "柜面_广西",
+    "NBUW_OLD_NUM": "4563",
+    "NBUW_SHOULD_DO": "4563",
+    "NBUW_SHOULD_DO2": "4563",
+    "NBUW_SHOULD_DO3": "4563"
+  },
+  {
+    "INSERT_DATE": "05-JUN-20",
+    "ORGAN_NAME": "柜面_小计",
+    "NBUW_OLD_NUM": "8327",
+    "NBUW_SHOULD_DO": "8327",
+    "NBUW_SHOULD_DO2": "8327",
+    "NBUW_SHOULD_DO3": "8327"
+  },
+  {
+    "INSERT_DATE": "05-JUN-20",
+    "ORGAN_NAME": "运营室_安徽",
+    "NBUW_OLD_NUM": "326",
+    "NBUW_SHOULD_DO": "163",
+    "NBUW_SHOULD_DO2": "163",
+    "NBUW_SHOULD_DO3": "163"
+  },
+  {
+    "INSERT_DATE": "05-JUN-20",
+    "ORGAN_NAME": "运营室_福建",
+    "NBUW_OLD_NUM": "128",
+    "NBUW_SHOULD_DO": "64",
+    "NBUW_SHOULD_DO2": "64",
+    "NBUW_SHOULD_DO3": "64"
+  },
+  {
+    "INSERT_DATE": "05-JUN-20",
+    "ORGAN_NAME": "运营室_厦门",
+    "NBUW_OLD_NUM": "76",
+    "NBUW_SHOULD_DO": "38",
+    "NBUW_SHOULD_DO2": "38",
+    "NBUW_SHOULD_DO3": "38"
+  },
+  {
+    "INSERT_DATE": "05-JUN-20",
+    "ORGAN_NAME": "运营室_云南",
+    "NBUW_OLD_NUM": "248",
+    "NBUW_SHOULD_DO": "124",
+    "NBUW_SHOULD_DO2": "124",
+    "NBUW_SHOULD_DO3": "124"
+  },
+  {
+    "INSERT_DATE": "05-JUN-20",
+    "ORGAN_NAME": "运营室_广西",
+    "NBUW_OLD_NUM": "320",
+    "NBUW_SHOULD_DO": "160",
+    "NBUW_SHOULD_DO2": "160",
+    "NBUW_SHOULD_DO3": "160"
+  },
+  {
+    "INSERT_DATE": "05-JUN-20",
+    "ORGAN_NAME": "运营室_小计",
+    "NBUW_OLD_NUM": "1098",
+    "NBUW_SHOULD_DO": "549",
+    "NBUW_SHOULD_DO2": "549",
+    "NBUW_SHOULD_DO3": "549"
+  }
+]

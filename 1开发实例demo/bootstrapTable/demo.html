@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./bootstrap-table.min.css">
+    <script src="../jquery-2.2.4.min.js"></script>
+    <script src="./bootstrap.min.js"></script>
+    <script src="./bootstrap-table.min.js"></script>
+</head>
+
+<body>
+<table id='table' border="1"></table>
+<script>
+    $('#table').bootstrapTable({
+        url: 'data.json',
+        columns: [
+            [
+                {
+                    field: 'INSERT_DATE',
+                    title: "时间",
+                    valign: "middle",
+                    align: "center",
+                    // rowspan: 2,
+                },
+                {
+                    field: 'ORGAN_NAME',
+                    title: "机构",
+                    valign: "middle",
+                    align: "center",
+                    colspan: 2,
+                    // rowspan: 1,
+                },
+                {
+                    field: 'NBUW_SHOULD_DO3',
+                    title: "小计",
+                    valign: "middle",
+                    align: "center",
+                    // rowspan: 2,
+                },
+            ],
+            [
+                {
+                    field: 'ORGAN_NAME',
+                    title: '总额',
+                    valign: "middle",
+                    align: "center",
+                    formatter: function (value, row, index) {
+                        return value.split('_')[0];
+                    }
+                },
+                {
+                    field: 'ORGAN_NAME',
+                    title: '占比',
+                    valign: "middle",
+                    align: "center",
+                    formatter: function (value, row, index) {
+                        return value.split('_')[1];
+                    }
+                }
+            ],
+        ]
+    })
+</script>
+</body>
+
+</html>
