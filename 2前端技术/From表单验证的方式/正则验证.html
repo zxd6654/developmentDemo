@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 也可以添加 pattern -->
+    <form action="">
+        <input type="email" required id="userEmail" placeholder="请输入邮箱">
+        <input type="submit">
+    </form>
+    <script>
+        /*
+         * 移动端事件中一般都没有：keydown/keyup（移动端是虚拟键盘），我们使用input事件代替即可
+         *
+         * userEmail.oninput=function...
+         */
+        //=>自己编写正则验证(项目中最常用)
+        userEmail.onkeydown = userEmail.onkeyup = function () {
+            let reg = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+            let val = this.value;
+            if (val.length === 0) {
+                this.style.backgroundColor = 'white';
+                return;
+            }
+            if (!reg.test(val)) {
+                this.style.backgroundColor = 'lightpink';
+                return;
+            }
+            this.style.backgroundColor = 'white';
+        };
+    </script>
+</body>
+
+</html>

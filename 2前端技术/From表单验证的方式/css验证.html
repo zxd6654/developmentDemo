@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        #userEmail:valid {
+            /* 验证成功：浏览器内置验证机制验证结果是成功 */
+            background-color: white;
+        }
+
+        #userEmail:invalid {
+            /* 验证失败 */
+            background-color: lightpink;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <input type="email" required  id="userEmail" placeholder="请输入邮箱">
+        <input type="submit">
+    </form>
+</body>
+
+</html>
