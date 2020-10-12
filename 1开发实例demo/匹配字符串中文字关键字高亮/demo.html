@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+1 利用富文本生成的数据，后台保存，前台调用
+2 后台返回的字符串高亮的部分带有开始和结束的标记，然后统一替换成相应的标签
+3 后台只给返回，位置等，就按顺序从后往前依次替换
+<body>
+    <script>
+
+        // 匹配颜色高亮
+        function keywordscolorful(str, key) {
+            var reg = new RegExp("(" + key + ")", "g");
+            var newstr = str.replace(reg, "<font style='background:#ff0;'>$1</font>");
+            return newstr;
+        }
+
+        var a = keywordscolorful("123456", "2");
+        b=keywordscolorful(a,3)
+        document.write(b)
+    </script>
+</body>
+
+</html>
