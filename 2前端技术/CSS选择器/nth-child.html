@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    https://www.cnblogs.com/liweitao/p/13030445.html
+</head>
+
+<body>
+    /* 选择第n个，n位数字 */
+    :nth-child(n)
+
+    选择列表中的偶数标签
+    :nth-child(2n)
+
+    选择列表中的奇数标签
+    :nth-child(2n-1)
+
+    选择前几个元素
+    /*【负方向范围】选择第1个到第6个 */
+    :nth-child(-n+6){}
+
+    从第几个开始选择
+    /*【正方向范围】选择从第6个开始的，直到最后 */
+    :nth-child(n+6){}
+
+    两者结合使用，可以限制选择某一个范围
+    /*【限制范围】选择第6个到第9个，取两者的交集【感谢小伙伴的纠正~】 */
+    :nth-child(-n+9):nth-child(n+6){}
+
+    选择列表中的倒数第n个标签 n为数字
+    :nth-last-child(n)
+</body>
+
+</html>
