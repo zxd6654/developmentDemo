@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1
+        function judgeObj(obj) {
+            for (var a in obj) {
+                return console.log('非空对象')
+            }
+
+            return console.log('空对象')
+        }
+
+        judgeObj({});
+
+        //2 
+        JSON.stringify({}) == '{}';
+
+        //3 
+        Object.keys({}).length === 0;
+    </script>
+</body>
+
+</html>
