@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function a(obj) {
+            var a = obj || {}
+        }
+        // 等价于
+        function a(obj) {
+            var a;
+            if (
+                obj === 0 ||
+                obj === "" ||
+                obj === false ||
+                obj === null ||
+                obj === undefined
+            ) {
+                a = {}
+            } else {
+                a = obj;
+            }
+        }
+
+
+        function b(obj) {
+            var a = obj ?? {}
+        }
+        //等价于
+        function b(obj) {
+            var a;
+            if (
+                obj === null ||
+                obj === undefined
+            ) {
+                a = {}
+            } else {
+                a = obj;
+            }
+        }
+    </script>
+</body>
+
+</html>
