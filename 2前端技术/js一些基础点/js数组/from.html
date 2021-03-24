@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Array.from 方法根据已有的数组创建一个新数组。比如，要复制 numbers 数组，可以如
+        //下这样做。
+        let numbers2 = Array.from(numbers);
+        //还可以传入一个用来过滤值的函数，例子如下。
+        let evens = Array.from(numbers, x => (x % 2 == 0));
+        //上面的代码会创建一个 evens 数组，以及值 true（如果在原数组中为偶数）或 false（如
+        //果在原数组中为奇数）
+    </script>
+</body>
+
+</html>

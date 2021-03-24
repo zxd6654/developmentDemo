@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Array.of 方法根据传入的参数创建一个新数组。以下面的代码为例。
+        let numbers3 = Array.of(1);
+        let numbers4 = Array.of(1, 2, 3, 4, 5, 6);
+        //它和下面这段代码的效果一样。
+        let numbers3 = [1];
+        let numbers4 = [1, 2, 3, 4, 5, 6];
+        //我们也可以用该方法复制已有的数组，如下所示。
+        let numbersCopy = Array.of(...numbers4); 
+    </script>
+</body>
+
+</html>
