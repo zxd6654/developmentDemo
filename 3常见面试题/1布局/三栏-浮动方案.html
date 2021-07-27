@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浮动方案</title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .left,
+        .right,
+        .main {
+            height: 200px;
+        }
+
+        .left {
+            float: left;
+            width: 100px;
+            background-color: blue;
+        }
+
+        .main {
+            background-color: seagreen;
+            width: 100%;
+        }
+
+        .right {
+            float: right;
+            width: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="left"></aside>
+    <aside class="right"></aside>
+    <main class="center">
+        <h1>浮动解决方案</h1>
+        <p>方法：left和right都写在center前面，并且分别左右浮动</p>
+        <p>中间的这个div因为是块级元素，所以在水平方向按照他的包容快自动撑开</p>
+        <p>简单，但是中心部分过长下面会溢出，然后文字就会跑到两边去。</p>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表格布局</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            display: table;
+            width: 100%;
+        }
+
+        .left,
+        .main,
+        .right {
+            min-height: 100px;
+            display: table-cell;
+        }
+
+        .left {
+            width: 100px;
+            background-color: red;
+        }
+
+        .main {
+            background-color: orange;
+        }
+
+        .right {
+            width: 200px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <aside class="left"></aside>
+        <main class="main">
+            <h1>表格布局</h1>
+            <p>父元素display：table并且宽度为100%</p>
+            <p>每一个子元素display：table-cell</p>
+            <p>左右两侧添加宽度，中间不加宽度</p>
+        </main>
+        <aside class="right"></aside>
+    </div>
+</body>
+
+</html>
