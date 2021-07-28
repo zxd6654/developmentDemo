@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    柯里化（curry）又称为部分求值。是把接收多个参数的函数变换成
+    接受一个单一参数的函数，并且返回一个新的函数的技术，新函数接收余下参数
+    并返回运算结果
+
+    实现一个add方法
+    <script>
+        function curry(func) {
+            //存储已传入参数
+            let _args = [];
+
+            //做一个闭包
+            function _curry(...args) {
+                //把参数合并
+                _args = _args.concat(args);
+
+                if (_args.length >= func.length) {
+                    let result = func(..._args);
+                    _args = [];
+                    return result;
+                } else {
+                    return _curry
+                }
+            }
+
+            return _curry;
+        }
+
+        //测试代码
+        function add1(a, b, c) {
+            return a + b + c
+        }
+
+        let testAdd = curry(add1);
+        console.log(testAdd(1)(2)(3))
+        console.log(testAdd(1, 2)(3))
+        console.log(testAdd(1)(2, 3))
+    </script>
+</body>
+
+</html>

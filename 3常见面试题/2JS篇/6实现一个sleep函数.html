@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    比如 sleep(1000) 意味着等待1000毫秒，可从 Promise、Generator、Async/Await 等角度实现
+
+    <script>
+        const sleep = time => new Promise((resolve, reject) => {
+            setTimeout(resolve, time)
+        });
+
+
+        sleep(1000).then((result) => {
+            console.log('promise')
+        }).catch((err) => { });
+    </script>
+
+    <script>
+        function* sleep2(time) {
+            yield new Promise(resolve => {
+                setTimeout(resolve, time)
+            })
+        }
+
+        sleep2(1000).next().value.then((result) => {
+            console.log('generator')
+        }).catch((err) => { });
+    </script>
+
+    <script>
+        async function sleep3(time, func) {
+            await new Promise(resolve => {
+                setTimeout(resolve, time)
+            });
+
+            return func();
+        }
+
+        sleep3(1000, () => console.log('async'));
+    </script>
+</body>
+
+</html>

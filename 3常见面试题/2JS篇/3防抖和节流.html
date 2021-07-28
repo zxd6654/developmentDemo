@@ -51,8 +51,28 @@
 
 
     <script>
-    //节流
-    
+        //节流
+        function throttle(fn, wait, immediate) {
+            let timer = null;
+            let callNow = immediatel
+
+            return function () {
+                let args = arguments;
+                let context = this;
+
+                if (callNow) {
+                    fn.apply(context, args);
+                    callNow = false;
+                }
+
+                if (!timer) {
+                    timer = setTimeout(function () {
+                        fn.apply(context, args);
+                        timer = null;
+                    }, wait)
+                }
+            }
+        }
     </script>
 </body>
 
