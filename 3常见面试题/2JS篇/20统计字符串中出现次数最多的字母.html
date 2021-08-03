@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = 'aabbbccdd';
+
+        function getStr(str) {
+            if (typeof str != 'string') return;
+
+            let obj = {};
+            for (let i = 0; i < str.length; i++) {
+                obj[str[i]] = obj[str[i]] || 0;
+                obj[str[i]]++;
+            }
+
+            let maxNum = 0, maxChar = "";
+            for (let [key, value] of Object.entries(obj)) {
+                if (value > maxNum) {
+                    maxNum = value;
+                    maxChar = key;
+                }
+            }
+
+            return maxChar;
+        }
+
+        console.log(getStr(str))
+    </script>
+</body>
+
+</html>
