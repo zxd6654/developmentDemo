@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    编号为1到100的一百个人围成一圈，以123123的方式进行报数，数到3的人自动退出圈子，剩下的人继续报数，问最后剩下的人编号为几？
+
+    http://tingyun.site/2018/04/26/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/
+
+    设：n为总人数 报数出环数字为k（123123的3） i为第i次出环
+    当i=1时， f(n,k,i) = (n+k-1)%n
+    当i!=1时， f(n,k,i)= ( f(n-1,k,i-1)+k )%n
+    简单来说， 这一轮=（上一轮+k）%n
+    <script>
+        // 总人数n  报数出环数字k   n=100 k=3 第i个人出环
+        function josephus(n, k, i) {
+            if (i == 1) {
+                return (n + k - 1) % n;
+            } else {
+                return (josephus(n - 1, k, i - 1) + k) % n;
+            }
+        }
+        for (var i = 1; i <= 100; i++) {
+            console.log("第" + i + "次出环，下标为：" + josephus(100, 3, i))
+        }
+   // 第100次：下标为90的人出环  他的编号是91 （别忘了加1）
+    </script>
+</body>
+
+</html>
