@@ -1,39 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body>
-问题背景：
-数组的全排列可用于求解八皇后问题
-八皇后问题，是一个古老而著名的问题，是回溯算法的典型案例。
-该问题是国际西洋棋棋手马克斯·贝瑟尔于1848年提出：在8×8格的国际象棋上摆放八个皇后，
-使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。
+    问题背景：
+    数组的全排列可用于求解八皇后问题
+    八皇后问题，是一个古老而著名的问题，是回溯算法的典型案例。
+    该问题是国际西洋棋棋手马克斯·贝瑟尔于1848年提出：在8×8格的国际象棋上摆放八个皇后，
+    使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。
 
-<script>
-    function permute(input) {
-        var permArr = [],
-            usedChars = [];
+    <script>
+        function permute(input) {
+            var permArr = [],
+                usedChars = [];
 
-        function main(input) {
-            var i, ch;
-            for (i = 0; i < input.length; i++) {
-                ch = input.splice(i, 1)[0];
-                usedChars.push(ch);
-                if (input.length === 0) {
-                    permArr.push(usedChars.slice());
+            function main(input) {
+                var i, ch;
+                for (i = 0; i < input.length; i++) {
+                    ch = input.splice(i, 1)[0];
+                    usedChars.push(ch);
+                    if (input.length === 0) {
+                        permArr.push(usedChars.slice());
+                    }
+                    main(input);
+                    input.splice(i, 0, ch);
+                    usedChars.pop();
                 }
-                main(input);
-                input.splice(i, 0, ch);
-                usedChars.pop();
+                return permArr
             }
-            return permArr
+
+            return main(input);
+        }
+        console.log(permute([5, 3, 7, 1]));
+    </script>
+
+    <script>
+
+        var arr = [1, 2, 3];
+        //swap用来交换数组a中的两个元素
+        function swap(arr, p, q) {
+            [arr[p], arr[q]] = [arr[q], arr[p]]
         }
 
-        return main(input);
-    }
-    console.log(permute([5, 3, 7, 1]));
-</script>
+        //全排列函数pai，在数组arr中，对p位置到q位置之间的元素进行全排列
+        function pai(arr, p, q) {
+            if (p == q) {
+                console.log(arr) //一个数的全排列就是自己，输出自己
+            } else {
+                for (let i = p; i < q; i++) {
+                    swap(arr, i, p);//把 arr 中的每个元素都作一次头元素
+                    pai(arr, p + 1, q);//对头元素后的数据再次递归实现全排列
+                    swap(arr, i, p);//排完之后要换回来，防止重复排列
+                }
+            }
+        }
+        pai(arr, 0, arr.length);
+
+    </script>
 </body>
+
 </html>
