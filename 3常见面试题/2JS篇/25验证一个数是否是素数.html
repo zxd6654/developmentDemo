@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    素数也就是质数，它的特点就是只能被1和自己整除。
+    判断一个数是不是素数的算法据我了解目前只能试除，也就是将这个数除以从2到其本身减1，看余数有没有0,如果没有，就是素数。
+    不过，根据搜索得知，可以不用除到其本身减1，只需要除到它开方之后的那个整数即可。
+    <script>
+        function is_pir(m) {
+            if (m === 1) {  //1不是素数
+                return false;
+            }
+
+            for (let i = 2; i <= parseInt(Math.sqrt(m)); i++) {
+                if (m % i === 0) return false;
+            }
+            return true
+        }
+    </script>
+</body>
+
+</html>
