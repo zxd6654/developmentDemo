@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
+    <!-- 一辆汽车加满油后可行驶 n公里。旅途中有若干个加油站。设计一个有效算法，指出应 在哪些加油站停靠加油，使沿途加油次数最少。
+
+    第一行有 2 个正整数n和 k k<=1000 ，表示汽车加满油后可行驶n公里，且旅途中有 k个加油站。 
+    第二行有 k+1 个整数，表示第 k 个加油站与第k-1 个加油站之间的距离。 第
+     0 个加油站表示出发地，汽车已加满油。 第 k+1 个加油站表示目的地。 -->
     <script>
-        
+        function greedy(n, k) {
+            var count = 0;
+            var arr = [];
+            //随机分配arr的每个数，即第i和i-1个加油站之间的距离
+            for (var i = 0; i <= k; i++) { arr[i] = parseInt(Math.random() * 10 + 1); } console.log(arr);//5 8 6 1 9 10 8 4 3 6 9 var
+            num = 0; for (var j = 0; j <= k; j++) {
+                count += arr[j]; if (count > n) {
+                    num++;
+                    count = arr[j];
+                }
+            }
+            console.log('汽车最少要需要加油的次数为：' + num);//8
+            return;
+        }
+        console.log(greedy(10, 10));
+
     </script>
 </body>
+
 </html>
