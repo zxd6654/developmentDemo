@@ -54,6 +54,24 @@
             }
             return '';
         }
+
+
+        function deepCopy(p, c) {
+            //还需要判断c是否为空对象或空数组，其他类型抛出错误
+            let obj = c || {};
+            if (p) {
+                for (let i in p) {
+                    if (typeof (p[i]) === 'object' && Object.prototype.toString.call(p[i]) !== "[object Null]") {
+                        obj[i] = (p[i].constructor === Array ? [] : {});
+                        deepCopy(p[i], obj[i]);
+                    } else {
+                        obj[i] = p[i];
+                    }
+                }
+                return obj;
+            }
+            return '';
+        }
     </script>
 </body>
 

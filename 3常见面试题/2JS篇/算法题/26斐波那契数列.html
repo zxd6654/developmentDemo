@@ -23,6 +23,14 @@
                 return fibonacci(n - 1) + fibonacci(n - 2)
             }
         }
+
+        function fibonacci(n, total) {
+            if (n === 1) {
+                return total
+            } else {
+                return fibonacci(n - 1, total);
+            }
+        }
     </script>
 
     循环
