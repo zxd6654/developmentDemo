@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <script>
+        var arr = ["a", "b", "c"];
+        var iterator = arr.entries();
+        // undefined
+
+        for (let e of iterator) {
+            console.log(e);
+        }
+
+        // [0, "a"]
+        // [1, "b"]
+        // [2, "c"]
+
+
+        let arr1 = ['w', 'y', 'k', 'o', 'p'];
+        let eArr = arr1.values();
+
+        for (let letter of eArr) {
+            console.log(letter);
+        } //"w" "y "k" "o" "p"
+
+
+        const array1 = ['a', 'b', 'c'];
+        const iterator = array1.keys();
+
+        for (const key of iterator) {
+            console.log(key);
+        }
+
+// expected output: 0
+// expected output: 1
+// expected output: 2
+    </script>
 </body>
+
 </html>
