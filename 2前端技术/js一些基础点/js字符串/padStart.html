@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    padStart() 方法用另一个字符串填充当前字符串(如果需要的话，会重复多次)，以便产生的字符串达到给定的长度。从当前字符串的左侧开始填充。
+    str.padStart(targetLength [, padString])
+    <script>
+        const str1 = '5';
+
+        console.log(str1.padStart(2, '0'));
+        // expected output: "05"
+
+        const fullNumber = '2034399002125581';
+        const last4Digits = fullNumber.slice(-4);
+        const maskedNumber = last4Digits.padStart(fullNumber.length, '*');
+
+        console.log(maskedNumber);
+        // expected output: "************5581"
+
+    </script>
+</body>
+
+</html>

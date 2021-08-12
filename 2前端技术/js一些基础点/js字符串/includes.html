@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
-    at()通过数组的元素的索引获取相应元素
-
-    如果通过索引查询不到元素 就会返回undefined
-    如果索引值为其它类型，直接返回数组的第一个元素
-
+    includes() 方法用于判断一个字符串是否包含在另一个字符串中，根据情况返回 true 或 false。
+    从当前字符串的哪个索引位置开始搜寻子字符串，默认值为 0。
     <script>
-        let arr = [2, 3, 4, 5, 6];
-        console.log(arr.at(3));//5
+        'Blue Whale'.includes('blue',2); // returns false
     </script>
 </body>
-
 </html>

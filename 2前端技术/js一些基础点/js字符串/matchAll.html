@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    matchAll() 方法返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器。
+    <script>
+        const regexp = /t(e)(st(\d?))/g;
+        const str = 'test1test2';
+
+        const array = [...str.matchAll(regexp)];
+
+        console.log(array[0]);
+        // expected output: Array ["test1", "e", "st1", "1"]
+
+        console.log(array[1]);
+        // expected output: Array ["test2", "e", "st2", "2"]
+    </script>
+</body>
+
+</html>

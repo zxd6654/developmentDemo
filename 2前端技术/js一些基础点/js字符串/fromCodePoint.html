@@ -9,14 +9,10 @@
 </head>
 
 <body>
-    at()通过数组的元素的索引获取相应元素
-
-    如果通过索引查询不到元素 就会返回undefined
-    如果索引值为其它类型，直接返回数组的第一个元素
-
+    String.fromCodePoint() 静态方法返回使用指定的代码点序列创建的字符串。
     <script>
-        let arr = [2, 3, 4, 5, 6];
-        console.log(arr.at(3));//5
+        console.log(String.fromCodePoint(9731, 9733, 9842, 0x2F804));
+// expected output: "☃★♲你"
     </script>
 </body>
 

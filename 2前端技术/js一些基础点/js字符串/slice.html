@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    slice() 方法提取某个字符串的一部分，并返回一个新的字符串，且不会改动原字符串。
+
+    slice() 提取的新字符串包括beginIndex但不包括 endIndex。
+
+    <script>
+        var str1 = 'The morning is upon us.', // str1 的长度 length 是 23。
+            str2 = str1.slice(1, 8),
+            str3 = str1.slice(4, -2),
+            str4 = str1.slice(12),
+            str5 = str1.slice(30);
+        console.log(str2); // 输出：he morn
+        console.log(str3); // 输出：morning is upon u
+        console.log(str4); // 输出：is upon us.
+        console.log(str5); // 输出：""
+
+    </script>
+</body>
+
+</html>
