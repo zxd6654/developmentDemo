@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Math.random() 函数返回一个浮点数, 伪随机数在范围从0到小于1，也就是说，从0（包括0）往上，但是不包括1（排除1），然后您可以缩放到所需的范围。
+
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        console.log(getRandomInt(3));
+        // expected output: 0, 1 or 2
+
+        console.log(getRandomInt(1));
+        // expected output: 0
+
+        console.log(Math.random());
+// expected output: a number from 0 to <1
+
+    </script>
+</body>
+
+</html>

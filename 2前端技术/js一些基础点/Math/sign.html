@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Math.sign() 函数返回一个数字的符号, 指示数字是正数，负数还是零。
+
+    <script>
+        Math.sign(3);     //  1
+        Math.sign(-3);    // -1
+        Math.sign("-3");  // -1
+        Math.sign(0);     //  0
+        Math.sign(-0);    // -0
+        Math.sign(NaN);   // NaN
+        Math.sign("foo"); // NaN
+        Math.sign();      // NaN
+
+    </script>
+</body>
+
+</html>

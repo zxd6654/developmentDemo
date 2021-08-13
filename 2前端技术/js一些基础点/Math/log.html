@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Math.log() 函数返回一个数的自然对数
+
+    <script>
+        Math.log(-1); // NaN, out of range
+        Math.log(0); // -Infinity
+        Math.log(1); // 0
+        Math.log(10); // 2.302585092994046
+    </script>
+
+    使用Math.log时基于不同的底数
+    返回以 x 为底 y 的对数（即logx y）：
+    <script>
+        function getBaseLog(x, y) {
+            return Math.log(y) / Math.log(x);
+        }
+
+        getBaseLog(10,1000); //3
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Math.log1p() 函数返回一个数字加1后的自然对数 (底为 E), 既log(x+1).
+
+    <script>
+        Math.log1p(Math.E - 1)  // 1
+        Math.log1p(0)         // 0
+        Math.log1p("0")       // 0
+        Math.log1p(-1)        // -Infinity
+        Math.log1p(-2)        // NaN
+        Math.log1p("foo")     // NaN
+
+    </script>
+</body>
+
+</html>
