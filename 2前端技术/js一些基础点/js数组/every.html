@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!--every()：判断数组中每一项都是否满足条件，只有所有项都满足条件，才会返回true。-->
+    every()：判断数组中每一项都是否满足条件，只有所有项都满足条件，才会返回true。
+
+    arr.every(callback(element[, index[, array]])[, thisArg])
+
+    callback
+    用来测试每个元素的函数，它可以接收三个参数：
+    element
+    用于测试的当前值。
+    index可选
+    用于测试的当前值的索引。
+    array可选
+    调用 every 的当前数组。
+    thisArg
+    执行 callback 时使用的 this 值。
 </head>
+
 <body>
-<script>
-    var arr = [1, 2, 3, 4, 5];
-    var arr2 = arr.every(x=> x<10);
-    console.log(arr2); //true
-    var arr3 = arr.every(function (x) {
-        return x < 3;
-    });
-    console.log(arr3); // false
-</script>
+    <script>
+        var arr = [1, 2, 3, 4, 5];
+        var arr2 = arr.every(x => x < 10);
+        console.log(arr2); //true
+        var arr3 = arr.every(function (x) {
+            return x < 3;
+        });
+        console.log(arr3); // false
+    </script>
 </body>
+
 </html>
