@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body>
-concat 方法用于合并两个或多个数组，此方法不会更改现有数组，而是返回一个新数组。
-如果不加参数，则 concat 会返回调用此方法的现存数组的一个浅拷贝
-<script>
-//    var a=[1,2,3];
-//    var b=a.concat(4,5);
-//    document.write(b);
+    concat 方法用于合并两个或多个数组，此方法不会更改现有数组，而是返回一个新数组。
+    如果不加参数，则 concat 会返回调用此方法的现存数组的一个浅拷贝
 
-var arr = new Array(3);
-arr[0] = "George";
-arr[1] = "John";
-arr[2] = "Thomas";
+    数组和/或值，将被合并到一个新的数组中。
+    <script>
+        //    var a=[1,2,3];
+        //    var b=a.concat(4,5);
+        //    document.write(b);
 
-var arr2 = new Array(3);
-arr2[0] = "James";
-arr2[1] = "Adrew";
-arr2[2] = "Martin";
+        var arr = new Array(3);
+        arr[0] = "George";
+        arr[1] = "John";
+        arr[2] = "Thomas";
 
-document.write(arr.concat(arr2,[1,2,3]))
-</script>
+        var arr2 = new Array(3);
+        arr2[0] = "James";
+        arr2[1] = "Adrew";
+        arr2[2] = "Martin";
+
+        document.write(arr.concat(arr2, [1, 2, 3]))
+
+
+        var alpha = ['a', 'b', 'c'];
+
+        var alphaNumeric = alpha.concat(1, [2, 3]);
+    </script>
 </body>
+
 </html>
