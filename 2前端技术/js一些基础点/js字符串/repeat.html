@@ -19,7 +19,7 @@
         "abc".repeat(1 / 0)    // RangeError: repeat count must be positive and less than inifinity
 
             ({ toString: () => "abc", repeat: String.prototype.repeat }).repeat(2)
-//"abcabc",repeat是一个通用方法,也就是它的调用者可以不是一个字符串对象.
+        //"abcabc",repeat是一个通用方法,也就是它的调用者可以不是一个字符串对象.
     </script>
 </body>
 
