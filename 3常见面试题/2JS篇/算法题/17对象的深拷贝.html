@@ -8,9 +8,17 @@
 
 <body>
 
-    浅拷贝只需要Object.assign();
-    符合json要求（双引号）的对象深拷贝：
-    JSON.parse(JSON.stringify(obj)
+    浅拷贝
+    
+    1 浅拷贝只需要Object.assign();
+    2 concat浅拷贝数组
+    3 slice浅拷贝   
+    4 ...展开运算符
+
+    深拷贝
+
+    符合json要求（双引号）的对象深拷贝：JSON.parse(JSON.stringify(obj)
+
     <script>
         let object = {
             a: "hello",
