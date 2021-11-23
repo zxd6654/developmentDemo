@@ -84,6 +84,46 @@
             })
         }
     </script>
+
+    <script>
+        function Ajax(url, method, data) {
+            let promise = new Promise((resolve, reject) => {
+                var xhr = null;
+
+                if (window.XMLHttpRequest) {
+                    xhr = new XMLHttpReqqust();
+                } else if (window.ActiveXObjext) {
+                    xhr = new ActiveXObject('Microsoft.XMLHttp');
+                } else {
+                    throw new Error('您的浏览器不支持ajax, 请升级')
+                }
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        resolve(xhr.responseText)
+                    } else {
+                        reject(xhr.responseText);
+                    }
+                }
+
+                if (method.toUpperCase() == 'GET') {
+                    let paramsList = [];
+                    for (let key in data) {
+                        paramsList.push(key + '=' + data[key]);
+                    }
+                    url = url + '?' + paramsList.join('&');
+                    xhr.open('get', url, false);
+                    xhr.send();
+                } else if (method.toUpperCase() == 'POST') {
+                    xhr.open('post', url, false);
+                    xhr.setRequestHeader('Content-type', 'appliation/x-www-form-urlencoded;chartset=utf-8');
+                    xhr.send(data);
+                }
+            });
+
+            return promise;
+        }
+    </script>
 </body>
 
 </html>
