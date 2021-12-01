@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="height: 100%; margin: 0">
+    <div id="container" style="width:700px;height: 700px"></div>
+    <script src="../jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+    <script type="text/javascript">
+        var ROOT_PATH =
+            'https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/examples';
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+        var option;
+
+        myChart.showLoading();
+        $.getJSON(ROOT_PATH + '/data/asset/data/les-miserables.json', function (graph) {
+            console.info(graph);
+            myChart.hideLoading();
+            graph.nodes.forEach(function (node) {
+                node.label = {
+                    show: node.symbolSize > 30
+                };
+            });
+            option = {
+                title: {
+                    text: 'Les Miserables',
+                    subtext: 'Default layout',
+                    top: 'bottom',
+                    left: 'right'
+                },
+                tooltip: {},
+                legend: [
+                    {
+                        // selectedMode: 'single',
+                        data: graph.categories.map(function (a) {
+                            return a.name;
+                        })
+                    }
+                ],
+                animationDuration: 1500,
+                animationEasingUpdate: 'quinticInOut',
+                series: [
+                    {
+                        name: 'Les Miserables',
+                        type: 'graph',
+                        layout: 'none',
+                        data: graph.nodes,
+                        links: graph.links,
+                        categories: graph.categories,
+                        roam: true,
+                        label: {
+                            position: 'right',
+                            formatter: '{b}'
+                        },
+                        lineStyle: {
+                            color: 'source',
+                            curveness: 0.3
+                        },
+                        emphasis: {
+                            focus: 'adjacency',
+                            lineStyle: {
+                                width: 10
+                            }
+                        }
+                    }
+                ]
+            };
+            myChart.setOption(option);
+        });
+
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
+
+    </script>
+</body>
+
+</html>
