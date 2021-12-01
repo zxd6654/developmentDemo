@@ -16,28 +16,28 @@
         var ROOT_PATH =
             'https://cdn.jsdelivr.net/gh/apache/echarts-website@asf-site/examples';
         var dom = document.getElementById("container");
-        var myChart = echarts.init(dom);
+        var myChart = echarts.init(dom);//初始化echarts实例
         var app = {};
         var option;
 
-        myChart.showLoading();
+        myChart.showLoading();//显示加载动画
         $.getJSON(ROOT_PATH + '/data/asset/data/les-miserables.json', function (graph) {
             console.info(graph);
-            myChart.hideLoading();
+            myChart.hideLoading();//隐藏加载动画
             graph.nodes.forEach(function (node) {
                 node.label = {
                     show: node.symbolSize > 30
                 };
             });
             option = {
-                title: {
-                    text: 'Les Miserables',
-                    subtext: 'Default layout',
-                    top: 'bottom',
-                    left: 'right'
+                title: {//标题组件
+                    text: 'Les Miserables',//主题文本
+                    subtext: 'Default layout',//副标题文本
+                    top: 'bottom',//title 组件离容器上侧的距离
+                    left: 'right'//title 组件离容器右侧的距离
                 },
                 tooltip: {},
-                legend: [
+                legend: [//图例组件
                     {
                         // selectedMode: 'single',
                         data: graph.categories.map(function (a) {
@@ -45,41 +45,36 @@
                         })
                     }
                 ],
-                animationDuration: 1500,
-                animationEasingUpdate: 'quinticInOut',
-                series: [
+                animationDuration: 1500,//初始动画的时长
+                animationEasingUpdate: 'quinticInOut',//数据更新动画的缓动效果
+                series: [//系列
                     {
-                        name: 'Les Miserables',
-                        type: 'graph',
-                        layout: 'none',
-                        data: graph.nodes,
-                        links: graph.links,
-                        categories: graph.categories,
-                        roam: true,
-                        label: {
-                            position: 'right',
-                            formatter: '{b}'
+                        name: 'Les Miserables',//系列名称
+                        type: 'graph',//关系图
+                        layout: 'none',//图的布局 none不采用任何布局，使用节点中提供的x，y作为节点位置
+                        data: graph.nodes,//关系图的节点数据列表 name=数据项名称 category=数据项所在类目的index label.show=是否显示标签 symbolSize=该类目节点标记的大小 value=数据项值 x=节点的初始 x 值 y=节点的初始 y 值
+                        links: graph.links, //节点间的关系数据 
+                        categories: graph.categories,//节点分类的类目
+                        roam: true,//是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移，可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+                        label: {//图形上的文本标签，可用于说明图形的一些数据信息
+                            position: 'right',//标签的位置
+                            formatter: '{b}'//标签内容格式器 {b}：数据名
                         },
-                        lineStyle: {
-                            color: 'source',
-                            curveness: 0.3
+                        lineStyle: {//关系边的公用线条样式
+                            color: 'source',//线的颜色 'source'或者'target'特殊值，此时边会自动取源节点或目标节点的颜色作为自己的颜色
+                            curveness: 0.3//边的曲度，支持从 0 到 1 的值，值越大曲度越大。
                         },
-                        emphasis: {
-                            focus: 'adjacency',
-                            lineStyle: {
-                                width: 10
+                        emphasis: {//高亮状态的图形样式
+                            focus: 'adjacency',//'adjacency' 聚焦关系图中的邻接点和边的图形
+                            lineStyle: {//
+                                width: 10//线宽
                             }
                         }
                     }
                 ]
             };
-            myChart.setOption(option);
+            myChart.setOption(option);//使用刚指定的配置项和数据显示图表
         });
-
-        if (option && typeof option === 'object') {
-            myChart.setOption(option);
-        }
-
     </script>
 </body>
 
