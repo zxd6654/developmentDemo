@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main" style="width:900px;height: 700px"></div>
+    <script src="../jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+    <script>
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom, 'dark');
+        var option;
+
+        const axisData = ['Mon', 'Tue', 'Wed', 'Very Loooong Thu', 'Fri', 'Sat', 'Sun'];
+        const data = axisData.map(function (item, i) {
+            return Math.round(Math.random() * 1000 * (i + 1));
+        });
+        console.info(data);
+        const links = data.map(function (item, i) {
+            return {
+                source: i,
+                target: i + 1
+            };
+        });
+        links.pop();
+        option = {
+            title: {
+                text: 'Graph on Cartesian'
+            },
+            tooltip: {},
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: axisData
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    type: 'graph',
+                    layout: 'none',
+                    coordinateSystem: 'cartesian2d',
+                    symbolSize: 40,
+                    label: {
+                        show: true
+                    },
+                    edgeSymbol: ['circle', 'arrow'],
+                    edgeSymbolSize: [4, 10],
+                    data: data,
+                    links: links,
+                    lineStyle: {
+                        color: '#2f4554'
+                    }
+                }
+            ]
+        };
+
+        option && myChart.setOption(option);
+
+    </script>
+</body>
+
+</html>
