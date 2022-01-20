@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-
+区别：防抖动是将多次执行变为最后一次执行，节流是将多次执行变成每隔一段时间执行。
 <body>
+    函数防抖(debounce)：触发高频事件后n秒内函数只会执行一次，如果n秒内高频事件再次被触发，则重新计算时间。
     <script>
         //防抖
         function debounce(fn, wait, immediate) {
@@ -49,7 +50,7 @@
         }, 2000)
     </script>
 
-
+    函数节流(throttle)：高频事件触发，但在n秒内只会执行一次，所以节流会稀释函数的执行频率。
     <script>
         //节流
         function throttle(fn, wait, immediate) {
