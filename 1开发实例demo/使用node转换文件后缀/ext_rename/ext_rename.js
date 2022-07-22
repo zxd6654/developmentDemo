@@ -52,7 +52,6 @@ const reName = (dir, orgExt, newExt) => {
       reName(file, orgExt, newExt);
     }
   }
-  console.log("done");
 };
 
 rl.question(`请输入文件夹地址: `, (res1) => {
