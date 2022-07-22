@@ -1,0 +1,168 @@
+<view a:if="{{!isBigFlag}}" class="main">
+  <view  a:if="{{!isNoneRecords}}">
+    <view class="list" a:for="{{listData}}">
+      <view class="{{item.recordStatusTemp == '未受理'||item.recordStatusTemp == '待受理'||item.recordStatusTemp == '待办理'||item.recordStatusTemp == '预约成功'? '': 'canceld_color'}}">
+        <view class="list-title flex">
+          <view class="text-l flex1">{{item.bookTypeTemp}}</view>
+          <view class="text-r flex1 abc-status font30 color-green">{{item.recordStatusTemp}}</view>
+        </view>
+        <block a:if="{{item.bookTypeTemp == '开卡'}}">
+          <view>
+            <view>
+              <view class="order_time">
+            预约失效时间：{{item.expireTime}}
+              </view>
+              <view class="order_time">
+            请持本人身份证原件前往我行任一网点柜台办理
+              </view>
+            </view>
+            <view class="order_btn" a:if="{{item.recordStatusTemp == '待办理'}}">
+              <view class="order_record" onTap="viewDetail" data-obj="{{item}}"> 
+           查看详情
+              </view>
+              <view class="order_record" onTap="cancel" data-type='card' data-useridno="{{item.seqNo}}" data-bookid="{{item.custId}}"> 
+           取消预约
+              </view>
+            </view>
+          </view>
+        </block>
+        <block a:else>
+          <view class="ulList figure">
+            <view class="ulList-left">预约时间</view>
+            <!--<view class="ulList-right" a:if="{{item.bookTypeTemp == '预约排队'}}">{{item.bookDate}} {{item.bookHour}}:00-{{item.bookHourEnd}}:00</view><view class="ulList-right" a:else>{{item.bookDate}}</view> -->
+            <view class="ulList-right">{{item.specDate}}</view>
+          </view>
+          <view class="ulList figure">
+            <view class="ulList-left">预约姓名</view>
+            <view class="ulList-right">{{item.userName}}</view>
+          </view>
+          <view class="ulList figure" a:if="{{item.bookTypeTemp == '外币取现'}}"><view class="ulList-left">币种</view><view class="ulList-right">{{item.currency}}</view></view>
+          <view class="ulList figure" a:if="{{item.amount > '0' }}">
+            <view class="ulList-left">预约金额</view>
+            <view class="ulList-right">{{item.amount}}</view></view>
+          <view a:if="{{item.bookTypeTemp == '大额取现'}}">
+            <view class="ulList figure">
+              <view class="ulList-left">取款用途</view>
+              <view class="ulList-right">{{item.memoType}}</view>
+            </view>
+            <view class="ulList figure" a:if="{{ item.memoTypeCode == '1299'}}">
+              <view class="ulList-left">用途说明</view>
+              <view class="ulList-right">{{item.otherMemo}}</view>
+            </view>
+          </view>
+          <view class="list-margin">
+            <view class="list-content">
+              <view class="ulList-left">网点</view>
+              <view class="ulList-right">{{item.branchName}}</view>
+            </view>
+            <view class="list-content" a:if="{{item.branchAddress!=''}}">
+              <view class="ulList-left">地址</view>
+              <view class="ulList-right">{{item.branchAddress}}</view>
+            </view>
+            <view class="list-content phone">
+              <view class="ulList-left">电话</view>
+              <view class="ulList-right" onTap="tapPhone" data-phone="{{item.branchPhoneNo?item.branchPhoneNo:95599}}">{{item.branchPhoneNo?item.branchPhoneNo:95599}}</view>
+            </view>
+            <view class="cancel" a:if="{{item.recordStatusTemp =='未受理'||item.recordStatusTemp == '待受理'||item.recordStatusTemp == '预约成功'}}">
+              <view class="ulList-cancel">
+                <!--<view a:if="{{item.recordStatusTemp == '已取消'}}">已取消预约</view> -->
+                <view mode="aspectFit" class="order_record" onTap="cancel" data-type="{{item.bookTypeTemp=='大额取现'?'largeCash':'currency'}}" data-useridno="{{item.userIDNo}}" data-bookid="{{item.bookID}}">取消预约</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="no_record" a:if="{{isNoneRecords}}">
+    <view>
+      <image class="default_icon" src="{{default_icon}}"/>
+    </view>
+    <view class="n_title">暂无预约记录</view>
+  </view>
+</view>
+<view a:else class="Big main">
+  <view  a:if="{{!isNoneRecords}}">
+    <view class="list" a:for="{{listData}}">
+      <view class="{{item.recordStatusTemp == '未受理'||item.recordStatusTemp == '待受理'||item.recordStatusTemp == '待办理'||item.recordStatusTemp == '预约成功'? '': 'canceld_color'}}">
+        <view class="list-title flex">
+          <view class="text-l flex1">{{item.bookTypeTemp}}</view>
+          <view class="text-r flex1 abc-status font30 color-green">{{item.recordStatusTemp}}</view>
+        </view>
+        <block a:if="{{item.bookTypeTemp == '开卡'}}">
+          <view>
+            <view>
+              <view class="order_time">
+            预约失效时间：{{item.expireTime}}
+              </view>
+              <view class="order_time">
+            请持本人身份证原件前往我行任一网点柜台办理
+              </view>
+            </view>
+            <view class="order_btn" a:if="{{item.recordStatusTemp == '待办理'}}">
+              <view class="order_record" onTap="viewDetail" data-obj="{{item}}"> 
+           查看详情
+              </view>
+              <view class="order_record" onTap="cancel" data-type='card' data-useridno="{{item.seqNo}}" data-bookid="{{item.custId}}"> 
+           取消预约
+              </view>
+            </view>
+          </view>
+        </block>
+        <block a:else>
+          <view class="ulList figure">
+            <view class="ulList-left">预约时间</view>
+            <!--<view class="ulList-right" a:if="{{item.bookTypeTemp == '预约排队'}}">{{item.bookDate}} {{item.bookHour}}:00-{{item.bookHourEnd}}:00</view><view class="ulList-right" a:else>{{item.bookDate}}</view> -->
+            <view class="ulList-right">{{item.specDate}}</view>
+          </view>
+          <view class="ulList figure">
+            <view class="ulList-left">预约姓名</view>
+            <view class="ulList-right">{{item.userName}}</view>
+          </view>
+          <view class="ulList figure" a:if="{{item.bookTypeTemp == '外币取现'}}"><view class="ulList-left">币种</view><view class="ulList-right">{{item.currency}}</view></view>
+          <view class="ulList figure" a:if="{{item.amount > '0' }}">
+            <view class="ulList-left">预约金额</view>
+            <view class="ulList-right">{{item.amount}}</view></view>
+          <view a:if="{{item.bookTypeTemp == '大额取现'}}">
+            <view class="ulList figure">
+              <view class="ulList-left">取款用途</view>
+              <view class="ulList-right">{{item.memoType}}</view>
+            </view>
+            <view class="ulList figure" a:if="{{ item.memoTypeCode == '1299'}}">
+              <view class="ulList-left">用途说明</view>
+              <view class="ulList-right">{{item.otherMemo}}</view>
+            </view>
+          </view>
+          <view class="list-margin">
+            <view class="list-content">
+              <view class="ulList-left">网点</view>
+              <view class="ulList-right">{{item.branchName}}</view>
+            </view>
+            <view class="list-content" a:if="{{item.branchAddress!=''}}">
+              <view class="ulList-left">地址</view>
+              <view class="ulList-right">{{item.branchAddress}}</view>
+            </view>
+            <view class="list-content phone">
+              <view class="ulList-left">电话</view>
+              <view class="ulList-right" onTap="tapPhone" data-phone="{{item.branchPhoneNo?item.branchPhoneNo:95599}}">{{item.branchPhoneNo?item.branchPhoneNo:95599}}</view>
+            </view>
+            <view class="cancel" a:if="{{item.recordStatusTemp =='未受理'||item.recordStatusTemp == '待受理'||item.recordStatusTemp == '预约成功'}}">
+              <view class="ulList-cancel">
+                <!--<view a:if="{{item.recordStatusTemp == '已取消'}}">已取消预约</view> -->
+                <view mode="aspectFit" class="order_record" onTap="cancel" data-type="{{item.bookTypeTemp=='大额取现'?'largeCash':'currency'}}" data-useridno="{{item.userIDNo}}" data-bookid="{{item.bookID}}">取消预约</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="no_record" a:if="{{isNoneRecords}}">
+    <view>
+      <image class="default_icon" src="{{big_default_icon}}"/>
+    </view>
+    <view class="n_title">暂无预约记录</view>
+  </view>
+</view>
+<tip-dialog isTipHidden="{{isModalHidden}}" onConfirmHandle = "confirmHandle" onCancelHandle= 'cancelHandle' tipMessage="{{failMessage}}" confirmText="确认" cancleText="取消"></tip-dialog>
+<tip-dialog isTipHidden="{{isCancelModalHidden}}" onConfirmHandle = "cancelConfirm" onCancelHandle='cancelCancel' tipMessage="{{confirmMessage}}" confirmText="确认" cancleText="取消"></tip-dialog>

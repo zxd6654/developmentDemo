@@ -1,0 +1,7 @@
+{
+     "defaultTitle": "预约记录",
+     "component": true,
+     "usingComponents": {
+          "tip-dialog": "../../components/tipDialog/tipDialog"
+     } 
+}

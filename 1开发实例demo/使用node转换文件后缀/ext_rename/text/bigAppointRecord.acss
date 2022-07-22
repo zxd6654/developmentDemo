@@ -1,0 +1,112 @@
+/* 大字版 */
+
+.Big .main {
+  padding: 20rpx 32rpx;
+}
+
+.Big .order_time {
+  font-size: 34rpx;
+  line-height: 34rpx;
+  font-weight: 400;
+}
+.Big .order_time:last-child {
+  line-height: 52rpx;
+  margin-top: -9rpx;
+}
+
+.Big .order_btn {
+  padding-top: 8rpx;
+}
+
+.Big .order_record {
+  padding: 16rpx 24rpx;
+  border: 2rpx solid #F06E00;
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #F06E00;
+  line-height: 34rpx;
+  border-radius: 33rpx;
+  margin-left: 20rpx;
+  font-weight: 500;
+}
+
+.Big .canceld_color view{
+  color:#c4c4c4!important;
+}
+
+.Big .list {
+  margin-bottom: 20rpx;
+  padding: 40rpx 32rpx;
+}
+
+.Big .list .ulList:last-child,.Big .list .list-content:last-child {
+  margin-bottom: 0;
+}
+
+.Big .list-title {
+  font-family: PingFangSC-Medium;
+  font-size: 40rpx;
+  line-height: 40rpx;
+  font-weight: 500;
+  margin-bottom: 40rpx;
+  height: auto;
+}
+
+.Big .ulList {
+  font-size: 38rpx;
+  margin-bottom: 0.36rem;
+  font-weight: 400;
+}
+
+.Big .list-margin {
+  padding-top: 40rpx;
+  border-top: 1rpx solid #E5E5E5;
+}
+
+.Big .ulList-left {
+  flex: 1.5;
+}
+
+.Big .ulList-right {
+  font-size: 38rpx;
+  line-height: 0.54rem;
+  margin-top: -0.03rem;
+}
+
+.Big .list-content {
+  margin-bottom: 0.36rem;
+  font-size: 38rpx;
+}
+
+.Big .cancel {
+  padding-top: -4rpx;
+}
+
+.Big .font30 {
+  font-size: 40rpx;
+}
+
+.color-green {
+  color: #327E6E;
+  font-weight: 400;
+}
+
+.Big .no_record {
+  height: auto;
+  padding-top: 2.7rem;
+}
+
+.Big .default_icon {
+  display: block;
+  margin: 0 auto;
+  width: 560rpx;
+  height: 300rpx;
+}
+
+.Big .n_title {
+  margin-top: 62rpx;
+  font-size: 40rpx;
+  color: #666666;
+  line-height: 40rpx;
+  font-weight: 400;
+}
