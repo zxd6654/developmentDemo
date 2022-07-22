@@ -29,7 +29,7 @@ const reName = (dir, orgExt, newExt) => {
     let file = fileList[i];
     file = path.join(dir, file);
     if (isFile(file)) {
-      if (file.split(".")[1] != orgExt) continue;
+      if (file.split(".").pop() != orgExt) continue;
 
       let parsed = path.parse(file);
       let oldFileName = parsed.name + "." + orgExt;
