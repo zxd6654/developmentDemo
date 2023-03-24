@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./countup.js"></script>
+</head>
+
+<body>
+    <div id="num1">23</div>
+    <div class="btn" style="
+        background-color: brown;
+        color: #fff;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+      ">
+        这是个按钮
+    </div>
+</body>
+<script>
+    var options = {
+        useEasing: true, // 过渡动画效果，默认ture
+        useGrouping: true, // 千分位效果，例：1000->1,000。默认true
+        separator: ",", // 使用千分位时分割符号
+        decimal: ".", // 小数位分割符号
+        prefix: "", // 前置符号
+        suffix: "", // 后置符号，可汉字
+    };
+    // target,startVal,endVal,decimals,duration,options
+    // dom节点, 初始值,  结束值, 小数位数, 过渡几秒 , 初始参数
+    var num1 = new CountUp("num1", 9, 100, 0, 2, options),
+        num2 = new CountUp("num2", 0, 200, 0, 2, options);
+
+    function start() {
+        // 开始
+        num1.start();
+    }
+    function pause() {
+        // 暂停或继续
+        num1.pauseResume();
+    }
+    function reset() {
+        // 重置初始值
+        num1.reset();
+    }
+    function updata() {
+        // 重新赋值
+        num1.update(888);
+    }
+
+    //滚动到当前元素执行start()
+    let numDiv = document.querySelector("#num1");
+    document.addEventListener("scroll", function (e) {
+        // console.log(document.documentElement.scrollTop, numDiv.offsetTop)
+        // console.log(window.innerHeight)
+        let a =
+            document.documentElement.scrollTop +
+            window.innerHeight -
+            numDiv.offsetTop;
+        if (a > 0) {
+            start();
+        }
+    });
+
+    document.getElementsByClassName('btn')[0].onclick = function () {
+        start();
+        // reset();
+    }
+</script>
+
+</html>
