@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shadow</title>
+    <style>
+        .hello{
+            background-color: aqua;
+        }
+        p {
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hello">hello z</div>
+    <div id="shadow"></div>
+    <script>
+        let shadowDom = shadow.attachShadow({ mode: 'open' });  
+        let pElem = document.createElement('p');
+        let styleElem = document.createElement('style');
+
+        styleElem.innerHTML = 'p{color:red}';
+        pElem.innerHTML = 'hello shadow';
+
+        shadowDom.appendChild(pElem);
+        // 外部样式影响不了影子节点内部样式
+        document.body.appendChild(styleElem);
+        
+        console.log(document.getElementById('shadow').firstChild) // 返回null
+        console.log(document.getElementById('shadow').shadowRoot.firstChild)
+        // 返回影子节点
+    </script>
+</body>
+
+</html>
