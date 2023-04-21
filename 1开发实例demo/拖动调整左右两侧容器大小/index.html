@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            display: flex;
+            height: 100vh;
+        }
+
+        .left {
+            width: 200px;
+            background-color: cyan;
+            height: 100%;
+        }
+
+        .resize-line {
+            cursor: w-resize;
+            width: 5px;
+            background-color: #eee;
+        }
+
+        .right {
+            width: calc(100% - 205px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div id="left" class="left">左侧</div>
+        <div id="line" class="resize-line"></div>
+        <div id="right" class="right">右侧</div>
+    </div>
+    <script>
+        window.onload = function () {
+            let left = document.getElementById('left');
+            let line = document.getElementById('line')
+            let right = document.getElementById('right');
+            line.onmousedown = function (e) {
+                let lineLeft = e.clientX;
+                line.left = line.offsetLeft;
+                document.onmousemove = function (e) {
+                    let diffVal = line.left + (e.clientX - lineLeft);
+                    if (diffVal >= document.body.clientWidth * 0.1 && diffVal <= document.body.clientWidth * 0.4) {
+                        line.style.left = diffVal + 'px';
+                        left.style.width = diffVal + 'px'
+                        right.style.width = document.body.clientWidth - diffVal + 'px';
+                    }
+
+                }
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>
