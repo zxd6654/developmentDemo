@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <output id="result"></output>
+
+    <script>
+        let originPixelRatio = localStorage.devicePixelRatio;
+        if (!originPixelRatio) {
+            originPixelRatio = window.devicePixelRatio;
+            // 整数保存
+            if (Number.isInteger(originPixelRatio)) {
+                localStorage.devicePixelRatio = originPixelRatio;
+            }
+        }
+
+        let lastPixelRatio = originPixelRatio;
+        window.addEventListener('resize', function () {
+            let currentPixelRatio = window.devicePixelRatio;
+
+            if (currentPixelRatio !== lastPixelRatio) {
+                result.innerHTML = '页面发生了缩放，缩放比例应该是：' + Math.round(1000 * (currentPixelRatio / originPixelRatio)) / 10 + '%';
+            }
+
+            lastPixelRatio = currentPixelRatio;
+        });
+
+        result.innerHTML = '当前缩放比例为：' + Math.round(1000 * (window.devicePixelRatio / originPixelRatio)) / 10 + '%';
+
+    </script>
+</body>
+
+</html>
