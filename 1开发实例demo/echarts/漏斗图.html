@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+</head>
+
+<body>
+    <div id="main" style="width: 500px;height: 300px;"></div>
+    <script>
+        echartsInit();
+        function echartsInit() {
+            var myChart = echarts.init(document.getElementById('main'));
+            var option = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter(e) {
+                        return `${e.name} : ${e.data.values}`
+                    }
+                },
+                color: [
+                    new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                        offset: 0,
+                        color: '#64F0FF'
+                    },
+                    {
+                        offset: 1,
+                        color: '#3785FF'
+                    }
+                    ]),
+                    new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                        offset: 0,
+                        color: '#74C8FF'
+                    },
+                    {
+                        offset: 1,
+                        color: '#338BFE'
+                    }
+                    ]),
+                    new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                        offset: 0,
+                        color: '#09E3E1'
+                    },
+                    {
+                        offset: 1,
+                        color: '#06B6B5'
+                    }
+                    ]),
+                    new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                        offset: 0,
+                        color: '#61E38E'
+                    },
+                    {
+                        offset: 1,
+                        color: '#33C550'
+                    }
+                    ]),
+
+                ],
+                series: [{
+                    name: 'Funnel',
+                    type: 'funnel',
+                    left: '10%',
+                    top: 60,
+                    bottom: 60,
+                    width: '41%',
+                    min: 0,
+                    max: 100,
+                    minSize: '0%',
+                    maxSize: '0%',
+                    sort: 'descending',
+                    gap: 10,
+                    label: {
+                        show: true,
+                        position: 'left',
+                        fontSize: 14
+                    },
+                    labelLine: {
+                        length: 250,
+                        lineStyle: {
+                            width: 1,
+                            type: 'dashed'
+                        },
+                    },
+                    itemStyle: {
+                        borderColor: '#fff',
+                        borderWidth: 1
+                    },
+                    emphasis: {
+                        label: {
+                            fontSize: 24
+                        }
+                    },
+                    data: [{
+                        value: 80,
+                        name: '访客数',
+                        values: 100
+                    },
+                    {
+                        value: 60,
+                        name: '加购人数',
+                        values: 80
+                    },
+                    {
+                        value: 40,
+                        name: '下单人数',
+                        values: 60
+                    },
+                    {
+                        value: 20,
+                        name: '支付人数',
+                        values: 80000000
+                    },
+                    ]
+                },
+                {
+                    name: 'Funnel',
+                    type: 'funnel',
+                    left: '10%',
+                    top: 60,
+                    bottom: 60,
+                    width: '41%',
+                    min: 0,
+                    max: 100,
+                    minSize: '0%',
+                    maxSize: '100%',
+                    sort: 'descending',
+                    gap: 10,
+                    label: {
+                        show: false
+                    },
+                    itemStyle: {
+                        borderColor: '#fff',
+                        borderWidth: 1
+                    },
+                    emphasis: {
+                        label: {
+                            fontSize: 24
+                        }
+                    },
+                    data: [{
+                        value: 80,
+                        name: '访客数',
+                        values: 100
+                    },
+                    {
+                        value: 60,
+                        name: '加购人数',
+                        values: 80
+                    },
+                    {
+                        value: 40,
+                        name: '下单人数',
+                        values: 60
+                    },
+                    {
+                        value: 20,
+                        name: '支付人数',
+                        values: 40
+                    },
+                    ]
+                },
+                {
+                    name: 'Funnel',
+                    type: 'funnel',
+                    left: '10%',
+                    top: 60,
+                    bottom: 60,
+                    width: '41%',
+                    min: 0,
+                    max: 100,
+                    minSize: '0%',
+                    maxSize: '100%',
+                    sort: 'descending',
+                    gap: 10,
+                    label: {
+                        show: true,
+                        position: 'inside',
+                        formatter(e) {
+                            return `${e.data.values}`
+                        },
+                        color: '#fff',
+                        size: 22,
+                        textBorderColor: '#fff'
+                    },
+                    labelLine: {
+                        length: 10,
+                        lineStyle: {
+                            width: 1,
+                            type: 'solid'
+                        }
+                    },
+                    itemStyle: {
+                        borderColor: '#fff',
+                        borderWidth: 1
+                    },
+                    emphasis: {
+                        label: {
+                            fontSize: 24,
+                            color: '#000'
+                        }
+                    },
+                    data: [{
+                        value: 300,
+                        name: '访客数',
+                        values: 100
+                    },
+                    {
+                        value: 60,
+                        name: '加购人数',
+                        values: 80
+                    },
+                    {
+                        value: 40,
+                        name: '下单人数',
+                        values: 60
+                    },
+                    {
+                        value: 20,
+                        name: '支付人数',
+                        values: 80000000
+                    },
+                    ],
+                    z: 100
+                }]
+            }
+            myChart.setOption(option);
+        }
+    </script>
+</body>
+
+</html>
