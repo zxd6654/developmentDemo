@@ -19,15 +19,40 @@
         option = {
             xAxis: {
                 type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                // boundaryGap: true,
+                // splitArea: {
+                //     show: false,
+                //     interval: 0,
+                //     areaStyle: {
+                //         color: ['rgba(250,250,250,0.3)', 'rgba(200,200,200,0.3)']
+                //     }
+                // }
             },
             yAxis: {
                 type: 'value'
             },
+            tooltip: {
+                trigger: 'axis',
+                triggerOn: `click`,
+                alwaysShowContent: "true",
+                showDelay: 0,
+                axisPointer: {
+                    type: 'shadow',
+                    shadowStyle: {
+                        color: 'rgba(74, 211, 164, 0.15)'
+                    }
+                }
+            },
             series: [
                 {
+                    colorBy: "data",
                     data: [120, 200, 150, 80, 70, 110, 130],
                     type: 'bar',
+                    // showBackground: true,
+                    // backgroundStyle: {
+                    //     color: 'rgba(180, 180, 180, 0.2)'
+                    // },
                     label: {
                         show: true,
                         position: "top",
@@ -38,6 +63,14 @@
         };
 
         option && myChart.setOption(option);
+
+        // myChart.on('click', param => {
+        //     let newOption = myChart.getOption();
+        //     console.log(param);
+        //     console.log(newOption);
+
+        //     myChart.setOption(newOption);
+        // });
     </script>
 </body>
 
