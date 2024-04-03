@@ -10,19 +10,30 @@
 
 <body>
     <script>
-        function getRandomNum(total, n) {
-            let range = total, preTotal = 0, res = [];
+        // res，最后返回的金额数组
+        // range，每次生成随机金额的范围
+        // preTotal，已经生成的金额的和
+        // item，每次生成的随机金额
 
-            for (let i = 0; i < n - 1; i++) {
+        //每次生成随机金额后，从范围内减去已经生成的金额，并将该金额添加到preTotal中，
+        //循环完成后，用total减去preTotal，计算最后一个数，并添加到结果数组中返回出来。
+        
+        function getRandomNum(n, total) {
+            var res = [];   //最后返回的数组
+            var range = total;  //生成随机金额的范围
+            var preTotal = 0;   //已经生成的金额的和
+            for (var i = 0; i < (n - 1); i++) {
                 var item = Math.ceil(Math.random() * (range / 2));
                 res.push(item);
-                range -= item;
+                range -= item;  //从范围内减去已经生成的金额
+                preTotal += item;   //将已经生成的金额进行累加
             }
-
-            res.push(range);
-
+            res.push(total - preTotal); //最后将剩下的金额添加到数组中
             return res;
         }
+
+        console.log(getRandomNum(5, 200)); //[88, 36, 34, 17, 25]
+
     </script>
 </body>
 
