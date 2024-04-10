@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body>
-<script>
-    function searchKeys() {
-        var arr = ['11', '11', '111', '4', '5', '6', '6', '7', '8', '7', '1', '1', '1'];
-        var str = [];
-        var strary = [];
-        for (var i = 0; i < arr.length; i++) {
-            var hasRead = false;
-            for (var k = 0; k < strary.length; k++) {
-                if (strary[k] == arr[i]) {
-                    hasRead = true;
+    在JavaScript中，获取数组重复元素的位置需要遍历数组，并检查每个元素是否在其他位置出现过。以下是一个简单的函数，它返回数组中每个重复元素的所有索引位置：
+    <script>
+        function findDuplicatesIndices(arr) {
+            let indices = {};
+
+            for (let i = 0; i < arr.length; i++) {
+                // 将当前索引添加到该元素的索引列表中  
+                if (!indices[arr[i]]) {
+                    indices[arr[i]] = [];
+                }
+                indices[arr[i]].push(i);
+            }
+
+            // 过滤出只包含重复元素的索引对象
+            const result = {};
+            for (const element in indices) {
+                if (indices[element].length > 1) {
+                    result[element] = indices[element];
                 }
             }
-            if (!hasRead) {
-                var _index = i, haveSame = false;
-                for (var j = i + 1; j < arr.length; j++) {
-                    if (j == i) {
-                        _index++;
-                    }
-                    if (arr[i] == arr[j]) {
-                        _index += "," + j;
-                        haveSame = true;
-                    }
-                }
-                if (haveSame) {
-                    strary.push(arr[i]);
-                    str.push(_index);
-                }
-            }
+
+            return result;
         }
-        console.log(strary);
-        console.log(str);
-    }
 
-    searchKeys()
+        // 示例用法  
+        const arr = [1, 2, 3, 2, 4, 5, 3, 6];
+        const duplicatesIndices = findDuplicatesIndices(arr);
+        console.log(duplicatesIndices);
 
-</script>
+        // {  
+        //   '2': [1, 3],
+        //   '3': [2, 6]
+        // }
+
+    </script>
 </body>
+
 </html>
