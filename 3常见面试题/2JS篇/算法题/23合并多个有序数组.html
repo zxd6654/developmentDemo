@@ -10,11 +10,13 @@
 
 <body>
     <script>
-        var arr = [[1, 2], [0, 3, 5], [-1, 4,[8,9]]];
+        var arr = [[1, 2], [0, 3, 5], [-1, 4, [8, 9]]];
 
         var newArr = arr.reduce((a, b) => a.concat(b), []);
 
-        console.log(arr,newArr)
+        console.log(arr, newArr)
+
+        arr2 = arr.flat(Infinity)
     </script>
 </body>
 
